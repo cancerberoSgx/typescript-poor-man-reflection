@@ -1,6 +1,6 @@
 {
   "name": "typescript-poor-man-reflection",
-  "version": "0.0.5",
+  "version": "0.0.1",
   "description": "An unconventional way of getting TypeScript code information (like types), as text, at runtime",
   "types": "dist/src/index.d.ts",
   "main": "dist/src/index.js",
