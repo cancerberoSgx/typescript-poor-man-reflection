@@ -1,7 +1,7 @@
 import {TypeGuards, SyntaxKind, Identifier, SourceFile, CallExpression, Node} from 'ts-simple-ast'
 import {Replacement, ReplaceFunctionCallsOptions} from './types'
 import {notUndefined} from './util'
-import {defaultExtracts} from './extractors'
+import {defaultExtractors} from './extractors'
 
 /**
  * JavaScript API to replace arguments of all function expression calls in given (ts-simple-ast SourceFile)
@@ -9,7 +9,7 @@ import {defaultExtracts} from './extractors'
  */
 export function replaceFunctionCall(
   sourceFile: SourceFile,
-  {moduleSpecifier = 'get-type-text', clean = false, extracts = defaultExtracts}: ReplaceFunctionCallsOptions = {},
+  {moduleSpecifier = 'typescript-poor-man-reflection', clean = false, extracts = defaultExtractors}: ReplaceFunctionCallsOptions = {},
 ): (Replacement | undefined)[] {
   const functionNames = Object.keys(extracts)
   const replaced: Replacement[] = []

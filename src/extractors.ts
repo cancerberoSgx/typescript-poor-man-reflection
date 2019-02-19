@@ -1,7 +1,7 @@
 import {SyntaxKind, CallExpression, TypeGuards} from 'ts-simple-ast'
 import {quote} from './util'
 
-export const defaultExtracts = {
+export const defaultExtractors = {
   TypeText: (n: CallExpression) => quote(n.getTypeArguments()[0].getText()),
   NodeText: (n: CallExpression) => `${JSON.stringify(getNode(n)!.getText())}`,
   BodyText: (n: CallExpression) => {

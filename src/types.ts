@@ -8,15 +8,15 @@ export interface Replacement {
 
 /**
  * Options for the command line tool, inherit from core options and add some extra ones. the default matching
- * function call expressions will be those who have an import like `import TypeText from 'get-type-text'` and
- * a function call using that name `TypeText`. But you can make this configurable and reuse the tool in your
- * own projects with other names.
+ * function call expressions will be those who have an import like `import TypeText from
+ * 'typescript-poor-man-reflection'` and a function call using that name `TypeText`. But you can make this
+ * configurable and reuse the tool in your own projects with other names.
  */
 export interface Config extends ReplaceFunctionCallsOptions {
   /** Default value `'./tsconfig.json'`. The target `tsconfig.json` file from which the project is loaded.
-   * `get-type-text` will load and parse the project with this identical configuration. All the files
-   * referenced by this configuration will be examined, with the exception of .d.ts and external library
-   * files. */
+   * `typescript-poor-man-reflection` will load and parse the project with this identical configuration. All
+   * the files referenced by this configuration will be examined, with the exception of .d.ts and external
+   * library files. */
   tsConfigFilePath?: string
 
   /** Prints details in stdout, default is false */
@@ -33,8 +33,9 @@ export interface Config extends ReplaceFunctionCallsOptions {
 
 /**
  * Options accepted by the low level call `replaceFunctionCall`. They describe the requirements of the
- * function call expressions in order to be changed. get-type-text will iterate every file in the project and
- * if any function call expression satisfies this options then its attributes it will be changed.
+ * function call expressions in order to be changed. typescript-poor-man-reflection will iterate every file in
+ * the project and if any function call expression satisfies this options then its attributes it will be
+ * changed.
  */
 export interface ReplaceFunctionCallsOptions {
   /**
@@ -48,9 +49,9 @@ export interface ReplaceFunctionCallsOptions {
   extracts?: {[functionName: string]: (n: CallExpression) => string}
 
   /**
-   * Custom name of the import module specifier from which the target function in the
-   * function call expression needs to be imported in order to perform the arguments modification.
-   * Default value: `get-type-text`.
+   * Custom name of the import module specifier from which the target function in the function call expression
+   * needs to be imported in order to perform the arguments modification. Default value:
+   * `typescript-poor-man-reflection`.
    */
   moduleSpecifier?: string
 }

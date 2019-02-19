@@ -8,7 +8,7 @@ describe('replaceFunctionCall', () => {
       project.createSourceFile(
         'test.ts',
         `
-import TypeText from 'get-type-text'
+import TypeText from 'typescript-poor-man-reflection'
 type Type<T> = {a: string, b: T}[]
 const n = TypeText<Type<Date>>()
 const b = TypeText<{a:'a'}>()
@@ -22,7 +22,7 @@ const c = TypeText<{a:"a"}>()
 
       expect(t).toContain(
         `
-import TypeText from 'get-type-text'
+import TypeText from 'typescript-poor-man-reflection'
 type Type<T> = {a: string, b: T}[]
 const n = TypeText<Type<Date>>('Type<Date>')
 const b = TypeText<{a:'a'}>('{a:\\'a\\'}')
@@ -33,7 +33,7 @@ const c = TypeText<{a:"a"}>('{a:"a"}')
       // and now the second time without modifications
       project.getSourceFile('test.ts')!.replaceWithText(
         `
-import TypeText from 'get-type-text'
+import TypeText from 'typescript-poor-man-reflection'
 type Type<T> = {a: string, b: T}[]
 const n = TypeText<Type<Date>>('Type<Date>')
 const b = TypeText<Type<{a:'a'}>>('{a:\\'a\\'}')
@@ -47,7 +47,7 @@ const c = TypeText<{a:Type<number>}>('{a:"a"}')
 
       expect(t2).toContain(
         `
-import TypeText from 'get-type-text'
+import TypeText from 'typescript-poor-man-reflection'
 type Type<T> = {a: string, b: T}[]
 const n = TypeText<Type<Date>>('Type<Date>')
 const b = TypeText<Type<{a:'a'}>>('Type<{a:\\'a\\'}>')

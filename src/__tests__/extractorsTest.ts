@@ -1,8 +1,8 @@
 import {Project} from 'ts-simple-ast'
 import {replaceFunctionCall} from '../replaceFunctionCall'
 
-describe('extracts', () => {
-  describe('custom extracts', () => {
+describe('extractors', () => {
+  describe('custom extractors', () => {
     it('should build my custom function name and extract', () => {
       const project = new Project()
       project.createSourceFile(
@@ -60,6 +60,24 @@ type T = any
       )
       replaceFunctionCall(project.getSourceFile('test.ts')!)
       expect(project.getSourceFile('test.ts')!.getText()).toContain(`BodyText<typeof f>("type T = any")`)
+    })
+  })
+
+  describe('nested', () => {
+    it('should extract node body that calls an extractor', () => {
+      const project = new Project()
+      project.createSourceFile(
+        'test.ts',
+        `
+const body = BodyText<typeof f>()
+function f(){
+  const c = BodyText<typeof f>()
+}
+      `,
+      )
+      replaceFunctionCall(project.getSourceFile('test.ts')!)
+      expect(project.getSourceFile('test.ts')!.getText()).toContain(`const c = BodyText<typeof f>("const c = BodyText<typeof f>()")`)
+      
     })
   })
 })
