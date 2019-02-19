@@ -21,6 +21,11 @@ export interface Config extends ReplaceFunctionCallsOptions {
 
   /** Prints details in stdout, default is false */
   debug?: boolean
+
+  /**
+   * Instead of writing existing files, will create a copy of the project, with modified files, at this folder
+   */
+  out?: string
 }
 
 /**
@@ -29,19 +34,23 @@ export interface Config extends ReplaceFunctionCallsOptions {
  * if any function call expression satisfies this options then its attributes it will be changed.
  */
 export interface ReplaceFunctionCallsOptions {
+
+  /** 
+   * If true the tool will clean all arguments in matched function call expressions 
+   */
+  clean?: boolean
+
+  /** 
+   * Custom extracts declaring custom function names 
+   */
+  extracts?: {[functionName:string]: (n: CallExpression)=>string}
+
   /**
-   * Default value: `get-type-text`. Name of the import module specifier from which the target function in the
+   * Custom name of the import module specifier from which the target function in the
    * function call expression needs to be imported in order to perform the arguments modification.
+   * Default value: `get-type-text`. 
    */
   moduleSpecifier?: string
-  // /** The name of the function in the function call expression */
-  // functionNames?: string[]
-  /** if true the tool will clean all arguments in matched function call expressions */
-  cleanArguments?: boolean
-
-  extracts?: {[functionName:string]: (n: CallExpression)=>string}
 }
 
-export const MODULE_SPECIFIER_DEFAULT = 'get-type-text'
 
-export const TYPE_TEXT_FUNCTION_NAME = 'TypeText'

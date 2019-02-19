@@ -1,19 +1,7 @@
 import { TypeGuards, SyntaxKind, Identifier, SourceFile, CallExpression, Node } from 'ts-simple-ast'
-import { Replacement, ReplaceFunctionCallsOptions, TYPE_TEXT_FUNCTION_NAME, MODULE_SPECIFIER_DEFAULT } from './types'
-import { notUndefined, quote } from './util';
-
-const defaultExtracts = {
-  TypeText: (n: CallExpression) => quote(n.getTypeArguments()[0]!.getText()),
-  NodeText: (n: CallExpression)=> {
-    const text = n.getTypeArguments()[0]
-    .getFirstChildByKind(SyntaxKind.Identifier)!
-    .findReferences()  
-    .map(r => r.getDefinition().getNode().getParent()!.getText())
-    [0]
-    return `${JSON.stringify(text)}`
-  }
-  
-}
+import { Replacement, ReplaceFunctionCallsOptions} from './types'
+import { notUndefined } from './util';
+import { defaultExtracts } from './extractors';
 
 /** 
  * JavaScript API to replace arguments of all function expression calls in given (ts-simple-ast SourceFile) 
@@ -22,8 +10,8 @@ const defaultExtracts = {
 export function replaceFunctionCall(
   sourceFile: SourceFile,
   {
-    moduleSpecifier = MODULE_SPECIFIER_DEFAULT,
-    cleanArguments = false,
+    moduleSpecifier = 'get-type-text',
+    clean = false,
     extracts = defaultExtracts
   }: ReplaceFunctionCallsOptions = {},
 ): (Replacement | undefined)[] {
@@ -35,7 +23,7 @@ export function replaceFunctionCall(
   callExpressions.forEach(c => {
     const functionName = c.getFirstChildByKind(SyntaxKind.Identifier)!.getText()
     const extract = extracts[functionName] // TODO: check for null?
-    if (c.getArguments().length === 0 && !cleanArguments) {
+    if (c.getArguments().length === 0 && !clean) {
       // first time
       //TODO: verify type argument 0 exists and has correct type
       const r = extract(c)
@@ -43,7 +31,7 @@ export function replaceFunctionCall(
       replaced.push({ file: sourceFile.getFilePath(), replacement: r, firstTime: true })
     } else if (c.getArguments().length === 1) {
       // second time - dispatch --cleanArguments or replace existing one
-      const r = cleanArguments ? '' : extract(c)
+      const r = clean ? '' : extract(c)
       const comma = c.getArguments()[0].getNextSiblingIfKind(SyntaxKind.CommaToken)
       if (comma) {
         comma.replaceWithText('')

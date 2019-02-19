@@ -61,44 +61,24 @@ const c = TypeText<{a:Type<number>}>('{a:Type<number>}')
     it('should clean existing args', () => {
       const project = new Project()
       project.createSourceFile('test.ts', `const b = TypeText<{a:'a'}>("{a:'a'}")`)
-      replaceFunctionCall(project.getSourceFile('test.ts')!, { cleanArguments: true })
+      replaceFunctionCall(project.getSourceFile('test.ts')!, { clean: true })
       const t2 = project.getSourceFile('test.ts')!.getText()
       expect(t2).toContain(`const b = TypeText<{a:'a'}>()`)
     })
     it('should work if call does not have args', () => {
       const project = new Project()
       project.createSourceFile('test.ts', `const b = TypeText<{a:'a'}>()`)
-      replaceFunctionCall(project.getSourceFile('test.ts')!, { cleanArguments: true })
+      replaceFunctionCall(project.getSourceFile('test.ts')!, { clean: true })
       const t2 = project.getSourceFile('test.ts')!.getText()
       expect(t2).toContain(`const b = TypeText<{a:'a'}>()`)
     })
     it('should remove arg comma', () => {
       const project = new Project()
       project.createSourceFile('test.ts', `const b = TypeText<{a:'a'}>("{a:'a'}",)`)
-      replaceFunctionCall(project.getSourceFile('test.ts')!, { cleanArguments: true })
+      replaceFunctionCall(project.getSourceFile('test.ts')!, { clean: true })
       const t2 = project.getSourceFile('test.ts')!.getText()
       expect(t2).toContain(`const b = TypeText<{a:'a'}>()`)
     })
   })
 
-  describe('custom function names and extracts', () => {
-    it('should build my custom function name and extract', () => {
-      const project = new Project()
-      project.createSourceFile('test.ts', `
-  import {Custom} from 'my-custom-module'
-  function f<I>() {
-    type Member<I> = keyof I
-  }
-  var a = Custom<typeof f>()
-  `)
-      replaceFunctionCall(project.getSourceFile('test.ts')!, {
-        moduleSpecifier: 'my-custom-module',
-        extracts: {
-          Custom: n => '"custom"'
-        }
-      })
-      const t2 = project.getSourceFile('test.ts')!.getText()
-      expect(t2).toContain('var a = Custom<typeof f>("custom")')
-    })
-  })
 })

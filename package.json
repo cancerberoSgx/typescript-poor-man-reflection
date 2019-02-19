@@ -1,7 +1,7 @@
 {
   "name": "typescript-poor-man-reflection",
   "version": "0.0.5",
-  "description": "ample-project",
+  "description": "An unconventional way of getting TypeScript code information (like types), as text, at runtime",
   "types": "dist/src/index.d.ts",
   "main": "dist/src/index.js",
   "bin": "bin/typescript-poor-man-reflection.js",
@@ -22,6 +22,7 @@
   "devDependencies": {
     "@types/jest": "^24.0.11",
     "@types/node": "^10.12.18",
+    "@types/shelljs": "^0.8.3",
     "jest": "^24.5.0",
     "prettier": "^1.16.4",
     "ts-jest": "^24.0.0",
@@ -31,6 +32,7 @@
     "typescript": "^3.3.3333"
   },
   "dependencies": {
+    "shelljs": "^0.8.3",
     "yargs-parser": "^13.0.0"
   },
   "keywords": [

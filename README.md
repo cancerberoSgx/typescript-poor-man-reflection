@@ -1,6 +1,6 @@
 # typescript-poor-man-reflection 
 
-An unconventional way of getting TypeScript code information as text at runtime
+An unconventional way of getting TypeScript code information (like types), as text, at runtime
 
 # Why ?
 
@@ -10,12 +10,22 @@ An unconventional way of getting TypeScript code information as text at runtime
  
 # What ?
 
+A preprocessor tool to modify input TypeScript files embedding requested types or nodes text in the code. Right now it supports three extraction kinds: 
+
+ * `TypeText` will extract a Type's text. Example: `const text = TypeText<UnionOf<[1, Date[]]>>()` will be transformed to `const text = TypeText<UnionOf<[1, Date[]]>>('UnionOf<[1, Date[]]>')`
+ * `NodeText` will extract a Node's text. Example. `var o = {foo: [1]}; const text = NodeText<typeof o>()` will be transformed to `var o = {foo: [1]}; const text = NodeText<typeof o>('{foo: [1]}')`
+ * `BodyText` will extract a Node's body text. Example: `function f() { return 1 } const text = BodyText<typeof f>()` will be transformed to `function f() { return 1 } const text = BodyText<typeof f>('return 1')`
+
+The tool **will modify** TypeScript source files calling the library's functions, embedding referenced node's text in the source file. It should be called before `tsc` or before npm test, and it can be called with the option `--clean` to clean-up source files (for example before commit or after `npm test`).
+
+## Example
+
 ```
 npm install -D typescript-poor-man-reflection
 ```
 
 ```ts
-import TypeText from 'typescript-poor-man-reflection'
+import { TypeText } from 'typescript-poor-man-reflection'
 import { UnionOf } from '..'
 const x = TypeText<UnionOf<[1, Date[]]>>()
 const z = TypeText<UnionOf<[1, boolean | string]>>()
@@ -63,7 +73,7 @@ Basically use this only for test projects. Run `npx typescript-poor-man-reflecti
 To rollback the changes execute the following command. It will clean all the added arguments:
 
 ```
-npx get-type-string --cleanArguments
+npx get-type-string --clean
 ```
 
 # API

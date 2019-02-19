@@ -23,7 +23,7 @@ describe('cli', () => {
     expect(r.code).toBe(0)
     expect(r.stdout).toContain(`Type<Date> {a:'a'} {a:"a"}`)
 
-    r = exec('npx  get-type-text --cleanArguments')
+    r = exec('npx  get-type-text --clean')
     expect(r.code).toBe(0)
 
     r = exec('npx ts-node src/index')
