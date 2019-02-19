@@ -1,0 +1,41 @@
+{
+  "name": "sampleproject",
+  "version": "0.0.1",
+  "description": "ample-project",
+  "types": "dist/src/index.d.ts",
+  "main": "dist/src/index.js",
+  "typings": "dist/src/index.d.ts",
+  "private": true,
+  "scripts": {
+    "build": "tsc ",
+    "build-watch": "tsc -w",
+    "clean": "rm -rf dist docs api",
+    "test": "jest --config ./jest.config-spec.js ",
+    "test-watch": "npm test -- --watch",
+    "all": "npm run clean && npm run build && npm run test "
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.11",
+    "@types/node": "^10.12.18",
+    "jest": "^24.5.0",
+    "ts-jest": "^24.0.0",
+    "ts-simple-ast": "^21.0.4",
+    "tsd-check-runtime": "file:..",
+    "typescript": "^3.3.3333"
+  },
+  "dependencies": {
+    "get-type-text": "file:.."
+  },
+  "keywords": [
+    "JavaScript",
+    "TypeScript",
+    "utilities",
+    "miscellaneous"
+  ],
+  "author": "Sebastián Gurin",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cancerberoSgx/misc-utils-of-mine.git"
+  },
+  "license": "MIT"
+}
