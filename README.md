@@ -63,6 +63,11 @@ console.log(x, z)
 
 ## Options
 
+ * --clean               will clean up arguments from project previously modified with this tool
+ * --tsConfigFilePath    get project configuration from different file than default './tsconfig.json'
+ * --out                 will write modified files in that folder instead of writing files in-place
+ * --debug               will print debug information while executing
+
 
 ## Workflow
 

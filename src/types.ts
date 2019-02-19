@@ -1,4 +1,4 @@
-import { Node, CallExpression } from 'ts-simple-ast';
+import {Node, CallExpression} from 'ts-simple-ast'
 
 export interface Replacement {
   file: string
@@ -26,6 +26,9 @@ export interface Config extends ReplaceFunctionCallsOptions {
    * Instead of writing existing files, will create a copy of the project, with modified files, at this folder
    */
   out?: string
+
+  /** Shows usage help and exit. */
+  help?: string
 }
 
 /**
@@ -34,23 +37,20 @@ export interface Config extends ReplaceFunctionCallsOptions {
  * if any function call expression satisfies this options then its attributes it will be changed.
  */
 export interface ReplaceFunctionCallsOptions {
-
-  /** 
-   * If true the tool will clean all arguments in matched function call expressions 
+  /**
+   * If true the tool will clean all arguments in matched function call expressions
    */
   clean?: boolean
 
-  /** 
-   * Custom extracts declaring custom function names 
+  /**
+   * Custom extracts declaring custom function names
    */
-  extracts?: {[functionName:string]: (n: CallExpression)=>string}
+  extracts?: {[functionName: string]: (n: CallExpression) => string}
 
   /**
    * Custom name of the import module specifier from which the target function in the
    * function call expression needs to be imported in order to perform the arguments modification.
-   * Default value: `get-type-text`. 
+   * Default value: `get-type-text`.
    */
   moduleSpecifier?: string
 }
-
-

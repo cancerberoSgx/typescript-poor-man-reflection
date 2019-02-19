@@ -1,5 +1,5 @@
-import { Project } from 'ts-simple-ast'
-import { replaceFunctionCall } from '../replaceFunctionCall'
+import {Project} from 'ts-simple-ast'
+import {replaceFunctionCall} from '../replaceFunctionCall'
 
 describe('replaceFunctionCall', () => {
   describe('add argument', () => {
@@ -61,24 +61,23 @@ const c = TypeText<{a:Type<number>}>('{a:Type<number>}')
     it('should clean existing args', () => {
       const project = new Project()
       project.createSourceFile('test.ts', `const b = TypeText<{a:'a'}>("{a:'a'}")`)
-      replaceFunctionCall(project.getSourceFile('test.ts')!, { clean: true })
+      replaceFunctionCall(project.getSourceFile('test.ts')!, {clean: true})
       const t2 = project.getSourceFile('test.ts')!.getText()
       expect(t2).toContain(`const b = TypeText<{a:'a'}>()`)
     })
     it('should work if call does not have args', () => {
       const project = new Project()
       project.createSourceFile('test.ts', `const b = TypeText<{a:'a'}>()`)
-      replaceFunctionCall(project.getSourceFile('test.ts')!, { clean: true })
+      replaceFunctionCall(project.getSourceFile('test.ts')!, {clean: true})
       const t2 = project.getSourceFile('test.ts')!.getText()
       expect(t2).toContain(`const b = TypeText<{a:'a'}>()`)
     })
     it('should remove arg comma', () => {
       const project = new Project()
       project.createSourceFile('test.ts', `const b = TypeText<{a:'a'}>("{a:'a'}",)`)
-      replaceFunctionCall(project.getSourceFile('test.ts')!, { clean: true })
+      replaceFunctionCall(project.getSourceFile('test.ts')!, {clean: true})
       const t2 = project.getSourceFile('test.ts')!.getText()
       expect(t2).toContain(`const b = TypeText<{a:'a'}>()`)
     })
   })
-
 })

@@ -16,14 +16,14 @@ describe('cli', () => {
     expect(r.code).toBe(0)
     expect(r.stdout).toContain('undefined undefined undefined')
 
-    r = exec('npx  get-type-text')
+    r = exec('npx typescript-poor-man-reflection')
     expect(r.code).toBe(0)
 
     r = exec('npx ts-node src/index')
     expect(r.code).toBe(0)
     expect(r.stdout).toContain(`Type<Date> {a:'a'} {a:"a"}`)
 
-    r = exec('npx  get-type-text --clean')
+    r = exec('npx typescript-poor-man-reflection --clean')
     expect(r.code).toBe(0)
 
     r = exec('npx ts-node src/index')
