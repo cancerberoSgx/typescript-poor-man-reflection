@@ -7,19 +7,7 @@ export function main(config: ReplaceProjectFunctionCallOptions) {
   try {
     const { tsConfigFilePath = './tsconfig.json' } = config
     if (config.help) {
-      console.log(`Usage: 
-      
-npx typescript-poor-man-reflection
-
-Options: 
-
-  --clean               will clean up arguments from project previously modified with this tool
-  --tsConfigFilePath    get project configuration from different file than default './tsconfig.json'
-  --out                 will write modified files in that folder instead of writing files in-place
-  --debug               will print debug information while executing
-  --moduleSpecifier     only functions imported from that module specifier will be considered
-      `)
-      process.exit(0)
+      helpAndExit(config)
     }
     if (!test('-f', tsConfigFilePath)) {
       console.error('Cannot find project configuration at ' + tsConfigFilePath + '. Aborting.')
@@ -46,4 +34,27 @@ ${JSON.stringify(replacements)}
     )
     process.exit(1)
   }
+}
+
+function helpAndExit(config: ReplaceProjectFunctionCallOptions) {
+  console.log(
+    `Usage: 
+      
+npx typescript-poor-man-reflection
+
+Options: 
+
+  --clean                       clean up arguments from project previously modified with this tool
+  --tsConfigFilePath            get project configuration from different file than default './tsconfig.json'
+  --out                         write modified files in that folder instead of writing files in-place
+  --debug                       print debug information while executing
+  --moduleSpecifier             extract only from function calls imported from this module
+${
+  config.extraOptionsHelp
+    ? Object.keys(config.extraOptionsHelp).map(option => `  --${option}  ${config.extraOptionsHelp![option]}`)
+    : ''
+}
+      `.trim()
+  )
+  process.exit(0)
 }

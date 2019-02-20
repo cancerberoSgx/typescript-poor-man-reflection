@@ -87,14 +87,14 @@ const c = TypeText<{a:Type<number>}>('{a:Type<number>}')
       project.createSourceFile('test.ts', `const a = CustomExtractor<{a:'a'}>(), b = CustomExtractor<number>()`)
       replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
         extracts: {
-          CustomExtractor: (n, index, extractorPrependVariableName) => {
+          CustomExtractor: (n, index, getter) => {
             return {
-              argument: `${extractorPrependVariableName}[${index}]`,
+              argument: getter(index),
               prependToFile: JSON.stringify(n.getTypeArguments()[0].getText())
             }
           }
         },
-        extractorPrependVariableName: '__CE'
+        extractorDataVariableName: '__CE'
       })
       const t2 = project.getSourceFile('test.ts')!.getText()
       expect(t2).toContain(`const a = CustomExtractor<{a:'a'}>(__CE[0]), b = CustomExtractor<number>(__CE[1])`)
@@ -118,7 +118,7 @@ const b = CustomExtractor<number>(__CE[1])`.trim()
             }
           }
         },
-        extractorPrependVariableName: '__CE',
+        extractorDataVariableName: '__CE',
         clean: true
       })
       const t2 = project.getSourceFile('test.ts')!.getText()

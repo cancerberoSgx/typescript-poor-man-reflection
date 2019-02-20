@@ -119,8 +119,7 @@ Trying to develop a preprocessing tool to mutate TypeScript and replace certain 
 TODO / ISSUES
 -------------
 
-*   dont prepend - better append because jest describe() are executed first than the variable decl !!!
-*   \--dontFailOnDuplicateVariable
+*   instead of polluting current file, put the prefix array in a separate file, one per folder that contain all folder's file prefixes there. and add an import declaration to a getter function (and remove it on --clean)
 
 IDEAS
 -----

@@ -35,6 +35,14 @@ export interface ReplaceProjectFunctionCallOptions extends ReplaceFileFunctionCa
    * Shows usage help and exit.
    */
   help?: string
+
+  /**
+   * for third party using it programmatically, they can declare new CLI options and their descriptions so
+   * they appear with --help
+   */
+  extraOptionsHelp?: {
+    [optionName: string]: string
+  }
 }
 
 /**
@@ -53,7 +61,7 @@ export interface ReplaceFileFunctionCallOptions {
    * Custom extracts declaring custom function names
    */
   extracts?: {
-    [functionName: string]: (n: CallExpression, index: number, prependArrayName: string) => string | ExtractorResult
+    [functionName: string]: Extractor
   }
 
   /**
@@ -64,12 +72,39 @@ export interface ReplaceFileFunctionCallOptions {
   moduleSpecifier?: string
 
   /**
-   * In case custom `extracts` return `prependToFile` property, they also can configure the name of the array variable prepended in the file that contains all values. By default it's `__extractor_prepend__`.
+   * In case custom `extracts` return `prependToFile` property, they also can configure the name of the array
+   * variable prepended in the file that contains all values. By default it's `__extractor_prepend__`.
    */
-  extractorPrependVariableName?: string
+  extractorDataVariableName?: string
+
+  /**
+   * Mode in which the extractor data is stored in the source code.
+   *
+   * If `prependVariable`, an array variable will be prepended at the top of the same file and function calls
+   * will access the array directly.
+   *
+   * If `folderFile`, the data is stored in a separate file that exports a function to access to
+   * array. An import declaration will be added to the file and function calls will use the imported function
+   * to access the array. There will be one of these files per folder with the name given by option
+   * `extractorDataFolderFileName` that will contain the data of all this folder's immediate children.
+   */
+  extractorDataMode?: ExtractorDataMode
+
+  /**
+   * The name of the file to store extractor data in case `extractorDataMode` is `'folderFile'`. By
+   * default it will be named `__tsd_check_runtime__.ts`. See [['folderFile']]
+   */
+  extractorDataFolderFileName?: string
 }
+
+export type Extractor = (n: CallExpression, index: number, 
+  getterBuilder: (index:number)=>string)=>ExtractorResult|string
 
 export interface ExtractorResult {
   argument: string
   prependToFile?: string
 }
+
+export type ExtractorGetter = (index: number) => string
+
+export type ExtractorDataMode = 'prependVariable' | 'folderFile'

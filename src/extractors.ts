@@ -1,14 +1,15 @@
-import { SyntaxKind, CallExpression, TypeGuards } from 'ts-simple-ast'
-import { quote } from './util'
+import { CallExpression, SyntaxKind, TypeGuards } from 'ts-simple-ast';
+import { Extractor } from './types';
+import { quote } from './util';
 
-export const defaultExtractors = {
+export const defaultExtractors: {[k:string]: Extractor} = {
   TypeText: (n: CallExpression) => quote(n.getTypeArguments()[0].getText()),
   NodeText: (n: CallExpression) => {
-    var c = getNode(n)
+    var c = getFirstTypeArgumentDefinitionBlock(n)
     return c ? `${JSON.stringify(c.getText())}` : ''
   },
   BodyText: (n: CallExpression) => {
-    const f = getNode(n)!
+    const f = getFirstTypeArgumentDefinitionBlock(n)!
     if (TypeGuards.isBodyableNode(f)) {
       return `${JSON.stringify(f.getBodyText())}`
     } else {
@@ -26,7 +27,7 @@ export const defaultExtractors = {
   }
 }
 
-function getNode(n: CallExpression) {
+function getFirstTypeArgumentDefinitionBlock(n: CallExpression) {
   const id = n.getTypeArguments()[0].getFirstChildByKind(SyntaxKind.Identifier)
   if (id) {
     const r = id.findReferences().map(r =>

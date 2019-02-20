@@ -18,7 +18,7 @@
 
 ▸ **replaceProjectFunctionCall**(tsConfigFilePath: *`string`*, config: *[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)*, replacements?: *(`undefined` \| [Replacement](../interfaces/_types_.replacement.md))[]*): (`undefined` \| [Replacement](../interfaces/_types_.replacement.md))[]
 
-*Defined in [replaceProjectFunctionCall.ts:10](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/0ebe280/src/replaceProjectFunctionCall.ts#L10)*
+*Defined in [replaceProjectFunctionCall.ts:10](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d1e53d1/src/replaceProjectFunctionCall.ts#L10)*
 
 Executes the tool on a given TypeScript project in filesystem. See `Config` documentation.
 

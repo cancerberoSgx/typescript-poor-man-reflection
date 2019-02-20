@@ -15,7 +15,9 @@ Options accepted by the low level call `replaceFunctionCall`. They describe the 
 ### Properties
 
 * [clean](_types_.replacefilefunctioncalloptions.md#clean)
-* [extractorPrependVariableName](_types_.replacefilefunctioncalloptions.md#extractorprependvariablename)
+* [externalFolderFileName](_types_.replacefilefunctioncalloptions.md#externalfolderfilename)
+* [extractorDataMode](_types_.replacefilefunctioncalloptions.md#extractordatamode)
+* [extractorDataVariableName](_types_.replacefilefunctioncalloptions.md#extractordatavariablename)
 * [extracts](_types_.replacefilefunctioncalloptions.md#extracts)
 * [moduleSpecifier](_types_.replacefilefunctioncalloptions.md#modulespecifier)
 
@@ -29,18 +31,44 @@ Options accepted by the low level call `replaceFunctionCall`. They describe the 
 
 **● clean**: *`undefined` \| `false` \| `true`*
 
-*Defined in [types.ts:50](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/0ebe280/src/types.ts#L50)*
+*Defined in [types.ts:58](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d1e53d1/src/types.ts#L58)*
 
 If true the tool will clean all arguments in matched function call expressions
 
 ___
-<a id="extractorprependvariablename"></a>
+<a id="externalfolderfilename"></a>
 
-### `<Optional>` extractorPrependVariableName
+### `<Optional>` externalFolderFileName
 
-**● extractorPrependVariableName**: *`undefined` \| `string`*
+**● externalFolderFileName**: *`undefined` \| `string`*
 
-*Defined in [types.ts:69](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/0ebe280/src/types.ts#L69)*
+*Defined in [types.ts:97](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d1e53d1/src/types.ts#L97)*
+
+The name of the file to store extractor data in case `extractorDataMode` is `'externalFolderFile'`. By default it will be named `__tsd_check_runtime__.ts`. See \[\['externalFolderFile'\]\]
+
+___
+<a id="extractordatamode"></a>
+
+### `<Optional>` extractorDataMode
+
+**● extractorDataMode**: *"prependVariable" \| "externalFolderFile"*
+
+*Defined in [types.ts:91](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d1e53d1/src/types.ts#L91)*
+
+Mode in which the extractor data is stored in the source code.
+
+If `prependVariable`, an array variable will be prepended at the top of the same file and function calls will access the array directly.
+
+If `externalFolderFile`, the data is stored in a separate file that exports a function to access to array. An import declaration will be added to the file and function calls will use the imported function to access the array. There will be one of these files per folder with the name given by option `externalFolderFileName` that will contain the data of all this folder's immediate children.
+
+___
+<a id="extractordatavariablename"></a>
+
+### `<Optional>` extractorDataVariableName
+
+**● extractorDataVariableName**: *`undefined` \| `string`*
+
+*Defined in [types.ts:78](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d1e53d1/src/types.ts#L78)*
 
 In case custom `extracts` return `prependToFile` property, they also can configure the name of the array variable prepended in the file that contains all values. By default it's `__extractor_prepend__`.
 
@@ -51,7 +79,7 @@ ___
 
 **● extracts**: *`undefined` \| `object`*
 
-*Defined in [types.ts:55](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/0ebe280/src/types.ts#L55)*
+*Defined in [types.ts:63](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d1e53d1/src/types.ts#L63)*
 
 Custom extracts declaring custom function names
 
@@ -62,7 +90,7 @@ ___
 
 **● moduleSpecifier**: *`undefined` \| `string`*
 
-*Defined in [types.ts:64](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/0ebe280/src/types.ts#L64)*
+*Defined in [types.ts:72](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d1e53d1/src/types.ts#L72)*
 
 Custom name of the import module specifier from which the target function in the function call expression needs to be imported in order to perform the arguments modification. Default value: `typescript-poor-man-reflection`.
 
