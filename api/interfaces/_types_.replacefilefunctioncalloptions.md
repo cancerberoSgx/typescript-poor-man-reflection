@@ -29,7 +29,7 @@ Options accepted by the low level call `replaceFunctionCall`. They describe the 
 
 **● clean**: *`undefined` \| `false` \| `true`*
 
-*Defined in [types.ts:50](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/5f64bda/src/types.ts#L50)*
+*Defined in [types.ts:50](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1ad26a4/src/types.ts#L50)*
 
 If true the tool will clean all arguments in matched function call expressions
 
@@ -40,7 +40,7 @@ ___
 
 **● extractorPrependVariableName**: *`undefined` \| `string`*
 
-*Defined in [types.ts:69](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/5f64bda/src/types.ts#L69)*
+*Defined in [types.ts:69](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1ad26a4/src/types.ts#L69)*
 
 In case custom `extracts` return `prependToFile` property, they also can configure the name of the array variable prepended in the file that contains all values. By default it's `__extractor_prepend__`.
 
@@ -51,7 +51,7 @@ ___
 
 **● extracts**: *`undefined` \| `object`*
 
-*Defined in [types.ts:55](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/5f64bda/src/types.ts#L55)*
+*Defined in [types.ts:55](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1ad26a4/src/types.ts#L55)*
 
 Custom extracts declaring custom function names
 
@@ -62,7 +62,7 @@ ___
 
 **● moduleSpecifier**: *`undefined` \| `string`*
 
-*Defined in [types.ts:64](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/5f64bda/src/types.ts#L64)*
+*Defined in [types.ts:64](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1ad26a4/src/types.ts#L64)*
 
 Custom name of the import module specifier from which the target function in the function call expression needs to be imported in order to perform the arguments modification. Default value: `typescript-poor-man-reflection`.
 
