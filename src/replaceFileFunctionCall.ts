@@ -60,7 +60,7 @@ export function replaceFileFunctionCall(
       variableStatement.remove()
     }
   }
-  if (!clean) {
+  if (!clean && callExpressions.length) {
     sourceFile.addStatements(`const ${extractorPrependVariableName} = [${prependToFile.join(', ')}]`)
   }
 

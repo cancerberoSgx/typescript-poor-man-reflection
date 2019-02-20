@@ -1,7 +1,6 @@
 import { exec } from 'shelljs';
 import { readFileSync, writeFileSync } from 'fs';
 
-
 describe('cli', () => {
   let bkp: string
   beforeAll(() => {
@@ -9,7 +8,6 @@ describe('cli', () => {
   })
   afterAll(() => {
     writeFileSync('src/index.ts', bkp)
-
   })
   it('should work', () => {
     let r = exec('npx ts-node src/index')
@@ -29,6 +27,5 @@ describe('cli', () => {
     r = exec('npx ts-node src/index')
     expect(r.code).toBe(0)
     expect(r.stdout).toContain('undefined undefined undefined')
-
   })
 })
