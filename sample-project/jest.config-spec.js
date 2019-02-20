@@ -1,10 +1,10 @@
 module.exports = {
   "testEnvironment": "node",
-  "testRegex": "__tests__/.*\.*Test\.[t]sx?$",
+  "testRegex": "__sample_tests__/.*\.*Test\.[t]sx?$",
   "transform": {
     ".(ts|tsx)": "ts-jest"
   },
-  "rootDir":"./src", 
+  "rootDir":".", 
   "moduleFileExtensions": [
     "ts",
     "tsx",

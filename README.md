@@ -112,5 +112,7 @@ Trying to develop a preprocessing tool to mutate TypeScript and replace certain 
 
 ## TODO / ISSUES
 
+ * dont prepend - better append because jest describe() are executed first than the variable decl !!!
+ * --dontFailOnDuplicateVariable  
 
 ## IDEAS

@@ -61,7 +61,7 @@ export function replaceFileFunctionCall(
     }
   }
   if (!clean && callExpressions.length) {
-    sourceFile.addStatements(`const ${extractorPrependVariableName} = [${prependToFile.join(', ')}]`)
+    sourceFile.insertStatements(0, `const ${extractorPrependVariableName} = [${prependToFile.join(', ')}]`)
   }
 
   return replaced

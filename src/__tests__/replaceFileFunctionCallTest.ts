@@ -97,16 +97,17 @@ const c = TypeText<{a:Type<number>}>('{a:Type<number>}')
         extractorPrependVariableName: '__CE'
       })
       const t2 = project.getSourceFile('test.ts')!.getText()
-      expect(t2).toContain(`const a = CustomExtractor<{a:'a'}>(__CE[0]), b = CustomExtractor<number>(__CE[1])
-const __CE = ["{a:'a'}", "number"]`)
+      expect(t2).toContain(`const a = CustomExtractor<{a:'a'}>(__CE[0]), b = CustomExtractor<number>(__CE[1])`)
+      expect(t2).toContain(`const __CE = ["{a:'a'}", "number"]`)
     })
     it('should clean the prepend variable declaration if clean option passed', () => {
       const project = new Project()
       project.createSourceFile(
         'test.ts',
-        `const a = CustomExtractor<{a:'a'}>(__CE[0])
-const b = CustomExtractor<number>(__CE[1])
-const __CE = ["{a:'a'}", "number"]`
+        `
+const __CE = ["{a:'a'}", "number"]
+const a = CustomExtractor<{a:'a'}>(__CE[0])
+const b = CustomExtractor<number>(__CE[1])`.trim()
       )
       replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
         extracts: {
@@ -121,8 +122,11 @@ const __CE = ["{a:'a'}", "number"]`
         clean: true
       })
       const t2 = project.getSourceFile('test.ts')!.getText()
-      expect(t2).toContain(`const a = CustomExtractor<{a:'a'}>()
-const b = CustomExtractor<number>()`)
+      expect(t2.trim()).toContain(
+        `
+const a = CustomExtractor<{a:'a'}>()
+const b = CustomExtractor<number>()`.trim()
+      )
       expect(t2).not.toContain(`const __CE`)
     })
 

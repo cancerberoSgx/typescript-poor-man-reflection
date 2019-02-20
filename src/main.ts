@@ -9,15 +9,15 @@ export function main(config: ReplaceProjectFunctionCallOptions) {
     if (config.help) {
       console.log(`Usage: 
       
-      npx typescript-poor-man-reflection
-      
-      Options: 
-      
-      --clean               will clean up arguments from project previously modified with this tool
-      --tsConfigFilePath    get project configuration from different file than default './tsconfig.json'
-      --out                 will write modified files in that folder instead of writing files in-place
-      --debug               will print debug information while executing
-      
+npx typescript-poor-man-reflection
+
+Options: 
+
+  --clean               will clean up arguments from project previously modified with this tool
+  --tsConfigFilePath    get project configuration from different file than default './tsconfig.json'
+  --out                 will write modified files in that folder instead of writing files in-place
+  --debug               will print debug information while executing
+  --moduleSpecifier     only functions imported from that module specifier will be considered
       `)
       process.exit(0)
     }
