@@ -19,6 +19,11 @@
     "all": "npm run clean && npm run prettier && npm run build && npm run test && npm run docs ",
     "prepare": "npm run build"
   },
+  "dependencies": {
+    "shelljs": "^0.8.3",
+    "ts-simple-ast": "^21.0.4",
+    "yargs-parser": "^13.0.0"
+  },
   "devDependencies": {
     "@types/jest": "^24.0.11",
     "@types/node": "^10.12.18",
@@ -26,14 +31,9 @@
     "jest": "^24.5.0",
     "prettier": "^1.16.4",
     "ts-jest": "^24.0.0",
-    "ts-simple-ast": "^21.0.4",
     "typedoc": "^0.13.0",
     "typedoc-plugin-markdown": "^1.1.27",
     "typescript": "^3.3.3333"
-  },
-  "dependencies": {
-    "shelljs": "^0.8.3",
-    "yargs-parser": "^13.0.0"
   },
   "keywords": [
     "JavaScript",

@@ -7,7 +7,7 @@ import {defaultExtractors} from './extractors'
  * JavaScript API to replace arguments of all function expression calls in given (ts-simple-ast SourceFile)
  * file that match given options. See  `ReplaceFunctionCallsOptions`.
  */
-export function replaceFunctionCall(
+export function replaceFileFunctionCall(
   sourceFile: SourceFile,
   {moduleSpecifier = 'typescript-poor-man-reflection', clean = false, extracts = defaultExtractors}: ReplaceFunctionCallsOptions = {},
 ): (Replacement | undefined)[] {

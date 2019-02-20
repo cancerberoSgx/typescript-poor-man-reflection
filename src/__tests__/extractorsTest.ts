@@ -1,5 +1,5 @@
 import { Project, TypeGuards, CallExpression, SyntaxKind } from 'ts-simple-ast'
-import { replaceFunctionCall } from '../replaceFunctionCall'
+import { replaceFileFunctionCall } from '../replaceFileFunctionCall'
 
 describe('extractors', () => {
 
@@ -17,7 +17,7 @@ describe('extractors', () => {
   var a = Custom<typeof f>()
   `,
       )
-      replaceFunctionCall(project.getSourceFile('test.ts')!, {
+      replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
         moduleSpecifier: 'my-custom-module',
         extracts: {
           Custom: n => '"custom"',
@@ -55,7 +55,7 @@ const body = AllDeclarationsInThisFile<any>()
       `,
       )
 
-      replaceFunctionCall(project.getSourceFile('test.ts')!, {
+      replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
         extracts: {
           /** return all declarations that contribute with names and are inside a describe() it() or test() */
           AllDeclarationsInThisFile: (n: CallExpression) => {
@@ -104,7 +104,7 @@ type T = any
       `,
       )
 
-      replaceFunctionCall(project.getSourceFile('test.ts')!)
+      replaceFileFunctionCall(project.getSourceFile('test.ts')!)
       expect(project.getSourceFile('test.ts')!.getText()).toContain(
         `NodeText<typeof f>(\"function f(){\\ntype T = any\\n}\")`,
       )
@@ -123,7 +123,7 @@ type T = any
 }
       `,
       )
-      replaceFunctionCall(project.getSourceFile('test.ts')!)
+      replaceFileFunctionCall(project.getSourceFile('test.ts')!)
       expect(project.getSourceFile('test.ts')!.getText()).toContain(`BodyText<typeof f>("type T = any")`)
     })
   })
@@ -141,7 +141,7 @@ function f(){
 }
       `,
       )
-      replaceFunctionCall(project.getSourceFile('test.ts')!)
+      replaceFileFunctionCall(project.getSourceFile('test.ts')!)
       expect(project.getSourceFile('test.ts')!.getText()).toContain(`var thisBlock = ThisBlockText<any>(\"\\n  var b = 1\\n  var thisBlock = ThisBlockText<any>()\\n\")`)
     })
   })
@@ -159,13 +159,13 @@ function f(){
       `,
       )
 
-      replaceFunctionCall(project.getSourceFile('test.ts')!)
+      replaceFileFunctionCall(project.getSourceFile('test.ts')!)
       expect(project.getSourceFile('test.ts')!.getText()).toContain(`const c = BodyText<typeof f>("const c = BodyText<typeof f>()")`)
 
     })
   })
 
-  
+
 })
 
 
