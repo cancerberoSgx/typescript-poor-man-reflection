@@ -1,5 +1,5 @@
-import { SyntaxKind, CallExpression, TypeGuards } from 'ts-simple-ast'
-import { quote } from './util'
+import {SyntaxKind, CallExpression, TypeGuards} from 'ts-simple-ast'
+import {quote} from './util'
 
 export const defaultExtractors = {
   TypeText: (n: CallExpression) => quote(n.getTypeArguments()[0].getText()),
@@ -20,26 +20,21 @@ export const defaultExtractors = {
     if (block) {
       const t = block.getText().trim()
       return `${JSON.stringify(t.substring(1, t.length - 1))}`
-    }
-    else {
+    } else {
       return ''
     }
-  }
+  },
 }
 
-
 function getNode(n: CallExpression) {
-  const id = n
-    .getTypeArguments()[0]
-    .getFirstChildByKind(SyntaxKind.Identifier)
+  const id = n.getTypeArguments()[0].getFirstChildByKind(SyntaxKind.Identifier)
   if (id) {
-    const r = id.findReferences()
-      .map(r =>
-        r
-          .getDefinition()
-          .getNode()
-          .getParent(),
-      )
+    const r = id.findReferences().map(r =>
+      r
+        .getDefinition()
+        .getNode()
+        .getParent(),
+    )
     if (r.length) {
       return r[0]
     }

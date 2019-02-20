@@ -13,16 +13,16 @@ export interface Replacement {
  * configurable and reuse the tool in your own projects with other names.
  */
 export interface ReplaceProjectFunctionCallOptions extends ReplaceFileFunctionCallOptions {
-  /** 
+  /**
    * Default value `'./tsconfig.json'`. The target `tsconfig.json` file from which the project is loaded.
    * `typescript-poor-man-reflection` will load and parse the project with this identical configuration. All
    * the files referenced by this configuration will be examined, with the exception of .d.ts and external
-   * library files. 
+   * library files.
    */
   tsConfigFilePath?: string
 
-  /** 
-   * Prints details in stdout, default is false 
+  /**
+   * Prints details in stdout, default is false
    */
   debug?: boolean
 
@@ -31,8 +31,8 @@ export interface ReplaceProjectFunctionCallOptions extends ReplaceFileFunctionCa
    */
   out?: string
 
-  /** 
-   * Shows usage help and exit. 
+  /**
+   * Shows usage help and exit.
    */
   help?: string
 }
@@ -52,7 +52,9 @@ export interface ReplaceFileFunctionCallOptions {
   /**
    * Custom extracts declaring custom function names
    */
-  extracts?: {[functionName: string]: (n: CallExpression, index: number, prependArrayName: string) => string|ExtractorResult}
+  extracts?: {
+    [functionName: string]: (n: CallExpression, index: number, prependArrayName: string) => string | ExtractorResult
+  }
 
   /**
    * Custom name of the import module specifier from which the target function in the function call expression

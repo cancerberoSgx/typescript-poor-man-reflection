@@ -1,6 +1,6 @@
 import {ReplaceProjectFunctionCallOptions, Replacement} from './types'
 import {test} from 'shelljs'
-import { replaceProjectFunctionCall } from './replaceProjectFunctionCall';
+import {replaceProjectFunctionCall} from './replaceProjectFunctionCall'
 
 export function main(config: ReplaceProjectFunctionCallOptions) {
   let replacements: (Replacement | undefined)[] = []
@@ -26,7 +26,7 @@ export function main(config: ReplaceProjectFunctionCallOptions) {
       process.exit(1)
     }
     config.debug && console.log('Starting with configuration:\n', config)
-    replaceProjectFunctionCall(tsConfigFilePath, config);
+    replaceProjectFunctionCall(tsConfigFilePath, config)
 
     config.debug &&
       console.log(
@@ -47,6 +47,3 @@ ${JSON.stringify(replacements)}
     process.exit(1)
   }
 }
-
-
-

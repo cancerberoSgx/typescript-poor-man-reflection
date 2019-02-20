@@ -64,30 +64,35 @@ console.log(x, z)
 
 ## Options
 
+
+In general all API options are supported in the CLI as long as their types supported (function options are not supported in the CLI). All options are documented in [ReplaceProjectFunctionCallOptions interface](api/interfaces/_types_.replaceprojectfunctioncalloptions.md).
+
+### CLI options
+
  * --clean               will clean up arguments from project previously modified with this tool
  * --tsConfigFilePath    get project configuration from different file than default './tsconfig.json'
  * --out                 will write modified files in that folder instead of writing files in-place
  * --debug               will print debug information while executing
+ * --help                prints usage help and exit 
 
 
 ## Workflow
 
 Basically use this only for test projects. Run `npx typescript-poor-man-reflection` before `npm test` or `tsc`, `ts-node`, `jest`, etc. 
 
-### Rollback
-
 To rollback the changes execute the following command. It will clean all the added arguments:
 
-```
+```sh
 npx get-type-string --clean
 ```
 
 # API
 
- * [Per-project JS API](api/interfaces/_types_.config.md)
- * [Per-file JS API](api/interfaces/_types_.replacefunctioncallsoptions.md)
+ * [Per-project JS API](api/modules/_replaceprojectfunctioncall_.md)
+ * [Per-file JS API](api/modules/_replacefilefunctioncall_.md)
+ * [CLI main function](api/modules/_main_.md)
 
-(all the options apply to the CLI)
+All the options apply to the CLI if their type supports it (not functions)
 
 
 ## Motivation
