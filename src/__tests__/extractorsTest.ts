@@ -63,6 +63,24 @@ type T = any
     })
   })
 
+  describe('ThisBlockText', () => {
+    it('should get function body text', () => {
+      const project = new Project()
+      project.createSourceFile(
+        'test.ts',
+        `
+var a = 1
+function f(){
+  var b = 1
+  var thisBlock = ThisBlockText<any>()
+}
+      `,
+      )
+      replaceFunctionCall(project.getSourceFile('test.ts')!)
+      expect(project.getSourceFile('test.ts')!.getText()).toContain(`var thisBlock = ThisBlockText<any>(\"\\n  var b = 1\\n  var thisBlock = ThisBlockText<any>()\\n\")`)
+    })
+  })
+
   describe('nested', () => {
     it('should extract node body that calls an extractor', () => {
       const project = new Project()
@@ -75,9 +93,12 @@ function f(){
 }
       `,
       )
+      
       replaceFunctionCall(project.getSourceFile('test.ts')!)
       expect(project.getSourceFile('test.ts')!.getText()).toContain(`const c = BodyText<typeof f>("const c = BodyText<typeof f>()")`)
       
     })
   })
 })
+
+

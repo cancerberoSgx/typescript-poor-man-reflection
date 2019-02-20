@@ -59,5 +59,5 @@ function extractCallExpressionsFrom(sourceFile: SourceFile, moduleSpecifier: str
         .map(i => i.getModuleSpecifier().getText() === moduleSpecifier),
     )
     .map(i => i.getParentIfKind(SyntaxKind.CallExpression))
-    .filter(i => i) as CallExpression[]
+    .filter(notUndefined)  
 }
