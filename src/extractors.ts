@@ -24,8 +24,9 @@ export const defaultExtractors = {
     else {
       return ''
     }
-  },
+  }
 }
+
 
 function getNode(n: CallExpression) {
   const id = n
