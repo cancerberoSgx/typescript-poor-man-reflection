@@ -1,6 +1,6 @@
 import {TypeGuards, SyntaxKind, Identifier, SourceFile, CallExpression, Node} from 'ts-simple-ast'
-import {Replacement, ReplaceFunctionCallsOptions} from './types'
-import {notUndefined} from './util'
+import {Replacement, ReplaceFileFunctionCallOptions} from './types'
+import {notUndefined, quote} from './util'
 import {defaultExtractors} from './extractors'
 
 /**
@@ -9,36 +9,46 @@ import {defaultExtractors} from './extractors'
  */
 export function replaceFileFunctionCall(
   sourceFile: SourceFile,
-  {moduleSpecifier = 'typescript-poor-man-reflection', clean = false, extracts = defaultExtractors}: ReplaceFunctionCallsOptions = {},
+  {moduleSpecifier = 'typescript-poor-man-reflection', clean = false, extracts = defaultExtractors, extractorPrependVariableName='__extractor_prepend__'}: ReplaceFileFunctionCallOptions = {}
+  
 ): (Replacement | undefined)[] {
-  const functionNames = Object.keys(extracts)
   const replaced: Replacement[] = []
-  const callExpressions = extractCallExpressionsFrom(sourceFile, moduleSpecifier, functionNames)
-
-  callExpressions.forEach(c => {
+  const callExpressions = extractCallExpressionsFrom(sourceFile, moduleSpecifier, Object.keys(extracts))
+  let prependToFile:string[]=[]
+  callExpressions.forEach((c, index) => {
     const functionName = c.getFirstChildByKind(SyntaxKind.Identifier)!.getText()
     const extract = extracts[functionName] // TODO: check for null?
     if (c.getArguments().length === 0 && !clean) {
       // first time
-      //TODO: verify type argument 0 exists and has correct type
-      const r = extract(c)
-      c.addArgument(r)
-      replaced.push({file: sourceFile.getFilePath(), replacement: r, firstTime: true})
+      const extractResult = extract(c, index, extractorPrependVariableName)
+      prependToFile.push(typeof extractResult!=='string' ? extractResult.prependToFile||'' : '')
+      const argumentText = typeof extractResult==='string' ? extractResult : extractResult.argument
+      c.addArgument(argumentText)
+      replaced.push({file: sourceFile.getFilePath(), replacement: argumentText, firstTime: true})
     } else if (c.getArguments().length === 1) {
-      // second time - dispatch --cleanArguments or replace existing one
-      const r = clean ? '' : extract(c)
+      // second time - --clean or replace existing argument
+      const extractResult  = clean ? '' : extract(c, index, extractorPrependVariableName)
+      prependToFile.push(typeof extractResult!=='string' ? extractResult.prependToFile||'' : '')
+      const argumentText = typeof extractResult==='string' ? extractResult : extractResult.argument
       const comma = c.getArguments()[0].getNextSiblingIfKind(SyntaxKind.CommaToken)
       if (comma) {
         comma.replaceWithText('')
       }
-      c.getArguments()[0].replaceWithText(r)
-      replaced.push({file: sourceFile.getFilePath(), replacement: r, firstTime: false})
+      c.getArguments()[0].replaceWithText(argumentText)
+      replaced.push({file: sourceFile.getFilePath(), replacement: argumentText, firstTime: false})
     } else if (c.getArguments().length > 1) {
+      prependToFile.push('')
       console.error(
         `more than 1 argument found in file ${sourceFile.getFilePath()} function call expression ${c.getText()}`,
       )
+    } else {
+      prependToFile.push('')
+
     }
   })
+  if(prependToFile){
+    sourceFile.addStatements(`const ${extractorPrependVariableName} = [${prependToFile.join(', ')}]`)
+  }
   return replaced
 }
 

@@ -1,8 +1,8 @@
-import {Config, Replacement} from './types'
+import {ReplaceProjectFunctionCallOptions, Replacement} from './types'
 import {test} from 'shelljs'
 import { replaceProjectFunctionCall } from './replaceProjectFunctionCall';
 
-export function main(config: Config) {
+export function main(config: ReplaceProjectFunctionCallOptions) {
   let replacements: (Replacement | undefined)[] = []
   try {
     const {tsConfigFilePath = './tsconfig.json'} = config
@@ -26,7 +26,7 @@ export function main(config: Config) {
       process.exit(1)
     }
     config.debug && console.log('Starting with configuration:\n', config)
-    const r = replaceProjectFunctionCall(tsConfigFilePath, config);
+    replaceProjectFunctionCall(tsConfigFilePath, config);
 
     config.debug &&
       console.log(
