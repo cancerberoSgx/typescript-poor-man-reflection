@@ -35,7 +35,7 @@ Options for the command line tool, inherit from core options and add some extra 
 
 *Inherited from [ReplaceFileFunctionCallOptions](_types_.replacefilefunctioncalloptions.md).[clean](_types_.replacefilefunctioncalloptions.md#clean)*
 
-*Defined in [types.ts:50](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c31dfc4/src/types.ts#L50)*
+*Defined in [types.ts:50](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/980bbce/src/types.ts#L50)*
 
 If true the tool will clean all arguments in matched function call expressions
 
@@ -46,7 +46,7 @@ ___
 
 **● debug**: *`undefined` \| `false` \| `true`*
 
-*Defined in [types.ts:27](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c31dfc4/src/types.ts#L27)*
+*Defined in [types.ts:27](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/980bbce/src/types.ts#L27)*
 
 Prints details in stdout, default is false
 
@@ -59,7 +59,7 @@ ___
 
 *Inherited from [ReplaceFileFunctionCallOptions](_types_.replacefilefunctioncalloptions.md).[extractorPrependVariableName](_types_.replacefilefunctioncalloptions.md#extractorprependvariablename)*
 
-*Defined in [types.ts:69](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c31dfc4/src/types.ts#L69)*
+*Defined in [types.ts:69](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/980bbce/src/types.ts#L69)*
 
 In case custom `extracts` return `prependToFile` property, they also can configure the name of the array variable prepended in the file that contains all values. By default it's `__extractor_prepend__`.
 
@@ -72,7 +72,7 @@ ___
 
 *Inherited from [ReplaceFileFunctionCallOptions](_types_.replacefilefunctioncalloptions.md).[extracts](_types_.replacefilefunctioncalloptions.md#extracts)*
 
-*Defined in [types.ts:55](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c31dfc4/src/types.ts#L55)*
+*Defined in [types.ts:55](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/980bbce/src/types.ts#L55)*
 
 Custom extracts declaring custom function names
 
@@ -83,7 +83,7 @@ ___
 
 **● help**: *`undefined` \| `string`*
 
-*Defined in [types.ts:37](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c31dfc4/src/types.ts#L37)*
+*Defined in [types.ts:37](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/980bbce/src/types.ts#L37)*
 
 Shows usage help and exit.
 
@@ -96,7 +96,7 @@ ___
 
 *Inherited from [ReplaceFileFunctionCallOptions](_types_.replacefilefunctioncalloptions.md).[moduleSpecifier](_types_.replacefilefunctioncalloptions.md#modulespecifier)*
 
-*Defined in [types.ts:64](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c31dfc4/src/types.ts#L64)*
+*Defined in [types.ts:64](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/980bbce/src/types.ts#L64)*
 
 Custom name of the import module specifier from which the target function in the function call expression needs to be imported in order to perform the arguments modification. Default value: `typescript-poor-man-reflection`.
 
@@ -107,7 +107,7 @@ ___
 
 **● out**: *`undefined` \| `string`*
 
-*Defined in [types.ts:32](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c31dfc4/src/types.ts#L32)*
+*Defined in [types.ts:32](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/980bbce/src/types.ts#L32)*
 
 Instead of writing existing files, will create a copy of the project, with modified files, at this folder
 
@@ -118,7 +118,7 @@ ___
 
 **● tsConfigFilePath**: *`undefined` \| `string`*
 
-*Defined in [types.ts:22](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c31dfc4/src/types.ts#L22)*
+*Defined in [types.ts:22](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/980bbce/src/types.ts#L22)*
 
 Default value `'./tsconfig.json'`. The target `tsconfig.json` file from which the project is loaded. `typescript-poor-man-reflection` will load and parse the project with this identical configuration. All the files referenced by this configuration will be examined, with the exception of .d.ts and external library files.
 

@@ -18,7 +18,7 @@
 
 ▸ **main**(config: *[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)*): `void`
 
-*Defined in [main.ts:5](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c31dfc4/src/main.ts#L5)*
+*Defined in [main.ts:5](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/980bbce/src/main.ts#L5)*
 
 **Parameters:**
 
