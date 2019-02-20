@@ -1,4 +1,4 @@
-import {Node, CallExpression} from 'ts-simple-ast'
+import { CallExpression } from 'ts-simple-ast'
 
 export interface Replacement {
   file: string

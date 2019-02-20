@@ -1,5 +1,5 @@
-import {Project, TypeGuards, CallExpression, SyntaxKind} from 'ts-simple-ast'
-import {replaceFileFunctionCall} from '../replaceFileFunctionCall'
+import { Project, TypeGuards, CallExpression, SyntaxKind } from 'ts-simple-ast'
+import { replaceFileFunctionCall } from '../replaceFileFunctionCall'
 
 describe('extractors', () => {
   describe('custom extractors', () => {
@@ -13,13 +13,13 @@ describe('extractors', () => {
     type Member<I> = keyof I
   }
   var a = Custom<typeof f>()
-  `,
+  `
       )
       replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
         moduleSpecifier: 'my-custom-module',
         extracts: {
-          Custom: n => '"custom"',
-        },
+          Custom: n => '"custom"'
+        }
       })
       const t2 = project.getSourceFile('test.ts')!.getText()
       expect(t2).toContain('var a = Custom<typeof f>("custom")')
@@ -50,7 +50,7 @@ test('bar', ()=>{
   const var55 = 's'
 })
 const body = AllDeclarationsInThisFile<any>()
-      `,
+      `
       )
 
       replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
@@ -91,12 +91,12 @@ const body = AllDeclarationsInThisFile<any>()
               })
 
             return `${JSON.stringify(declarations.map(d => d.getText()).join('\n'))}`
-          },
-        },
+          }
+        }
       })
 
       expect(project.getSourceFile('test.ts')!.getText()).toContain(
-        `const body = AllDeclarationsInThisFile<any>(\"interface I{\\n    i:number\\n  }\\nclass C implements I {\\n      i:number=0\\n      m(){\\n        var foo=1\\n        while(true){\\n          var t0 = Date.now()\\n        }\\n      }\\n    }\\nconst var55 = 's'\"`,
+        `const body = AllDeclarationsInThisFile<any>(\"interface I{\\n    i:number\\n  }\\nclass C implements I {\\n      i:number=0\\n      m(){\\n        var foo=1\\n        while(true){\\n          var t0 = Date.now()\\n        }\\n      }\\n    }\\nconst var55 = 's'\"`
       )
     })
   })
@@ -111,12 +111,12 @@ NodeText<typeof f>()
 function f(){
 type T = any
 }
-      `,
+      `
       )
 
       replaceFileFunctionCall(project.getSourceFile('test.ts')!)
       expect(project.getSourceFile('test.ts')!.getText()).toContain(
-        `NodeText<typeof f>(\"function f(){\\ntype T = any\\n}\")`,
+        `NodeText<typeof f>(\"function f(){\\ntype T = any\\n}\")`
       )
     })
   })
@@ -131,7 +131,7 @@ BodyText<typeof f>()
 function f(){
 type T = any
 }
-      `,
+      `
       )
       replaceFileFunctionCall(project.getSourceFile('test.ts')!)
       expect(project.getSourceFile('test.ts')!.getText()).toContain(`BodyText<typeof f>("type T = any")`)
@@ -149,11 +149,11 @@ function f(){
   var b = 1
   var thisBlock = ThisBlockText<any>()
 }
-      `,
+      `
       )
       replaceFileFunctionCall(project.getSourceFile('test.ts')!)
       expect(project.getSourceFile('test.ts')!.getText()).toContain(
-        `var thisBlock = ThisBlockText<any>(\"\\n  var b = 1\\n  var thisBlock = ThisBlockText<any>()\\n\")`,
+        `var thisBlock = ThisBlockText<any>(\"\\n  var b = 1\\n  var thisBlock = ThisBlockText<any>()\\n\")`
       )
     })
   })
@@ -168,12 +168,12 @@ const body = BodyText<typeof f>()
 function f(){
   const c = BodyText<typeof f>()
 }
-      `,
+      `
       )
 
       replaceFileFunctionCall(project.getSourceFile('test.ts')!)
       expect(project.getSourceFile('test.ts')!.getText()).toContain(
-        `const c = BodyText<typeof f>("const c = BodyText<typeof f>()")`,
+        `const c = BodyText<typeof f>("const c = BodyText<typeof f>()")`
       )
     })
   })

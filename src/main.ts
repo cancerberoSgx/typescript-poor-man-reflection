@@ -1,11 +1,11 @@
-import {ReplaceProjectFunctionCallOptions, Replacement} from './types'
-import {test} from 'shelljs'
-import {replaceProjectFunctionCall} from './replaceProjectFunctionCall'
+import { ReplaceProjectFunctionCallOptions, Replacement } from './types'
+import { test } from 'shelljs'
+import { replaceProjectFunctionCall } from './replaceProjectFunctionCall'
 
 export function main(config: ReplaceProjectFunctionCallOptions) {
   let replacements: (Replacement | undefined)[] = []
   try {
-    const {tsConfigFilePath = './tsconfig.json'} = config
+    const { tsConfigFilePath = './tsconfig.json' } = config
     if (config.help) {
       console.log(`Usage: 
       
@@ -32,7 +32,7 @@ export function main(config: ReplaceProjectFunctionCallOptions) {
       console.log(
         `Summary: 
 ${JSON.stringify(replacements)}
-      `.trim(),
+      `.trim()
       )
   } catch (error) {
     console.error(`
@@ -42,7 +42,7 @@ ${error.stack}`)
     console.log(
       `The accomplishment report:
 ${JSON.stringify(replacements)}
-    `.trim(),
+    `.trim()
     )
     process.exit(1)
   }

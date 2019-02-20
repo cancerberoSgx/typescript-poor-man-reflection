@@ -23,7 +23,7 @@
 
 **Ƭ NotUndefined**: *`Exclude`<`T`, `undefined`>*
 
-*Defined in [util.ts:5](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/6bd1408/src/util.ts#L5)*
+*Defined in [util.ts:5](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c31dfc4/src/util.ts#L5)*
 
 ___
 
@@ -35,7 +35,7 @@ ___
 
 ▸ **notUndefined**<`T`>(n: *`T`*): `boolean`
 
-*Defined in [util.ts:6](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/6bd1408/src/util.ts#L6)*
+*Defined in [util.ts:6](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c31dfc4/src/util.ts#L6)*
 
 **Type parameters:**
 
@@ -55,7 +55,7 @@ ___
 
 ▸ **quote**(s: *`string`*, q?: *`string`*): `string`
 
-*Defined in [util.ts:1](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/6bd1408/src/util.ts#L1)*
+*Defined in [util.ts:1](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c31dfc4/src/util.ts#L1)*
 
 **Parameters:**
 

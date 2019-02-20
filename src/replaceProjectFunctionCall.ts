@@ -1,20 +1,20 @@
 import Project from 'ts-simple-ast'
-import {replaceFileFunctionCall} from './replaceFileFunctionCall'
-import {ReplaceProjectFunctionCallOptions, Replacement} from './types'
-import {mkdir, cp} from 'shelljs'
-import {dirname, join} from 'path'
-import {writeFileSync} from 'fs'
+import { replaceFileFunctionCall } from './replaceFileFunctionCall'
+import { ReplaceProjectFunctionCallOptions, Replacement } from './types'
+import { mkdir, cp } from 'shelljs'
+import { dirname, join } from 'path'
+import { writeFileSync } from 'fs'
 /**
  * Executes the tool on a given TypeScript project in filesystem. See `Config` documentation.
  */
 export function replaceProjectFunctionCall(
   tsConfigFilePath: string,
   config: ReplaceProjectFunctionCallOptions,
-  replacements: (Replacement | undefined)[] = [],
+  replacements: (Replacement | undefined)[] = []
 ) {
   const project = new Project({
     tsConfigFilePath,
-    addFilesFromTsConfig: true,
+    addFilesFromTsConfig: true
   })
   project
     .getSourceFiles()
