@@ -33,9 +33,11 @@ export function replaceFileFunctionCall(
     const functionName = c.getFirstChildByKind(SyntaxKind.Identifier)!.getText()
     const extract = extracts[functionName]
     const fileVariableAccessor = (name: string, value?: string) => {
-      if (value) {        // called at compile time
+      if (value) {
+        // called at compile time
         fileVariables[`${fileId}_${name}`] = value
-      } else {        // called at run-time
+      } else {
+        // called at run-time
         return `fileVariables[${quote(`${fileId}_${name}`)}]`
       }
     }
@@ -50,7 +52,8 @@ export function replaceFileFunctionCall(
     const argIndex = typeof extractorConfig.freeArgumentNumber !== 'undefined' ? extractorConfig.freeArgumentNumber : 0
 
     // const defaultArgValue = extractorConfig.unusedArgumentDefaultValue
-    var extractArgs: [any, any, any, any, any] = [c,
+    var extractArgs: [any, any, any, any, any] = [
+      c,
       index,
       extractorGetterBuilder({ ...defaultOptions, ...options }, index, sourceFile, c),
       options,
@@ -77,7 +80,9 @@ export function replaceFileFunctionCall(
     else if (c.getArguments().length === argIndex + 1) {
       const extractResult = clean
         ? ''
-        : isExtractorFn(extract) ? extract(...extractArgs) : extract.extract(...extractArgs)
+        : isExtractorFn(extract)
+        ? extract(...extractArgs)
+        : extract.extract(...extractArgs)
       extractorData.push(typeof extractResult !== 'string' ? extractResult.prependToFile || '""' : '""')
       const argumentText = typeof extractResult === 'string' ? extractResult : extractResult.argument
       const comma = c.getArguments()[argIndex].getNextSiblingIfKind(SyntaxKind.CommaToken)
@@ -88,7 +93,7 @@ export function replaceFileFunctionCall(
       replaced.push({ file: sourceFile.getFilePath(), replacement: argumentText, firstTime: false })
     }
 
-      // strange situation: our argument bucket and the next one are already filled up.
+    // strange situation: our argument bucket and the next one are already filled up.
     else if (c.getArguments().length > argIndex + 1) {
       extractorData.push('""')
       console.error(

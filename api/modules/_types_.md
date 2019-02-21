@@ -6,6 +6,9 @@
 
 ### Interfaces
 
+* [ExtractOptions](../interfaces/_types_.extractoptions.md)
+* [ExtractorClass](../interfaces/_types_.extractorclass.md)
+* [ExtractorConfig](../interfaces/_types_.extractorconfig.md)
 * [ExtractorResult](../interfaces/_types_.extractorresult.md)
 * [ReplaceFileFunctionCallOptions](../interfaces/_types_.replacefilefunctioncalloptions.md)
 * [ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)
@@ -15,6 +18,7 @@
 
 * [Extractor](_types_.md#extractor)
 * [ExtractorDataMode](_types_.md#extractordatamode)
+* [ExtractorFn](_types_.md#extractorfn)
 * [ExtractorGetter](_types_.md#extractorgetter)
 * [FileVariableAccessor](_types_.md#filevariableaccessor)
 
@@ -26,12 +30,30 @@
 
 ###  Extractor
 
-**Ƭ Extractor**: *`function`*
+**Ƭ Extractor**: *`object` & `function` \| [ExtractorClass](../interfaces/_types_.extractorclass.md) & `object`*
 
-*Defined in [types.ts:105](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d8ab253/src/types.ts#L105)*
+*Defined in [types.ts:124](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/types.ts#L124)*
+
+___
+<a id="extractordatamode"></a>
+
+###  ExtractorDataMode
+
+**Ƭ ExtractorDataMode**: *"prependVariable" \| "folderFile" \| "asStringLiteral"*
+
+*Defined in [types.ts:140](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/types.ts#L140)*
+
+___
+<a id="extractorfn"></a>
+
+###  ExtractorFn
+
+**Ƭ ExtractorFn**: *`function`*
+
+*Defined in [types.ts:125](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/types.ts#L125)*
 
 #### Type declaration
-▸(n: *`CallExpression`*, index: *`number`*, getter: *[ExtractorGetter](_types_.md#extractorgetter)*, options: *`Partial`<[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)>*, fileVariable?: *[FileVariableAccessor](_types_.md#filevariableaccessor)*): [ExtractorResult](../interfaces/_types_.extractorresult.md) \| `string`
+▸(n: *`CallExpression`*, index: *`number`*, getter: *[ExtractorGetter](_types_.md#extractorgetter)*, options: *`Partial`<[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)>*, variableAccessor?: *[FileVariableAccessor](_types_.md#filevariableaccessor)*): [ExtractorResult](../interfaces/_types_.extractorresult.md) \| `string`
 
 **Parameters:**
 
@@ -41,18 +63,9 @@
 | index | `number` |
 | getter | [ExtractorGetter](_types_.md#extractorgetter) |
 | options | `Partial`<[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)> |
-| `Optional` fileVariable | [FileVariableAccessor](_types_.md#filevariableaccessor) |
+| `Optional` variableAccessor | [FileVariableAccessor](_types_.md#filevariableaccessor) |
 
 **Returns:** [ExtractorResult](../interfaces/_types_.extractorresult.md) \| `string`
-
-___
-<a id="extractordatamode"></a>
-
-###  ExtractorDataMode
-
-**Ƭ ExtractorDataMode**: *"prependVariable" \| "folderFile"*
-
-*Defined in [types.ts:120](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d8ab253/src/types.ts#L120)*
 
 ___
 <a id="extractorgetter"></a>
@@ -61,7 +74,7 @@ ___
 
 **Ƭ ExtractorGetter**: *`function`*
 
-*Defined in [types.ts:118](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d8ab253/src/types.ts#L118)*
+*Defined in [types.ts:138](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/types.ts#L138)*
 
 #### Type declaration
 ▸(index: *`number`*): `string`
@@ -81,7 +94,7 @@ ___
 
 **Ƭ FileVariableAccessor**: *`function`*
 
-*Defined in [types.ts:122](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d8ab253/src/types.ts#L122)*
+*Defined in [types.ts:142](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/types.ts#L142)*
 
 setter / getter for variables that are common between same function calls of same file or even different function files (to save data file space). The getter actually returns (at compile time) an expression that when evaluated will return the variable value (at runtime)
 

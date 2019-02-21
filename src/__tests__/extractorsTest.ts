@@ -17,7 +17,8 @@ describe('extractors', () => {
   `
       )
       replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
-        ...defaultOptions,extractorDataMode: 'asStringLiteral',
+        ...defaultOptions,
+        extractorDataMode: 'asStringLiteral',
         moduleSpecifier: 'my-custom-module',
         extracts: {
           Custom: n => '"custom"'
@@ -57,7 +58,7 @@ const body = AllDeclarationsInThisFile<any>()
 
       replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
         ...defaultOptions,
-         ...{extractorDataMode: 'asStringLiteral'},
+        ...{ extractorDataMode: 'asStringLiteral' },
         extracts: {
           /** return all declarations that contribute with names and are inside a describe() it() or test() */
           AllDeclarationsInThisFile: (n: CallExpression) => {
@@ -118,7 +119,7 @@ type T = any
       `
       )
 
-      replaceFileFunctionCall(project.getSourceFile('test.ts')!, {extractorDataMode: 'asStringLiteral'})
+      replaceFileFunctionCall(project.getSourceFile('test.ts')!, { extractorDataMode: 'asStringLiteral' })
       expect(project.getSourceFile('test.ts')!.getText()).toContain(
         `NodeText<typeof f>(\"function f(){\\ntype T = any\\n}\")`
       )
@@ -137,7 +138,7 @@ type T = any
 }
       `
       )
-      replaceFileFunctionCall(project.getSourceFile('test.ts')!, {extractorDataMode: 'asStringLiteral'})
+      replaceFileFunctionCall(project.getSourceFile('test.ts')!, { extractorDataMode: 'asStringLiteral' })
       expect(project.getSourceFile('test.ts')!.getText()).toContain(`BodyText<typeof f>("type T = any")`)
     })
   })
@@ -155,7 +156,7 @@ function f(){
 }
       `
       )
-      replaceFileFunctionCall(project.getSourceFile('test.ts')!, {extractorDataMode: 'asStringLiteral'})
+      replaceFileFunctionCall(project.getSourceFile('test.ts')!, { extractorDataMode: 'asStringLiteral' })
       expect(project.getSourceFile('test.ts')!.getText()).toContain(
         `var thisBlock = ThisBlockText<any>(\"\\n  var b = 1\\n  var thisBlock = ThisBlockText<any>()\\n\")`
       )
@@ -175,7 +176,7 @@ function f(){
       `
       )
 
-      replaceFileFunctionCall(project.getSourceFile('test.ts')!, {extractorDataMode: 'asStringLiteral'})
+      replaceFileFunctionCall(project.getSourceFile('test.ts')!, { extractorDataMode: 'asStringLiteral' })
       expect(project.getSourceFile('test.ts')!.getText()).toContain(
         `const c = BodyText<typeof f>("const c = BodyText<typeof f>()")`
       )

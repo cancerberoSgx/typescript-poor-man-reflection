@@ -1,6 +1,11 @@
 import { TypeGuards, SyntaxKind, SourceFile, CallExpression, ArrayLiteralExpression } from 'ts-simple-ast'
 import { ReplaceFileFunctionCallOptions, ExtractorGetter, ExtractorDataMode } from './types'
-import { array2DInsert, objectLiteralInsert, removeDataFolderFileNameImportDeclaration, removePrependVariableDeclaration } from './astUtil'
+import {
+  array2DInsert,
+  objectLiteralInsert,
+  removeDataFolderFileNameImportDeclaration,
+  removePrependVariableDeclaration
+} from './astUtil'
 import { includeFile, defaultOptions } from './replaceProjectFunctionCall'
 
 /**
@@ -15,16 +20,13 @@ export function extractorGetterBuilder(
 ): ExtractorGetter {
   if (!options.extractorDataMode || options.extractorDataMode === 'prependVariable') {
     return (index: number) => `${options.extractorDataVariableName}[${index}]`
-  } 
-  else if (options.extractorDataMode === 'folderFile') {
+  } else if (options.extractorDataMode === 'folderFile') {
     const fileId = getFileId(sourceFile, options)
     return (index: number) => `get(${fileId}, ${index})`
-  }
-  else if(options.extractorDataMode === 'asStringLiteral'){
+  } else if (options.extractorDataMode === 'asStringLiteral') {
     // do nothing
     return (index: number) => ``
-  }
-  else {
+  } else {
     throw 'extractorDataMode option invalid ' + options.extractorDataMode
   }
 }
@@ -41,21 +43,21 @@ export function writeExtractorData(
   prependToFile: string[],
   fileVariables: { [name: string]: string }
 ) {
-  const options: Required<ReplaceFileFunctionCallOptions> = {...defaultOptions, ...options_}
+  const options: Required<ReplaceFileFunctionCallOptions> = { ...defaultOptions, ...options_ }
   if (sourceFile.getBaseName().includes(options.extractorDataFolderFileName)) {
     return
   }
 
-  // no matter in which mode we are, we always remove the variable declaration added 
+  // no matter in which mode we are, we always remove the variable declaration added
   // by 'prependVariable' and the import declaration added by FolderFile
-  removeDataFolderFileNameImportDeclaration(sourceFile, options);
-  removePrependVariableDeclaration(sourceFile, options);
+  removeDataFolderFileNameImportDeclaration(sourceFile, options)
+  removePrependVariableDeclaration(sourceFile, options)
 
   if (!options.extractorDataMode || options.extractorDataMode === 'prependVariable') {
     if (!options.clean && callExpressions.length) {
       sourceFile.insertStatements(0, `const ${options.extractorDataVariableName} = [${prependToFile.join(', ')}]`)
     }
-  } else if(options.extractorDataMode === 'folderFile'){
+  } else if (options.extractorDataMode === 'folderFile') {
     if (!options.clean) {
       const { dataFile, fileId } = ensureDataFile(
         sourceFile,

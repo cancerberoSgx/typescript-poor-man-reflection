@@ -16,7 +16,7 @@ const c = TypeText<{a:"a"}>()
     `
       )
 
-      replaceFileFunctionCall(project.getSourceFile('test.ts')!, {extractorDataMode: 'asStringLiteral'})
+      replaceFileFunctionCall(project.getSourceFile('test.ts')!, { extractorDataMode: 'asStringLiteral' })
 
       const t = project.getSourceFile('test.ts')!.getText()
 
@@ -41,7 +41,7 @@ const c = TypeText<{a:Type<number>}>('{a:"a"}')
         `.trim()
       )
 
-      replaceFileFunctionCall(project.getSourceFile('test.ts')!, {extractorDataMode: 'asStringLiteral'})
+      replaceFileFunctionCall(project.getSourceFile('test.ts')!, { extractorDataMode: 'asStringLiteral' })
 
       const t2 = project.getSourceFile('test.ts')!.getText()
 
@@ -94,7 +94,8 @@ const c = TypeText<{a:Type<number>}>('{a:Type<number>}')
             }
           }
         },
-        extractorDataVariableName: '__CE', extractorDataMode: 'prependVariable'
+        extractorDataVariableName: '__CE',
+        extractorDataMode: 'prependVariable'
       })
       const t2 = project.getSourceFile('test.ts')!.getText()
       expect(t2).toContain(`const a = CustomExtractor<{a:'a'}>(__CE[0]), b = CustomExtractor<number>(__CE[1])`)
@@ -119,7 +120,8 @@ const b = CustomExtractor<number>(__CE[1])`.trim()
           }
         },
         extractorDataVariableName: '__CE',
-        clean: true, extractorDataMode: 'asStringLiteral'
+        clean: true,
+        extractorDataMode: 'asStringLiteral'
       })
       const t2 = project.getSourceFile('test.ts')!.getText()
       expect(t2.trim()).toContain(
@@ -129,6 +131,5 @@ const b = CustomExtractor<number>()`.trim()
       )
       expect(t2).not.toContain(`const __CE`)
     })
-
   })
 })

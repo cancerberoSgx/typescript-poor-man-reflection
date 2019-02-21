@@ -9,7 +9,10 @@
 * [array2DInsert](_astutil_.md#array2dinsert)
 * [ensureArrayLength](_astutil_.md#ensurearraylength)
 * [extractCallExpressions](_astutil_.md#extractcallexpressions)
+* [getFirstTypeArgumentDefinitionBlock](_astutil_.md#getfirsttypeargumentdefinitionblock)
 * [objectLiteralInsert](_astutil_.md#objectliteralinsert)
+* [removeDataFolderFileNameImportDeclaration](_astutil_.md#removedatafolderfilenameimportdeclaration)
+* [removePrependVariableDeclaration](_astutil_.md#removeprependvariabledeclaration)
 
 ---
 
@@ -21,7 +24,7 @@
 
 ▸ **array2DInsert**(init: *`ArrayLiteralExpression`*, fileId: *`number`*, index: *`number`*, data: *`string`[]*): `void`
 
-*Defined in [astUtil.ts:35](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d8ab253/src/astUtil.ts#L35)*
+*Defined in [astUtil.ts:36](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/astUtil.ts#L36)*
 
 **Parameters:**
 
@@ -41,7 +44,7 @@ ___
 
 ▸ **ensureArrayLength**(a: *`ArrayLiteralExpression`*, index: *`number`*, item: *`string`*): `void`
 
-*Defined in [astUtil.ts:45](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d8ab253/src/astUtil.ts#L45)*
+*Defined in [astUtil.ts:46](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/astUtil.ts#L46)*
 
 makes sure there are items until index-1 (se we can add the index-th)
 
@@ -62,7 +65,7 @@ ___
 
 ▸ **extractCallExpressions**(sourceFile: *`SourceFile`*, moduleSpecifier: *`string`*, names: *`string`[]*): `CallExpression`<`CallExpression`>[]
 
-*Defined in [astUtil.ts:15](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d8ab253/src/astUtil.ts#L15)*
+*Defined in [astUtil.ts:16](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/astUtil.ts#L16)*
 
 extract those CallExpressions from given sourceFile which declared in a module specifier with given name and which function name is one of given names
 
@@ -77,13 +80,30 @@ extract those CallExpressions from given sourceFile which declared in a module s
 **Returns:** `CallExpression`<`CallExpression`>[]
 
 ___
+<a id="getfirsttypeargumentdefinitionblock"></a>
+
+###  getFirstTypeArgumentDefinitionBlock
+
+▸ **getFirstTypeArgumentDefinitionBlock**(n: *`CallExpression`*): `undefined` \| `Node`<`Node`>
+
+*Defined in [astUtil.ts:91](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/astUtil.ts#L91)*
+
+**Parameters:**
+
+| Name | Type |
+| ------ | ------ |
+| n | `CallExpression` |
+
+**Returns:** `undefined` \| `Node`<`Node`>
+
+___
 <a id="objectliteralinsert"></a>
 
 ###  objectLiteralInsert
 
 ▸ **objectLiteralInsert**(init: *`ObjectLiteralExpression`*, fileId: *`number`*, fileVariables: *`object`*): `void`
 
-*Defined in [astUtil.ts:53](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d8ab253/src/astUtil.ts#L53)*
+*Defined in [astUtil.ts:54](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/astUtil.ts#L54)*
 
 **Parameters:**
 
@@ -92,6 +112,48 @@ ___
 | init | `ObjectLiteralExpression` |
 | fileId | `number` |
 | fileVariables | `object` |
+
+**Returns:** `void`
+
+___
+<a id="removedatafolderfilenameimportdeclaration"></a>
+
+###  removeDataFolderFileNameImportDeclaration
+
+▸ **removeDataFolderFileNameImportDeclaration**(sourceFile: *`SourceFile`*, options: *`object`*): `void`
+
+*Defined in [astUtil.ts:81](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/astUtil.ts#L81)*
+
+**Parameters:**
+
+**sourceFile: `SourceFile`**
+
+**options: `object`**
+
+| Name | Type |
+| ------ | ------ |
+| extractorDataFolderFileName | `string` |
+
+**Returns:** `void`
+
+___
+<a id="removeprependvariabledeclaration"></a>
+
+###  removePrependVariableDeclaration
+
+▸ **removePrependVariableDeclaration**(sourceFile: *`SourceFile`*, options: *`object`*): `void`
+
+*Defined in [astUtil.ts:68](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/astUtil.ts#L68)*
+
+**Parameters:**
+
+**sourceFile: `SourceFile`**
+
+**options: `object`**
+
+| Name | Type |
+| ------ | ------ |
+| extractorDataVariableName | `string` |
 
 **Returns:** `void`
 

@@ -23,7 +23,7 @@
 
 **● argument**: *`string`*
 
-*Defined in [types.ts:114](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d8ab253/src/types.ts#L114)*
+*Defined in [types.ts:134](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/types.ts#L134)*
 
 ___
 <a id="prependtofile"></a>
@@ -32,7 +32,7 @@ ___
 
 **● prependToFile**: *`undefined` \| `string`*
 
-*Defined in [types.ts:115](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d8ab253/src/types.ts#L115)*
+*Defined in [types.ts:135](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/types.ts#L135)*
 
 ___
 

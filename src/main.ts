@@ -15,7 +15,7 @@ export function main(options: ReplaceProjectFunctionCallOptions) {
     }
     options.debug && console.log('Starting with user options:\n', options)
 
-    options = {...defaultOptions, ...options, tsConfigFilePath}
+    options = { ...defaultOptions, ...options, tsConfigFilePath }
     options.debug && console.log('All options:\n', options)
 
     replaceProjectFunctionCall(tsConfigFilePath, options)

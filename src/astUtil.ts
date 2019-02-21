@@ -65,25 +65,28 @@ export function objectLiteralInsert(
   )
 }
 
-export function removePrependVariableDeclaration(sourceFile: SourceFile, options: {extractorDataVariableName: string}) {
-  const varDecl = sourceFile.getVariableDeclaration(options.extractorDataVariableName);
+export function removePrependVariableDeclaration(
+  sourceFile: SourceFile,
+  options: { extractorDataVariableName: string }
+) {
+  const varDecl = sourceFile.getVariableDeclaration(options.extractorDataVariableName)
   if (varDecl) {
-    const variableStatement = varDecl.getFirstAncestorByKind(SyntaxKind.VariableStatement);
+    const variableStatement = varDecl.getFirstAncestorByKind(SyntaxKind.VariableStatement)
     if (variableStatement) {
-      variableStatement.remove();
+      variableStatement.remove()
     }
   }
 }
 
-export function removeDataFolderFileNameImportDeclaration(sourceFile: SourceFile, options: {extractorDataFolderFileName: string}) {
-  const il = sourceFile
-    .getImportStringLiterals()
-    .find(l => l.getText().includes(options.extractorDataFolderFileName));
+export function removeDataFolderFileNameImportDeclaration(
+  sourceFile: SourceFile,
+  options: { extractorDataFolderFileName: string }
+) {
+  const il = sourceFile.getImportStringLiterals().find(l => l.getText().includes(options.extractorDataFolderFileName))
   if (il) {
-    il.getFirstAncestorByKindOrThrow(SyntaxKind.ImportDeclaration).remove();
+    il.getFirstAncestorByKindOrThrow(SyntaxKind.ImportDeclaration).remove()
   }
 }
-
 
 export function getFirstTypeArgumentDefinitionBlock(n: CallExpression) {
   const id = n.getTypeArguments()[0].getFirstChildByKind(SyntaxKind.Identifier)

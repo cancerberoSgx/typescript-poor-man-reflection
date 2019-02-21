@@ -92,7 +92,7 @@ export interface ReplaceFileFunctionCallOptions {
    * array. An import declaration will be added to the file and function calls will use the imported function
    * to access the array. There will be one of these files per folder with the name given by option
    * `extractorDataFolderFileName` that will contain the data of all this folder's immediate children.
-   * 
+   *
    * If `asStringLiteral` then the whole thing will be passed as a single string in the parameter (this is mostly useful for debugging since it will pollute the code a lot)
    */
   extractorDataMode?: ExtractorDataMode
@@ -104,24 +104,24 @@ export interface ReplaceFileFunctionCallOptions {
   extractorDataFolderFileName?: string
 }
 
-interface ExtractorConfig{
+interface ExtractorConfig {
   /** if extractor uses first (0-th) argument for their private API they would return 1 so WE can use 1-th to pass data */
-freeArgumentNumber?: number
-/** related to freeArgumentNumber, if we detect no arguments in extractor reserved args, we will need to fill them with dummy values, so here we request which type. */
-unusedArgumentDefaultValue?: any
+  freeArgumentNumber?: number
+  /** related to freeArgumentNumber, if we detect no arguments in extractor reserved args, we will need to fill them with dummy values, so here we request which type. */
+  unusedArgumentDefaultValue?: any
 }
 export interface ExtractorClass {
   getConfig?(): ExtractorConfig
   extract(options: ExtractOptions): ReturnType<ExtractorFn>
-} 
-export interface ExtractOptions{
-  n: CallExpression,
-  index: number,
-  getter: ExtractorGetter,
-  options: Partial<ReplaceProjectFunctionCallOptions>,
+}
+export interface ExtractOptions {
+  n: CallExpression
+  index: number
+  getter: ExtractorGetter
+  options: Partial<ReplaceProjectFunctionCallOptions>
   variableAccessor?: FileVariableAccessor
 }
-export type Extractor  = (Partial<ExtractorClass>&ExtractorFn)|(ExtractorClass&{extract: ExtractorFn})
+export type Extractor = (Partial<ExtractorClass> & ExtractorFn) | (ExtractorClass & { extract: ExtractorFn })
 export type ExtractorFn = (
   n: CallExpression,
   index: number,
@@ -137,6 +137,6 @@ export interface ExtractorResult {
 
 export type ExtractorGetter = (index: number) => string
 
-export type ExtractorDataMode = 'prependVariable' | 'folderFile'|'asStringLiteral'
+export type ExtractorDataMode = 'prependVariable' | 'folderFile' | 'asStringLiteral'
 /** setter / getter for variables that are common between same function calls of same file or even different function files (to save data file space). The getter actually returns (at compile time) an expression that when evaluated will return the variable value (at runtime)*/
 export type FileVariableAccessor = (name: string, value?: string) => string | undefined

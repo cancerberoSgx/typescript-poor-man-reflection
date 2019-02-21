@@ -19,7 +19,7 @@
 
 ▸ **helpAndExit**(config: *[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)*): `void`
 
-*Defined in [main.ts:39](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d8ab253/src/main.ts#L39)*
+*Defined in [main.ts:43](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/main.ts#L43)*
 
 **Parameters:**
 
@@ -34,15 +34,15 @@ ___
 
 ###  main
 
-▸ **main**(config: *[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)*): `void`
+▸ **main**(options: *[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)*): `void`
 
-*Defined in [main.ts:5](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d8ab253/src/main.ts#L5)*
+*Defined in [main.ts:5](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/main.ts#L5)*
 
 **Parameters:**
 
 | Name | Type |
 | ------ | ------ |
-| config | [ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md) |
+| options | [ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md) |
 
 **Returns:** `void`
 
