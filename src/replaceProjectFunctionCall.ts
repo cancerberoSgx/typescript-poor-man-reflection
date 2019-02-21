@@ -12,7 +12,7 @@ export function includeFile(f: SourceFile, config: { extractorDataFolderFileName
   if (f.isFromExternalLibrary() || f.isDeclarationFile()) {
     return false
   }
-  if (f.getBaseName().includes(config.extractorDataFolderFileName || '__tsd_check_runtime__')) {
+  if (f.getBaseName().includes(config.extractorDataFolderFileName || '__poor_man_reflection__')) {
     return false
   }
   if (config.filePattern) {
@@ -32,7 +32,7 @@ export const defaultOptions: Required<ReplaceProjectFunctionCallOptions> = {
   extracts: defaultExtractors,
   extractorDataVariableName: '__extractor_prepend__',
   extractorDataMode: 'prependVariable',
-  extractorDataFolderFileName: '__tsd_check_runtime__',
+  extractorDataFolderFileName: '__poor_man_reflection__',
   filePattern: '',
   debug: false,
   extraOptionsHelp: {},

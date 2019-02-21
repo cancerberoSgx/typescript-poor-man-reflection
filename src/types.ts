@@ -97,7 +97,7 @@ export interface ReplaceFileFunctionCallOptions {
 
   /**
    * The name of the file to store extractor data in case `extractorDataMode` is `'folderFile'`. By
-   * default it will be named `__tsd_check_runtime__.ts`. See [['folderFile']]
+   * default it will be named `__poor_man_reflection__.ts`. See [['folderFile']]
    */
   extractorDataFolderFileName?: string
 }

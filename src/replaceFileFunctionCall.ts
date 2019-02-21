@@ -20,7 +20,7 @@ export function replaceFileFunctionCall(
     extracts = defaultExtractors,
     extractorDataVariableName = '__extractor_prepend__',
     extractorDataMode,
-    extractorDataFolderFileName = '__tsd_check_runtime__'
+    extractorDataFolderFileName = '__poor_man_reflection__'
   } = options
   const replaced: Replacement[] = []
   const callExpressions = extractCallExpressions(sourceFile, moduleSpecifier, Object.keys(extracts))

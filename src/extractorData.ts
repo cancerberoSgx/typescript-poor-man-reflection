@@ -36,7 +36,7 @@ export function writeExtractorData(
     extractorDataMode?: ExtractorDataMode
     extractorDataFolderFileName: string
   } = {
-    extractorDataFolderFileName: '__tsd_check_runtime__',
+    extractorDataFolderFileName: '__poor_man_reflection__',
     clean: false,
     extractorDataVariableName: '__extractor_prepend__'
   },
