@@ -1,5 +1,4 @@
 import {TypeText} from 'typescript-poor-man-reflection'
-
 type Type<T> = {a: string, b: T}[]
 const n = TypeText<Type<Date>>()
 const b = TypeText<{a:'a'}>()

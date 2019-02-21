@@ -1,7 +1,7 @@
 import { TypeGuards, SyntaxKind, SourceFile, CallExpression, ArrayLiteralExpression } from 'ts-simple-ast'
 import { ReplaceFileFunctionCallOptions, ExtractorGetter, ExtractorDataMode } from './types'
-import { array2DInsert, objectLiteralInsert } from './astUtil'
-import { includeFile } from './replaceProjectFunctionCall'
+import { array2DInsert, objectLiteralInsert, removeDataFolderFileNameImportDeclaration, removePrependVariableDeclaration } from './astUtil'
+import { includeFile, defaultOptions } from './replaceProjectFunctionCall'
 
 /**
  * Responsible of reading the extractor data. It provides a getter function that returns a JS expression that
@@ -30,37 +30,36 @@ export function extractorGetterBuilder(
  */
 export function writeExtractorData(
   sourceFile: SourceFile,
-  options: {
-    extractorDataVariableName: string
-    clean: boolean
-    extractorDataMode?: ExtractorDataMode
-    extractorDataFolderFileName: string
-  } = {
-    extractorDataFolderFileName: '__poor_man_reflection__',
-    clean: false,
-    extractorDataVariableName: '__extractor_prepend__'
-  },
+  options_: ReplaceFileFunctionCallOptions = defaultOptions,
   callExpressions: CallExpression[],
   prependToFile: string[],
   fileVariables: { [name: string]: string }
 ) {
+  const options: Required<ReplaceFileFunctionCallOptions> = {...defaultOptions, ...options_}
+//  const {
+//   extractorDataVariableName,
+//   clean,
+//   extractorDataMode = defaultOptions.extractorDataMode,
+//   extractorDataFolderFileName,
+// } = {...options, ...{
+//   extractorDataFolderFileName: '__poor_man_reflection__',
+//   clean: false,
+//   extractorDataVariableName: '__extractor_prepend__'
+// }}
   if (sourceFile.getBaseName().includes(options.extractorDataFolderFileName)) {
     return
   }
+
+  // no matter in which mode we are, we always remove the variable declaration added 
+  // by 'prependVariable' and the import declaration added by FolderFile
+  removeDataFolderFileNameImportDeclaration(sourceFile, options);
+  removePrependVariableDeclaration(sourceFile, options);
+
   if (!options.extractorDataMode || options.extractorDataMode === 'prependVariable') {
-    // we always remove the variable statement and always insert a new one
-    const varDecl = sourceFile.getVariableDeclaration(options.extractorDataVariableName)
-    if (varDecl) {
-      const variableStatement = varDecl.getFirstAncestorByKind(SyntaxKind.VariableStatement)
-      if (variableStatement) {
-        variableStatement.remove()
-      }
-    }
     if (!options.clean && callExpressions.length) {
       sourceFile.insertStatements(0, `const ${options.extractorDataVariableName} = [${prependToFile.join(', ')}]`)
     }
   } else {
-    // first ensure the data file is created and with our data.
     if (!options.clean) {
       const { dataFile, fileId } = ensureDataFile(
         sourceFile,
@@ -68,14 +67,6 @@ export function writeExtractorData(
         prependToFile,
         fileVariables
       )
-      dataFile.saveSync()
-    }
-    // Then, always remove the import statement and always insert a new one
-    const il = sourceFile
-      .getImportStringLiterals()
-      .find(l => l.getText().includes(options.extractorDataFolderFileName!))
-    if (il) {
-      il.getFirstAncestorByKindOrThrow(SyntaxKind.ImportDeclaration).remove()
     }
     if (!options.clean && callExpressions.length) {
       sourceFile.addImportDeclaration({
@@ -122,6 +113,7 @@ export function get(fileId: number, index: number) {
     )
     dataFile.saveSync()
   }
+
   const fileId = getFileId(sourceFile, options)
   const v = dataFile.getVariableDeclarationOrThrow('data')
   const init = v.getInitializerIfKindOrThrow(SyntaxKind.ArrayLiteralExpression)
@@ -130,6 +122,8 @@ export function get(fileId: number, index: number) {
   const fileVariablesV = dataFile.getVariableDeclarationOrThrow('fileVariables')
   const fileVariablesInit = fileVariablesV.getInitializerIfKindOrThrow(SyntaxKind.ObjectLiteralExpression)
   objectLiteralInsert(fileVariablesInit, fileId, fileVariables)
+
+  dataFile.saveSync()
 
   return { dataFile, fileId }
 }

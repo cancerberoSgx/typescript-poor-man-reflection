@@ -1,22 +1,26 @@
 import { ReplaceProjectFunctionCallOptions, Replacement } from './types'
 import { test } from 'shelljs'
-import { replaceProjectFunctionCall } from './replaceProjectFunctionCall'
+import { replaceProjectFunctionCall, defaultOptions } from './replaceProjectFunctionCall'
 
-export function main(config: ReplaceProjectFunctionCallOptions) {
+export function main(options: ReplaceProjectFunctionCallOptions) {
   let replacements: (Replacement | undefined)[] = []
   try {
-    const { tsConfigFilePath = './tsconfig.json' } = config
-    if (config.help) {
-      helpAndExit(config)
+    const { tsConfigFilePath = './tsconfig.json' } = options
+    if (options.help) {
+      helpAndExit(options)
     }
     if (!test('-f', tsConfigFilePath)) {
       console.error('Cannot find project configuration at ' + tsConfigFilePath + '. Aborting.')
       process.exit(1)
     }
-    config.debug && console.log('Starting with configuration:\n', config)
-    replaceProjectFunctionCall(tsConfigFilePath, config)
+    options.debug && console.log('Starting with user options:\n', options)
 
-    config.debug &&
+    options = {...defaultOptions, ...options, tsConfigFilePath}
+    options.debug && console.log('All options:\n', options)
+
+    replaceProjectFunctionCall(tsConfigFilePath, options)
+
+    options.debug &&
       console.log(
         `Summary: 
 ${JSON.stringify(replacements)}

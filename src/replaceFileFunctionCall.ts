@@ -12,16 +12,18 @@ import { defaultOptions } from './replaceProjectFunctionCall'
  */
 export function replaceFileFunctionCall(
   sourceFile: SourceFile,
-  options: ReplaceProjectFunctionCallOptions = defaultOptions
+  options_: Partial<ReplaceProjectFunctionCallOptions> = defaultOptions
 ): (Replacement | undefined)[] {
-  const {
+  const  options: Required<ReplaceProjectFunctionCallOptions> =  {...defaultOptions, ...options_}
+ const {
     moduleSpecifier = 'typescript-poor-man-reflection',
     clean = false,
     extracts = defaultExtractors,
     extractorDataVariableName = '__extractor_prepend__',
     extractorDataMode,
     extractorDataFolderFileName = '__poor_man_reflection__'
-  } = options
+  } =options
+  
   const fileVariables: { [name: string]: string } = {}
   const replaced: Replacement[] = []
   const callExpressions = extractCallExpressions(sourceFile, moduleSpecifier, Object.keys(extracts))

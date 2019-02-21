@@ -63,3 +63,26 @@ export function objectLiteralInsert(
     }))
   )
 }
+
+export function removePrependVariableDeclaration(sourceFile: SourceFile, options: {extractorDataVariableName: string}) {
+  const varDecl = sourceFile.getVariableDeclaration(options.extractorDataVariableName);
+  if (varDecl) {
+    const variableStatement = varDecl.getFirstAncestorByKind(SyntaxKind.VariableStatement);
+    if (variableStatement) {
+      variableStatement.remove();
+    }
+  }
+}
+
+export function removeDataFolderFileNameImportDeclaration(sourceFile: SourceFile, options: {extractorDataFolderFileName: string}) {
+  const il = sourceFile
+    .getImportStringLiterals()
+    .find(l => l.getText().includes(options.extractorDataFolderFileName));
+  // const il = sourceFile
+  // .getImportDeclarations().map(d=>d.getModuleSpecifier())
+  // // .map(l=>{console.log(l .getText());      return l})
+  // .find(l => l .getText().includes(options.extractorDataFolderFileName))
+  if (il) {
+    il.getFirstAncestorByKindOrThrow(SyntaxKind.ImportDeclaration).remove();
+  }
+}
