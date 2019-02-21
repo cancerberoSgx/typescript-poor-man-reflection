@@ -148,6 +148,11 @@ Trying to develop a preprocessing tool to mutate TypeScript and replace certain 
 
 ## TODO / ISSUES
 
+ * Tool configuration - api so I can ThisBlockText<>({withoutParens: true})
+ * test if --clean only cleans --filePattern or all 
+ * test with all the extractors together
+ * extractor that perform type inference
+
 ## IDEAS
 
 

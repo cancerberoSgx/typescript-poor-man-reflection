@@ -4,7 +4,8 @@ import {
   SourceFile,
   ArrayLiteralExpression,
   StringLiteral,
-  ObjectLiteralExpression
+  ObjectLiteralExpression,
+  CallExpression
 } from 'ts-simple-ast'
 import { notUndefined, quote } from './util'
 
@@ -78,11 +79,23 @@ export function removeDataFolderFileNameImportDeclaration(sourceFile: SourceFile
   const il = sourceFile
     .getImportStringLiterals()
     .find(l => l.getText().includes(options.extractorDataFolderFileName));
-  // const il = sourceFile
-  // .getImportDeclarations().map(d=>d.getModuleSpecifier())
-  // // .map(l=>{console.log(l .getText());      return l})
-  // .find(l => l .getText().includes(options.extractorDataFolderFileName))
   if (il) {
     il.getFirstAncestorByKindOrThrow(SyntaxKind.ImportDeclaration).remove();
+  }
+}
+
+
+export function getFirstTypeArgumentDefinitionBlock(n: CallExpression) {
+  const id = n.getTypeArguments()[0].getFirstChildByKind(SyntaxKind.Identifier)
+  if (id) {
+    const r = id.findReferences().map(r =>
+      r
+        .getDefinition()
+        .getNode()
+        .getParent()
+    )
+    if (r.length) {
+      return r[0]
+    }
   }
 }

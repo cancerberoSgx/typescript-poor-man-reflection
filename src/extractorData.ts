@@ -15,10 +15,16 @@ export function extractorGetterBuilder(
 ): ExtractorGetter {
   if (!options.extractorDataMode || options.extractorDataMode === 'prependVariable') {
     return (index: number) => `${options.extractorDataVariableName}[${index}]`
-  } else if (options.extractorDataMode === 'folderFile') {
+  } 
+  else if (options.extractorDataMode === 'folderFile') {
     const fileId = getFileId(sourceFile, options)
     return (index: number) => `get(${fileId}, ${index})`
-  } else {
+  }
+  else if(options.extractorDataMode === 'asStringLiteral'){
+    // do nothing
+    return (index: number) => ``
+  }
+  else {
     throw 'extractorDataMode option invalid ' + options.extractorDataMode
   }
 }
@@ -36,16 +42,6 @@ export function writeExtractorData(
   fileVariables: { [name: string]: string }
 ) {
   const options: Required<ReplaceFileFunctionCallOptions> = {...defaultOptions, ...options_}
-//  const {
-//   extractorDataVariableName,
-//   clean,
-//   extractorDataMode = defaultOptions.extractorDataMode,
-//   extractorDataFolderFileName,
-// } = {...options, ...{
-//   extractorDataFolderFileName: '__poor_man_reflection__',
-//   clean: false,
-//   extractorDataVariableName: '__extractor_prepend__'
-// }}
   if (sourceFile.getBaseName().includes(options.extractorDataFolderFileName)) {
     return
   }
@@ -59,7 +55,7 @@ export function writeExtractorData(
     if (!options.clean && callExpressions.length) {
       sourceFile.insertStatements(0, `const ${options.extractorDataVariableName} = [${prependToFile.join(', ')}]`)
     }
-  } else {
+  } else if(options.extractorDataMode === 'folderFile'){
     if (!options.clean) {
       const { dataFile, fileId } = ensureDataFile(
         sourceFile,
@@ -82,7 +78,7 @@ function ensureDataFile(
   options: {
     extractorDataVariableName: string
     clean: boolean
-    extractorDataMode?: 'prependVariable' | 'folderFile' | undefined
+    extractorDataMode?: ExtractorDataMode
     extractorDataFolderFileName: string
   },
   prependToFile: string[],

@@ -10,7 +10,7 @@
     "build": "tsc ",
     "build-watch": "tsc -w",
     "clean": "rm -rf dist docs api",
-    "test": "jest --config ./jest.config-spec.js ",
+    "test": "jest --config ./jest.config-spec.js --runInBand",
     "test-watch": "npm test -- --watch",
     "all": "npm run clean && npm run build && npm run test "
   },
