@@ -22,29 +22,21 @@ export function replaceFileFunctionCall(
     extractorDataMode,
     extractorDataFolderFileName = '__poor_man_reflection__'
   } = options
-  const fileVariables : {[name:string]:string} = {}
-  // const fileVariableAccessor = 
+  const fileVariables: { [name: string]: string } = {}
   const replaced: Replacement[] = []
   const callExpressions = extractCallExpressions(sourceFile, moduleSpecifier, Object.keys(extracts))
   let extractorData: string[] = []
-  const fileId = getFileId(sourceFile, {extractorDataFolderFileName: extractorDataFolderFileName})
+  const fileId = getFileId(sourceFile, { extractorDataFolderFileName: extractorDataFolderFileName })
   callExpressions.forEach((c, index) => {
     const functionName = c.getFirstChildByKind(SyntaxKind.Identifier)!.getText()
     const extract = extracts[functionName]
-
-   
-    const fileVariableAccessor = (name:string, value?:string)=>{
-      if(value){
-        // called at compile time
-        fileVariables[`${fileId}_${name}`]=value
+    const fileVariableAccessor = (name: string, value?: string) => {
+      if (value) {        // called at compile time
+        fileVariables[`${fileId}_${name}`] = value
+      } else {        // called at run-time
+        return `fileVariables[${quote(`${fileId}_${name}`)}]`
       }
-    else 
-    {
-      // called at run-time
-      return `fileVariables[${quote(`${fileId}_${name}`)}]`
     }
-    }
-
     if (!extract) {
       extractorData.push('""')
     } else if (c.getArguments().length === 0 && !clean) {
@@ -53,7 +45,9 @@ export function replaceFileFunctionCall(
         c,
         index,
         extractorGetterBuilder({ ...defaultOptions, ...options }, index, sourceFile, c),
-        options, fileVariableAccessor      )
+        options,
+        fileVariableAccessor
+      )
       extractorData.push(typeof extractResult !== 'string' ? extractResult.prependToFile || '""' : '""')
       const argumentText = typeof extractResult === 'string' ? extractResult : extractResult.argument
       c.addArgument(argumentText)
@@ -62,7 +56,13 @@ export function replaceFileFunctionCall(
       // second time - --clean or replace existing argument
       const extractResult = clean
         ? ''
-        : extract(c, index, extractorGetterBuilder({ ...defaultOptions, ...options }, index, sourceFile, c), options, fileVariableAccessor)
+        : extract(
+            c,
+            index,
+            extractorGetterBuilder({ ...defaultOptions, ...options }, index, sourceFile, c),
+            options,
+            fileVariableAccessor
+          )
       extractorData.push(typeof extractResult !== 'string' ? extractResult.prependToFile || '""' : '""')
       const argumentText = typeof extractResult === 'string' ? extractResult : extractResult.argument
       const comma = c.getArguments()[0].getNextSiblingIfKind(SyntaxKind.CommaToken)
@@ -80,14 +80,12 @@ export function replaceFileFunctionCall(
       extractorData.push('""')
     }
   })
-
   writeExtractorData(
     sourceFile,
     { extractorDataVariableName, clean, extractorDataMode, extractorDataFolderFileName },
     callExpressions,
-    extractorData, 
+    extractorData,
     fileVariables
   )
-
   return replaced
 }

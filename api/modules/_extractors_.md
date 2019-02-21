@@ -22,7 +22,7 @@
 
 ▸ **getFirstTypeArgumentDefinitionBlock**(n: *`CallExpression`*): `undefined` \| `Node`<`Node`>
 
-*Defined in [extractors.ts:30](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2d517f2/src/extractors.ts#L30)*
+*Defined in [extractors.ts:30](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d8ab253/src/extractors.ts#L30)*
 
 **Parameters:**
 
@@ -42,7 +42,7 @@ ___
 
 **defaultExtractors**: *`object`*
 
-*Defined in [extractors.ts:5](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2d517f2/src/extractors.ts#L5)*
+*Defined in [extractors.ts:5](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d8ab253/src/extractors.ts#L5)*
 
 <a id="defaultextractors.bodytext"></a>
 
@@ -50,7 +50,7 @@ ___
 
 ▸ **BodyText**(n: *`CallExpression`*): `string`
 
-*Defined in [extractors.ts:11](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2d517f2/src/extractors.ts#L11)*
+*Defined in [extractors.ts:11](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d8ab253/src/extractors.ts#L11)*
 
 **Parameters:**
 
@@ -67,7 +67,7 @@ ___
 
 ▸ **NodeText**(n: *`CallExpression`*): `string`
 
-*Defined in [extractors.ts:7](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2d517f2/src/extractors.ts#L7)*
+*Defined in [extractors.ts:7](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d8ab253/src/extractors.ts#L7)*
 
 **Parameters:**
 
@@ -84,7 +84,7 @@ ___
 
 ▸ **ThisBlockText**(n: *`CallExpression`*): `string`
 
-*Defined in [extractors.ts:19](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2d517f2/src/extractors.ts#L19)*
+*Defined in [extractors.ts:19](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d8ab253/src/extractors.ts#L19)*
 
 **Parameters:**
 
@@ -101,7 +101,7 @@ ___
 
 ▸ **TypeText**(n: *`CallExpression`*): `string`
 
-*Defined in [extractors.ts:6](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2d517f2/src/extractors.ts#L6)*
+*Defined in [extractors.ts:6](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d8ab253/src/extractors.ts#L6)*
 
 **Parameters:**
 

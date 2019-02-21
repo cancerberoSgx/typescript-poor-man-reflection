@@ -119,7 +119,8 @@ Trying to develop a preprocessing tool to mutate TypeScript and replace certain 
 TODO / ISSUES
 -------------
 
-*   WIP instead of polluting current file, put the prefix array in a separate file, one per folder that contain all folder's file prefixes there. and add an import declaration to a getter function (and remove it on --clean)
+*   WIP instead of polluting current file, put the prefix array in a separate file, one per folder that contain all folder's file prefixes there. and add an import declaration to a getter function (and remove it on --clean) - mostly done:
+    *   TODO: we have multiple copies of the scope variables per file - we should reference a sincle copy.
 
 IDEAS
 -----

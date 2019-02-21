@@ -41,8 +41,8 @@ export function writeExtractorData(
     extractorDataVariableName: '__extractor_prepend__'
   },
   callExpressions: CallExpression[],
-  prependToFile: string[], 
-  fileVariables: {[name:string]:string}
+  prependToFile: string[],
+  fileVariables: { [name: string]: string }
 ) {
   if (sourceFile.getBaseName().includes(options.extractorDataFolderFileName)) {
     return
@@ -65,7 +65,7 @@ export function writeExtractorData(
       const { dataFile, fileId } = ensureDataFile(
         sourceFile,
         { ...options, extractorDataFolderFileName: options.extractorDataFolderFileName! },
-        prependToFile, 
+        prependToFile,
         fileVariables
       )
       dataFile.saveSync()
@@ -94,15 +94,14 @@ function ensureDataFile(
     extractorDataMode?: 'prependVariable' | 'folderFile' | undefined
     extractorDataFolderFileName: string
   },
-  prependToFile: string[], 
-  fileVariables: {[name:string]:string}
+  prependToFile: string[],
+  fileVariables: { [name: string]: string }
 ) {
   let dataFile = sourceFile
     .getDirectory()
     .getSourceFiles()
     .find(f => f.getBaseNameWithoutExtension() === options.extractorDataFolderFileName)
   if (!dataFile) {
-
     dataFile = sourceFile.getDirectory().createSourceFile(
       `${options.extractorDataFolderFileName}.ts`,
       `
@@ -126,7 +125,7 @@ export function get(fileId: number, index: number) {
   const fileId = getFileId(sourceFile, options)
   const v = dataFile.getVariableDeclarationOrThrow('data')
   const init = v.getInitializerIfKindOrThrow(SyntaxKind.ArrayLiteralExpression)
-  array2DInsert(init, fileId, -1,prependToFile)
+  array2DInsert(init, fileId, -1, prependToFile)
 
   const fileVariablesV = dataFile.getVariableDeclarationOrThrow('fileVariables')
   const fileVariablesInit = fileVariablesV.getInitializerIfKindOrThrow(SyntaxKind.ObjectLiteralExpression)
@@ -135,9 +134,11 @@ export function get(fileId: number, index: number) {
   return { dataFile, fileId }
 }
 
-
 /** TODO: memoize */
-export function getFileId(sourceFile: SourceFile, { extractorDataFolderFileName }: { extractorDataFolderFileName: string }) {
+export function getFileId(
+  sourceFile: SourceFile,
+  { extractorDataFolderFileName }: { extractorDataFolderFileName: string }
+) {
   const d = sourceFile.getDirectory()
   const sorted = d
     .getSourceFiles()

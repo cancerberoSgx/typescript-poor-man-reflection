@@ -1,4 +1,11 @@
-import { TypeGuards, SyntaxKind, SourceFile, ArrayLiteralExpression, StringLiteral, ObjectLiteralExpression } from 'ts-simple-ast'
+import {
+  TypeGuards,
+  SyntaxKind,
+  SourceFile,
+  ArrayLiteralExpression,
+  StringLiteral,
+  ObjectLiteralExpression
+} from 'ts-simple-ast'
 import { notUndefined, quote } from './util'
 
 /**
@@ -27,11 +34,11 @@ export function extractCallExpressions(sourceFile: SourceFile, moduleSpecifier: 
 
 export function array2DInsert(init: ArrayLiteralExpression, fileId: number, index: number, data: string[]) {
   ensureArrayLength(init, fileId + 1, `[]`)
-    init.removeElement(fileId)
-    const newEl = init.insertElement(fileId, `[]`) as ArrayLiteralExpression
-    data.forEach(d=>{
-      newEl.addElement(d)
-    })
+  init.removeElement(fileId)
+  const newEl = init.insertElement(fileId, `[]`) as ArrayLiteralExpression
+  data.forEach(d => {
+    newEl.addElement(d)
+  })
 }
 
 /** makes sure there are items until index-1 (se we can add the index-th) */
@@ -43,10 +50,16 @@ function ensureArrayLength(a: ArrayLiteralExpression, index: number, item: strin
   }
 }
 
-export function objectLiteralInsert(init: ObjectLiteralExpression, fileId: number, fileVariables: {[n:string]:string}) {
+export function objectLiteralInsert(
+  init: ObjectLiteralExpression,
+  fileId: number,
+  fileVariables: { [n: string]: string }
+) {
   //TODO: check if property assignment already exists
-  init.addPropertyAssignments(Object.keys(fileVariables).map(name=>({
-    name: quote(name), 
-    initializer: fileVariables[name]
-   })))
+  init.addPropertyAssignments(
+    Object.keys(fileVariables).map(name => ({
+      name: quote(name),
+      initializer: fileVariables[name]
+    }))
+  )
 }

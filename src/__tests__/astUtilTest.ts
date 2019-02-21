@@ -15,7 +15,7 @@ describe('astUtil', () => {
       const init = v.getInitializerIfKindOrThrow(SyntaxKind.ArrayLiteralExpression)
       array2DInsert(init, 2, 3, [`{text: 'Array<string>', prefix: 'interface I{}'}`])
       expect(f.getText()).toContain(
-        `const data: any[][] = [[], [], [[], [], [], {text: 'Array<string>', prefix: 'interface I{}'}]]`
+        `const data: any[][] = [[], [], [{text: 'Array<string>', prefix: 'interface I{}'}]]`
       )
     })
   })

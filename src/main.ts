@@ -64,7 +64,9 @@ Options:
   --debug                       print debug information while executing
 ${
   config.extraOptionsHelp
-    ? Object.keys(config.extraOptionsHelp).map(option => `  --${option}  ${config.extraOptionsHelp![option]}`).join('\n\n')
+    ? Object.keys(config.extraOptionsHelp)
+        .map(option => `  --${option}  ${config.extraOptionsHelp![option]}`)
+        .join('\n\n')
     : ''
 }
       `.trim()

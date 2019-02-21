@@ -4,29 +4,14 @@
 
 ## Index
 
-### Variables
-
-* [astUtil](_astutil_.md#astutil)
-
 ### Functions
 
 * [array2DInsert](_astutil_.md#array2dinsert)
 * [ensureArrayLength](_astutil_.md#ensurearraylength)
 * [extractCallExpressions](_astutil_.md#extractcallexpressions)
+* [objectLiteralInsert](_astutil_.md#objectliteralinsert)
 
 ---
-
-## Variables
-
-<a id="astutil"></a>
-
-### `<Let>` astUtil
-
-**● astUtil**: *`any`*
-
-*Defined in [astUtil.ts:3](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2d517f2/src/astUtil.ts#L3)*
-
-___
 
 ## Functions
 
@@ -34,9 +19,9 @@ ___
 
 ###  array2DInsert
 
-▸ **array2DInsert**(init: *`ArrayLiteralExpression`*, fileId: *`number`*, index: *`number`*, data: *`string`*): `void`
+▸ **array2DInsert**(init: *`ArrayLiteralExpression`*, fileId: *`number`*, index: *`number`*, data: *`string`[]*): `void`
 
-*Defined in [astUtil.ts:28](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2d517f2/src/astUtil.ts#L28)*
+*Defined in [astUtil.ts:35](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d8ab253/src/astUtil.ts#L35)*
 
 **Parameters:**
 
@@ -45,7 +30,7 @@ ___
 | init | `ArrayLiteralExpression` |
 | fileId | `number` |
 | index | `number` |
-| data | `string` |
+| data | `string`[] |
 
 **Returns:** `void`
 
@@ -56,9 +41,9 @@ ___
 
 ▸ **ensureArrayLength**(a: *`ArrayLiteralExpression`*, index: *`number`*, item: *`string`*): `void`
 
-*Defined in [astUtil.ts:43](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2d517f2/src/astUtil.ts#L43)*
+*Defined in [astUtil.ts:45](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d8ab253/src/astUtil.ts#L45)*
 
-make sure there are items until index-1 (se we can add the index-th)
+makes sure there are items until index-1 (se we can add the index-th)
 
 **Parameters:**
 
@@ -77,7 +62,7 @@ ___
 
 ▸ **extractCallExpressions**(sourceFile: *`SourceFile`*, moduleSpecifier: *`string`*, names: *`string`[]*): `CallExpression`<`CallExpression`>[]
 
-*Defined in [astUtil.ts:8](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2d517f2/src/astUtil.ts#L8)*
+*Defined in [astUtil.ts:15](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d8ab253/src/astUtil.ts#L15)*
 
 extract those CallExpressions from given sourceFile which declared in a module specifier with given name and which function name is one of given names
 
@@ -90,6 +75,25 @@ extract those CallExpressions from given sourceFile which declared in a module s
 | names | `string`[] |
 
 **Returns:** `CallExpression`<`CallExpression`>[]
+
+___
+<a id="objectliteralinsert"></a>
+
+###  objectLiteralInsert
+
+▸ **objectLiteralInsert**(init: *`ObjectLiteralExpression`*, fileId: *`number`*, fileVariables: *`object`*): `void`
+
+*Defined in [astUtil.ts:53](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d8ab253/src/astUtil.ts#L53)*
+
+**Parameters:**
+
+| Name | Type |
+| ------ | ------ |
+| init | `ObjectLiteralExpression` |
+| fileId | `number` |
+| fileVariables | `object` |
+
+**Returns:** `void`
 
 ___
 

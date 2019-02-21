@@ -119,4 +119,4 @@ export type ExtractorGetter = (index: number) => string
 
 export type ExtractorDataMode = 'prependVariable' | 'folderFile'
 /** setter / getter for variables that are common between same function calls of same file or even different function files (to save data file space). The getter actually returns (at compile time) an expression that when evaluated will return the variable value (at runtime)*/
-export type FileVariableAccessor =  (name: string, value?: string)=> string|undefined 
+export type FileVariableAccessor = (name: string, value?: string) => string | undefined
