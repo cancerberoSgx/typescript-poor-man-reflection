@@ -2,9 +2,9 @@ import Project, { SyntaxKind, Identifier, SourceFile, Node } from 'ts-simple-ast
 import { Replacement, ReplaceFileFunctionCallOptions, ReplaceProjectFunctionCallOptions } from './types'
 import { quote } from './util'
 import { defaultExtractors } from './extractors'
-import { extractorGetterBuilder, writeExtractorData } from './extractorData';
-import { extractCallExpressions } from './astUtil';
-import { defaultOptions } from './replaceProjectFunctionCall';
+import { extractorGetterBuilder, writeExtractorData } from './extractorData'
+import { extractCallExpressions } from './astUtil'
+import { defaultOptions } from './replaceProjectFunctionCall'
 
 /**
  * JavaScript API to replace arguments of all function expression calls in given (ts-simple-ast SourceFile)
@@ -18,8 +18,9 @@ export function replaceFileFunctionCall(
     moduleSpecifier = 'typescript-poor-man-reflection',
     clean = false,
     extracts = defaultExtractors,
-    extractorDataVariableName = '__extractor_prepend__', 
-    extractorDataMode, extractorDataFolderFileName='__tsd_check_runtime__'
+    extractorDataVariableName = '__extractor_prepend__',
+    extractorDataMode,
+    extractorDataFolderFileName = '__tsd_check_runtime__'
   } = options
   const replaced: Replacement[] = []
   const callExpressions = extractCallExpressions(sourceFile, moduleSpecifier, Object.keys(extracts))
@@ -31,14 +32,21 @@ export function replaceFileFunctionCall(
       extractorData.push('""')
     } else if (c.getArguments().length === 0 && !clean) {
       // first time
-      const extractResult = extract(c, index, extractorGetterBuilder({...defaultOptions, ...options}, index, sourceFile, c), options)
+      const extractResult = extract(
+        c,
+        index,
+        extractorGetterBuilder({ ...defaultOptions, ...options }, index, sourceFile, c),
+        options
+      )
       extractorData.push(typeof extractResult !== 'string' ? extractResult.prependToFile || '""' : '""')
       const argumentText = typeof extractResult === 'string' ? extractResult : extractResult.argument
       c.addArgument(argumentText)
       replaced.push({ file: sourceFile.getFilePath(), replacement: argumentText, firstTime: true })
     } else if (c.getArguments().length === 1) {
       // second time - --clean or replace existing argument
-      const extractResult = clean ? '' : extract(c, index, extractorGetterBuilder({...defaultOptions, ...options}, index, sourceFile, c), options)
+      const extractResult = clean
+        ? ''
+        : extract(c, index, extractorGetterBuilder({ ...defaultOptions, ...options }, index, sourceFile, c), options)
       extractorData.push(typeof extractResult !== 'string' ? extractResult.prependToFile || '""' : '""')
       const argumentText = typeof extractResult === 'string' ? extractResult : extractResult.argument
       const comma = c.getArguments()[0].getNextSiblingIfKind(SyntaxKind.CommaToken)
@@ -57,9 +65,12 @@ export function replaceFileFunctionCall(
     }
   })
 
-  writeExtractorData(sourceFile, {extractorDataVariableName, clean, extractorDataMode, extractorDataFolderFileName}, callExpressions, extractorData)
+  writeExtractorData(
+    sourceFile,
+    { extractorDataVariableName, clean, extractorDataMode, extractorDataFolderFileName },
+    callExpressions,
+    extractorData
+  )
 
   return replaced
 }
-
-

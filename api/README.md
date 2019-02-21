@@ -119,7 +119,7 @@ Trying to develop a preprocessing tool to mutate TypeScript and replace certain 
 TODO / ISSUES
 -------------
 
-*   instead of polluting current file, put the prefix array in a separate file, one per folder that contain all folder's file prefixes there. and add an import declaration to a getter function (and remove it on --clean)
+*   WIP instead of polluting current file, put the prefix array in a separate file, one per folder that contain all folder's file prefixes there. and add an import declaration to a getter function (and remove it on --clean)
 
 IDEAS
 -----
@@ -128,6 +128,8 @@ IDEAS
 
 ### External modules
 
+* ["astUtil"](modules/_astutil_.md)
+* ["extractorData"](modules/_extractordata_.md)
 * ["extractors"](modules/_extractors_.md)
 * ["main"](modules/_main_.md)
 * ["replaceFileFunctionCall"](modules/_replacefilefunctioncall_.md)

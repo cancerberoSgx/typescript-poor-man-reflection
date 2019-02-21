@@ -6,76 +6,28 @@
 
 ### Functions
 
-* [extractCallExpressionsFrom](_replacefilefunctioncall_.md#extractcallexpressionsfrom)
-* [handleExtractorData](_replacefilefunctioncall_.md#handleextractordata)
 * [replaceFileFunctionCall](_replacefilefunctioncall_.md#replacefilefunctioncall)
 
 ---
 
 ## Functions
 
-<a id="extractcallexpressionsfrom"></a>
-
-###  extractCallExpressionsFrom
-
-▸ **extractCallExpressionsFrom**(sourceFile: *`SourceFile`*, moduleSpecifier: *`string`*, names: *`string`[]*): `CallExpression`<`CallExpression`>[]
-
-*Defined in [replaceFileFunctionCall.ts:80](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d1e53d1/src/replaceFileFunctionCall.ts#L80)*
-
-**Parameters:**
-
-| Name | Type |
-| ------ | ------ |
-| sourceFile | `SourceFile` |
-| moduleSpecifier | `string` |
-| names | `string`[] |
-
-**Returns:** `CallExpression`<`CallExpression`>[]
-
-___
-<a id="handleextractordata"></a>
-
-###  handleExtractorData
-
-▸ **handleExtractorData**(sourceFile: *`SourceFile`*, extractorDataVariableName: *`string`*, clean: *`boolean`*, callExpressions: *`CallExpression`[]*, prependToFile: *`string`[]*): `void`
-
-*Defined in [replaceFileFunctionCall.ts:61](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d1e53d1/src/replaceFileFunctionCall.ts#L61)*
-
-**Parameters:**
-
-| Name | Type |
-| ------ | ------ |
-| sourceFile | `SourceFile` |
-| extractorDataVariableName | `string` |
-| clean | `boolean` |
-| callExpressions | `CallExpression`[] |
-| prependToFile | `string`[] |
-
-**Returns:** `void`
-
-___
 <a id="replacefilefunctioncall"></a>
 
 ###  replaceFileFunctionCall
 
-▸ **replaceFileFunctionCall**(sourceFile: *`SourceFile`*, __namedParameters?: *`object`*): (`undefined` \| [Replacement](../interfaces/_types_.replacement.md))[]
+▸ **replaceFileFunctionCall**(sourceFile: *`SourceFile`*, options?: *[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)*): (`undefined` \| [Replacement](../interfaces/_types_.replacement.md))[]
 
-*Defined in [replaceFileFunctionCall.ts:10](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/d1e53d1/src/replaceFileFunctionCall.ts#L10)*
+*Defined in [replaceFileFunctionCall.ts:13](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2d517f2/src/replaceFileFunctionCall.ts#L13)*
 
 JavaScript API to replace arguments of all function expression calls in given (ts-simple-ast SourceFile) file that match given options. See `ReplaceFunctionCallsOptions`.
 
 **Parameters:**
 
-**sourceFile: `SourceFile`**
-
-**`Default value` __namedParameters: `object`**
-
 | Name | Type | Default value |
 | ------ | ------ | ------ |
-| clean | `boolean` | false |
-| extractorDataVariableName | `string` | &quot;__extractor_prepend__&quot; |
-| extracts | `object` |  defaultExtractors |
-| moduleSpecifier | `string` | &quot;typescript-poor-man-reflection&quot; |
+| sourceFile | `SourceFile` | - |
+| `Default value` options | [ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md) |  defaultOptions |
 
 **Returns:** (`undefined` \| [Replacement](../interfaces/_types_.replacement.md))[]
 

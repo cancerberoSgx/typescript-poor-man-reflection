@@ -44,8 +44,8 @@ export interface ReplaceProjectFunctionCallOptions extends ReplaceFileFunctionCa
     [optionName: string]: string
   }
 
-  /** 
-   * If provided it will only modify files that match the given glob 
+  /**
+   * If provided it will only modify files that match the given glob
    */
   filePattern?: string
 }
@@ -102,8 +102,12 @@ export interface ReplaceFileFunctionCallOptions {
   extractorDataFolderFileName?: string
 }
 
-export type Extractor = (n: CallExpression, index: number, 
-  getterBuilder: (index:number)=>string, options: Partial<ReplaceProjectFunctionCallOptions>)=>ExtractorResult|string
+export type Extractor = (
+  n: CallExpression,
+  index: number,
+  getterBuilder: (index: number) => string,
+  options: Partial<ReplaceProjectFunctionCallOptions>
+) => ExtractorResult | string
 
 export interface ExtractorResult {
   argument: string

@@ -1,6 +1,6 @@
 import { Project, TypeGuards, CallExpression, SyntaxKind } from 'ts-simple-ast'
 import { replaceFileFunctionCall } from '../replaceFileFunctionCall'
-import { defaultOptions } from '../replaceProjectFunctionCall';
+import { defaultOptions } from '../replaceProjectFunctionCall'
 
 describe('extractors', () => {
   describe('custom extractors', () => {

@@ -1,8 +1,8 @@
-import { CallExpression, SyntaxKind, TypeGuards } from 'ts-simple-ast';
-import { Extractor } from './types';
-import { quote } from './util';
+import { CallExpression, SyntaxKind, TypeGuards } from 'ts-simple-ast'
+import { Extractor } from './types'
+import { quote } from './util'
 
-export const defaultExtractors: {[k:string]: Extractor} = {
+export const defaultExtractors: { [k: string]: Extractor } = {
   TypeText: (n: CallExpression) => quote(n.getTypeArguments()[0].getText()),
   NodeText: (n: CallExpression) => {
     var c = getFirstTypeArgumentDefinitionBlock(n)
