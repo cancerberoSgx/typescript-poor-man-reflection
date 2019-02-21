@@ -119,7 +119,6 @@ export const data: any[][] = []
 export function get(fileId: number, index: number) {
   return data[fileId] && data[fileId][index]
 }
-
       `.trim()
     )
     dataFile.saveSync()
@@ -127,14 +126,8 @@ export function get(fileId: number, index: number) {
   const fileId = getFileId(sourceFile, options)
   const v = dataFile.getVariableDeclarationOrThrow('data')
   const init = v.getInitializerIfKindOrThrow(SyntaxKind.ArrayLiteralExpression)
-  // array2DInsert(init, fileId, -1, `[${JSON.stringify(prependToFile.join(', '))}]`)
   array2DInsert(init, fileId, -1,prependToFile)
 
-
-  // const fileVariablesOutput:{[name:string]:string} = {}
-  // Object.keys(fileVariables).map(name=>{
-    // fileVariablesOutput[`${fileId}_${name}`] = JSON.stringify(fileVariables[name])
-  // });
   const fileVariablesV = dataFile.getVariableDeclarationOrThrow('fileVariables')
   const fileVariablesInit = fileVariablesV.getInitializerIfKindOrThrow(SyntaxKind.ObjectLiteralExpression)
   objectLiteralInsert(fileVariablesInit, fileId, fileVariables)
