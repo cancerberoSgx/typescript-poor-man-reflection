@@ -1,6 +1,6 @@
 import { TypeGuards, SyntaxKind, SourceFile, CallExpression, ArrayLiteralExpression } from 'ts-simple-ast'
 import { ReplaceFileFunctionCallOptions, ExtractorGetter, ExtractorDataMode } from './types'
-import { array2DInsert } from './astUtil'
+import { array2DInsert, objectLiteralInsert } from './astUtil'
 import { includeFile } from './replaceProjectFunctionCall'
 
 /**
@@ -41,7 +41,8 @@ export function writeExtractorData(
     extractorDataVariableName: '__extractor_prepend__'
   },
   callExpressions: CallExpression[],
-  prependToFile: string[]
+  prependToFile: string[], 
+  fileVariables: {[name:string]:string}
 ) {
   if (sourceFile.getBaseName().includes(options.extractorDataFolderFileName)) {
     return
@@ -64,7 +65,8 @@ export function writeExtractorData(
       const { dataFile, fileId } = ensureDataFile(
         sourceFile,
         { ...options, extractorDataFolderFileName: options.extractorDataFolderFileName! },
-        prependToFile
+        prependToFile, 
+        fileVariables
       )
       dataFile.saveSync()
     }
@@ -81,7 +83,6 @@ export function writeExtractorData(
         namedImports: ['get']
       })
     }
-    // sourceFile.saveSync()
   }
 }
 
@@ -93,13 +94,15 @@ function ensureDataFile(
     extractorDataMode?: 'prependVariable' | 'folderFile' | undefined
     extractorDataFolderFileName: string
   },
-  prependToFile: string[]
+  prependToFile: string[], 
+  fileVariables: {[name:string]:string}
 ) {
   let dataFile = sourceFile
     .getDirectory()
     .getSourceFiles()
     .find(f => f.getBaseNameWithoutExtension() === options.extractorDataFolderFileName)
   if (!dataFile) {
+
     dataFile = sourceFile.getDirectory().createSourceFile(
       `${options.extractorDataFolderFileName}.ts`,
       `
@@ -112,6 +115,8 @@ export function get(fileId: number, index: number) {
  * fieldId is the index of the alphabetically ordered list of this directory source file children.
  */
 export const data: any[][] = []
+
+export const fileVariables: {[name:string]:string} = {}
       `.trim()
     )
     dataFile.saveSync()
@@ -119,12 +124,24 @@ export const data: any[][] = []
   const fileId = getFileId(sourceFile, options)
   const v = dataFile.getVariableDeclarationOrThrow('data')
   const init = v.getInitializerIfKindOrThrow(SyntaxKind.ArrayLiteralExpression)
+  // array2DInsert(init, fileId, -1, `[${JSON.stringify(prependToFile.join(', '))}]`)
+  array2DInsert(init, fileId, -1, `[${JSON.stringify(prependToFile.join(', '))}]`)
 
-  array2DInsert(init, fileId, -1, `[${prependToFile.join(', ')}]`)
+
+  const fileVariablesOutput:{[name:string]:string} = {}
+  Object.keys(fileVariables).map(name=>{
+    fileVariablesOutput[`${fileId}_${name}`] = JSON.stringify(fileVariables[name])
+  });
+  const fileVariablesV = dataFile.getVariableDeclarationOrThrow('fileVariables')
+  const fileVariablesInit = fileVariablesV.getInitializerIfKindOrThrow(SyntaxKind.ObjectLiteralExpression)
+  objectLiteralInsert(fileVariablesInit, fileId, fileVariablesOutput)
+
   return { dataFile, fileId }
 }
 
-function getFileId(sourceFile: SourceFile, { extractorDataFolderFileName }: { extractorDataFolderFileName: string }) {
+
+/** TODO: memoize */
+export function getFileId(sourceFile: SourceFile, { extractorDataFolderFileName }: { extractorDataFolderFileName: string }) {
   const d = sourceFile.getDirectory()
   const sorted = d
     .getSourceFiles()

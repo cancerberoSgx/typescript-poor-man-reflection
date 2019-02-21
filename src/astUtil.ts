@@ -1,5 +1,5 @@
-import { TypeGuards, SyntaxKind, SourceFile, ArrayLiteralExpression } from 'ts-simple-ast'
-import { notUndefined } from './util'
+import { TypeGuards, SyntaxKind, SourceFile, ArrayLiteralExpression, StringLiteral, ObjectLiteralExpression } from 'ts-simple-ast'
+import { notUndefined, quote } from './util'
 let astUtil
 /**
  * extract those CallExpressions from given sourceFile which declared in a module specifier with
@@ -25,6 +25,30 @@ export function extractCallExpressions(sourceFile: SourceFile, moduleSpecifier: 
     .filter(notUndefined)
 }
 
+// export function array2DInsert(init: ArrayLiteralExpression, fileId: number, index: number, data: string[]) {
+//   // if (index != -1) {
+//     //   const arr = init.getElements()[fileId]
+//     //   if (!TypeGuards.isArrayLiteralExpression(arr)) {
+//       //     throw 'Expected ArrayLiteralExpression, instead ' + arr && arr.getKindName()
+//       //   }
+//       //   ensureArrayLength(arr, index, `[]`)
+//       //   arr.insertElement(index, data)
+//       // } else {
+//         console.log('insertElement', fileId, init.getElements().length, data);
+        
+//         // data.forEach((d, i)=>{
+//           // ensureArrayLength(init, fileId,`[${data.join(', ')}]` )
+//           ensureArrayLength(init, fileId+1,`[]` )
+
+//       // if()
+//       init.removeElement(fileId)
+//       // init.insertElement(fileId,  `[${data.join(', ')}]`)
+//     // })
+//     init.insertElements(fileId, data)
+//   // }
+// }
+
+
 export function array2DInsert(init: ArrayLiteralExpression, fileId: number, index: number, data: string) {
   ensureArrayLength(init, fileId + 1, `[]`)
   if (index != -1) {
@@ -39,11 +63,30 @@ export function array2DInsert(init: ArrayLiteralExpression, fileId: number, inde
     init.insertElement(fileId, data)
   }
 }
+
+
+
 /** make sure there are items until index-1 (se we can add the index-th) */
 function ensureArrayLength(a: ArrayLiteralExpression, index: number, item: string) {
-  if (index > a.getElements().length) {
+  if (index >= a.getElements().length) {
     for (let i = a.getElements().length; i < index; i++) {
       a.addElement(item)
     }
   }
 }
+
+
+export function objectLiteralInsert(init: ObjectLiteralExpression, fileId: number, fileVariables: {[n:string]:string}) {
+  //TODO: check if property assignment already exists
+  init.addPropertyAssignments(Object.keys(fileVariables).map(name=>({
+    name: quote(name), 
+    initializer: fileVariables[name]
+   })))
+}
+// export function replaceRepeatedStrings(f: SourceFile) {
+//   const ss : {[s:string]:StringLiteral[]} = {}
+//   f.getDescendantsOfKind(SyntaxKind.StringLiteral).forEach(l=>{
+//     s=l.getText()
+//     if(!ss[s])
+//   })
+// }

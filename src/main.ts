@@ -48,17 +48,20 @@ Options:
 
   --tsConfigFilePath            get project configuration from different file than default './tsconfig.json'
 
-  --out                         write modified files in that folder instead of writing files in-place
+  --extractorDataMode           data extraction mode: 'folderFile': (default) all folder's files data is stored in a single new file (--extractorDataFolderFileName). 'prependVariable' each file data is stored in a variable which is declared at the top of the file (--extractorDataVariableName)
 
-  --debug                       print debug information while executing
-
+  --filePattern                 if provided it will only modify files that match the given glob. Example: --filePattern "**/__tests__/**/withTypes/**/*.ts*"
+  
   --moduleSpecifier             extract only from function calls imported from this module
-
+  
   --extractorDataVariableName   name of the variable for  --extractorDataMode==='prependVariable'
-
-  --extractorDataMode           data extraction mode: 'folderFile': (default) all folder's files data is stored in a single new file (extractorDataFolderFileName). 'prependVariable' each file data is stored in a variable which is declared at the top of the file
-
-  --extractorDataFolderFileName  name of the file for --extractorDataMode==='folderFile'
+  
+  
+  --extractorDataFolderFileName name of the file for --extractorDataMode==='folderFile'
+  
+  --out                         write modified files in that folder instead of writing files in-place
+  
+  --debug                       print debug information while executing
 ${
   config.extraOptionsHelp
     ? Object.keys(config.extraOptionsHelp).map(option => `  --${option}  ${config.extraOptionsHelp![option]}`).join('\n\n')

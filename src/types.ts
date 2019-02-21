@@ -105,8 +105,9 @@ export interface ReplaceFileFunctionCallOptions {
 export type Extractor = (
   n: CallExpression,
   index: number,
-  getterBuilder: (index: number) => string,
-  options: Partial<ReplaceProjectFunctionCallOptions>
+  getter: ExtractorGetter,
+  options: Partial<ReplaceProjectFunctionCallOptions>,
+  fileVariable?: FileVariableAccessor
 ) => ExtractorResult | string
 
 export interface ExtractorResult {
@@ -117,3 +118,5 @@ export interface ExtractorResult {
 export type ExtractorGetter = (index: number) => string
 
 export type ExtractorDataMode = 'prependVariable' | 'folderFile'
+/** setter / getter for variables that are common between same function calls of same file or even different function files (to save data file space). The getter actually returns (at compile time) an expression that when evaluated will return the variable value (at runtime)*/
+export type FileVariableAccessor =  (name: string, value?: string)=> string|undefined 
