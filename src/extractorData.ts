@@ -107,16 +107,19 @@ function ensureDataFile(
       `${options.extractorDataFolderFileName}.ts`,
       `
 // FILE CREATED AUTOMATICALLY AT COMPILE TIME. DO NOT MODIFY !
-export function get(fileId: number, index: number) {
-  return data[fileId] && data[fileId][index]
-}
+
+export const fileVariables: {[name:string]:string} = {}
+
 /** 
  * 'data[fileId][index]' is the value of the index-nth extractor call in the fieldId-nth source file where
  * fieldId is the index of the alphabetically ordered list of this directory source file children.
  */
 export const data: any[][] = []
 
-export const fileVariables: {[name:string]:string} = {}
+export function get(fileId: number, index: number) {
+  return data[fileId] && data[fileId][index]
+}
+
       `.trim()
     )
     dataFile.saveSync()
@@ -125,16 +128,16 @@ export const fileVariables: {[name:string]:string} = {}
   const v = dataFile.getVariableDeclarationOrThrow('data')
   const init = v.getInitializerIfKindOrThrow(SyntaxKind.ArrayLiteralExpression)
   // array2DInsert(init, fileId, -1, `[${JSON.stringify(prependToFile.join(', '))}]`)
-  array2DInsert(init, fileId, -1, `[${JSON.stringify(prependToFile.join(', '))}]`)
+  array2DInsert(init, fileId, -1,prependToFile)
 
 
-  const fileVariablesOutput:{[name:string]:string} = {}
-  Object.keys(fileVariables).map(name=>{
-    fileVariablesOutput[`${fileId}_${name}`] = JSON.stringify(fileVariables[name])
-  });
+  // const fileVariablesOutput:{[name:string]:string} = {}
+  // Object.keys(fileVariables).map(name=>{
+    // fileVariablesOutput[`${fileId}_${name}`] = JSON.stringify(fileVariables[name])
+  // });
   const fileVariablesV = dataFile.getVariableDeclarationOrThrow('fileVariables')
   const fileVariablesInit = fileVariablesV.getInitializerIfKindOrThrow(SyntaxKind.ObjectLiteralExpression)
-  objectLiteralInsert(fileVariablesInit, fileId, fileVariablesOutput)
+  objectLiteralInsert(fileVariablesInit, fileId, fileVariables)
 
   return { dataFile, fileId }
 }

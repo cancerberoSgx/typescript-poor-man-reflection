@@ -49,19 +49,24 @@ export function extractCallExpressions(sourceFile: SourceFile, moduleSpecifier: 
 // }
 
 
-export function array2DInsert(init: ArrayLiteralExpression, fileId: number, index: number, data: string) {
+export function array2DInsert(init: ArrayLiteralExpression, fileId: number, index: number, data: string[]) {
   ensureArrayLength(init, fileId + 1, `[]`)
-  if (index != -1) {
-    const arr = init.getElements()[fileId]
-    if (!TypeGuards.isArrayLiteralExpression(arr)) {
-      throw 'Expected ArrayLiteralExpression, instead ' + arr && arr.getKindName()
-    }
-    ensureArrayLength(arr, index, `[]`)
-    arr.insertElement(index, data)
-  } else {
+  // if (index != -1) {
+  //   const arr = init.getElements()[fileId]
+  //   if (!TypeGuards.isArrayLiteralExpression(arr)) {
+  //     throw 'Expected ArrayLiteralExpression, instead ' + arr && arr.getKindName()
+  //   }
+  //   // init.
+  //   // const a: ArrayLiteralExpression
+  //   ensureArrayLength(arr, index, `[]`)
+  //   arr.insertElement(index, data)
+  // } else {
     init.removeElement(fileId)
-    init.insertElement(fileId, data)
-  }
+    const newEl = init.insertElement(fileId, `[]`) as ArrayLiteralExpression
+    data.forEach(d=>{
+      newEl.addElement(d)
+    })
+  // }
 }
 
 
