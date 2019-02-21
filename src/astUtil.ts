@@ -34,7 +34,8 @@ export function array2DInsert(init: ArrayLiteralExpression, fileId: number, inde
     arr.insertElement(index, data)
   }
   else {
-    init.insertElement(fileId, data)
+      init.removeElement(fileId)
+      init.insertElement(fileId, data)
   }
 }
 /** make sure there are items until index-1 (se we can add the index-th) */

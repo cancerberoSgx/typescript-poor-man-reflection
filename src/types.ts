@@ -34,7 +34,7 @@ export interface ReplaceProjectFunctionCallOptions extends ReplaceFileFunctionCa
   /**
    * Shows usage help and exit.
    */
-  help?: string
+  help?: boolean
 
   /**
    * for third party using it programmatically, they can declare new CLI options and their descriptions so
@@ -43,6 +43,11 @@ export interface ReplaceProjectFunctionCallOptions extends ReplaceFileFunctionCa
   extraOptionsHelp?: {
     [optionName: string]: string
   }
+
+  /** 
+   * If provided it will only modify files that match the given glob 
+   */
+  filePattern?: string
 }
 
 /**
@@ -98,7 +103,7 @@ export interface ReplaceFileFunctionCallOptions {
 }
 
 export type Extractor = (n: CallExpression, index: number, 
-  getterBuilder: (index:number)=>string)=>ExtractorResult|string
+  getterBuilder: (index:number)=>string, options: Partial<ReplaceProjectFunctionCallOptions>)=>ExtractorResult|string
 
 export interface ExtractorResult {
   argument: string

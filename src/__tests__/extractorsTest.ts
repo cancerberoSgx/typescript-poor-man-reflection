@@ -1,5 +1,6 @@
 import { Project, TypeGuards, CallExpression, SyntaxKind } from 'ts-simple-ast'
 import { replaceFileFunctionCall } from '../replaceFileFunctionCall'
+import { defaultOptions } from '../replaceProjectFunctionCall';
 
 describe('extractors', () => {
   describe('custom extractors', () => {
@@ -16,6 +17,7 @@ describe('extractors', () => {
   `
       )
       replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
+        ...defaultOptions,
         moduleSpecifier: 'my-custom-module',
         extracts: {
           Custom: n => '"custom"'
@@ -54,6 +56,7 @@ const body = AllDeclarationsInThisFile<any>()
       )
 
       replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
+        ...defaultOptions,
         extracts: {
           /** return all declarations that contribute with names and are inside a describe() it() or test() */
           AllDeclarationsInThisFile: (n: CallExpression) => {
