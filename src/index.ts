@@ -3,7 +3,7 @@ import { ExtractorOptions } from './types'
 export const TypeText = F
 export const NodeText = F
 export const BodyText = F
-export const ThisBlockText = F
+export const ThisBlockText = function<T=any>(t?: string) { return t! }
 export const PrintAst = (config: ExtractorOptions, t?: any) => t!
 
 function F<T>(t?: string): string {

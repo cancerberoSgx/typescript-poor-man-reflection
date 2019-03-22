@@ -1,6 +1,7 @@
 import { Project, TypeGuards, CallExpression, SyntaxKind } from 'ts-simple-ast'
 import { replaceFileFunctionCall } from '../replaceFileFunctionCall'
 import { defaultOptions } from '../replaceProjectFunctionCall'
+import { removeWhites } from 'misc-utils-of-mine-generic';
 
 describe('extractors', () => {
   describe('custom extractors', () => {
@@ -154,11 +155,11 @@ function f(){
   var b = 1
   var thisBlock = ThisBlockText<any>()
 }
-      `
+      `.trim()
       )
       replaceFileFunctionCall(project.getSourceFile('test.ts')!, { extractorDataMode: 'asStringLiteral' })
-      expect(project.getSourceFile('test.ts')!.getText()).toContain(
-        `var thisBlock = ThisBlockText<any>(\"\\n  var b = 1\\n  var thisBlock = ThisBlockText<any>()\\n\")`
+      expect(removeWhites(project.getSourceFile('test.ts')!.getText())).toContain(
+        `var thisBlock = ThisBlockText<any>("\\n var b = 1\\n var thisBlock = ThisBlockText<any>()\\n")`
       )
     })
   })
@@ -173,11 +174,11 @@ const body = BodyText<typeof f>()
 function f(){
   const c = BodyText<typeof f>()
 }
-      `
+      `.trim()
       )
 
       replaceFileFunctionCall(project.getSourceFile('test.ts')!, { extractorDataMode: 'asStringLiteral' })
-      expect(project.getSourceFile('test.ts')!.getText()).toContain(
+      expect(removeWhites(project.getSourceFile('test.ts')!.getText())).toContain(
         `const c = BodyText<typeof f>("const c = BodyText<typeof f>()")`
       )
     })
