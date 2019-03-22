@@ -4,67 +4,33 @@
 
 ## Index
 
-### Type aliases
-
-* [NotUndefined](_util_.md#notundefined)
-
 ### Functions
 
-* [notUndefined](_util_.md#notundefined-1)
-* [quote](_util_.md#quote)
+* [evaluate](_util_.md#evaluate)
 
 ---
 
-## Type aliases
-
-<a id="notundefined"></a>
-
-###  NotUndefined
-
-**Ƭ NotUndefined**: *`Exclude`<`T`, `undefined`>*
-
-*Defined in [util.ts:5](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/util.ts#L5)*
-
-___
-
 ## Functions
 
-<a id="notundefined-1"></a>
+<a id="evaluate"></a>
 
-###  notUndefined
+###  evaluate
 
-▸ **notUndefined**<`T`>(n: *`T`*): `boolean`
+▸ **evaluate**<`T`>(s: *`string`*, defaultValue?: *`undefined`*): `T` \| `undefined`
 
-*Defined in [util.ts:6](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/util.ts#L6)*
+*Defined in [util.ts:2](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/util.ts#L2)*
 
 **Type parameters:**
 
 #### T 
 **Parameters:**
 
-| Name | Type |
-| ------ | ------ |
-| n | `T` |
-
-**Returns:** `boolean`
-
-___
-<a id="quote"></a>
-
-###  quote
-
-▸ **quote**(s: *`string`*, q?: *`string`*): `string`
-
-*Defined in [util.ts:1](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/util.ts#L1)*
-
-**Parameters:**
-
 | Name | Type | Default value |
 | ------ | ------ | ------ |
 | s | `string` | - |
-| `Default value` q | `string` | &quot;&#x27;&quot; |
+| `Default value` defaultValue | `undefined` |  undefined |
 
-**Returns:** `string`
+**Returns:** `T` \| `undefined`
 
 ___
 

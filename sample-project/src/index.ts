@@ -1,4 +1,4 @@
-import {TypeText} from 'typescript-poor-man-reflection'
+import {TypeText, PrintAst} from 'typescript-poor-man-reflection'
 type Type<T> = {a: string, b: T}[]
 const n = TypeText<Type<Date>>()
 const b = TypeText<{a:'a'}>()
@@ -11,3 +11,5 @@ function user(s:string){
 
 user(TypeText<number>())
 
+// var s = ''
+// const r = PrintAst<typeof user>(CallExpression)

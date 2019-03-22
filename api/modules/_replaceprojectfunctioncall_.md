@@ -4,8 +4,13 @@
 
 ## Index
 
+### Variables
+
+* [project](_replaceprojectfunctioncall_.md#project)
+
 ### Functions
 
+* [getFullOptions](_replaceprojectfunctioncall_.md#getfulloptions)
 * [includeFile](_replaceprojectfunctioncall_.md#includefile)
 * [replaceProjectFunctionCall](_replaceprojectfunctioncall_.md#replaceprojectfunctioncall)
 
@@ -15,15 +20,44 @@
 
 ---
 
+## Variables
+
+<a id="project"></a>
+
+### `<Let>` project
+
+**● project**: *`Project`*
+
+*Defined in [replaceProjectFunctionCall.ts:50](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/replaceProjectFunctionCall.ts#L50)*
+
+___
+
 ## Functions
 
+<a id="getfulloptions"></a>
+
+###  getFullOptions
+
+▸ **getFullOptions**(o: *`Partial`<[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)>*): `Required`<[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)>
+
+*Defined in [replaceProjectFunctionCall.ts:44](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/replaceProjectFunctionCall.ts#L44)*
+
+**Parameters:**
+
+| Name | Type |
+| ------ | ------ |
+| o | `Partial`<[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)> |
+
+**Returns:** `Required`<[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)>
+
+___
 <a id="includefile"></a>
 
 ###  includeFile
 
 ▸ **includeFile**(f: *`SourceFile`*, config: *`object`*): `boolean`
 
-*Defined in [replaceProjectFunctionCall.ts:11](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/replaceProjectFunctionCall.ts#L11)*
+*Defined in [replaceProjectFunctionCall.ts:11](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/replaceProjectFunctionCall.ts#L11)*
 
 **Parameters:**
 
@@ -43,9 +77,9 @@ ___
 
 ###  replaceProjectFunctionCall
 
-▸ **replaceProjectFunctionCall**(tsConfigFilePath: *`string`*, options: *[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)*, replacements?: *(`undefined` \| [Replacement](../interfaces/_types_.replacement.md))[]*): (`undefined` \| [Replacement](../interfaces/_types_.replacement.md))[]
+▸ **replaceProjectFunctionCall**(tsConfigFilePath: *`string`*, options_: *[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)*, replacements?: *(`undefined` \| [Replacement](../interfaces/_types_.replacement.md))[]*): (`undefined` \| [Replacement](../interfaces/_types_.replacement.md))[]
 
-*Defined in [replaceProjectFunctionCall.ts:46](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/replaceProjectFunctionCall.ts#L46)*
+*Defined in [replaceProjectFunctionCall.ts:54](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/replaceProjectFunctionCall.ts#L54)*
 
 Executes the tool on a given TypeScript project in filesystem. See `Config` documentation.
 
@@ -54,7 +88,7 @@ Executes the tool on a given TypeScript project in filesystem. See `Config` docu
 | Name | Type | Default value |
 | ------ | ------ | ------ |
 | tsConfigFilePath | `string` | - |
-| options | [ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md) | - |
+| options_ | [ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md) | - |
 | `Default value` replacements | (`undefined` \| [Replacement](../interfaces/_types_.replacement.md))[] |  [] |
 
 **Returns:** (`undefined` \| [Replacement](../interfaces/_types_.replacement.md))[]
@@ -69,7 +103,7 @@ ___
 
 **defaultOptions**: *`object`*
 
-*Defined in [replaceProjectFunctionCall.ts:29](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/replaceProjectFunctionCall.ts#L29)*
+*Defined in [replaceProjectFunctionCall.ts:29](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/replaceProjectFunctionCall.ts#L29)*
 
 <a id="defaultoptions.clean"></a>
 
@@ -77,7 +111,7 @@ ___
 
 **● clean**: *`false`* = false
 
-*Defined in [replaceProjectFunctionCall.ts:31](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/replaceProjectFunctionCall.ts#L31)*
+*Defined in [replaceProjectFunctionCall.ts:31](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/replaceProjectFunctionCall.ts#L31)*
 
 ___
 <a id="defaultoptions.debug"></a>
@@ -86,7 +120,7 @@ ___
 
 **● debug**: *`false`* = false
 
-*Defined in [replaceProjectFunctionCall.ts:37](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/replaceProjectFunctionCall.ts#L37)*
+*Defined in [replaceProjectFunctionCall.ts:37](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/replaceProjectFunctionCall.ts#L37)*
 
 ___
 <a id="defaultoptions.extraoptionshelp"></a>
@@ -95,7 +129,7 @@ ___
 
 **● extraOptionsHelp**: *`object`*
 
-*Defined in [replaceProjectFunctionCall.ts:38](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/replaceProjectFunctionCall.ts#L38)*
+*Defined in [replaceProjectFunctionCall.ts:38](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/replaceProjectFunctionCall.ts#L38)*
 
 #### Type declaration
 
@@ -106,7 +140,7 @@ ___
 
 **● extractorDataFolderFileName**: *`string`* = "__poor_man_reflection__"
 
-*Defined in [replaceProjectFunctionCall.ts:35](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/replaceProjectFunctionCall.ts#L35)*
+*Defined in [replaceProjectFunctionCall.ts:35](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/replaceProjectFunctionCall.ts#L35)*
 
 ___
 <a id="defaultoptions.extractordatamode"></a>
@@ -115,7 +149,7 @@ ___
 
 **● extractorDataMode**: *"prependVariable"* = "prependVariable"
 
-*Defined in [replaceProjectFunctionCall.ts:34](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/replaceProjectFunctionCall.ts#L34)*
+*Defined in [replaceProjectFunctionCall.ts:34](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/replaceProjectFunctionCall.ts#L34)*
 
 ___
 <a id="defaultoptions.extractordatavariablename"></a>
@@ -124,7 +158,7 @@ ___
 
 **● extractorDataVariableName**: *`string`* = "__extractor_prepend__"
 
-*Defined in [replaceProjectFunctionCall.ts:33](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/replaceProjectFunctionCall.ts#L33)*
+*Defined in [replaceProjectFunctionCall.ts:33](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/replaceProjectFunctionCall.ts#L33)*
 
 ___
 <a id="defaultoptions.extracts"></a>
@@ -133,7 +167,7 @@ ___
 
 **● extracts**: *`object`* =  defaultExtractors
 
-*Defined in [replaceProjectFunctionCall.ts:32](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/replaceProjectFunctionCall.ts#L32)*
+*Defined in [replaceProjectFunctionCall.ts:32](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/replaceProjectFunctionCall.ts#L32)*
 
 #### Type declaration
 
@@ -146,7 +180,7 @@ ___
 
 **● filePattern**: *`string`* = ""
 
-*Defined in [replaceProjectFunctionCall.ts:36](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/replaceProjectFunctionCall.ts#L36)*
+*Defined in [replaceProjectFunctionCall.ts:36](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/replaceProjectFunctionCall.ts#L36)*
 
 ___
 <a id="defaultoptions.help"></a>
@@ -155,7 +189,7 @@ ___
 
 **● help**: *`false`* = false
 
-*Defined in [replaceProjectFunctionCall.ts:39](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/replaceProjectFunctionCall.ts#L39)*
+*Defined in [replaceProjectFunctionCall.ts:39](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/replaceProjectFunctionCall.ts#L39)*
 
 ___
 <a id="defaultoptions.modulespecifier"></a>
@@ -164,7 +198,7 @@ ___
 
 **● moduleSpecifier**: *`string`* = "typescript-poor-man-reflection"
 
-*Defined in [replaceProjectFunctionCall.ts:30](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/replaceProjectFunctionCall.ts#L30)*
+*Defined in [replaceProjectFunctionCall.ts:30](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/replaceProjectFunctionCall.ts#L30)*
 
 ___
 <a id="defaultoptions.out"></a>
@@ -173,7 +207,7 @@ ___
 
 **● out**: *`string`* = ""
 
-*Defined in [replaceProjectFunctionCall.ts:40](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/replaceProjectFunctionCall.ts#L40)*
+*Defined in [replaceProjectFunctionCall.ts:40](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/replaceProjectFunctionCall.ts#L40)*
 
 ___
 <a id="defaultoptions.tsconfigfilepath"></a>
@@ -182,7 +216,7 @@ ___
 
 **● tsConfigFilePath**: *`string`* = "./tsconfig.json"
 
-*Defined in [replaceProjectFunctionCall.ts:41](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/replaceProjectFunctionCall.ts#L41)*
+*Defined in [replaceProjectFunctionCall.ts:41](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/replaceProjectFunctionCall.ts#L41)*
 
 ___
 

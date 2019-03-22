@@ -6,6 +6,12 @@
 
 **ExtractorClass**
 
+## Implemented by
+
+* [AbstractExtractor](../classes/_extractors_abstractextractor_.abstractextractor.md)
+* [Ast](../classes/_extractors_ast_.ast.md)
+* [Ast](../classes/_extractors_ast_.ast.md)
+
 ## Index
 
 ### Methods
@@ -21,17 +27,22 @@
 
 ###  extract
 
-▸ **extract**(options: *[ExtractOptions](_types_.extractoptions.md)*): `ReturnType`<[ExtractorFn](../modules/_types_.md#extractorfn)>
+▸ **extract**(n: *`CallExpression`*, index: *`number`*, getter: *[ExtractorGetter](../modules/_types_.md#extractorgetter)*, options: *`Required`<[ReplaceProjectFunctionCallOptions](_types_.replaceprojectfunctioncalloptions.md)>*, variableAccessor: *[FileVariableAccessor](../modules/_types_.md#filevariableaccessor)*, project?: *`Project`*): [ExtractorResult](_types_.extractorresult.md)
 
-*Defined in [types.ts:115](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/types.ts#L115)*
+*Defined in [types.ts:118](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/types.ts#L118)*
 
 **Parameters:**
 
 | Name | Type |
 | ------ | ------ |
-| options | [ExtractOptions](_types_.extractoptions.md) |
+| n | `CallExpression` |
+| index | `number` |
+| getter | [ExtractorGetter](../modules/_types_.md#extractorgetter) |
+| options | `Required`<[ReplaceProjectFunctionCallOptions](_types_.replaceprojectfunctioncalloptions.md)> |
+| variableAccessor | [FileVariableAccessor](../modules/_types_.md#filevariableaccessor) |
+| `Optional` project | `Project` |
 
-**Returns:** `ReturnType`<[ExtractorFn](../modules/_types_.md#extractorfn)>
+**Returns:** [ExtractorResult](_types_.extractorresult.md)
 
 ___
 <a id="getconfig"></a>
@@ -40,7 +51,7 @@ ___
 
 ▸ **getConfig**(): [ExtractorConfig](_types_.extractorconfig.md)
 
-*Defined in [types.ts:114](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/types.ts#L114)*
+*Defined in [types.ts:117](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/types.ts#L117)*
 
 **Returns:** [ExtractorConfig](_types_.extractorconfig.md)
 

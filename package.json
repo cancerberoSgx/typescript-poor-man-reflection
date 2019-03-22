@@ -21,6 +21,8 @@
   },
   "dependencies": {
     "minimatch": "^3.0.4",
+    "misc-utils-of-mine-generic": "0.0.11",
+    "misc-utils-of-mine-typescript": "0.0.12",
     "shelljs": "^0.8.3",
     "ts-simple-ast": "^21.0.4",
     "yargs-parser": "^13.0.0"

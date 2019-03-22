@@ -14,6 +14,7 @@
 * [index](_types_.extractoptions.md#index)
 * [n](_types_.extractoptions.md#n)
 * [options](_types_.extractoptions.md#options)
+* [project](_types_.extractoptions.md#project)
 * [variableAccessor](_types_.extractoptions.md#variableaccessor)
 
 ---
@@ -26,7 +27,7 @@
 
 **● getter**: *[ExtractorGetter](../modules/_types_.md#extractorgetter)*
 
-*Defined in [types.ts:120](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/types.ts#L120)*
+*Defined in [types.ts:131](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/types.ts#L131)*
 
 ___
 <a id="index"></a>
@@ -35,7 +36,7 @@ ___
 
 **● index**: *`number`*
 
-*Defined in [types.ts:119](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/types.ts#L119)*
+*Defined in [types.ts:130](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/types.ts#L130)*
 
 ___
 <a id="n"></a>
@@ -44,25 +45,34 @@ ___
 
 **● n**: *`CallExpression`*
 
-*Defined in [types.ts:118](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/types.ts#L118)*
+*Defined in [types.ts:129](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/types.ts#L129)*
 
 ___
 <a id="options"></a>
 
 ###  options
 
-**● options**: *`Partial`<[ReplaceProjectFunctionCallOptions](_types_.replaceprojectfunctioncalloptions.md)>*
+**● options**: *`Required`<[ReplaceProjectFunctionCallOptions](_types_.replaceprojectfunctioncalloptions.md)>*
 
-*Defined in [types.ts:121](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/types.ts#L121)*
+*Defined in [types.ts:132](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/types.ts#L132)*
+
+___
+<a id="project"></a>
+
+### `<Optional>` project
+
+**● project**: *`Project`*
+
+*Defined in [types.ts:134](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/types.ts#L134)*
 
 ___
 <a id="variableaccessor"></a>
 
-### `<Optional>` variableAccessor
+###  variableAccessor
 
 **● variableAccessor**: *[FileVariableAccessor](../modules/_types_.md#filevariableaccessor)*
 
-*Defined in [types.ts:122](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/types.ts#L122)*
+*Defined in [types.ts:133](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/types.ts#L133)*
 
 ___
 

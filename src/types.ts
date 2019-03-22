@@ -1,4 +1,4 @@
-import { CallExpression } from 'ts-simple-ast'
+import Project, { CallExpression } from 'ts-simple-ast'
 
 export interface Replacement {
   file: string
@@ -48,6 +48,8 @@ export interface ReplaceProjectFunctionCallOptions extends ReplaceFileFunctionCa
    * If provided it will only modify files that match the given glob
    */
   filePattern?: string
+
+  project?: Project
 }
 
 /**
@@ -108,26 +110,50 @@ interface ExtractorConfig {
   /** if extractor uses first (0-th) argument for their private API they would return 1 so WE can use 1-th to pass data */
   freeArgumentNumber?: number
   /** related to freeArgumentNumber, if we detect no arguments in extractor reserved args, we will need to fill them with dummy values, so here we request which type. */
-  unusedArgumentDefaultValue?: any
+  unusedArgumentDefaultValue?: string
 }
+
 export interface ExtractorClass {
   getConfig?(): ExtractorConfig
-  extract(options: ExtractOptions): ReturnType<ExtractorFn>
+  extract(
+    n: CallExpression,
+    index: number,
+    getter: ExtractorGetter,
+    options: Required<ReplaceProjectFunctionCallOptions>,
+    variableAccessor: FileVariableAccessor,
+    project?: Project
+  ): ExtractorResult
 }
+
 export interface ExtractOptions {
   n: CallExpression
   index: number
   getter: ExtractorGetter
-  options: Partial<ReplaceProjectFunctionCallOptions>
-  variableAccessor?: FileVariableAccessor
+  options: Required<ReplaceProjectFunctionCallOptions>
+  variableAccessor: FileVariableAccessor
+  project?: Project
 }
+
+/**
+ * These are options that user can use to configure a Extractor, could be as convention in the first arg,
+ * ex: NodeType({target: aNode, mode: 'asStringLiteral', assignTo: 'nextVariable})
+ */
+export interface ExtractorOptions {
+  mode?: ExtractorDataMode
+  removeMe?: boolean
+  destination?: 'nextVariableDeclaration|nextReturnExpression' // or a selector like ast-dom ?
+  // etc
+}
+
 export type Extractor = (Partial<ExtractorClass> & ExtractorFn) | (ExtractorClass & { extract: ExtractorFn })
+
 export type ExtractorFn = (
   n: CallExpression,
   index: number,
   getter: ExtractorGetter,
-  options: Partial<ReplaceProjectFunctionCallOptions>,
-  variableAccessor?: FileVariableAccessor
+  options: Required<ReplaceProjectFunctionCallOptions>,
+  variableAccessor: FileVariableAccessor,
+  project?: Project
 ) => ExtractorResult | string
 
 export interface ExtractorResult {

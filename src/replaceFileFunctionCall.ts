@@ -1,10 +1,17 @@
-import Project, { SyntaxKind, Identifier, SourceFile, Node } from 'ts-simple-ast'
-import { Replacement, ReplaceFileFunctionCallOptions, ReplaceProjectFunctionCallOptions } from './types'
-import { quote } from './util'
+import Project, { SyntaxKind, Identifier, SourceFile, Node, CallExpression } from 'ts-simple-ast'
+import {
+  Replacement,
+  ReplaceFileFunctionCallOptions,
+  ReplaceProjectFunctionCallOptions,
+  FileVariableAccessor,
+  ExtractorGetter
+} from './types'
+import { quote } from 'misc-utils-of-mine-generic'
+import { notUndefined } from 'misc-utils-of-mine-typescript'
 import { defaultExtractors, isExtractorFn } from './extractors'
 import { extractorGetterBuilder, writeExtractorData, getFileId } from './extractorData'
 import { extractCallExpressions } from './astUtil'
-import { defaultOptions } from './replaceProjectFunctionCall'
+import { defaultOptions, getFullOptions } from './replaceProjectFunctionCall'
 
 /**
  * JavaScript API to replace arguments of all function expression calls in given (ts-simple-ast SourceFile)
@@ -14,7 +21,9 @@ export function replaceFileFunctionCall(
   sourceFile: SourceFile,
   options_: Partial<ReplaceProjectFunctionCallOptions> = defaultOptions
 ): (Replacement | undefined)[] {
-  const options: Required<ReplaceProjectFunctionCallOptions> = { ...defaultOptions, ...options_ }
+  // const options: Required<ReplaceProjectFunctionCallOptions> = { ...defaultOptions, ...options_ }
+  const options = getFullOptions(options_)
+
   const {
     moduleSpecifier = 'typescript-poor-man-reflection',
     clean = false,
@@ -29,10 +38,10 @@ export function replaceFileFunctionCall(
   const callExpressions = extractCallExpressions(sourceFile, moduleSpecifier, Object.keys(extracts))
   let extractorData: string[] = []
   const fileId = getFileId(sourceFile, { extractorDataFolderFileName: extractorDataFolderFileName })
-  callExpressions.forEach((c, index) => {
+  callExpressions.filter(notUndefined).forEach((c, index) => {
     const functionName = c.getFirstChildByKind(SyntaxKind.Identifier)!.getText()
     const extract = extracts[functionName]
-    const fileVariableAccessor = (name: string, value?: string) => {
+    const fileVariableAccessor: FileVariableAccessor = (name: string, value?: string) => {
       if (value) {
         // called at compile time
         fileVariables[`${fileId}_${name}`] = value
@@ -51,13 +60,24 @@ export function replaceFileFunctionCall(
     const extractorConfig = typeof extract.getConfig !== 'undefined' ? extract.getConfig() : {}
     const argIndex = typeof extractorConfig.freeArgumentNumber !== 'undefined' ? extractorConfig.freeArgumentNumber : 0
 
+    // console.log('argIndex', argIndex)
+
+    const fullOptions = getFullOptions({ ...options })
     // const defaultArgValue = extractorConfig.unusedArgumentDefaultValue
-    var extractArgs: [any, any, any, any, any] = [
+    var extractArgs: [
+      CallExpression,
+      number,
+      ExtractorGetter,
+      Required<ReplaceProjectFunctionCallOptions>,
+      FileVariableAccessor,
+      Project
+    ] = [
       c,
       index,
-      extractorGetterBuilder({ ...defaultOptions, ...options }, index, sourceFile, c),
-      options,
-      fileVariableAccessor
+      extractorGetterBuilder(fullOptions, index, sourceFile, c),
+      { ...fullOptions, ...options },
+      fileVariableAccessor,
+      options.project
     ]
 
     // extractor owned arguments are empty - we need to fill them up in order to add ours.

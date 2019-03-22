@@ -5,9 +5,12 @@ import {
   ArrayLiteralExpression,
   StringLiteral,
   ObjectLiteralExpression,
-  CallExpression
+  CallExpression,
+  Node,
+  Identifier
 } from 'ts-simple-ast'
-import { notUndefined, quote } from './util'
+import { notUndefined } from 'misc-utils-of-mine-typescript'
+import { asArray, quote } from 'misc-utils-of-mine-generic'
 
 /**
  * extract those CallExpressions from given sourceFile which declared in a module specifier with
@@ -33,6 +36,17 @@ export function extractCallExpressions(sourceFile: SourceFile, moduleSpecifier: 
     .filter(notUndefined)
 }
 
+export function getDefinitionsOf(n: Identifier | Identifier[]) {
+  asArray(n)
+    .filter(i => i)
+    .filter(notUndefined)
+    .filter(i =>
+      i
+        .findReferences()
+        .map(r => r.getDefinition())
+        .map(d => d.getDeclarationNode())
+    )
+}
 export function array2DInsert(init: ArrayLiteralExpression, fileId: number, index: number, data: string[]) {
   ensureArrayLength(init, fileId + 1, `[]`)
   init.removeElement(fileId)

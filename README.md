@@ -74,18 +74,31 @@ Executing the program, gives, as expected:
 $ npx ts-node test.ts 
 undefined undefined
 ```
-But now we transpile our code and voila
+But now we transpile our code and:
 ```sh
 $ npx typescript-poor-man-reflection
 $ npx ts-node test.ts 
 UnionOf<[1, Date[]]> UnionOf<[1, boolean | string]>
 ```
+But at a terrible cost, your files have been modified!
+
+## Data Modes
+   
+ * `folderFile`, the data is stored in a separate file that exports a function to access to
+    array. An import declaration will be added to the file and function calls will use the imported function
+    to access the array. There will be one of these files per folder with the name given by option
+    `extractorDataFolderFileName` that will contain the data of all this folder's immediate children.
+   
+ * If `prependVariable`, an array variable will be prepended at the top of the same file and function calls
+    will access the array directly.
+
+    If `asStringLiteral` then the whole thing will be passed as a single string in the parameter (this is mostly useful for debugging since it will pollute the code a lot)
+  
+
 ## Options
-
-
 In general all API options are supported in the CLI as long as their types supported (function options are not supported in the CLI). All options are documented in [ReplaceProjectFunctionCallOptions interface](api/interfaces/_types_.replaceprojectfunctioncalloptions.md).
 
-### CLI
+### CLI API
 
 ```
 npx typescript-poor-man-reflection
@@ -155,49 +168,37 @@ Trying to develop a preprocessing tool to mutate TypeScript and replace certain 
 
 ## IDEAS
 
-
-##Explained example in detail (OLD)
-
-
-## Example
-
+### dataMode configurable from call
+And more general, by convention, let the first arg to be the configuration object
 ```
-npm install -D typescript-poor-man-reflection
+const a = TypeText<SomeType>({mode: 'asStringLiteral'})
 ```
 
-```ts
-import { TypeText } from 'typescript-poor-man-reflection'
-import { UnionOf } from '..'
-const x = TypeText<UnionOf<[1, Date[]]>>()
-const z = TypeText<UnionOf<[1, boolean | string]>>()
-console.log(x, z)
+### Idea: refactor tools programmatically API: example: 
+
+```
+ import {Fruit} from './other'
+ Rename<Fruit>('Vegetable')
+ ```
+
+ ```
+function f(){}
+Move(f, '../util')
+ ```
+
+###  data serialization
+
+```// assets.ts
+type files = Tuple<Ls('-l', '../assets/**/*.json')> // type ['f1.json', ...]
+export jsonfiles = Map<files>(fileName=>({fileName, content: readFileSync(f))}) // array with file contents {fileName, content}[]
 ```
 
-Executing the program gives, as expected:
+### IoC
 
-```sh
-undefined undefined
 ```
+const impl = GetImplementation<SomeInterface>({some: 'options'})
 
-But executing:
+class Impl1 implements SomeInterface {...}
+RegisterImplementation<SomeInterface>(some, Impl1)
+...
 
-```sh
-npx typescript-poor-man-reflection
-```
-
-and running the program again we get:
-
-```sh
-Type<Date> { a: 'a' } { a: "a" }
-UnionOf<[1, Date[]]> UnionOf<[1, boolean | string]>
-```
-
-But at a terrible cost, go back to your source file and see how it changed:
-
-```ts
-import TypeText from 'typescript-poor-man-reflection'
-import { UnionOf } from '..'
-const x = TypeText<UnionOf<[1, Date[]]>>('UnionOf<[1, Date[]]>')
-const z = TypeText<UnionOf<[1, boolean | string]>>('UnionOf<[1, boolean | string]>')
-console.log(x, z)
-```

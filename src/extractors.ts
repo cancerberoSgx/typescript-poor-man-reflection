@@ -1,15 +1,24 @@
-import { CallExpression, SyntaxKind, TypeGuards } from 'ts-simple-ast'
-import { ExtractorFn, Extractor, ExtractorClass, ExtractOptions, ExtractorResult } from './types'
-import { quote } from './util'
+import Project, { CallExpression, SyntaxKind, TypeGuards } from 'ts-simple-ast'
+import {
+  ExtractorFn,
+  Extractor,
+  ExtractorGetter,
+  ExtractOptions,
+  FileVariableAccessor,
+  ReplaceProjectFunctionCallOptions,
+  ExtractorResult
+} from './types'
+import { quote } from 'misc-utils-of-mine-generic'
 import { getFirstTypeArgumentDefinitionBlock } from './astUtil'
+import { Ast } from './extractors/ast'
 
 export const defaultExtractors: { [k: string]: Extractor } = {
   TypeText: (n: CallExpression, index, getter, options, fileVariableAccessor) => {
     return options.extractorDataMode === 'asStringLiteral'
-      ? quote(n.getTypeArguments()[0].getText())
+      ? quote(n.getTypeArguments()[0].getText(), "'")
       : {
           argument: getter(index),
-          prependToFile: quote(n.getTypeArguments()[0].getText())
+          prependToFile: quote(n.getTypeArguments()[0].getText(), "'")
         }
   },
   NodeText: (n: CallExpression, index, getter, options, fileVariableAccessor) => {
@@ -67,22 +76,18 @@ export const defaultExtractors: { [k: string]: Extractor } = {
       argument: getter(index),
       prependToFile: result
     }
-  }
+  },
+
+  //   PrintAst(n: CallExpression, index: number,getter: ExtractorGetter, options :Required<ReplaceProjectFunctionCallOptions>, variableAccessor: FileVariableAccessor ) : ExtractorResult{
+  //     const o = {options, n, index, variableAccessor, getter}
+  //     const  a= new Ast({}, o)
+  // return a.extract(o)
+  //   }
+
+  PrintAst: new Ast()
+  // new Ast({}, o)
 }
 
 export function isExtractorFn(e: Extractor): e is ExtractorFn {
   return typeof e.extract === 'undefined'
-}
-
-class NodeType implements ExtractorClass{
-  extract(options: ExtractOptions): ExtractorResult {
-    const id = options.n.getFirstAncestorByKind(SyntaxKind.Identifier)
-    if(id){
-
-    }else {
-      
-    }
-    throw new Error('Method not implemented.');
-  }
-
 }

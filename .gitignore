@@ -2,3 +2,4 @@ node_modules
 dist
 *.tgz
 tmp
+__poor_man_reflection__.ts

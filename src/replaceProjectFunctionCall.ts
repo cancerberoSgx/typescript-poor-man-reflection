@@ -26,7 +26,7 @@ export function includeFile(f: SourceFile, config: { extractorDataFolderFileName
   }
 }
 
-export const defaultOptions: Required<ReplaceProjectFunctionCallOptions> = {
+export const defaultOptions: ReplaceProjectFunctionCallOptions = {
   moduleSpecifier: 'typescript-poor-man-reflection',
   clean: false,
   extracts: defaultExtractors,
@@ -40,23 +40,49 @@ export const defaultOptions: Required<ReplaceProjectFunctionCallOptions> = {
   out: '',
   tsConfigFilePath: './tsconfig.json'
 }
+
+export function getFullOptions(
+  o: Partial<ReplaceProjectFunctionCallOptions>
+): Required<ReplaceProjectFunctionCallOptions> {
+  return { ...defaultOptions, project, ...(o as any) }
+}
+
+let project!: Project
 /**
  * Executes the tool on a given TypeScript project in filesystem. See `Config` documentation.
  */
 export function replaceProjectFunctionCall(
   tsConfigFilePath: string,
-  options: ReplaceProjectFunctionCallOptions,
+  options_: ReplaceProjectFunctionCallOptions,
   replacements: (Replacement | undefined)[] = []
 ) {
-  const project = new Project({
+  project = new Project({
     tsConfigFilePath,
     addFilesFromTsConfig: true
   })
+  // const options: Required<ReplaceProjectFunctionCallOptions> = {
+  //   ...defaultOptions,
+  //   ...options_,
+  //   moduleSpecifier: 'typescript-poor-man-reflection',
+  //   clean: false,
+  //   extracts: defaultExtractors,
+  //   extractorDataVariableName: '__extractor_prepend__',
+  //   extractorDataMode: 'prependVariable',
+  //   extractorDataFolderFileName: '__poor_man_reflection__',
+  //   filePattern: '',
+  //   debug: false,
+  //   extraOptionsHelp: {},
+  //   help: false,
+  //   out: '',
+  //   tsConfigFilePath: './tsconfig.json',
+  //   project
+  // }
+  const options = getFullOptions(options_)
   project
     .getSourceFiles()
     .filter(f => {
       // we remove all folderFileData files always
-      if (f.getBaseName().includes(options.extractorDataFolderFileName || defaultOptions.extractorDataFolderFileName)) {
+      if (f.getBaseName().includes(options.extractorDataFolderFileName)) {
         f.deleteImmediatelySync()
         return false
       }

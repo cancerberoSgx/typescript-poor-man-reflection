@@ -82,7 +82,7 @@ $ npx ts-node test.ts
 undefined undefined
 ```
 
-But now we transpile our code and voila
+But now we transpile our code and:
 
 ```sh
 $ npx typescript-poor-man-reflection
@@ -90,12 +90,24 @@ $ npx ts-node test.ts
 UnionOf<[1, Date[]]> UnionOf<[1, boolean \| string]>
 ```
 
+But at a terrible cost, your files have been modified!
+
+Data Modes
+----------
+
+*   `folderFile`, the data is stored in a separate file that exports a function to access to array. An import declaration will be added to the file and function calls will use the imported function to access the array. There will be one of these files per folder with the name given by option `extractorDataFolderFileName` that will contain the data of all this folder's immediate children.
+    
+*   If `prependVariable`, an array variable will be prepended at the top of the same file and function calls will access the array directly.
+    
+    If `asStringLiteral` then the whole thing will be passed as a single string in the parameter (this is mostly useful for debugging since it will pollute the code a lot)
+    
+
 Options
 -------
 
 In general all API options are supported in the CLI as long as their types supported (function options are not supported in the CLI). All options are documented in [ReplaceProjectFunctionCallOptions interface](api/interfaces/_types_.replaceprojectfunctioncalloptions.md).
 
-### CLI
+### CLI API
 
 ```
 npx typescript-poor-man-reflection
@@ -170,51 +182,39 @@ TODO / ISSUES
 IDEAS
 -----
 
-##Explained example in detail (OLD)
+### dataMode configurable from call
 
-Example
--------
+And more general, by convention, let the first arg to be the configuration object
 
 ```
-npm install -D typescript-poor-man-reflection
+const a = TypeText<SomeType>({mode: 'asStringLiteral'})
 ```
 
-```ts
-import { TypeText } from 'typescript-poor-man-reflection'
-import { UnionOf } from '..'
-const x = TypeText<UnionOf<[1, Date[]]>>()
-const z = TypeText<UnionOf<[1, boolean \| string]>>()
-console.log(x, z)
+### Idea: refactor tools programmatically API: example:
+
+```
+ import {Fruit} from './other'
+ Rename<Fruit>('Vegetable')
 ```
 
-Executing the program gives, as expected:
-
-```sh
-undefined undefined
+```
+function f(){}
+Move(f, '../util')
 ```
 
-But executing:
+### data serialization
 
-```sh
-npx typescript-poor-man-reflection
+`` ` ``// assets.ts type files = Tuple<Ls('-l', '../assets/_\*/_.json')> // type \['f1.json', ...\] export jsonfiles = Map(fileName=>({fileName, content: readFileSync(f))}) // array with file contents {fileName, content}\[\]
+
 ```
 
-and running the program again we get:
+### IoC
 
-```sh
-Type<Date> { a: 'a' } { a: "a" }
-UnionOf<[1, Date[]]> UnionOf<[1, boolean \| string]>
 ```
 
-But at a terrible cost, go back to your source file and see how it changed:
+const impl = GetImplementation({some: 'options'})
 
-```ts
-import TypeText from 'typescript-poor-man-reflection'
-import { UnionOf } from '..'
-const x = TypeText<UnionOf<[1, Date[]]>>('UnionOf<[1, Date[]]>')
-const z = TypeText<UnionOf<[1, boolean \| string]>>('UnionOf<[1, boolean \| string]>')
-console.log(x, z)
-```
+class Impl1 implements SomeInterface {...} RegisterImplementation(some, Impl1) ...
 
 ## Index
 
@@ -223,6 +223,8 @@ console.log(x, z)
 * ["astUtil"](modules/_astutil_.md)
 * ["extractorData"](modules/_extractordata_.md)
 * ["extractors"](modules/_extractors_.md)
+* ["extractors/abstractExtractor"](modules/_extractors_abstractextractor_.md)
+* ["extractors/ast"](modules/_extractors_ast_.md)
 * ["main"](modules/_main_.md)
 * ["replaceFileFunctionCall"](modules/_replacefilefunctioncall_.md)
 * ["replaceProjectFunctionCall"](modules/_replaceprojectfunctioncall_.md)

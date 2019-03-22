@@ -1,12 +1,17 @@
 import { TypeGuards, SyntaxKind, SourceFile, CallExpression, ArrayLiteralExpression } from 'ts-simple-ast'
-import { ReplaceFileFunctionCallOptions, ExtractorGetter, ExtractorDataMode } from './types'
+import {
+  ReplaceFileFunctionCallOptions,
+  ExtractorGetter,
+  ExtractorDataMode,
+  ReplaceProjectFunctionCallOptions
+} from './types'
 import {
   array2DInsert,
   objectLiteralInsert,
   removeDataFolderFileNameImportDeclaration,
   removePrependVariableDeclaration
 } from './astUtil'
-import { includeFile, defaultOptions } from './replaceProjectFunctionCall'
+import { includeFile, defaultOptions, getFullOptions } from './replaceProjectFunctionCall'
 
 /**
  * Responsible of reading the extractor data. It provides a getter function that returns a JS expression that
@@ -30,7 +35,6 @@ export function extractorGetterBuilder(
     throw 'extractorDataMode option invalid ' + options.extractorDataMode
   }
 }
-
 /**
  * Responsible of writing extractor data according to extractorDataMode. instead of fileName as string, we use
  * the file index  in the directory's children sorted alphabetically so the get() expressions are smaller.
@@ -43,7 +47,9 @@ export function writeExtractorData(
   prependToFile: string[],
   fileVariables: { [name: string]: string }
 ) {
-  const options: Required<ReplaceFileFunctionCallOptions> = { ...defaultOptions, ...options_ }
+  const options = getFullOptions(options_)
+
+  // const options: Required<ReplaceFileFunctionCallOptions> = { ...defaultOptions, ...options_ }
   if (sourceFile.getBaseName().includes(options.extractorDataFolderFileName)) {
     return
   }
@@ -77,12 +83,7 @@ export function writeExtractorData(
 
 function ensureDataFile(
   sourceFile: SourceFile,
-  options: {
-    extractorDataVariableName: string
-    clean: boolean
-    extractorDataMode?: ExtractorDataMode
-    extractorDataFolderFileName: string
-  },
+  options: ReplaceProjectFunctionCallOptions,
   prependToFile: string[],
   fileVariables: { [name: string]: string }
 ) {
@@ -112,7 +113,7 @@ export function get(fileId: number, index: number) {
     dataFile.saveSync()
   }
 
-  const fileId = getFileId(sourceFile, options)
+  const fileId = getFileId(sourceFile, { extractorDataFolderFileName: options.extractorDataFolderFileName! })
   const v = dataFile.getVariableDeclarationOrThrow('data')
   const init = v.getInitializerIfKindOrThrow(SyntaxKind.ArrayLiteralExpression)
   array2DInsert(init, fileId, -1, prependToFile)

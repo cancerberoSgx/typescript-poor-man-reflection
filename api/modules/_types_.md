@@ -9,6 +9,7 @@
 * [ExtractOptions](../interfaces/_types_.extractoptions.md)
 * [ExtractorClass](../interfaces/_types_.extractorclass.md)
 * [ExtractorConfig](../interfaces/_types_.extractorconfig.md)
+* [ExtractorOptions](../interfaces/_types_.extractoroptions.md)
 * [ExtractorResult](../interfaces/_types_.extractorresult.md)
 * [ReplaceFileFunctionCallOptions](../interfaces/_types_.replacefilefunctioncalloptions.md)
 * [ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)
@@ -32,7 +33,7 @@
 
 **Ƭ Extractor**: *`object` & `function` \| [ExtractorClass](../interfaces/_types_.extractorclass.md) & `object`*
 
-*Defined in [types.ts:124](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/types.ts#L124)*
+*Defined in [types.ts:148](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/types.ts#L148)*
 
 ___
 <a id="extractordatamode"></a>
@@ -41,7 +42,7 @@ ___
 
 **Ƭ ExtractorDataMode**: *"prependVariable" \| "folderFile" \| "asStringLiteral"*
 
-*Defined in [types.ts:140](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/types.ts#L140)*
+*Defined in [types.ts:166](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/types.ts#L166)*
 
 ___
 <a id="extractorfn"></a>
@@ -50,10 +51,10 @@ ___
 
 **Ƭ ExtractorFn**: *`function`*
 
-*Defined in [types.ts:125](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/types.ts#L125)*
+*Defined in [types.ts:150](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/types.ts#L150)*
 
 #### Type declaration
-▸(n: *`CallExpression`*, index: *`number`*, getter: *[ExtractorGetter](_types_.md#extractorgetter)*, options: *`Partial`<[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)>*, variableAccessor?: *[FileVariableAccessor](_types_.md#filevariableaccessor)*): [ExtractorResult](../interfaces/_types_.extractorresult.md) \| `string`
+▸(n: *`CallExpression`*, index: *`number`*, getter: *[ExtractorGetter](_types_.md#extractorgetter)*, options: *`Required`<[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)>*, variableAccessor: *[FileVariableAccessor](_types_.md#filevariableaccessor)*, project?: *`Project`*): [ExtractorResult](../interfaces/_types_.extractorresult.md) \| `string`
 
 **Parameters:**
 
@@ -62,8 +63,9 @@ ___
 | n | `CallExpression` |
 | index | `number` |
 | getter | [ExtractorGetter](_types_.md#extractorgetter) |
-| options | `Partial`<[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)> |
-| `Optional` variableAccessor | [FileVariableAccessor](_types_.md#filevariableaccessor) |
+| options | `Required`<[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)> |
+| variableAccessor | [FileVariableAccessor](_types_.md#filevariableaccessor) |
+| `Optional` project | `Project` |
 
 **Returns:** [ExtractorResult](../interfaces/_types_.extractorresult.md) \| `string`
 
@@ -74,7 +76,7 @@ ___
 
 **Ƭ ExtractorGetter**: *`function`*
 
-*Defined in [types.ts:138](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/types.ts#L138)*
+*Defined in [types.ts:164](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/types.ts#L164)*
 
 #### Type declaration
 ▸(index: *`number`*): `string`
@@ -94,7 +96,7 @@ ___
 
 **Ƭ FileVariableAccessor**: *`function`*
 
-*Defined in [types.ts:142](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/47e2c2e/src/types.ts#L142)*
+*Defined in [types.ts:168](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/types.ts#L168)*
 
 setter / getter for variables that are common between same function calls of same file or even different function files (to save data file space). The getter actually returns (at compile time) an expression that when evaluated will return the variable value (at runtime)
 
