@@ -6,6 +6,7 @@
 
 ### Functions
 
+* [isExtractorClass](_extractors_.md#isextractorclass)
 * [isExtractorFn](_extractors_.md#isextractorfn)
 
 ### Object literals
@@ -16,13 +17,30 @@
 
 ## Functions
 
+<a id="isextractorclass"></a>
+
+###  isExtractorClass
+
+▸ **isExtractorClass**(e: *[Extractor](_types_.md#extractor)*): `boolean`
+
+*Defined in [extractors.ts:92](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c505d33/src/extractors.ts#L92)*
+
+**Parameters:**
+
+| Name | Type |
+| ------ | ------ |
+| e | [Extractor](_types_.md#extractor) |
+
+**Returns:** `boolean`
+
+___
 <a id="isextractorfn"></a>
 
 ###  isExtractorFn
 
 ▸ **isExtractorFn**(e: *[Extractor](_types_.md#extractor)*): `boolean`
 
-*Defined in [extractors.ts:91](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/extractors.ts#L91)*
+*Defined in [extractors.ts:89](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c505d33/src/extractors.ts#L89)*
 
 **Parameters:**
 
@@ -42,7 +60,7 @@ ___
 
 **defaultExtractors**: *`object`*
 
-*Defined in [extractors.ts:15](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/extractors.ts#L15)*
+*Defined in [extractors.ts:16](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c505d33/src/extractors.ts#L16)*
 
 <a id="defaultextractors.printast"></a>
 
@@ -50,7 +68,7 @@ ___
 
 **● PrintAst**: *[Ast](../classes/_extractors_ast_.ast.md)* =  new Ast()
 
-*Defined in [extractors.ts:87](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/extractors.ts#L87)*
+*Defined in [extractors.ts:86](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c505d33/src/extractors.ts#L86)*
 
 ___
 <a id="defaultextractors.bodytext"></a>
@@ -59,7 +77,7 @@ ___
 
 ▸ **BodyText**(n: *`CallExpression`*, index: *`number`*, getter: *`function`*, options: *`object`*, fileVariableAccessor: *`function`*): `string` \| `object`
 
-*Defined in [extractors.ts:35](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/extractors.ts#L35)*
+*Defined in [extractors.ts:38](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c505d33/src/extractors.ts#L38)*
 
 **Parameters:**
 
@@ -80,7 +98,7 @@ ___
 
 ▸ **NodeText**(n: *`CallExpression`*, index: *`number`*, getter: *`function`*, options: *`object`*, fileVariableAccessor: *`function`*): `string` \| `object`
 
-*Defined in [extractors.ts:24](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/extractors.ts#L24)*
+*Defined in [extractors.ts:26](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c505d33/src/extractors.ts#L26)*
 
 **Parameters:**
 
@@ -101,7 +119,7 @@ ___
 
 ▸ **NodeType**(n: *`CallExpression`*, index: *`number`*, getter: *`function`*, options: *`object`*, fileVariableAccessor: *`function`*): `object`
 
-*Defined in [extractors.ts:68](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/extractors.ts#L68)*
+*Defined in [extractors.ts:73](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c505d33/src/extractors.ts#L73)*
 
 returns with node type inference information. Usage:
 
@@ -130,7 +148,7 @@ ___
 
 ▸ **ThisBlockText**(n: *`CallExpression`*, index: *`number`*, getter: *`function`*, options: *`object`*, fileVariableAccessor: *`function`*): `string` \| `object`
 
-*Defined in [extractors.ts:46](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/extractors.ts#L46)*
+*Defined in [extractors.ts:50](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c505d33/src/extractors.ts#L50)*
 
 **Parameters:**
 
@@ -151,7 +169,7 @@ ___
 
 ▸ **TypeText**(n: *`CallExpression`*, index: *`number`*, getter: *`function`*, options: *`object`*, fileVariableAccessor: *`function`*): `string` \| `object`
 
-*Defined in [extractors.ts:16](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/extractors.ts#L16)*
+*Defined in [extractors.ts:17](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c505d33/src/extractors.ts#L17)*
 
 **Parameters:**
 

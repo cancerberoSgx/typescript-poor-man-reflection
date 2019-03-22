@@ -8,7 +8,7 @@ import {
 } from './types'
 import { quote } from 'misc-utils-of-mine-generic'
 import { notUndefined } from 'misc-utils-of-mine-typescript'
-import { defaultExtractors, isExtractorFn } from './extractors'
+import { defaultExtractors, isExtractorFn, isExtractorClass } from './extractors'
 import { extractorGetterBuilder, writeExtractorData, getFileId } from './extractorData'
 import { extractCallExpressions } from './astUtil'
 import { defaultOptions, getFullOptions } from './replaceProjectFunctionCall'
@@ -38,7 +38,7 @@ export function replaceFileFunctionCall(
   const callExpressions = extractCallExpressions(sourceFile, moduleSpecifier, Object.keys(extracts))
   let extractorData: string[] = []
   const fileId = getFileId(sourceFile, { extractorDataFolderFileName: extractorDataFolderFileName })
-  callExpressions.filter(notUndefined).forEach((c, index) => {
+  callExpressions.forEach((c, index) => {
     const functionName = c.getFirstChildByKind(SyntaxKind.Identifier)!.getText()
     const extract = extracts[functionName]
     const fileVariableAccessor: FileVariableAccessor = (name: string, value?: string) => {
@@ -53,17 +53,11 @@ export function replaceFileFunctionCall(
     if (!extract) {
       extractorData.push('""')
     }
-    // TODO - TDOOTODO - TDOOTODO - TDOOTODO - TDOOTODO - TDOO
-    // Here we ask the extractor which arg number we can use for data
-    // so extractors can use previous for API
-    //
     const extractorConfig = typeof extract.getConfig !== 'undefined' ? extract.getConfig() : {}
     const argIndex = typeof extractorConfig.freeArgumentNumber !== 'undefined' ? extractorConfig.freeArgumentNumber : 0
 
-    // console.log('argIndex', argIndex)
-
     const fullOptions = getFullOptions({ ...options })
-    // const defaultArgValue = extractorConfig.unusedArgumentDefaultValue
+
     var extractArgs: [
       CallExpression,
       number,
@@ -80,24 +74,24 @@ export function replaceFileFunctionCall(
       options.project
     ]
 
-    // extractor owned arguments are empty - we need to fill them up in order to add ours.
+    // Heads up: argIndex is the argument index we can use for data. Previous arguments are owned by the extractor for its own options/whatever.
+
     if (extract && c.getArguments().length < argIndex && !clean) {
+      // extractor owned arguments are empty - we need to fill them up in order to add ours.
       for (let i = 0; i < argIndex; i++) {
         c.addArgument(extractorConfig.unusedArgumentDefaultValue || 'null as any')
       }
     }
 
-    // first time
     if (extract && c.getArguments().length === argIndex && !clean) {
+      // our argument is empty - this is the first time the tool is called.
       const extractResult = isExtractorFn(extract) ? extract(...extractArgs) : extract.extract(...extractArgs)
       extractorData.push(typeof extractResult !== 'string' ? extractResult.prependToFile || '""' : '""')
       const argumentText = typeof extractResult === 'string' ? extractResult : extractResult.argument
-      c.addArgument(argumentText) // TODO: fill empty args with config.defaultArgumentValue
+      c.addArgument(argumentText)
       replaced.push({ file: sourceFile.getFilePath(), replacement: argumentText, firstTime: true })
-    }
-
-    // second time - --clean or replace existing argument
-    else if (c.getArguments().length === argIndex + 1) {
+    } else if (c.getArguments().length === argIndex + 1) {
+      // our argument has a value - we replace it or remove if --clean
       const extractResult = clean
         ? ''
         : isExtractorFn(extract)
@@ -112,7 +106,6 @@ export function replaceFileFunctionCall(
       c.getArguments()[argIndex].replaceWithText(argumentText)
       replaced.push({ file: sourceFile.getFilePath(), replacement: argumentText, firstTime: false })
     }
-
     // strange situation: our argument bucket and the next one are already filled up.
     else if (c.getArguments().length > argIndex + 1) {
       extractorData.push('""')
@@ -125,7 +118,12 @@ export function replaceFileFunctionCall(
     else {
       extractorData.push('""')
     }
+
+    // if (isExtractorClass(extract) && extract.afterWriteExtractorData) {
+    //   extract.afterWriteExtractorData(c, index, fullOptions)
+    // }
   })
+
   writeExtractorData(
     sourceFile,
     { extractorDataVariableName, clean, extractorDataMode, extractorDataFolderFileName },
@@ -133,5 +131,14 @@ export function replaceFileFunctionCall(
     extractorData,
     fileVariables
   )
+
+  // callExpressions.forEach((c, index) => {
+  //   const functionName = c.getFirstChildByKind(SyntaxKind.Identifier)!.getText()
+  //   const extract = extracts[functionName]
+  //   if (isExtractorClass(extract) && extract.afterWriteExtractorData) {
+  //     extract.afterWriteExtractorData(c, index, fullOptions)
+  //   }
+  // })
+
   return replaced
 }

@@ -1,10 +1,5 @@
-import { TypeGuards, SyntaxKind, SourceFile, CallExpression, ArrayLiteralExpression } from 'ts-simple-ast'
-import {
-  ReplaceFileFunctionCallOptions,
-  ExtractorGetter,
-  ExtractorDataMode,
-  ReplaceProjectFunctionCallOptions
-} from './types'
+import { SyntaxKind, SourceFile, CallExpression } from 'ts-simple-ast'
+import { ReplaceFileFunctionCallOptions, ExtractorGetter, ReplaceProjectFunctionCallOptions } from './types'
 import {
   array2DInsert,
   objectLiteralInsert,
@@ -29,12 +24,12 @@ export function extractorGetterBuilder(
     const fileId = getFileId(sourceFile, options)
     return (index: number) => `get(${fileId}, ${index})`
   } else if (options.extractorDataMode === 'asStringLiteral') {
-    // do nothing
-    return (index: number) => ``
+    return (index: number) => `` // do nothing
   } else {
     throw 'extractorDataMode option invalid ' + options.extractorDataMode
   }
 }
+
 /**
  * Responsible of writing extractor data according to extractorDataMode. instead of fileName as string, we use
  * the file index  in the directory's children sorted alphabetically so the get() expressions are smaller.
@@ -49,7 +44,6 @@ export function writeExtractorData(
 ) {
   const options = getFullOptions(options_)
 
-  // const options: Required<ReplaceFileFunctionCallOptions> = { ...defaultOptions, ...options_ }
   if (sourceFile.getBaseName().includes(options.extractorDataFolderFileName)) {
     return
   }
@@ -65,7 +59,7 @@ export function writeExtractorData(
     }
   } else if (options.extractorDataMode === 'folderFile') {
     if (!options.clean) {
-      const { dataFile, fileId } = ensureDataFile(
+      ensureDataFile(
         sourceFile,
         { ...options, extractorDataFolderFileName: options.extractorDataFolderFileName! },
         prependToFile,

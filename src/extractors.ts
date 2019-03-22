@@ -6,7 +6,8 @@ import {
   ExtractOptions,
   FileVariableAccessor,
   ReplaceProjectFunctionCallOptions,
-  ExtractorResult
+  ExtractorResult,
+  ExtractorClass
 } from './types'
 import { quote } from 'misc-utils-of-mine-generic'
 import { getFirstTypeArgumentDefinitionBlock } from './astUtil'
@@ -21,6 +22,7 @@ export const defaultExtractors: { [k: string]: Extractor } = {
           prependToFile: quote(n.getTypeArguments()[0].getText(), "'")
         }
   },
+
   NodeText: (n: CallExpression, index, getter, options, fileVariableAccessor) => {
     var c = getFirstTypeArgumentDefinitionBlock(n)
     return options.extractorDataMode === 'asStringLiteral'
@@ -32,6 +34,7 @@ export const defaultExtractors: { [k: string]: Extractor } = {
           prependToFile: c ? `${JSON.stringify(c.getText())}` : ''
         }
   },
+
   BodyText: (n: CallExpression, index, getter, options, fileVariableAccessor) => {
     const f = getFirstTypeArgumentDefinitionBlock(n)!
     return options.extractorDataMode === 'asStringLiteral'
@@ -43,6 +46,7 @@ export const defaultExtractors: { [k: string]: Extractor } = {
           prependToFile: TypeGuards.isBodyableNode(f) ? `${JSON.stringify(f.getBodyText())}` : ''
         }
   },
+
   ThisBlockText: (n: CallExpression, index, getter, options, fileVariableAccessor) => {
     const block = n.getFirstAncestorByKind(SyntaxKind.Block)
     let result: string = ''
@@ -57,6 +61,7 @@ export const defaultExtractors: { [k: string]: Extractor } = {
           prependToFile: result
         }
   },
+
   /**
    * returns with node type inference information. Usage:
    * ```
@@ -78,16 +83,12 @@ export const defaultExtractors: { [k: string]: Extractor } = {
     }
   },
 
-  //   PrintAst(n: CallExpression, index: number,getter: ExtractorGetter, options :Required<ReplaceProjectFunctionCallOptions>, variableAccessor: FileVariableAccessor ) : ExtractorResult{
-  //     const o = {options, n, index, variableAccessor, getter}
-  //     const  a= new Ast({}, o)
-  // return a.extract(o)
-  //   }
-
   PrintAst: new Ast()
-  // new Ast({}, o)
 }
 
 export function isExtractorFn(e: Extractor): e is ExtractorFn {
   return typeof e.extract === 'undefined'
+}
+export function isExtractorClass(e: Extractor): e is ExtractorClass {
+  return typeof e.extract !== 'undefined'
 }

@@ -60,24 +60,9 @@ export function replaceProjectFunctionCall(
     tsConfigFilePath,
     addFilesFromTsConfig: true
   })
-  // const options: Required<ReplaceProjectFunctionCallOptions> = {
-  //   ...defaultOptions,
-  //   ...options_,
-  //   moduleSpecifier: 'typescript-poor-man-reflection',
-  //   clean: false,
-  //   extracts: defaultExtractors,
-  //   extractorDataVariableName: '__extractor_prepend__',
-  //   extractorDataMode: 'prependVariable',
-  //   extractorDataFolderFileName: '__poor_man_reflection__',
-  //   filePattern: '',
-  //   debug: false,
-  //   extraOptionsHelp: {},
-  //   help: false,
-  //   out: '',
-  //   tsConfigFilePath: './tsconfig.json',
-  //   project
-  // }
+
   const options = getFullOptions(options_)
+
   project
     .getSourceFiles()
     .filter(f => {

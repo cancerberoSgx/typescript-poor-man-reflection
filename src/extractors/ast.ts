@@ -4,7 +4,9 @@ import {
   ExtractorGetter,
   ExtractorResult,
   FileVariableAccessor,
-  ReplaceProjectFunctionCallOptions
+  ReplaceProjectFunctionCallOptions,
+  ExtractOptions,
+  ExtractorOptions
 } from '../types'
 import { AbstractExtractor } from './abstractExtractor'
 
@@ -17,11 +19,13 @@ export class Ast extends AbstractExtractor implements ExtractorClass {
     variableAccessor: FileVariableAccessor,
     project?: Project
   ): ExtractorResult {
-    const extractorOptions = { n, index, getter, options, variableAccessor, project }
-    const config = this.getOptionsFromFistArg(extractorOptions)
-    // console.log({config});
-    const output = `'${n.getKindName()}'`
-    return this.buildExtractorResult(n, output, config && config.outputMode)
+    const config = this.getOptionsFromFistArg(n)
+    const output = this.buildAst(n, config)
+    return this.buildExtractorResult(n, output, config)
+  }
+
+  protected buildAst(n: CallExpression, config: ExtractorOptions | undefined): any {
+    return `'${n.getKindName()}'`
   }
 
   getConfig() {

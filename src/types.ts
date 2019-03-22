@@ -123,6 +123,7 @@ export interface ExtractorClass {
     variableAccessor: FileVariableAccessor,
     project?: Project
   ): ExtractorResult
+  afterWriteExtractorData?(c: CallExpression, index: number, options: Required<ReplaceProjectFunctionCallOptions>): void
 }
 
 export interface ExtractOptions {
@@ -141,11 +142,14 @@ export interface ExtractOptions {
 export interface ExtractorOptions {
   mode?: ExtractorDataMode
   removeMe?: boolean
-  destination?: 'nextVariableDeclaration|nextReturnExpression' // or a selector like ast-dom ?
-  // etc
+  outputMode?: ExtractorOutputMode
+  outputVariableName?: string
+  targetMode?: 'self' | 'definition' | 'allReferences'
 }
 
-export type Extractor = (Partial<ExtractorClass> & ExtractorFn) | (ExtractorClass & { extract: ExtractorFn })
+export type ExtractorOutputMode = 'assignToVariable' | 'asReturnValue'
+
+export type Extractor = (Partial<ExtractorClass> & ExtractorFn) | ExtractorClass
 
 export type ExtractorFn = (
   n: CallExpression,
@@ -164,5 +168,7 @@ export interface ExtractorResult {
 export type ExtractorGetter = (index: number) => string
 
 export type ExtractorDataMode = 'prependVariable' | 'folderFile' | 'asStringLiteral'
-/** setter / getter for variables that are common between same function calls of same file or even different function files (to save data file space). The getter actually returns (at compile time) an expression that when evaluated will return the variable value (at runtime)*/
+/**
+ * setter / getter for variables that are common between same function calls of same file or even different function files (to save data file space). The getter actually returns (at compile time) an expression that when evaluated will return the variable value (at runtime)
+ */
 export type FileVariableAccessor = (name: string, value?: string) => string | undefined

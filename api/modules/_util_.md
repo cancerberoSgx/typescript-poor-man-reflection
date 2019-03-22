@@ -18,7 +18,7 @@
 
 ▸ **evaluate**<`T`>(s: *`string`*, defaultValue?: *`undefined`*): `T` \| `undefined`
 
-*Defined in [util.ts:2](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/055260d/src/util.ts#L2)*
+*Defined in [util.ts:2](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c505d33/src/util.ts#L2)*
 
 **Type parameters:**
 

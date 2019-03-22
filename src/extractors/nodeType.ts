@@ -1,7 +1,5 @@
 import Project, { SyntaxKind, TypeGuards, Type, Node, CallExpression } from 'ts-simple-ast'
 import {
-  ExtractorClass,
-  ExtractOptions,
   ExtractorResult,
   ExtractorOptions,
   ExtractorGetter,
@@ -11,10 +9,8 @@ import {
 import { AbstractExtractor } from './abstractExtractor'
 
 /**
- *
  * Usage: ```let aNode = unknownAPI(); var t  = NodeType({},aNode)```
  * The first parameter is for configuration:
- *
  */
 export class NodeType extends AbstractExtractor {
   extract(
@@ -25,10 +21,10 @@ export class NodeType extends AbstractExtractor {
     variableAccessor: FileVariableAccessor,
     project?: Project
   ): ExtractorResult {
-    const extractorOptions = { n, index, getter, options, variableAccessor, project }
+    // const extractorOptions = { n, index, getter, options, variableAccessor, project }
 
-    const config = this.getOptionsFromFistArg(extractorOptions)
-    console.log(config)
+    const config = this.getOptionsFromFistArg(n)
+    // console.log(config)
 
     // const props = options.n
     //   .getArguments()[0]
