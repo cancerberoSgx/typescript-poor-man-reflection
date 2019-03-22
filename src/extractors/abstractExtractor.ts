@@ -1,4 +1,6 @@
 import { unique } from 'misc-utils-of-mine-generic'
+// import {Map } from 'misc-utils-of-mine-typescript'
+
 import Project, { Block, CallExpression, TypeGuards, SyntaxKind } from 'ts-simple-ast'
 import {
   ExtractOptions,
@@ -10,7 +12,7 @@ import {
   FileVariableAccessor,
   ReplaceProjectFunctionCallOptions
 } from '../types'
-import { evaluate } from '../util'
+import { evaluate, Map } from '../util'
 
 export abstract class AbstractExtractor implements ExtractorClass {
   protected defaultExtractorOptions: ExtractorOptions = {
@@ -38,16 +40,34 @@ export abstract class AbstractExtractor implements ExtractorClass {
     if (n.getArguments().length) {
       const o = n.getArguments()[0]
       if (TypeGuards.isObjectLiteralExpression(o)) {
-        const value = evaluate(o.getText(), undefined)
-        return value
+        const cc: Map<any> = {}
+        o.getProperties().forEach(p => {
+          if (TypeGuards.isPropertyAssignment(p)) {
+            cc[p.getName()] = p.getInitializer()
+          }
+          // const s=p.getStructure().name
+          // s.
+        })
+        // console.log(o.getText(), o.getKindName());
+
+        // const value = evaluate(o.getText(), undefined)
+        return cc as any
       }
     }
   }
 
-  protected buildExtractorResult(n: CallExpression, output: string, options?: ExtractorOptions) {
-    if (!options || !options.outputMode || options.outputMode === 'asReturnValue') {
-      return { argument: output }
-    }
+  protected buildExtractorResult(
+    n: CallExpression,
+    output: string,
+    getter: ExtractorGetter,
+    index: number,
+    extractOptions: Required<ReplaceProjectFunctionCallOptions>,
+    extractorOptions?: ExtractorOptions
+  ): ExtractorResult {
+    // if (!extractorOptions || !extractorOptions.outputMode || extractorOptions.outputMode === 'asReturnValue') {
+    //   return { argument: output }
+    // }
+
     // else if (options && options.outputMode === 'assignToVariableDeclaration'&& options.outputVariableName) {
     //   const statement = n.getFirstAncestor(a => TypeGuards.isBlock(a.getParent()))
     //   if (statement) {
@@ -56,10 +76,11 @@ export abstract class AbstractExtractor implements ExtractorClass {
     //     })
     //   }
     // }
-    else if (options && options.outputMode === 'assignToVariable' && options.outputVariableName) {
+    // else
+    if (extractorOptions && extractorOptions.outputMode === 'assignToVariable' && extractorOptions.outputVariableName) {
       const block = n.getFirstAncestor(TypeGuards.isBlock)
       if (block) {
-        const varDecl = block.getVariableDeclaration(options.outputVariableName)
+        const varDecl = block.getVariableDeclaration(extractorOptions.outputVariableName)
         if (varDecl) {
           varDecl.setInitializer(output)
         } else {
@@ -73,7 +94,9 @@ export abstract class AbstractExtractor implements ExtractorClass {
       }
     }
     return {
-      argument: n.getArguments()[1].getText()
+      argument: getter(index),
+      prependToFile: output
+      // argument: n.getArguments()[1].getText()
     }
   }
 

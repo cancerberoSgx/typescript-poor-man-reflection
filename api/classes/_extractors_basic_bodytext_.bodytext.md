@@ -1,20 +1,12 @@
-[typescript-poor-man-reflection](../README.md) > ["extractors/abstractExtractor"](../modules/_extractors_abstractextractor_.md) > [AbstractExtractor](../classes/_extractors_abstractextractor_.abstractextractor.md)
+[typescript-poor-man-reflection](../README.md) > ["extractors/basic/bodyText"](../modules/_extractors_basic_bodytext_.md) > [BodyText](../classes/_extractors_basic_bodytext_.bodytext.md)
 
-# Class: AbstractExtractor
+# Class: BodyText
 
 ## Hierarchy
 
-**AbstractExtractor**
+ [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md)
 
-↳  [Ast](_extractors_ast_.ast.md)
-
-↳  [BodyText](_extractors_basic_bodytext_.bodytext.md)
-
-↳  [NodeText](_extractors_basic_nodetext_.nodetext.md)
-
-↳  [ThisBlockText](_extractors_basic_thisblocktext_.thisblocktext.md)
-
-↳  [TypeText](_extractors_basic_typetext_.typetext.md)
+**↳ BodyText**
 
 ## Implements
 
@@ -24,13 +16,13 @@
 
 ### Methods
 
-* [buildExtractorResult](_extractors_abstractextractor_.abstractextractor.md#buildextractorresult)
-* [extract](_extractors_abstractextractor_.abstractextractor.md#extract)
-* [getOptionsFromFistArg](_extractors_abstractextractor_.abstractextractor.md#getoptionsfromfistarg)
+* [buildExtractorResult](_extractors_basic_bodytext_.bodytext.md#buildextractorresult)
+* [extract](_extractors_basic_bodytext_.bodytext.md#extract)
+* [getOptionsFromFistArg](_extractors_basic_bodytext_.bodytext.md#getoptionsfromfistarg)
 
 ### Object literals
 
-* [defaultExtractorOptions](_extractors_abstractextractor_.abstractextractor.md#defaultextractoroptions)
+* [defaultExtractorOptions](_extractors_basic_bodytext_.bodytext.md#defaultextractoroptions)
 
 ---
 
@@ -41,6 +33,8 @@
 ### `<Protected>` buildExtractorResult
 
 ▸ **buildExtractorResult**(n: *`CallExpression`*, output: *`string`*, getter: *[ExtractorGetter](../modules/_types_.md#extractorgetter)*, index: *`number`*, extractOptions: *`Required`<[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)>*, extractorOptions?: *[ExtractorOptions](../interfaces/_types_.extractoroptions.md)*): [ExtractorResult](../interfaces/_types_.extractorresult.md)
+
+*Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[buildExtractorResult](_extractors_abstractextractor_.abstractextractor.md#buildextractorresult)*
 
 *Defined in [extractors/abstractExtractor.ts:59](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/extractors/abstractExtractor.ts#L59)*
 
@@ -60,13 +54,15 @@
 ___
 <a id="extract"></a>
 
-### `<Abstract>` extract
+###  extract
 
-▸ **extract**(n: *`CallExpression`*, index: *`number`*, getter: *[ExtractorGetter](../modules/_types_.md#extractorgetter)*, options: *`Required`<[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)>*, variableAccessor: *[FileVariableAccessor](../modules/_types_.md#filevariableaccessor)*, project?: *`Project`*): [ExtractorResult](../interfaces/_types_.extractorresult.md)
+▸ **extract**(n: *`CallExpression`*, index: *`number`*, getter: *[ExtractorGetter](../modules/_types_.md#extractorgetter)*, options: *`Required`<[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)>*, variableAccessor: *[FileVariableAccessor](../modules/_types_.md#filevariableaccessor)*, project?: *`Project`*): `object` \| `object`
 
 *Implementation of [ExtractorClass](../interfaces/_types_.extractorclass.md).[extract](../interfaces/_types_.extractorclass.md#extract)*
 
-*Defined in [extractors/abstractExtractor.ts:23](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/extractors/abstractExtractor.ts#L23)*
+*Overrides [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[extract](_extractors_abstractextractor_.abstractextractor.md#extract)*
+
+*Defined in extractors/basic/bodyText.ts:7*
 
 **Parameters:**
 
@@ -79,7 +75,7 @@ ___
 | variableAccessor | [FileVariableAccessor](../modules/_types_.md#filevariableaccessor) |
 | `Optional` project | `Project` |
 
-**Returns:** [ExtractorResult](../interfaces/_types_.extractorresult.md)
+**Returns:** `object` \| `object`
 
 ___
 <a id="getoptionsfromfistarg"></a>
@@ -87,6 +83,8 @@ ___
 ### `<Protected>` getOptionsFromFistArg
 
 ▸ **getOptionsFromFistArg**<`T`>(n: *`CallExpression`*): `T` \| `undefined`
+
+*Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[getOptionsFromFistArg](_extractors_abstractextractor_.abstractextractor.md#getoptionsfromfistarg)*
 
 *Defined in [extractors/abstractExtractor.ts:39](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/extractors/abstractExtractor.ts#L39)*
 
@@ -116,6 +114,8 @@ ___
 ### `<Protected>` defaultExtractorOptions
 
 **defaultExtractorOptions**: *`object`*
+
+*Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[defaultExtractorOptions](_extractors_abstractextractor_.abstractextractor.md#defaultextractoroptions)*
 
 *Defined in [extractors/abstractExtractor.ts:18](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/extractors/abstractExtractor.ts#L18)*
 

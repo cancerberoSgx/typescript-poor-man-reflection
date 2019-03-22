@@ -1,10 +1,10 @@
 import { BodyText } from '../..'
-import { removeWhites } from 'misc-utils-of-mine-generic';
+import { removeWhites } from 'misc-utils-of-mine-generic'
 
-function escape(a: string) {
+function escape(a: string, q: string) {
   C.counter++
   const c = new C()
-  return a.replace('"', '\\"') + c.m()
+  return a.replace('"', q) + c.m()
 }
 class C {
   static counter = 0
@@ -12,6 +12,4 @@ class C {
     return Math.PI
   }
 }
-const c = new C()
-
-console.log(removeWhites((BodyText<typeof escape>() || 'undefined')))
+console.log(removeWhites(BodyText<typeof escape>() || 'undefined'))

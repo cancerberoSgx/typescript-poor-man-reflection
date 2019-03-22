@@ -8,6 +8,8 @@ These are options that user can use to configure a Extractor, could be as conven
 
 **ExtractorOptions**
 
+↳  [AstOptions](_extractors_ast_.astoptions.md)
+
 ## Index
 
 ### Properties
@@ -28,7 +30,7 @@ These are options that user can use to configure a Extractor, could be as conven
 
 **● mode**: *[ExtractorDataMode](../modules/_types_.md#extractordatamode)*
 
-*Defined in [types.ts:143](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c505d33/src/types.ts#L143)*
+*Defined in [types.ts:143](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/types.ts#L143)*
 
 ___
 <a id="outputmode"></a>
@@ -37,7 +39,7 @@ ___
 
 **● outputMode**: *[ExtractorOutputMode](../modules/_types_.md#extractoroutputmode)*
 
-*Defined in [types.ts:145](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c505d33/src/types.ts#L145)*
+*Defined in [types.ts:145](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/types.ts#L145)*
 
 ___
 <a id="outputvariablename"></a>
@@ -46,7 +48,7 @@ ___
 
 **● outputVariableName**: *`undefined` \| `string`*
 
-*Defined in [types.ts:146](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c505d33/src/types.ts#L146)*
+*Defined in [types.ts:146](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/types.ts#L146)*
 
 ___
 <a id="removeme"></a>
@@ -55,7 +57,7 @@ ___
 
 **● removeMe**: *`undefined` \| `false` \| `true`*
 
-*Defined in [types.ts:144](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c505d33/src/types.ts#L144)*
+*Defined in [types.ts:144](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/types.ts#L144)*
 
 ___
 <a id="targetmode"></a>
@@ -64,7 +66,7 @@ ___
 
 **● targetMode**: *"self" \| "definition" \| "allReferences"*
 
-*Defined in [types.ts:147](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c505d33/src/types.ts#L147)*
+*Defined in [types.ts:147](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/types.ts#L147)*
 
 ___
 

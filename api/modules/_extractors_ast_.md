@@ -8,5 +8,9 @@
 
 * [Ast](../classes/_extractors_ast_.ast.md)
 
+### Interfaces
+
+* [AstOptions](../interfaces/_extractors_ast_.astoptions.md)
+
 ---
 

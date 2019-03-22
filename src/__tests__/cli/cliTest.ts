@@ -1,8 +1,7 @@
 import { exec, cat } from 'shelljs'
-import { removeWhites } from 'misc-utils-of-mine-generic';
+import { removeWhites } from 'misc-utils-of-mine-generic'
 
 describe('cli', () => {
-
   afterAll(() => {
     exec('npx ts-node src/cli.ts --moduleSpecifier "../.." --clean')
   })
@@ -38,7 +37,6 @@ describe('cli', () => {
       `C.counter++ const c = new C() console.log(removeWhites(ThisBlockText() || 'undefined')) return a.replace('"', q) + c.m() console.log(removeWhites(ThisBlockText() || 'undefined')) return Math.PI console.log(removeWhites(ThisBlockText() || 'undefined')) return a.getTime() + 1`
     )
   })
-  
 })
 
 function cliTest(program: string, cleanOutput: string, instrumentedOutput: string) {
@@ -65,7 +63,7 @@ function cliTest(program: string, cleanOutput: string, instrumentedOutput: strin
   r = exec(`npx ts-node src/cli.ts --moduleSpecifier "../.." --clean --filePattern "**/${program}"`)
   expect(r.code).toBe(0)
   r = exec(`npx ts-node ${program}`)
-  expect(r.code).toBe(0)  
+  expect(r.code).toBe(0)
   expect(removeWhites(r.stdout)).toContain(removeWhites(cleanOutput))
   expect(cat(program).toString()).not.toContain('const __extractor_prepend__ ')
   expect(cat(program).toString()).not.toContain(`import { get } from "./__poor_man_reflection__";`)
@@ -75,8 +73,8 @@ function cliTest(program: string, cleanOutput: string, instrumentedOutput: strin
   )
   expect(r.code).toBe(0)
   r = exec(`npx ts-node ${program}`)
-  expect(r.code).toBe(0) 
-   expect(removeWhites(r.stdout)).toContain(removeWhites(instrumentedOutput))
+  expect(r.code).toBe(0)
+  expect(removeWhites(r.stdout)).toContain(removeWhites(instrumentedOutput))
   expect(cat(program).toString()).toContain('const __extractor_prepend__ ')
   expect(cat(program).toString()).not.toContain(`import { get } from "./__poor_man_reflection__";`)
 

@@ -4,11 +4,31 @@
 
 ## Index
 
+### Type aliases
+
+* [Map](_util_.md#map)
+
 ### Functions
 
 * [evaluate](_util_.md#evaluate)
 
 ---
+
+## Type aliases
+
+<a id="map"></a>
+
+###  Map
+
+**Ƭ Map**: *`object`*
+
+*Defined in [util.ts:9](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/util.ts#L9)*
+
+#### Type declaration
+
+[key: `string`]: `V`
+
+___
 
 ## Functions
 
@@ -18,7 +38,7 @@
 
 ▸ **evaluate**<`T`>(s: *`string`*, defaultValue?: *`undefined`*): `T` \| `undefined`
 
-*Defined in [util.ts:2](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c505d33/src/util.ts#L2)*
+*Defined in [util.ts:2](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/util.ts#L2)*
 
 **Type parameters:**
 

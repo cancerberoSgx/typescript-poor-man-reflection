@@ -23,7 +23,7 @@
 
 ▸ **isExtractorClass**(e: *[Extractor](_types_.md#extractor)*): `boolean`
 
-*Defined in [extractors.ts:92](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c505d33/src/extractors.ts#L92)*
+*Defined in [extractors.ts:45](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/extractors.ts#L45)*
 
 **Parameters:**
 
@@ -40,7 +40,7 @@ ___
 
 ▸ **isExtractorFn**(e: *[Extractor](_types_.md#extractor)*): `boolean`
 
-*Defined in [extractors.ts:89](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c505d33/src/extractors.ts#L89)*
+*Defined in [extractors.ts:41](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/extractors.ts#L41)*
 
 **Parameters:**
 
@@ -60,128 +60,51 @@ ___
 
 **defaultExtractors**: *`object`*
 
-*Defined in [extractors.ts:16](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c505d33/src/extractors.ts#L16)*
+*Defined in [extractors.ts:8](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/extractors.ts#L8)*
 
-<a id="defaultextractors.printast"></a>
-
-####  PrintAst
-
-**● PrintAst**: *[Ast](../classes/_extractors_ast_.ast.md)* =  new Ast()
-
-*Defined in [extractors.ts:86](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c505d33/src/extractors.ts#L86)*
-
-___
 <a id="defaultextractors.bodytext"></a>
 
 ####  BodyText
 
-▸ **BodyText**(n: *`CallExpression`*, index: *`number`*, getter: *`function`*, options: *`object`*, fileVariableAccessor: *`function`*): `string` \| `object`
+**● BodyText**: *[BodyText](../classes/_extractors_basic_bodytext_.bodytext.md)* =  new BodyText()
 
-*Defined in [extractors.ts:38](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c505d33/src/extractors.ts#L38)*
-
-**Parameters:**
-
-| Name | Type |
-| ------ | ------ |
-| n | `CallExpression` |
-| index | `number` |
-| getter | `function` |
-| options | `object` |
-| fileVariableAccessor | `function` |
-
-**Returns:** `string` \| `object`
+*Defined in [extractors.ts:13](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/extractors.ts#L13)*
 
 ___
 <a id="defaultextractors.nodetext"></a>
 
 ####  NodeText
 
-▸ **NodeText**(n: *`CallExpression`*, index: *`number`*, getter: *`function`*, options: *`object`*, fileVariableAccessor: *`function`*): `string` \| `object`
+**● NodeText**: *[NodeText](../classes/_extractors_basic_nodetext_.nodetext.md)* =  new NodeText()
 
-*Defined in [extractors.ts:26](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c505d33/src/extractors.ts#L26)*
-
-**Parameters:**
-
-| Name | Type |
-| ------ | ------ |
-| n | `CallExpression` |
-| index | `number` |
-| getter | `function` |
-| options | `object` |
-| fileVariableAccessor | `function` |
-
-**Returns:** `string` \| `object`
+*Defined in [extractors.ts:11](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/extractors.ts#L11)*
 
 ___
-<a id="defaultextractors.nodetype"></a>
+<a id="defaultextractors.printast"></a>
 
-####  NodeType
+####  PrintAst
 
-▸ **NodeType**(n: *`CallExpression`*, index: *`number`*, getter: *`function`*, options: *`object`*, fileVariableAccessor: *`function`*): `object`
+**● PrintAst**: *[Ast](../classes/_extractors_ast_.ast.md)* =  new Ast()
 
-*Defined in [extractors.ts:73](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c505d33/src/extractors.ts#L73)*
-
-returns with node type inference information. Usage:
-
-```
-declare function f():number\|boolean\|string\|Date; var n = f(); var nType = NodeType(n)
-```
-
-Note : this tool uses the first argument for API and the second one for data
-
-**Parameters:**
-
-| Name | Type |
-| ------ | ------ |
-| n | `CallExpression` |
-| index | `number` |
-| getter | `function` |
-| options | `object` |
-| fileVariableAccessor | `function` |
-
-**Returns:** `object`
+*Defined in [extractors.ts:38](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/extractors.ts#L38)*
 
 ___
 <a id="defaultextractors.thisblocktext"></a>
 
 ####  ThisBlockText
 
-▸ **ThisBlockText**(n: *`CallExpression`*, index: *`number`*, getter: *`function`*, options: *`object`*, fileVariableAccessor: *`function`*): `string` \| `object`
+**● ThisBlockText**: *[ThisBlockText](../classes/_extractors_basic_thisblocktext_.thisblocktext.md)* =  new ThisBlockText()
 
-*Defined in [extractors.ts:50](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c505d33/src/extractors.ts#L50)*
-
-**Parameters:**
-
-| Name | Type |
-| ------ | ------ |
-| n | `CallExpression` |
-| index | `number` |
-| getter | `function` |
-| options | `object` |
-| fileVariableAccessor | `function` |
-
-**Returns:** `string` \| `object`
+*Defined in [extractors.ts:15](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/extractors.ts#L15)*
 
 ___
 <a id="defaultextractors.typetext"></a>
 
 ####  TypeText
 
-▸ **TypeText**(n: *`CallExpression`*, index: *`number`*, getter: *`function`*, options: *`object`*, fileVariableAccessor: *`function`*): `string` \| `object`
+**● TypeText**: *[TypeText](../classes/_extractors_basic_typetext_.typetext.md)* =  new TypeText()
 
-*Defined in [extractors.ts:17](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c505d33/src/extractors.ts#L17)*
-
-**Parameters:**
-
-| Name | Type |
-| ------ | ------ |
-| n | `CallExpression` |
-| index | `number` |
-| getter | `function` |
-| options | `object` |
-| fileVariableAccessor | `function` |
-
-**Returns:** `string` \| `object`
+*Defined in [extractors.ts:9](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/extractors.ts#L9)*
 
 ___
 

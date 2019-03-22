@@ -36,17 +36,6 @@ export function extractCallExpressions(sourceFile: SourceFile, moduleSpecifier: 
     .filter(notUndefined)
 }
 
-export function getDefinitionsOf(n: Identifier | Identifier[]) {
-  asArray(n)
-    .filter(i => i)
-    .filter(notUndefined)
-    .filter(i =>
-      i
-        .findReferences()
-        .map(r => r.getDefinition())
-        .map(d => d.getDeclarationNode())
-    )
-}
 export function array2DInsert(init: ArrayLiteralExpression, fileId: number, index: number, data: string[]) {
   ensureArrayLength(init, fileId + 1, `[]`)
   init.removeElement(fileId)
@@ -105,14 +94,27 @@ export function removeDataFolderFileNameImportDeclaration(
 export function getFirstTypeArgumentDefinitionBlock(n: CallExpression) {
   const id = n.getTypeArguments()[0].getFirstChildByKind(SyntaxKind.Identifier)
   if (id) {
-    const r = id.findReferences().map(r =>
+    const r = getDefinitionsOf(id)
+    // const r = id.findReferences().map(r =>
+    //   r
+    //     .getDefinition()
+    //     .getNode()
+    //     .getParent()
+    // )
+    if (r.length) {
+      return r[0]
+    }
+  }
+}
+
+export function getDefinitionsOf(id: Identifier) {
+  return id
+    .findReferences()
+    .map(r =>
       r
         .getDefinition()
         .getNode()
         .getParent()
     )
-    if (r.length) {
-      return r[0]
-    }
-  }
+    .filter(notUndefined)
 }

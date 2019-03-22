@@ -6,3 +6,4 @@ export function evaluate<T = any>(s: string, defaultValue = undefined): T | unde
     return defaultValue
   }
 }
+export type Map<V> = { [key: string]: V }
