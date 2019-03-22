@@ -7,6 +7,6 @@ export function evaluate<T = any>(s: string, defaultValue = undefined): T | unde
   }
 }
 export type Map<V> = { [key: string]: V }
-export function unquote(s:string){
-  return s.substring(1, s.length-1)
+export function unquote(s: string) {
+  return s.substring(1, s.length - 1)
 }

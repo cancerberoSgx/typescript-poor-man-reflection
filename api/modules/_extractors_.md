@@ -23,7 +23,7 @@
 
 ▸ **isExtractorClass**(e: *[Extractor](_types_.md#extractor)*): `boolean`
 
-*Defined in [extractors.ts:45](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/extractors.ts#L45)*
+*Defined in [extractors.ts:45](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/extractors.ts#L45)*
 
 **Parameters:**
 
@@ -40,7 +40,7 @@ ___
 
 ▸ **isExtractorFn**(e: *[Extractor](_types_.md#extractor)*): `boolean`
 
-*Defined in [extractors.ts:41](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/extractors.ts#L41)*
+*Defined in [extractors.ts:41](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/extractors.ts#L41)*
 
 **Parameters:**
 
@@ -60,7 +60,7 @@ ___
 
 **defaultExtractors**: *`object`*
 
-*Defined in [extractors.ts:8](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/extractors.ts#L8)*
+*Defined in [extractors.ts:8](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/extractors.ts#L8)*
 
 <a id="defaultextractors.bodytext"></a>
 
@@ -68,7 +68,7 @@ ___
 
 **● BodyText**: *[BodyText](../classes/_extractors_basic_bodytext_.bodytext.md)* =  new BodyText()
 
-*Defined in [extractors.ts:13](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/extractors.ts#L13)*
+*Defined in [extractors.ts:13](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/extractors.ts#L13)*
 
 ___
 <a id="defaultextractors.nodetext"></a>
@@ -77,7 +77,7 @@ ___
 
 **● NodeText**: *[NodeText](../classes/_extractors_basic_nodetext_.nodetext.md)* =  new NodeText()
 
-*Defined in [extractors.ts:11](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/extractors.ts#L11)*
+*Defined in [extractors.ts:11](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/extractors.ts#L11)*
 
 ___
 <a id="defaultextractors.printast"></a>
@@ -86,7 +86,7 @@ ___
 
 **● PrintAst**: *[Ast](../classes/_extractors_ast_.ast.md)* =  new Ast()
 
-*Defined in [extractors.ts:38](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/extractors.ts#L38)*
+*Defined in [extractors.ts:38](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/extractors.ts#L38)*
 
 ___
 <a id="defaultextractors.thisblocktext"></a>
@@ -95,7 +95,7 @@ ___
 
 **● ThisBlockText**: *[ThisBlockText](../classes/_extractors_basic_thisblocktext_.thisblocktext.md)* =  new ThisBlockText()
 
-*Defined in [extractors.ts:15](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/extractors.ts#L15)*
+*Defined in [extractors.ts:15](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/extractors.ts#L15)*
 
 ___
 <a id="defaultextractors.typetext"></a>
@@ -104,7 +104,7 @@ ___
 
 **● TypeText**: *[TypeText](../classes/_extractors_basic_typetext_.typetext.md)* =  new TypeText()
 
-*Defined in [extractors.ts:9](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/extractors.ts#L9)*
+*Defined in [extractors.ts:9](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/extractors.ts#L9)*
 
 ___
 

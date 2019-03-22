@@ -2,7 +2,7 @@
 
 # Interface: ExtractorOptions
 
-These are options that user can use to configure a Extractor, could be as convention in the first arg, ex: NodeType({target: aNode, mode: 'asStringLiteral', assignTo: 'nextVariable})
+These are options that user can use to configure a Extractor, could be as convention in the first arg, ex: `PrintAst({ target: foo, outputMode: 'assignToVariable', outputVariableName: 'existingVar')`
 
 ## Hierarchy
 
@@ -14,7 +14,6 @@ These are options that user can use to configure a Extractor, could be as conven
 
 ### Properties
 
-* [mode](_types_.extractoroptions.md#mode)
 * [outputMode](_types_.extractoroptions.md#outputmode)
 * [outputVariableName](_types_.extractoroptions.md#outputvariablename)
 * [removeMe](_types_.extractoroptions.md#removeme)
@@ -24,22 +23,13 @@ These are options that user can use to configure a Extractor, could be as conven
 
 ## Properties
 
-<a id="mode"></a>
-
-### `<Optional>` mode
-
-**● mode**: *[ExtractorDataMode](../modules/_types_.md#extractordatamode)*
-
-*Defined in [types.ts:143](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/types.ts#L143)*
-
-___
 <a id="outputmode"></a>
 
 ### `<Optional>` outputMode
 
 **● outputMode**: *[ExtractorOutputMode](../modules/_types_.md#extractoroutputmode)*
 
-*Defined in [types.ts:145](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/types.ts#L145)*
+*Defined in [types.ts:148](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/types.ts#L148)*
 
 ___
 <a id="outputvariablename"></a>
@@ -48,7 +38,7 @@ ___
 
 **● outputVariableName**: *`undefined` \| `string`*
 
-*Defined in [types.ts:146](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/types.ts#L146)*
+*Defined in [types.ts:149](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/types.ts#L149)*
 
 ___
 <a id="removeme"></a>
@@ -57,7 +47,7 @@ ___
 
 **● removeMe**: *`undefined` \| `false` \| `true`*
 
-*Defined in [types.ts:144](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/types.ts#L144)*
+*Defined in [types.ts:147](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/types.ts#L147)*
 
 ___
 <a id="targetmode"></a>
@@ -66,7 +56,7 @@ ___
 
 **● targetMode**: *"self" \| "definition" \| "allReferences"*
 
-*Defined in [types.ts:147](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/types.ts#L147)*
+*Defined in [types.ts:150](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/types.ts#L150)*
 
 ___
 

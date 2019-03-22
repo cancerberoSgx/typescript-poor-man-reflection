@@ -11,6 +11,7 @@
 * [extractCallExpressions](_astutil_.md#extractcallexpressions)
 * [getDefinitionsOf](_astutil_.md#getdefinitionsof)
 * [getFirstTypeArgumentDefinitionBlock](_astutil_.md#getfirsttypeargumentdefinitionblock)
+* [getNodeName](_astutil_.md#getnodename)
 * [objectLiteralInsert](_astutil_.md#objectliteralinsert)
 * [removeDataFolderFileNameImportDeclaration](_astutil_.md#removedatafolderfilenameimportdeclaration)
 * [removePrependVariableDeclaration](_astutil_.md#removeprependvariabledeclaration)
@@ -25,7 +26,7 @@
 
 ▸ **array2DInsert**(init: *`ArrayLiteralExpression`*, fileId: *`number`*, index: *`number`*, data: *`string`[]*): `void`
 
-*Defined in [astUtil.ts:39](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/astUtil.ts#L39)*
+*Defined in [astUtil.ts:39](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/astUtil.ts#L39)*
 
 **Parameters:**
 
@@ -45,7 +46,7 @@ ___
 
 ▸ **ensureArrayLength**(a: *`ArrayLiteralExpression`*, index: *`number`*, item: *`string`*): `void`
 
-*Defined in [astUtil.ts:49](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/astUtil.ts#L49)*
+*Defined in [astUtil.ts:49](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/astUtil.ts#L49)*
 
 makes sure there are items until index-1 (se we can add the index-th)
 
@@ -66,7 +67,7 @@ ___
 
 ▸ **extractCallExpressions**(sourceFile: *`SourceFile`*, moduleSpecifier: *`string`*, names: *`string`[]*): `CallExpression`<`CallExpression`>[]
 
-*Defined in [astUtil.ts:19](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/astUtil.ts#L19)*
+*Defined in [astUtil.ts:19](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/astUtil.ts#L19)*
 
 extract those CallExpressions from given sourceFile which declared in a module specifier with given name and which function name is one of given names
 
@@ -87,7 +88,7 @@ ___
 
 ▸ **getDefinitionsOf**(id: *`Identifier`*): `Node`<`Node`>[]
 
-*Defined in [astUtil.ts:110](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/astUtil.ts#L110)*
+*Defined in [astUtil.ts:104](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/astUtil.ts#L104)*
 
 **Parameters:**
 
@@ -104,7 +105,7 @@ ___
 
 ▸ **getFirstTypeArgumentDefinitionBlock**(n: *`CallExpression`*): `undefined` \| `Node`<`Node`>
 
-*Defined in [astUtil.ts:94](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/astUtil.ts#L94)*
+*Defined in [astUtil.ts:94](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/astUtil.ts#L94)*
 
 **Parameters:**
 
@@ -115,13 +116,30 @@ ___
 **Returns:** `undefined` \| `Node`<`Node`>
 
 ___
+<a id="getnodename"></a>
+
+###  getNodeName
+
+▸ **getNodeName**(n: *`Node`*): `undefined` \| `string`
+
+*Defined in [astUtil.ts:116](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/astUtil.ts#L116)*
+
+**Parameters:**
+
+| Name | Type |
+| ------ | ------ |
+| n | `Node` |
+
+**Returns:** `undefined` \| `string`
+
+___
 <a id="objectliteralinsert"></a>
 
 ###  objectLiteralInsert
 
 ▸ **objectLiteralInsert**(init: *`ObjectLiteralExpression`*, fileId: *`number`*, fileVariables: *`object`*): `void`
 
-*Defined in [astUtil.ts:57](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/astUtil.ts#L57)*
+*Defined in [astUtil.ts:57](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/astUtil.ts#L57)*
 
 **Parameters:**
 
@@ -140,7 +158,7 @@ ___
 
 ▸ **removeDataFolderFileNameImportDeclaration**(sourceFile: *`SourceFile`*, options: *`object`*): `void`
 
-*Defined in [astUtil.ts:84](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/astUtil.ts#L84)*
+*Defined in [astUtil.ts:84](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/astUtil.ts#L84)*
 
 **Parameters:**
 
@@ -161,7 +179,7 @@ ___
 
 ▸ **removePrependVariableDeclaration**(sourceFile: *`SourceFile`*, options: *`object`*): `void`
 
-*Defined in [astUtil.ts:71](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/astUtil.ts#L71)*
+*Defined in [astUtil.ts:71](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/astUtil.ts#L71)*
 
 **Parameters:**
 

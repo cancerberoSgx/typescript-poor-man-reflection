@@ -1,13 +1,19 @@
-import { unique, quote } from 'misc-utils-of-mine-generic';
-import Project, { CallExpression, TypeGuards } from 'ts-simple-ast';
-import { ExtractorClass, ExtractorGetter, ExtractorOptions, ExtractorResult, FileVariableAccessor, ReplaceProjectFunctionCallOptions } from '../types';
-import { Map, unquote } from '../util';
+import { unique, quote } from 'misc-utils-of-mine-generic'
+import Project, { CallExpression, TypeGuards, Node } from 'ts-simple-ast'
+import {
+  ExtractorClass,
+  ExtractorGetter,
+  ExtractorOptions,
+  ExtractorResult,
+  FileVariableAccessor,
+  ReplaceProjectFunctionCallOptions
+} from '../types'
+import { Map, unquote } from '../util'
 
 export abstract class AbstractExtractor implements ExtractorClass {
-
   protected defaultExtractorOptions: ExtractorOptions = {
-    outputMode: 'asReturnValue',
-    targetMode: 'self'
+    // outputMode: 'asReturnValue',
+    // targetMode: 'self'
   }
 
   abstract extract(
@@ -33,12 +39,21 @@ export abstract class AbstractExtractor implements ExtractorClass {
         const cc: Map<any> = {}
         o.getProperties().forEach(p => {
           if (TypeGuards.isPropertyAssignment(p)) {
-            cc[p.getName()] = ['outputMode', 'outputVariableName'].includes(p.getName()) ? unquote(p.getInitializer()!.getText()) : p.getInitializer()
+            cc[p.getName()] = this.parseOptionValue(p.getName(), p.getInitializer())
           }
         })
         return cc as any
       }
     }
+  }
+  
+  /**
+   * since options need to be parsed from a literal object Node, subclasses might need to override 
+   * this method to parse their own options 
+   */
+  protected parseOptionValue(name: string, value: Node|undefined): any {
+    return (value && ['outputMode', 'outputVariableName'].includes(name))
+    ? unquote(value.getText()) : value
   }
 
   protected buildExtractorResult(
@@ -49,7 +64,7 @@ export abstract class AbstractExtractor implements ExtractorClass {
     extractOptions: Required<ReplaceProjectFunctionCallOptions>,
     extractorOptions?: ExtractorOptions
   ): ExtractorResult {
-      if (extractorOptions && extractorOptions.outputMode === 'assignToVariable' && extractorOptions.outputVariableName) {
+    if (extractorOptions && extractorOptions.outputMode === 'assignToVariable' && extractorOptions.outputVariableName) {
       const block = n.getFirstAncestor(TypeGuards.isBlock)
       if (block) {
         const varDecl = block.getVariableDeclaration(extractorOptions.outputVariableName)
@@ -65,18 +80,15 @@ export abstract class AbstractExtractor implements ExtractorClass {
         }
       }
     }
-    if(extractOptions.extractorDataMode==='asStringLiteral') {
-      return { 
+    if (extractOptions.extractorDataMode === 'asStringLiteral') {
+      return {
         argument: quote(output)
       }
-    }
-    else {
+    } else {
       return {
         argument: getter(index),
         prependToFile: output
       }
     }
-   
   }
-
 }

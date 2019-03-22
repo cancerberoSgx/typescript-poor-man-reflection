@@ -12,7 +12,9 @@
 
 ### Properties
 
-* [mode](_extractors_ast_.astoptions.md#mode)
+* [dontPrintIdentifier](_extractors_ast_.astoptions.md#dontprintidentifier)
+* [dontPrintKindName](_extractors_ast_.astoptions.md#dontprintkindname)
+* [dontPrintText](_extractors_ast_.astoptions.md#dontprinttext)
 * [outputMode](_extractors_ast_.astoptions.md#outputmode)
 * [outputVariableName](_extractors_ast_.astoptions.md#outputvariablename)
 * [removeMe](_extractors_ast_.astoptions.md#removeme)
@@ -23,15 +25,31 @@
 
 ## Properties
 
-<a id="mode"></a>
+<a id="dontprintidentifier"></a>
 
-### `<Optional>` mode
+### `<Optional>` dontPrintIdentifier
 
-**● mode**: *[ExtractorDataMode](../modules/_types_.md#extractordatamode)*
+**● dontPrintIdentifier**: *`undefined` \| `false` \| `true`*
 
-*Inherited from [ExtractorOptions](_types_.extractoroptions.md).[mode](_types_.extractoroptions.md#mode)*
+*Defined in [extractors/ast.ts:43](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/extractors/ast.ts#L43)*
 
-*Defined in [types.ts:143](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/types.ts#L143)*
+___
+<a id="dontprintkindname"></a>
+
+### `<Optional>` dontPrintKindName
+
+**● dontPrintKindName**: *`undefined` \| `false` \| `true`*
+
+*Defined in [extractors/ast.ts:42](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/extractors/ast.ts#L42)*
+
+___
+<a id="dontprinttext"></a>
+
+### `<Optional>` dontPrintText
+
+**● dontPrintText**: *`undefined` \| `false` \| `true`*
+
+*Defined in [extractors/ast.ts:44](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/extractors/ast.ts#L44)*
 
 ___
 <a id="outputmode"></a>
@@ -42,7 +60,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputMode](_types_.extractoroptions.md#outputmode)*
 
-*Defined in [types.ts:145](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/types.ts#L145)*
+*Defined in [types.ts:148](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/types.ts#L148)*
 
 ___
 <a id="outputvariablename"></a>
@@ -53,7 +71,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputVariableName](_types_.extractoroptions.md#outputvariablename)*
 
-*Defined in [types.ts:146](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/types.ts#L146)*
+*Defined in [types.ts:149](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/types.ts#L149)*
 
 ___
 <a id="removeme"></a>
@@ -64,7 +82,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[removeMe](_types_.extractoroptions.md#removeme)*
 
-*Defined in [types.ts:144](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/types.ts#L144)*
+*Defined in [types.ts:147](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/types.ts#L147)*
 
 ___
 <a id="target"></a>
@@ -73,7 +91,7 @@ ___
 
 **● target**: *`any`*
 
-*Defined in [extractors/ast.ts:15](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/extractors/ast.ts#L15)*
+*Defined in [extractors/ast.ts:41](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/extractors/ast.ts#L41)*
 
 ___
 <a id="targetmode"></a>
@@ -84,7 +102,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[targetMode](_types_.extractoroptions.md#targetmode)*
 
-*Defined in [types.ts:147](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1f709c2/src/types.ts#L147)*
+*Defined in [types.ts:150](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/types.ts#L150)*
 
 ___
 

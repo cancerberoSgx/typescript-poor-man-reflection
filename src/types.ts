@@ -90,26 +90,29 @@ export interface ReplaceFileFunctionCallOptions {
    * If `prependVariable`, an array variable will be prepended at the top of the same file and function calls
    * will access the array directly.
    *
-   * If `folderFile`, the data is stored in a separate file that exports a function to access to
-   * array. An import declaration will be added to the file and function calls will use the imported function
-   * to access the array. There will be one of these files per folder with the name given by option
+   * If `folderFile`, the data is stored in a separate file that exports a function to access to array. An
+   * import declaration will be added to the file and function calls will use the imported function to access
+   * the array. There will be one of these files per folder with the name given by option
    * `extractorDataFolderFileName` that will contain the data of all this folder's immediate children.
    *
-   * If `asStringLiteral` then the whole thing will be passed as a single string in the parameter (this is mostly useful for debugging since it will pollute the code a lot)
+   * If `asStringLiteral` then the whole thing will be passed as a single string in the parameter (this is
+   * mostly useful for debugging since it will pollute the code a lot)
    */
   extractorDataMode?: ExtractorDataMode
 
   /**
-   * The name of the file to store extractor data in case `extractorDataMode` is `'folderFile'`. By
-   * default it will be named `__poor_man_reflection__.ts`. See [['folderFile']]
+   * The name of the file to store extractor data in case `extractorDataMode` is `'folderFile'`. By default it
+   * will be named `__poor_man_reflection__.ts`. See [['folderFile']]
    */
   extractorDataFolderFileName?: string
 }
 
 interface ExtractorConfig {
-  /** if extractor uses first (0-th) argument for their private API they would return 1 so WE can use 1-th to pass data */
+  /** if extractor uses first (0-th) argument for their private API they would return 1 so WE can use 1-th to
+   * pass data */
   freeArgumentNumber?: number
-  /** related to freeArgumentNumber, if we detect no arguments in extractor reserved args, we will need to fill them with dummy values, so here we request which type. */
+  /** related to freeArgumentNumber, if we detect no arguments in extractor reserved args, we will need to
+   * fill them with dummy values, so here we request which type. */
   unusedArgumentDefaultValue?: string
 }
 
@@ -136,15 +139,29 @@ export interface ExtractOptions {
 }
 
 /**
- * These are options that user can use to configure a Extractor, could be as convention in the first arg,
- * ex: NodeType({target: aNode, mode: 'asStringLiteral', assignTo: 'nextVariable})
+ * These are options that user can use to configure a Extractor, could be as convention in the first arg, ex:
+ * `PrintAst({ target: foo, outputMode: 'assignToVariable', outputVariableName: 'existingVar')`
  */
 export interface ExtractorOptions {
-  mode?: ExtractorDataMode
-  removeMe?: boolean
+  /**
+   * Default is 'asReturnValue' in which case the output will be returned by the extractor function call.
+   *
+   * If `assignToVariable` then it will be assigned to a  variable in the ancestor Block. If there is a
+   * variable there called `outputVariableName` then that one will be used, otherwise a new variable will be
+   * created, next to the extractor call expression with a random name. IMPORTANT: variables created or
+   * assigned using this mode won't be removed or restored with `--clean`
+   */
   outputMode?: ExtractorOutputMode
+  /**
+   * Name of the variable to assign the value in case outputMode is `assignToVariable`
+   */
   outputVariableName?: string
-  targetMode?: 'self' | 'definition' | 'allReferences'
+  /**
+   * TODO
+   * If true, this extractor function call expression will be removed. Important: this won't be undoable or restored with `--clean`
+   */
+  removeMe?: boolean
+  // mode?: ExtractorDataMode targetMode?: 'self' | 'definition' | 'allReferences'
 }
 
 export type ExtractorOutputMode = 'assignToVariable' | 'asReturnValue'
@@ -168,7 +185,10 @@ export interface ExtractorResult {
 export type ExtractorGetter = (index: number) => string
 
 export type ExtractorDataMode = 'prependVariable' | 'folderFile' | 'asStringLiteral'
+
 /**
- * setter / getter for variables that are common between same function calls of same file or even different function files (to save data file space). The getter actually returns (at compile time) an expression that when evaluated will return the variable value (at runtime)
+ * setter / getter for variables that are common between same function calls of same file or even different
+ * function files (to save data file space). The getter actually returns (at compile time) an expression that
+ * when evaluated will return the variable value (at runtime)
  */
 export type FileVariableAccessor = (name: string, value?: string) => string | undefined

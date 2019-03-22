@@ -3,13 +3,13 @@ import { PrintAst } from '../..'
 interface I {
   m(): void
 }
- class C implements I {
+class C implements I {
   m() {
     return function f() {
-      const ast1 = PrintAst<I>({dontPrintText: true})
+      const ast1 = PrintAst<I>({ dontPrintText: true },  )
       console.log(ast1)
 
-      const ast2 = PrintAst({ target: ast1, dontPrintText: true})
+      const ast2 = PrintAst({ target: ast1, dontPrintText: true },  )
       console.log(ast2)
 
       // PrintAst({ outputMode: 'assignToVariable', outputVariableName: 'newVar1' }, )
