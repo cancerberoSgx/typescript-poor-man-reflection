@@ -95,12 +95,6 @@ export function getFirstTypeArgumentDefinitionBlock(n: CallExpression) {
   const id = n.getTypeArguments()[0].getFirstChildByKind(SyntaxKind.Identifier)
   if (id) {
     const r = getDefinitionsOf(id)
-    // const r = id.findReferences().map(r =>
-    //   r
-    //     .getDefinition()
-    //     .getNode()
-    //     .getParent()
-    // )
     if (r.length) {
       return r[0]
     }
@@ -117,4 +111,9 @@ export function getDefinitionsOf(id: Identifier) {
         .getParent()
     )
     .filter(notUndefined)
+}
+
+export function getNodeName(n: Node) {
+  const id = n.getFirstChildByKind(SyntaxKind.Identifier)
+  return id ? id.getText() : undefined
 }

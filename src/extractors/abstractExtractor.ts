@@ -1,20 +1,10 @@
-import { unique } from 'misc-utils-of-mine-generic'
-// import {Map } from 'misc-utils-of-mine-typescript'
-
-import Project, { Block, CallExpression, TypeGuards, SyntaxKind } from 'ts-simple-ast'
-import {
-  ExtractOptions,
-  ExtractorClass,
-  ExtractorGetter,
-  ExtractorOptions,
-  ExtractorOutputMode,
-  ExtractorResult,
-  FileVariableAccessor,
-  ReplaceProjectFunctionCallOptions
-} from '../types'
-import { evaluate, Map } from '../util'
+import { unique, quote } from 'misc-utils-of-mine-generic';
+import Project, { CallExpression, TypeGuards } from 'ts-simple-ast';
+import { ExtractorClass, ExtractorGetter, ExtractorOptions, ExtractorResult, FileVariableAccessor, ReplaceProjectFunctionCallOptions } from '../types';
+import { Map, unquote } from '../util';
 
 export abstract class AbstractExtractor implements ExtractorClass {
+
   protected defaultExtractorOptions: ExtractorOptions = {
     outputMode: 'asReturnValue',
     targetMode: 'self'
@@ -43,14 +33,9 @@ export abstract class AbstractExtractor implements ExtractorClass {
         const cc: Map<any> = {}
         o.getProperties().forEach(p => {
           if (TypeGuards.isPropertyAssignment(p)) {
-            cc[p.getName()] = p.getInitializer()
+            cc[p.getName()] = ['outputMode', 'outputVariableName'].includes(p.getName()) ? unquote(p.getInitializer()!.getText()) : p.getInitializer()
           }
-          // const s=p.getStructure().name
-          // s.
         })
-        // console.log(o.getText(), o.getKindName());
-
-        // const value = evaluate(o.getText(), undefined)
         return cc as any
       }
     }
@@ -64,25 +49,12 @@ export abstract class AbstractExtractor implements ExtractorClass {
     extractOptions: Required<ReplaceProjectFunctionCallOptions>,
     extractorOptions?: ExtractorOptions
   ): ExtractorResult {
-    // if (!extractorOptions || !extractorOptions.outputMode || extractorOptions.outputMode === 'asReturnValue') {
-    //   return { argument: output }
-    // }
-
-    // else if (options && options.outputMode === 'assignToVariableDeclaration'&& options.outputVariableName) {
-    //   const statement = n.getFirstAncestor(a => TypeGuards.isBlock(a.getParent()))
-    //   if (statement) {
-    //     (statement.getParent() as Block).insertVariableStatement(statement.getChildIndex() + 1, {
-    //       declarations: [{ name: unique('ast_output_'), type: 'string', initializer: `\`${output}\`` }]
-    //     })
-    //   }
-    // }
-    // else
-    if (extractorOptions && extractorOptions.outputMode === 'assignToVariable' && extractorOptions.outputVariableName) {
+      if (extractorOptions && extractorOptions.outputMode === 'assignToVariable' && extractorOptions.outputVariableName) {
       const block = n.getFirstAncestor(TypeGuards.isBlock)
       if (block) {
         const varDecl = block.getVariableDeclaration(extractorOptions.outputVariableName)
         if (varDecl) {
-          varDecl.setInitializer(output)
+          varDecl.setInitializer(quote(output)) // TODO: we could store previous initializer value as a variable so we can clean it
         } else {
           const statement = n.getFirstAncestor(a => TypeGuards.isBlock(a.getParent()))
           if (statement) {
@@ -93,21 +65,18 @@ export abstract class AbstractExtractor implements ExtractorClass {
         }
       }
     }
-    return {
-      argument: getter(index),
-      prependToFile: output
-      // argument: n.getArguments()[1].getText()
+    if(extractOptions.extractorDataMode==='asStringLiteral') {
+      return { 
+        argument: quote(output)
+      }
     }
+    else {
+      return {
+        argument: getter(index),
+        prependToFile: output
+      }
+    }
+   
   }
 
-  // afterWriteExtractorData(n: CallExpression, index: number, options: Required<ReplaceProjectFunctionCallOptions>, ) {
-  //   const userOptions = this.getOptionsFromFistArg(n)
-  //   if (userOptions && userOptions.removeMe) {
-  //     // n.replaceWithText('')
-  //     // const next = n.getNextSibling()
-  //     // if (next && next.getKind() === SyntaxKind.CommaToken) {
-  //     //   next.replaceWithText('')
-  //     // }
-  //   }
-  // }
 }

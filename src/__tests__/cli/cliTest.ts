@@ -37,6 +37,15 @@ describe('cli', () => {
       `C.counter++ const c = new C() console.log(removeWhites(ThisBlockText() || 'undefined')) return a.replace('"', q) + c.m() console.log(removeWhites(ThisBlockText() || 'undefined')) return Math.PI console.log(removeWhites(ThisBlockText() || 'undefined')) return a.getTime() + 1`
     )
   })
+
+  it('src/__tests__/cli/astSample.ts', () => {
+    cliTest(
+      'src/__tests__/cli/astSample.ts',
+      'undefined undefined',
+      `(SourceFile) <----- TARGET NODE IS THE FOLLOWING ------> I (InterfaceDeclaration)  (Identifier) m (MethodSignature)  (Identifier)  (VoidKeyword)  (SourceFile)  C (ClassDeclaration) m (MethodDeclaration)  (Block)  (ReturnStatement) f (FunctionExpression) (Block) (VariableStatement) (VariableDeclarationList)  <----- TARGET NODE IS THE FOLLOWING ------> ast1 (VariableDeclaration)   (Identifier)`
+  )
+  })
+
 })
 
 function cliTest(program: string, cleanOutput: string, instrumentedOutput: string) {

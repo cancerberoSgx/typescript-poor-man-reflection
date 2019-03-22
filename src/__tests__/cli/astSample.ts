@@ -1,17 +1,21 @@
 import { PrintAst } from '../..'
 
-class C {
+interface I {
+  m(): void
+}
+ class C implements I {
   m() {
     return function f() {
-      const c = 1
+      const ast1 = PrintAst<I>({dontPrintText: true})
+      console.log(ast1)
 
-      const ast = PrintAst<C>({ outputMode: 'asReturnValue' })
-      console.log(ast)
+      const ast2 = PrintAst({ target: ast1, dontPrintText: true})
+      console.log(ast2)
 
       // PrintAst({ outputMode: 'assignToVariable', outputVariableName: 'newVar1' }, )
 
-      // PrintAst({ outputMode: 'assignToVariable', outputVariableName: 'existingVar' }, )
-      // let existingVar: string = ""
+      // PrintAst<I>({ outputMode: 'assignToVariable', outputVariableName: 'existingVar', dontPrintText: true},   )
+      // let existingVar: string = "\"  (SourceFile) \n\n<----- TARGET NODE IS THE FOLLOWING ------>\n   I (InterfaceDeclaration) \n      (Identifier) \n     m (MethodSignature) \n        (Identifier) \n        (VoidKeyword) \n\""
       // console.log(existingVar)
     }
   }
