@@ -4,7 +4,7 @@
 
 ## Hierarchy
 
- [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md)
+↳  [AbstractRefactorExtractor](_extractors_source_abstractrefactorextractor_.abstractrefactorextractor.md)
 
 **↳ RemoveUnusedClass**
 
@@ -27,6 +27,7 @@
 * [getOptionsFromFistArg](_extractors_source_removeunused_.removeunusedclass.md#getoptionsfromfistarg)
 * [getTarget](_extractors_source_removeunused_.removeunusedclass.md#gettarget)
 * [parseOptionValue](_extractors_source_removeunused_.removeunusedclass.md#parseoptionvalue)
+* [preformRefactor](_extractors_source_removeunused_.removeunusedclass.md#preformrefactor)
 
 ---
 
@@ -40,7 +41,7 @@
 
 *Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[defaultExtractorOptions](_extractors_abstractextractor_.abstractextractor.md#defaultextractoroptions)*
 
-*Defined in [extractors/abstractExtractor.ts:15](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b99ab34/src/extractors/abstractExtractor.ts#L15)*
+*Defined in [extractors/abstractExtractor.ts:15](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/4ce0fbf/src/extractors/abstractExtractor.ts#L15)*
 
 ___
 
@@ -54,9 +55,11 @@ ___
 
 *Implementation of [ExtractorClass](../interfaces/_types_.extractorclass.md).[afterWriteExtractorData](../interfaces/_types_.extractorclass.md#afterwriteextractordata)*
 
+*Inherited from [AbstractRefactorExtractor](_extractors_source_abstractrefactorextractor_.abstractrefactorextractor.md).[afterWriteExtractorData](_extractors_source_abstractrefactorextractor_.abstractrefactorextractor.md#afterwriteextractordata)*
+
 *Overrides [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[afterWriteExtractorData](_extractors_abstractextractor_.abstractextractor.md#afterwriteextractordata)*
 
-*Defined in [extractors/source/removeUnused.ts:49](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b99ab34/src/extractors/source/removeUnused.ts#L49)*
+*Defined in [extractors/source/abstractRefactorExtractor.ts:32](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/4ce0fbf/src/extractors/source/abstractRefactorExtractor.ts#L32)*
 
 **Parameters:**
 
@@ -77,7 +80,7 @@ ___
 
 *Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[buildExtractorResult](_extractors_abstractextractor_.abstractextractor.md#buildextractorresult)*
 
-*Defined in [extractors/abstractExtractor.ts:62](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b99ab34/src/extractors/abstractExtractor.ts#L62)*
+*Defined in [extractors/abstractExtractor.ts:62](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/4ce0fbf/src/extractors/abstractExtractor.ts#L62)*
 
 **Parameters:**
 
@@ -101,9 +104,11 @@ ___
 
 *Implementation of [ExtractorClass](../interfaces/_types_.extractorclass.md).[extract](../interfaces/_types_.extractorclass.md#extract)*
 
+*Inherited from [AbstractRefactorExtractor](_extractors_source_abstractrefactorextractor_.abstractrefactorextractor.md).[extract](_extractors_source_abstractrefactorextractor_.abstractrefactorextractor.md#extract)*
+
 *Overrides [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[extract](_extractors_abstractextractor_.abstractextractor.md#extract)*
 
-*Defined in [extractors/source/removeUnused.ts:38](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b99ab34/src/extractors/source/removeUnused.ts#L38)*
+*Defined in [extractors/source/abstractRefactorExtractor.ts:21](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/4ce0fbf/src/extractors/source/abstractRefactorExtractor.ts#L21)*
 
 **Parameters:**
 
@@ -126,9 +131,11 @@ ___
 
 *Implementation of [ExtractorClass](../interfaces/_types_.extractorclass.md).[getConfig](../interfaces/_types_.extractorclass.md#getconfig)*
 
-*Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[getConfig](_extractors_abstractextractor_.abstractextractor.md#getconfig)*
+*Inherited from [AbstractRefactorExtractor](_extractors_source_abstractrefactorextractor_.abstractrefactorextractor.md).[getConfig](_extractors_source_abstractrefactorextractor_.abstractrefactorextractor.md#getconfig)*
 
-*Defined in [extractors/abstractExtractor.ts:17](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b99ab34/src/extractors/abstractExtractor.ts#L17)*
+*Overrides [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[getConfig](_extractors_abstractextractor_.abstractextractor.md#getconfig)*
+
+*Defined in [extractors/source/abstractRefactorExtractor.ts:53](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/4ce0fbf/src/extractors/source/abstractRefactorExtractor.ts#L53)*
 
 **Returns:** `object`
 
@@ -141,7 +148,7 @@ ___
 
 *Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[getOptionsFromFistArg](_extractors_abstractextractor_.abstractextractor.md#getoptionsfromfistarg)*
 
-*Defined in [extractors/abstractExtractor.ts:39](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b99ab34/src/extractors/abstractExtractor.ts#L39)*
+*Defined in [extractors/abstractExtractor.ts:39](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/4ce0fbf/src/extractors/abstractExtractor.ts#L39)*
 
 Get options from first argument or undefined.
 
@@ -169,7 +176,7 @@ ___
 
 *Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[getTarget](_extractors_abstractextractor_.abstractextractor.md#gettarget)*
 
-*Defined in [extractors/abstractExtractor.ts:98](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b99ab34/src/extractors/abstractExtractor.ts#L98)*
+*Defined in [extractors/abstractExtractor.ts:98](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/4ce0fbf/src/extractors/abstractExtractor.ts#L98)*
 
 **Parameters:**
 
@@ -187,11 +194,11 @@ ___
 
 ▸ **parseOptionValue**(name: *`string`*, value: *`Node` \| `undefined`*): `any`
 
-*Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[parseOptionValue](_extractors_abstractextractor_.abstractextractor.md#parseoptionvalue)*
+*Inherited from [AbstractRefactorExtractor](_extractors_source_abstractrefactorextractor_.abstractrefactorextractor.md).[parseOptionValue](_extractors_source_abstractrefactorextractor_.abstractrefactorextractor.md#parseoptionvalue)*
 
-*Defined in [extractors/abstractExtractor.ts:58](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b99ab34/src/extractors/abstractExtractor.ts#L58)*
+*Overrides [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[parseOptionValue](_extractors_abstractextractor_.abstractextractor.md#parseoptionvalue)*
 
-since options need to be parsed from a literal object Node, subclasses might need to override this method to parse their own options
+*Defined in [extractors/source/abstractRefactorExtractor.ts:46](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/4ce0fbf/src/extractors/source/abstractRefactorExtractor.ts#L46)*
 
 **Parameters:**
 
@@ -201,6 +208,26 @@ since options need to be parsed from a literal object Node, subclasses might nee
 | value | `Node` \| `undefined` |
 
 **Returns:** `any`
+
+___
+<a id="preformrefactor"></a>
+
+### `<Protected>` preformRefactor
+
+▸ **preformRefactor**(project: *`Project`*, f: *`SourceFile`*): `void`
+
+*Overrides [AbstractRefactorExtractor](_extractors_source_abstractrefactorextractor_.abstractrefactorextractor.md).[preformRefactor](_extractors_source_abstractrefactorextractor_.abstractrefactorextractor.md#preformrefactor)*
+
+*Defined in [extractors/source/removeUnused.ts:23](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/4ce0fbf/src/extractors/source/removeUnused.ts#L23)*
+
+**Parameters:**
+
+| Name | Type |
+| ------ | ------ |
+| project | `Project` |
+| f | `SourceFile` |
+
+**Returns:** `void`
 
 ___
 

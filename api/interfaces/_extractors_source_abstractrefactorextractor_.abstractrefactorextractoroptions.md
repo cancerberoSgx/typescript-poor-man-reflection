@@ -1,22 +1,28 @@
-[typescript-poor-man-reflection](../README.md) > ["extractors/fs/readFiles"](../modules/_extractors_fs_readfiles_.md) > [ReadFilesOptions](../interfaces/_extractors_fs_readfiles_.readfilesoptions.md)
+[typescript-poor-man-reflection](../README.md) > ["extractors/source/abstractRefactorExtractor"](../modules/_extractors_source_abstractrefactorextractor_.md) > [AbstractRefactorExtractorOptions](../interfaces/_extractors_source_abstractrefactorextractor_.abstractrefactorextractoroptions.md)
 
-# Interface: ReadFilesOptions
+# Interface: AbstractRefactorExtractorOptions
 
 ## Hierarchy
 
  [ExtractorOptions](_types_.extractoroptions.md)
 
-**↳ ReadFilesOptions**
+**↳ AbstractRefactorExtractorOptions**
+
+↳  [OrganizeImportsOptions](_extractors_source_organizeimports_.organizeimportsoptions.md)
+
+↳  [RemoveUnusedOptions](_extractors_source_removeunused_.removeunusedoptions.md)
+
+↳  [InferTypesOptions](_extractors_source_infertypes_.infertypesoptions.md)
 
 ## Index
 
 ### Properties
 
-* [outputMode](_extractors_fs_readfiles_.readfilesoptions.md#outputmode)
-* [outputVariableName](_extractors_fs_readfiles_.readfilesoptions.md#outputvariablename)
-* [path](_extractors_fs_readfiles_.readfilesoptions.md#path)
-* [removeMe](_extractors_fs_readfiles_.readfilesoptions.md#removeme)
-* [target](_extractors_fs_readfiles_.readfilesoptions.md#target)
+* [outputMode](_extractors_source_abstractrefactorextractor_.abstractrefactorextractoroptions.md#outputmode)
+* [outputVariableName](_extractors_source_abstractrefactorextractor_.abstractrefactorextractoroptions.md#outputvariablename)
+* [path](_extractors_source_abstractrefactorextractor_.abstractrefactorextractoroptions.md#path)
+* [removeMe](_extractors_source_abstractrefactorextractor_.abstractrefactorextractoroptions.md#removeme)
+* [target](_extractors_source_abstractrefactorextractor_.abstractrefactorextractoroptions.md#target)
 
 ---
 
@@ -52,13 +58,13 @@ Name of the variable to assign the value in case outputMode is `assignToVariable
 ___
 <a id="path"></a>
 
-###  path
+### `<Optional>` path
 
-**● path**: *`string`*
+**● path**: *`undefined` \| `string`*
 
-*Defined in [extractors/fs/readFiles.ts:31](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/4ce0fbf/src/extractors/fs/readFiles.ts#L31)*
+*Defined in [extractors/source/abstractRefactorExtractor.ts:17](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/4ce0fbf/src/extractors/source/abstractRefactorExtractor.ts#L17)*
 
-Path of files to read. Can be a glob.
+Files on which to perform the action. If undefined, it will be applied on current file.
 
 ___
 <a id="removeme"></a>

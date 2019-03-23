@@ -17,4 +17,5 @@ export { InferTypes } from './extractors/source/inferTypes'
 export { replaceFileFunctionCall } from './replaceFileFunctionCall'
 export { replaceProjectFunctionCall } from './replaceProjectFunctionCall'
 export { main } from './main'
+
 export * from './types'

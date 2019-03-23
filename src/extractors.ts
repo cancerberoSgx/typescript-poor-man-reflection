@@ -11,7 +11,7 @@ import { Extractor, ExtractorClass, ExtractorFn } from './types'
 import { ProjectFilesClass } from './extractors/source/projectFiles'
 import { OrganizeImports, OrganizeImportsClass } from './extractors/source/organizeImports'
 import { RemoveUnusedClass } from './extractors/source/removeUnused'
-import { InferTypesClass } from './extractors/source/inferTypes';
+import { InferTypesClass } from './extractors/source/inferTypes'
 
 export const defaultExtractors: { [k: string]: Extractor } = {
   TypeText: new TypeTextClass(),

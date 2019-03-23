@@ -26,9 +26,9 @@
 
 ▸ **RemoveUnused**<`T`>(config: *[RemoveUnusedOptions](../interfaces/_extractors_source_removeunused_.removeunusedoptions.md)*, t?: *`any`*): `number`
 
-*Defined in [extractors/source/removeUnused.ts:25](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b99ab34/src/extractors/source/removeUnused.ts#L25)*
+*Defined in [extractors/source/removeUnused.ts:14](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/4ce0fbf/src/extractors/source/removeUnused.ts#L14)*
 
-Will remove all unused variables, import names, etc, on given files. If no file is provided then it will call for the current file. Returns : nothing.
+Will remove all unused variables, import names, etc, on given files. If no file is provided then it will call for the current file. Returns `undefined`.
 
 ```ts
 RemoveUnused({path: 'src/** /*.ts*'})

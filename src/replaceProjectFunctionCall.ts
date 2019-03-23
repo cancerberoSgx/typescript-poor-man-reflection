@@ -7,7 +7,9 @@ import { writeFileSync } from 'fs'
 import minimatch from 'minimatch'
 import { defaultExtractors } from './extractors'
 
-//TODO: memoize
+/**
+ * Knows if a file should be included in the process or not. TODO: memoize 
+ */
 export function includeFile(f: SourceFile, config: { extractorDataFolderFileName?: string; filePattern?: string }) {
   if (f.isFromExternalLibrary() || f.isDeclarationFile()) {
     return false
@@ -48,6 +50,7 @@ export function getFullOptions(
 }
 
 let project!: Project
+
 /**
  * Executes the tool on a given TypeScript project in filesystem. See `Config` documentation.
  */

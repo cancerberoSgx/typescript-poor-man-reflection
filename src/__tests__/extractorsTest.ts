@@ -1,9 +1,4 @@
-import {
-  Project,
-  TypeGuards,
-  CallExpression,
-  SyntaxKind,
-} from 'ts-simple-ast'
+import { Project, TypeGuards, CallExpression, SyntaxKind } from 'ts-simple-ast'
 import { replaceFileFunctionCall } from '../replaceFileFunctionCall'
 import { defaultOptions } from '../replaceProjectFunctionCall'
 import { removeWhites } from 'misc-utils-of-mine-generic'
@@ -263,12 +258,11 @@ export class C {
         project
       })
       const t = removeWhites(project.getSourceFile('test.ts')!.getText()).trim()
-      expect(t).toBe(`export function f(){} export 5 RemoveUnused(undefined) export class C { fo(){} }`)
+      expect(t).toBe(`export function f(){} export 5 RemoveUnused({}, undefined) export class C { fo(){} }`)
     })
 
     xit('should remove unused symbols of given files only', () => {})
   })
-
 
   describe('InferTypes', () => {
     it('should infer types from usage on current file if none given', () => {
@@ -290,11 +284,11 @@ InferTypes()
         project
       })
       const t = removeWhites(project.getSourceFile('test.ts')!.getText()).trim()
-      expect(t).toBe(`function f(a: number){return a+1} function g(y: string){return y+'world'} var a: Date, b: string, c: number a=new Date() g(b) c=f(1) InferTypes({}, undefined)`)
+      expect(t).toBe(
+        `function f(a: number){return a+1} function g(y: string){return y+'world'} var a: Date, b: string, c: number a=new Date() g(b) c=f(1) InferTypes({}, undefined)`
+      )
     })
 
-    xit('should infer types on given files only', () => {
-
-    })
+    xit('should infer types on given files only', () => {})
   })
 })
