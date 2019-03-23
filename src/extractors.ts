@@ -13,6 +13,7 @@ import { Ast } from './extractors/source/printAst'
 import { ProjectFilesClass } from './extractors/source/projectFiles'
 import { RemoveUnusedClass } from './extractors/source/removeUnused'
 import { Extractor, ExtractorClass, ExtractorFn } from './types'
+import { ExecClass } from './extractors/fs/exec';
 
 export const defaultExtractors: { [k: string]: Extractor } = {
   TypeText: new TypeTextClass(),
@@ -23,6 +24,7 @@ export const defaultExtractors: { [k: string]: Extractor } = {
   Ls: new LsClass(),
   Cat: new CatClass(),
   ReadFiles: new ReadFilesClass(),
+  Exec: new ExecClass(),
 
   ProjectFiles: new ProjectFilesClass(),
   PrintAst: new Ast(),

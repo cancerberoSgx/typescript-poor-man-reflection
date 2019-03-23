@@ -90,7 +90,11 @@ export class ExtractInterfaceClass extends AbstractExtractor {
   protected parseOptionValue(name: string, value: Node | undefined): any {
     if (value && ['destFile', 'name'].includes(name)) {
       return unquote(value.getText())
-    } else {
+    }
+    else if(value && ['removeDocs'].includes(name)) {
+      return value.getText() === 'true' ? true : false
+    }
+     else {
       return super.parseOptionValue(name, value)
     }
   }

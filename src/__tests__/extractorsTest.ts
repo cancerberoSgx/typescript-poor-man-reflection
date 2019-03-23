@@ -365,4 +365,34 @@ interface IA extends I<number> {
       )
     })
   })
+
+
+
+  describe('Exec', () => {
+    it('should execute commands and return status code and stdout', () => {
+      const project = new Project()
+      project.createSourceFile(
+        'test.ts',
+        `
+const {code, stdout, stderr} = Exec({command: 'npm -v'})
+const {code, stdout, stderr} = Exec({command: 'ls wrong*'})
+      `
+      )
+      replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
+        extractorDataMode: 'asArgument',
+        project
+      })
+      
+      const t = removeWhites(project.getSourceFile('test.ts')!.getText()).trim()
+      expect(t).toBe(removeWhites(
+        `
+const {code, stdout, stderr} = Exec({command: 'npm -v'}, "{code: 0, stdout: \\"6.7.0\\n\\", stderr: \\"\\"}")
+const {code, stdout, stderr} = Exec({command: 'ls wrong*'}, "{code: 2, stdout: \\"\\", stderr: \\"ls: cannot access 'wrong*': No such file or directory\\n\\"}")`
+      ))
+    })
+
+    xit('should infer types on given files only', () => {})
+  })
+
+
 })
