@@ -15,7 +15,7 @@ import {
  * extract those CallExpressions from given sourceFile which declared in a module specifier with
  * given name and which function name is one of given names
  */
-export function extractCallExpressions(sourceFile: SourceFile, moduleSpecifier: string, names: string[]) {
+export function extractCallExpressions(sourceFile: SourceFile, moduleSpecifier: string|'__IGNORE__', names: string[]) {
   return sourceFile
     .getDescendants()
     .filter(TypeGuards.isCallExpression)
@@ -29,7 +29,7 @@ export function extractCallExpressions(sourceFile: SourceFile, moduleSpecifier: 
         .map(d => d.getDeclarationNode() && d.getDeclarationNode()!.getParent()!)
         .filter(notUndefined)
         .filter(TypeGuards.isImportDeclaration)
-        .map(i => i.getModuleSpecifier().getText() === moduleSpecifier)
+        .map(i => moduleSpecifier==='__IGNORE__' ? true : i.getModuleSpecifier().getText() === moduleSpecifier)
     )
     .map(i => i.getParentIfKind(SyntaxKind.CallExpression))
     .filter(notUndefined)

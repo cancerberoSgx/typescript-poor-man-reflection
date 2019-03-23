@@ -191,7 +191,7 @@ export interface ExtractorOptions {
   /**
    * Name of the variable to assign the value in case outputMode is `assignToVariable`
    */
-  outputVariableName?: string
+  outputVariableName?: string|'__IGNORE__'
 
   /**
    * If true, this extractor function call expression will be removed as long as it's on an

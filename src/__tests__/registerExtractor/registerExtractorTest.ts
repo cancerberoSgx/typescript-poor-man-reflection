@@ -1,8 +1,10 @@
 import { exec, config } from 'shelljs'
 
-describe('registerExtractor', () => {
+describe('CLI --register', () => {
+
   const customExtractor =
     '/home/sg/git/typescript-poor-man-reflection/src/__tests__/registerExtractor/exportedExtractor1.ts'
+
   afterAll(() => {
     exec(`npx ts-node src/cli.ts --moduleSpecifier "./exportedExtractor1"  --register "${customExtractor}" --clean`)
   })
@@ -32,5 +34,5 @@ describe('registerExtractor', () => {
     expect(r.stdout).toContain('hello seba')
   })
 
-  xit('Should be able to register node package exporting an extractor (npm i)', () => {})
+  xit('Should be able to register node package exporting an extractor (npm i)', () => { })
 })

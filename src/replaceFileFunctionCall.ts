@@ -27,11 +27,10 @@ export function replaceFileFunctionCall(
 
   const fileVariables: { [name: string]: string } = {}
   const replaced: Replacement[] = []
-  let callExpressions = extractCallExpressions(sourceFile, moduleSpecifier, Object.keys(extracts))
-  const callExpressionNames = callExpressions.map(c => c.getFirstChildByKind(SyntaxKind.Identifier)!.getText())
+  let callExpressions = extractCallExpressions(options.project.getSourceFile(sourceFile.getFilePath())!, moduleSpecifier, Object.keys(extracts))
+  let callExpressionNames = callExpressions.map(c => c.getFirstChildByKind(SyntaxKind.Identifier)!.getText())
   let extractorData: string[] = []
-  const fileId = getFileId(sourceFile, { extractorDataFolderFileName: extractorDataFolderFileName })
-  // const fullOptions = getFullOptions({ ...options })
+  const fileId = getFileId(options.project.getSourceFile(sourceFile.getFilePath())!, { extractorDataFolderFileName: extractorDataFolderFileName })
 
   callExpressionNames.forEach(extractName => {
     const extract = extracts[extractName]
@@ -39,6 +38,11 @@ export function replaceFileFunctionCall(
       extract.beforeExtract(sourceFile.getFilePath(), extractName, options)
     }
   })
+
+  // at beforeExtract somebody (Register()) could add a new extractor or perhaps the AST was modified so we
+  // query the call expressions again
+  callExpressions = extractCallExpressions(options.project.getSourceFile(sourceFile.getFilePath())!, moduleSpecifier, Object.keys(extracts))
+  callExpressionNames = callExpressions.map(c => c.getFirstChildByKind(SyntaxKind.Identifier)!.getText())
 
   callExpressions.forEach((c, index) => {
     const functionName = c.getFirstChildByKind(SyntaxKind.Identifier)!.getText()
@@ -66,8 +70,11 @@ export function replaceFileFunctionCall(
       FileVariableAccessor
     ] = [c, index, extractorGetterBuilder(options, index, sourceFile, c), options, fileVariableAccessor]
 
-    // Heads up: argIndex is the argument index we can use for data. Previous arguments are owned by the extractor for its own options/whatever.
+    // Heads up: argIndex is the argument index we can use for data. Previous arguments are owned by the
+    // extractor for its own options/whatever.
 
+    // console.log(Object.keys(options.extracts));
+    
     if (extract && c.getArguments().length < argIndex && !clean) {
       // extractor owned arguments are empty - we need to fill them up in order to add ours.
       for (let i = 0; i < argIndex; i++) {

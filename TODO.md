@@ -33,32 +33,6 @@ get global variables values at runtime
 IoC would base on this.
 
 
-### Register extractors directly from code
-
-would be awesome to do, from the same code:
-
-```ts
-Register(extractor(){
-  return {
-  name: 'NewExtractor', 
-  extractor: class NewExtractor extends AbstractExtractor {
-    protected freeArgumentNumber = 1
-    extract(...[c, i, g, options, v]: Parameters<ExtractorFn>) {
-      const config = this.getOptionsFromFistArg(c) || {}
-      return this.buildExtractorResult(c, '"hello"', g, i, options, config)
-    }
-  }, 
-  fn<T = any>(config: NewExtractorOptions, r?: T): T {
-    return r!
-  }
-}
-})
-// and from here I can use it: 
-NewExtractor()
-```
-I think we can use beforeExtract()
-
-
 ### If()
 
 conditionals at compile time:
@@ -119,6 +93,45 @@ RegisterImplementation<SomeInterface>(some, Impl1)
 
 
 # Ideas Done
+
+
+### Register extractors directly from code
+
+WIP - working but very limited and buggy... I dont want to make things complicate for this non important feature... 
+see src/__tests__/registerExtractorTest.ts and src/extractors/internal/register.ts
+
+TODO: document limitations. 
+TODO: put validations / defensive code in the extractor 
+
+...would be awesome to do, from the same code:
+
+```ts
+import {AbstractExtractor, ExtractorFn, Register } from '..'
+
+interface NewExtractorOptions { name?: string }
+
+class NewExtractorClass extends AbstractExtractor {
+  protected freeArgumentNumber = 1
+  extract(...[c, i, g, options, v]: Parameters<ExtractorFn>) {
+    const config = this.getOptionsFromFistArg(c) || {}
+    return this.buildExtractorResult(c, '"hello"', g, i, options, config)
+  }
+}
+Register({
+  name: 'NewExtractor', 
+  extractor: new NewExtractorClass(), 
+  fn: function <T = any>(config: NewExtractorOptions, r?: T): T {
+    return r!
+  }
+})
+// and from here I can use it: 
+const c = NewExtractor()
+console.log(c)
+```
+I think we can use beforeExtract()
+
+
+
 
 ### --register new extractors from CLI
 

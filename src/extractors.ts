@@ -15,6 +15,7 @@ import { OverridesClass } from './extractors/source/overrides'
 import { Ast } from './extractors/source/printAst'
 import { RemoveUnusedClass } from './extractors/source/removeUnused'
 import { Extractor, ExtractorClass, ExtractorFn, ExportedExtractor } from './types'
+import { RegisterClass } from './extractors/internal/register';
 
 export const defaultExtractors: { [k: string]: Extractor } = {
   TypeText: new TypeTextClass(),
@@ -34,7 +35,10 @@ export const defaultExtractors: { [k: string]: Extractor } = {
   RemoveUnused: new RemoveUnusedClass(),
   InferTypes: new InferTypesClass(),
   ExtractInterface: new ExtractInterfaceClass(),
-  Overrides: new OverridesClass()
+  Overrides: new OverridesClass(),
+
+  Register: new RegisterClass()
+
 }
 
 export function isExtractorFn(e: Extractor): e is ExtractorFn {
