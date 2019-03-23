@@ -2,6 +2,11 @@ import { Project, CallExpression } from 'ts-simple-ast'
 import { replaceFileFunctionCall } from '../replaceFileFunctionCall'
 
 describe('replaceFunctionCall', () => {
+  it('dummy', () => {
+    expect(1).toBe(1)
+  })
+
+
   describe('add argument', () => {
     it('should  replace given function name and module specifier with first type attr text', () => {
       const project = new Project()
