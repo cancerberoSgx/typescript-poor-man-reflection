@@ -14,7 +14,7 @@ export class NodeText extends AbstractExtractor {
   ) {
     var c = getFirstTypeArgumentDefinitionBlock(n)
 
-    return options.extractorDataMode === 'asStringLiteral'
+    return options.extractorDataMode === 'asArgument'
       ? c
         ? { argument: `${JSON.stringify(c.getText())}` }
         : { argument: '' }

@@ -18,7 +18,7 @@ export class ThisBlockText extends AbstractExtractor {
       const t = block.getText().trim()
       result = `${JSON.stringify(t.substring(1, t.length - 1))}`
     }
-    return options.extractorDataMode === 'asStringLiteral'
+    return options.extractorDataMode === 'asArgument'
       ? { argument: result }
       : {
           argument: getter(index),

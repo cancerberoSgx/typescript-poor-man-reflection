@@ -16,7 +16,7 @@ const c = TypeText<{a:"a"}>()
     `
       )
 
-      replaceFileFunctionCall(project.getSourceFile('test.ts')!, { extractorDataMode: 'asStringLiteral' })
+      replaceFileFunctionCall(project.getSourceFile('test.ts')!, { extractorDataMode: 'asArgument' })
 
       const t = project.getSourceFile('test.ts')!.getText()
 
@@ -41,7 +41,7 @@ const c = TypeText<{a:Type<number>}>('{a:"a"}')
         `.trim()
       )
 
-      replaceFileFunctionCall(project.getSourceFile('test.ts')!, { extractorDataMode: 'asStringLiteral' })
+      replaceFileFunctionCall(project.getSourceFile('test.ts')!, { extractorDataMode: 'asArgument' })
 
       const t2 = project.getSourceFile('test.ts')!.getText()
 
@@ -61,21 +61,21 @@ const c = TypeText<{a:Type<number>}>('{a:Type<number>}')
     it('should clean existing args', () => {
       const project = new Project()
       project.createSourceFile('test.ts', `const b = TypeText<{a:'a'}>("{a:'a'}")`)
-      replaceFileFunctionCall(project.getSourceFile('test.ts')!, { clean: true, extractorDataMode: 'asStringLiteral' })
+      replaceFileFunctionCall(project.getSourceFile('test.ts')!, { clean: true, extractorDataMode: 'asArgument' })
       const t2 = project.getSourceFile('test.ts')!.getText()
       expect(t2).toContain(`const b = TypeText<{a:'a'}>()`)
     })
     it('should work if call does not have args', () => {
       const project = new Project()
       project.createSourceFile('test.ts', `const b = TypeText<{a:'a'}>()`)
-      replaceFileFunctionCall(project.getSourceFile('test.ts')!, { clean: true, extractorDataMode: 'asStringLiteral' })
+      replaceFileFunctionCall(project.getSourceFile('test.ts')!, { clean: true, extractorDataMode: 'asArgument' })
       const t2 = project.getSourceFile('test.ts')!.getText()
       expect(t2).toContain(`const b = TypeText<{a:'a'}>()`)
     })
     it('should remove arg comma', () => {
       const project = new Project()
       project.createSourceFile('test.ts', `const b = TypeText<{a:'a'}>("{a:'a'}",)`)
-      replaceFileFunctionCall(project.getSourceFile('test.ts')!, { clean: true, extractorDataMode: 'asStringLiteral' })
+      replaceFileFunctionCall(project.getSourceFile('test.ts')!, { clean: true, extractorDataMode: 'asArgument' })
       const t2 = project.getSourceFile('test.ts')!.getText()
       expect(t2).toContain(`const b = TypeText<{a:'a'}>()`)
     })
@@ -121,7 +121,7 @@ const b = CustomExtractor<number>(__CE[1])`.trim()
         },
         extractorDataVariableName: '__CE',
         clean: true,
-        extractorDataMode: 'asStringLiteral'
+        extractorDataMode: 'asArgument'
       })
       const t2 = project.getSourceFile('test.ts')!.getText()
       expect(t2.trim()).toContain(

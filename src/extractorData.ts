@@ -23,7 +23,7 @@ export function extractorGetterBuilder(
   } else if (options.extractorDataMode === 'folderFile') {
     const fileId = getFileId(sourceFile, options)
     return (index: number) => `get(${fileId}, ${index})`
-  } else if (options.extractorDataMode === 'asStringLiteral') {
+  } else if (options.extractorDataMode === 'asArgument') {
     return (index: number) => `` // do nothing
   } else {
     throw 'extractorDataMode option invalid ' + options.extractorDataMode

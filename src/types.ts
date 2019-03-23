@@ -95,8 +95,8 @@ export interface ReplaceFileFunctionCallOptions {
    * the array. There will be one of these files per folder with the name given by option
    * `extractorDataFolderFileName` that will contain the data of all this folder's immediate children.
    *
-   * If `asStringLiteral` then the whole thing will be passed as a single string in the parameter (this is
-   * mostly useful for debugging since it will pollute the code a lot)
+   * If `asArgument` then the whole thing will be passed as parameter in the extractor call expression (this
+   * is mostly useful for debugging since it will pollute the code a lot)
    */
   extractorDataMode?: ExtractorDataMode
 
@@ -157,8 +157,8 @@ export interface ExtractorOptions {
    */
   outputVariableName?: string
   /**
-   * TODO
-   * If true, this extractor function call expression will be removed. Important: this won't be undoable or restored with `--clean`
+   * TODO If true, this extractor function call expression will be removed. Important: this won't be undoable
+   * or restored with `--clean`
    */
   removeMe?: boolean
   // mode?: ExtractorDataMode targetMode?: 'self' | 'definition' | 'allReferences'
@@ -184,7 +184,7 @@ export interface ExtractorResult {
 
 export type ExtractorGetter = (index: number) => string
 
-export type ExtractorDataMode = 'prependVariable' | 'folderFile' | 'asStringLiteral'
+export type ExtractorDataMode = 'prependVariable' | 'folderFile' | 'asArgument'
 
 /**
  * setter / getter for variables that are common between same function calls of same file or even different

@@ -12,6 +12,7 @@
 
 ### Properties
 
+* [asJson](_extractors_ast_.astoptions.md#asjson)
 * [dontPrintIdentifier](_extractors_ast_.astoptions.md#dontprintidentifier)
 * [dontPrintKindName](_extractors_ast_.astoptions.md#dontprintkindname)
 * [dontPrintText](_extractors_ast_.astoptions.md#dontprinttext)
@@ -19,19 +20,29 @@
 * [outputVariableName](_extractors_ast_.astoptions.md#outputvariablename)
 * [removeMe](_extractors_ast_.astoptions.md#removeme)
 * [target](_extractors_ast_.astoptions.md#target)
-* [targetMode](_extractors_ast_.astoptions.md#targetmode)
 
 ---
 
 ## Properties
 
+<a id="asjson"></a>
+
+### `<Optional>` asJson
+
+**● asJson**: *`undefined` \| `false` \| `true`*
+
+*Defined in [extractors/ast.ts:50](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/8c7c887/src/extractors/ast.ts#L50)*
+
+If true it will return the AST as JSON object. If false if will return a string with indentation representing the AST
+
+___
 <a id="dontprintidentifier"></a>
 
 ### `<Optional>` dontPrintIdentifier
 
 **● dontPrintIdentifier**: *`undefined` \| `false` \| `true`*
 
-*Defined in [extractors/ast.ts:43](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/extractors/ast.ts#L43)*
+*Defined in [extractors/ast.ts:44](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/8c7c887/src/extractors/ast.ts#L44)*
 
 ___
 <a id="dontprintkindname"></a>
@@ -40,7 +51,7 @@ ___
 
 **● dontPrintKindName**: *`undefined` \| `false` \| `true`*
 
-*Defined in [extractors/ast.ts:42](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/extractors/ast.ts#L42)*
+*Defined in [extractors/ast.ts:43](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/8c7c887/src/extractors/ast.ts#L43)*
 
 ___
 <a id="dontprinttext"></a>
@@ -49,7 +60,7 @@ ___
 
 **● dontPrintText**: *`undefined` \| `false` \| `true`*
 
-*Defined in [extractors/ast.ts:44](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/extractors/ast.ts#L44)*
+*Defined in [extractors/ast.ts:45](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/8c7c887/src/extractors/ast.ts#L45)*
 
 ___
 <a id="outputmode"></a>
@@ -60,7 +71,11 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputMode](_types_.extractoroptions.md#outputmode)*
 
-*Defined in [types.ts:148](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/types.ts#L148)*
+*Defined in [types.ts:154](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/8c7c887/src/types.ts#L154)*
+
+Default is 'asReturnValue' in which case the output will be returned by the extractor function call.
+
+If `assignToVariable` then it will be assigned to a variable in the ancestor Block. If there is a variable there called `outputVariableName` then that one will be used, otherwise a new variable will be created, next to the extractor call expression with a random name. IMPORTANT: variables created or assigned using this mode won't be removed or restored with `--clean`
 
 ___
 <a id="outputvariablename"></a>
@@ -71,7 +86,9 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputVariableName](_types_.extractoroptions.md#outputvariablename)*
 
-*Defined in [types.ts:149](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/types.ts#L149)*
+*Defined in [types.ts:158](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/8c7c887/src/types.ts#L158)*
+
+Name of the variable to assign the value in case outputMode is `assignToVariable`
 
 ___
 <a id="removeme"></a>
@@ -82,7 +99,9 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[removeMe](_types_.extractoroptions.md#removeme)*
 
-*Defined in [types.ts:147](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/types.ts#L147)*
+*Defined in [types.ts:163](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/8c7c887/src/types.ts#L163)*
+
+TODO If true, this extractor function call expression will be removed. Important: this won't be undoable or restored with `--clean`
 
 ___
 <a id="target"></a>
@@ -91,18 +110,9 @@ ___
 
 **● target**: *`any`*
 
-*Defined in [extractors/ast.ts:41](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/extractors/ast.ts#L41)*
+*Defined in [extractors/ast.ts:42](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/8c7c887/src/extractors/ast.ts#L42)*
 
-___
-<a id="targetmode"></a>
-
-### `<Optional>` targetMode
-
-**● targetMode**: *"self" \| "definition" \| "allReferences"*
-
-*Inherited from [ExtractorOptions](_types_.extractoroptions.md).[targetMode](_types_.extractoroptions.md#targetmode)*
-
-*Defined in [types.ts:150](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/types.ts#L150)*
+in case the target is not a type, it can be passed here.
 
 ___
 

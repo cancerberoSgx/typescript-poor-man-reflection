@@ -17,7 +17,6 @@ These are options that user can use to configure a Extractor, could be as conven
 * [outputMode](_types_.extractoroptions.md#outputmode)
 * [outputVariableName](_types_.extractoroptions.md#outputvariablename)
 * [removeMe](_types_.extractoroptions.md#removeme)
-* [targetMode](_types_.extractoroptions.md#targetmode)
 
 ---
 
@@ -29,7 +28,11 @@ These are options that user can use to configure a Extractor, could be as conven
 
 **● outputMode**: *[ExtractorOutputMode](../modules/_types_.md#extractoroutputmode)*
 
-*Defined in [types.ts:148](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/types.ts#L148)*
+*Defined in [types.ts:154](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/8c7c887/src/types.ts#L154)*
+
+Default is 'asReturnValue' in which case the output will be returned by the extractor function call.
+
+If `assignToVariable` then it will be assigned to a variable in the ancestor Block. If there is a variable there called `outputVariableName` then that one will be used, otherwise a new variable will be created, next to the extractor call expression with a random name. IMPORTANT: variables created or assigned using this mode won't be removed or restored with `--clean`
 
 ___
 <a id="outputvariablename"></a>
@@ -38,7 +41,9 @@ ___
 
 **● outputVariableName**: *`undefined` \| `string`*
 
-*Defined in [types.ts:149](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/types.ts#L149)*
+*Defined in [types.ts:158](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/8c7c887/src/types.ts#L158)*
+
+Name of the variable to assign the value in case outputMode is `assignToVariable`
 
 ___
 <a id="removeme"></a>
@@ -47,16 +52,9 @@ ___
 
 **● removeMe**: *`undefined` \| `false` \| `true`*
 
-*Defined in [types.ts:147](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/types.ts#L147)*
+*Defined in [types.ts:163](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/8c7c887/src/types.ts#L163)*
 
-___
-<a id="targetmode"></a>
-
-### `<Optional>` targetMode
-
-**● targetMode**: *"self" \| "definition" \| "allReferences"*
-
-*Defined in [types.ts:150](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/527e8dd/src/types.ts#L150)*
+TODO If true, this extractor function call expression will be removed. Important: this won't be undoable or restored with `--clean`
 
 ___
 

@@ -21,7 +21,7 @@ export class BodyText extends AbstractExtractor {
         )}`
       }
     }
-    return options.extractorDataMode === 'asStringLiteral'
+    return options.extractorDataMode === 'asArgument'
       ? TypeGuards.isBodyableNode(f)
         ? { argument: `${JSON.stringify(f.getBodyText())}` }
         : { argument: '' }

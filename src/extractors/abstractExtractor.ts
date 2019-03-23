@@ -46,14 +46,13 @@ export abstract class AbstractExtractor implements ExtractorClass {
       }
     }
   }
-  
+
   /**
-   * since options need to be parsed from a literal object Node, subclasses might need to override 
-   * this method to parse their own options 
+   * since options need to be parsed from a literal object Node, subclasses might need to override
+   * this method to parse their own options
    */
-  protected parseOptionValue(name: string, value: Node|undefined): any {
-    return (value && ['outputMode', 'outputVariableName'].includes(name))
-    ? unquote(value.getText()) : value
+  protected parseOptionValue(name: string, value: Node | undefined): any {
+    return value && ['outputMode', 'outputVariableName'].includes(name) ? unquote(value.getText()) : value
   }
 
   protected buildExtractorResult(
@@ -69,7 +68,7 @@ export abstract class AbstractExtractor implements ExtractorClass {
       if (block) {
         const varDecl = block.getVariableDeclaration(extractorOptions.outputVariableName)
         if (varDecl) {
-          varDecl.setInitializer(quote(output)) // TODO: we could store previous initializer value as a variable so we can clean it
+          varDecl.setInitializer(output) // TODO: we could store previous initializer value as a variable so we can clean it
         } else {
           const statement = n.getFirstAncestor(a => TypeGuards.isBlock(a.getParent()))
           if (statement) {
@@ -80,9 +79,9 @@ export abstract class AbstractExtractor implements ExtractorClass {
         }
       }
     }
-    if (extractOptions.extractorDataMode === 'asStringLiteral') {
+    if (extractOptions.extractorDataMode === 'asArgument') {
       return {
-        argument: quote(output)
+        argument: output
       }
     } else {
       return {

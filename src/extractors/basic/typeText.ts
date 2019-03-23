@@ -12,7 +12,7 @@ export class TypeText extends AbstractExtractor {
     variableAccessor: FileVariableAccessor,
     project?: Project
   ) {
-    return options.extractorDataMode === 'asStringLiteral'
+    return options.extractorDataMode === 'asArgument'
       ? {
           argument: quote(n.getTypeArguments()[0].getText(), "'")
         }
