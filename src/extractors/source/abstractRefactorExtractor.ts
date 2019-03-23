@@ -27,7 +27,7 @@ export abstract class AbstractRefactorExtractor extends AbstractExtractor {
     return this.buildExtractorResult(n, `undefined`, getter, index, options, config)
   }
 
-  afterWriteExtractorData(filePath: string, extractorName: string, options: Required<ReplaceProjectFunctionCallOptions>){
+  afterExtract(filePath: string, extractorName: string, options: Required<ReplaceProjectFunctionCallOptions>){
     // HEADS UP: since these operations might be destructive (forgotten Nodes) we need to re-create the sourceFile and the CallExpressions here and in any subclass implementation
      const sourceFile = options.project && options.project.getSourceFile(filePath)
      if(sourceFile){
@@ -47,7 +47,7 @@ export abstract class AbstractRefactorExtractor extends AbstractExtractor {
         }
       })
     }
-    super.afterWriteExtractorData(filePath, extractorName, options)
+    super.afterExtract(filePath, extractorName, options)
   }
 
   protected parseOptionValue(name: string, value: Node | undefined): any {
