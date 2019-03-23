@@ -1,18 +1,9 @@
-import Project, { CallExpression, Node, SourceFile, ts } from 'ts-simple-ast'
-import {
-  ExtractorGetter,
-  ExtractorOptions,
-  ExtractorResult,
-  FileVariableAccessor,
-  ReplaceProjectFunctionCallOptions
-} from '../../types'
-import { AbstractExtractor } from '../abstractExtractor'
-import { unique } from 'misc-utils-of-mine-generic'
-import { dirname, resolve } from 'path'
-import { unquote } from '../../util'
-import { ls } from 'shelljs'
-import Minimatch from 'minimatch'
-import { removeAllUnused } from './codeFixes'
+import Minimatch from 'minimatch';
+import { CallExpression, SourceFile } from 'ts-simple-ast';
+import { ExtractorGetter, ExtractorOptions, ExtractorResult, FileVariableAccessor, ReplaceProjectFunctionCallOptions } from '../../types';
+import { AbstractExtractor } from '../abstractExtractor';
+import { applyAllSuggestedCodeFixes } from './changes';
+import { removeAllUnused } from './refactors';
 
 /**
  * Will remove all unused variables, import names, etc, on given files. 
@@ -56,7 +47,9 @@ export class RemoveUnusedClass extends AbstractExtractor {
         files = [options.project.getSourceFile(n.getSourceFile().getFilePath())!]
       }
       files.forEach(f => {
-        removeAllUnused(options.project, f)
+        removeAllUnused(options.project,options.project.getSourceFile(f.getFilePath())!)
+    // applyAllSuggestedCodeFixes(options.project,options.project.getSourceFile(f.getFilePath())!,[6133],true )
+        // removeAllUnused(options.project, f)
       })
     }
   }

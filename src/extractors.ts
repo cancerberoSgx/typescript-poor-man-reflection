@@ -11,6 +11,7 @@ import { Extractor, ExtractorClass, ExtractorFn } from './types'
 import { ProjectFilesClass } from './extractors/source/projectFiles'
 import { OrganizeImports, OrganizeImportsClass } from './extractors/source/organizeImports'
 import { RemoveUnusedClass } from './extractors/source/removeUnused'
+import { InferTypesClass } from './extractors/source/inferTypes';
 
 export const defaultExtractors: { [k: string]: Extractor } = {
   TypeText: new TypeTextClass(),
@@ -26,7 +27,8 @@ export const defaultExtractors: { [k: string]: Extractor } = {
   PrintAst: new Ast(),
   NodeType: new NodeTypeClass(),
   OrganizeImports: new OrganizeImportsClass(),
-  RemoveUnused: new RemoveUnusedClass()
+  RemoveUnused: new RemoveUnusedClass(),
+  InferTypes: new InferTypesClass()
 }
 
 export function isExtractorFn(e: Extractor): e is ExtractorFn {
