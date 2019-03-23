@@ -175,9 +175,9 @@ TODO / ISSUES
 -------------
 
 *   Tool configuration - api so I can ThisBlockText<>({withoutParens: true})
-*   test if --clean only cleans --filePattern or all
-*   test with all the extractors together
-*   extractor that perform type inference
+*   test if --clean only cleans --filePattern or all - -DONE it cleans only --filePattern
+*   test with all the extractors together DONE
+*   extractor that perform type inference DONE
 
 IDEAS
 -----
@@ -204,6 +204,8 @@ Move(f, '../util')
 
 ### data serialization
 
+(DONE - see Ls, Cat, ReadFiles)
+
 `` ` ``// assets.ts type files = Tuple<Ls('-l', '../assets/_\*/_.json')> // type \['f1.json', ...\] export jsonfiles = Map(fileName=>({fileName, content: readFileSync(f))}) // array with file contents {fileName, content}\[\]
 
 ```
@@ -229,7 +231,9 @@ class Impl1 implements SomeInterface {...} RegisterImplementation(some, Impl1) .
 * ["extractors/basic/nodeText"](modules/_extractors_basic_nodetext_.md)
 * ["extractors/basic/thisBlockText"](modules/_extractors_basic_thisblocktext_.md)
 * ["extractors/basic/typeText"](modules/_extractors_basic_typetext_.md)
+* ["extractors/fs/cat"](modules/_extractors_fs_cat_.md)
 * ["extractors/fs/ls"](modules/_extractors_fs_ls_.md)
+* ["extractors/fs/readFiles"](modules/_extractors_fs_readfiles_.md)
 * ["extractors/nodeType"](modules/_extractors_nodetype_.md)
 * ["main"](modules/_main_.md)
 * ["replaceFileFunctionCall"](modules/_replacefilefunctioncall_.md)

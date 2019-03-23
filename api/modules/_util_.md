@@ -10,6 +10,7 @@
 
 ### Functions
 
+* [asString](_util_.md#asstring)
 * [evaluate](_util_.md#evaluate)
 * [unquote](_util_.md#unquote)
 
@@ -23,7 +24,7 @@
 
 **Ƭ Map**: *`object`*
 
-*Defined in [util.ts:9](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c64fda4/src/util.ts#L9)*
+*Defined in [util.ts:9](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/53d739a/src/util.ts#L9)*
 
 #### Type declaration
 
@@ -33,13 +34,30 @@ ___
 
 ## Functions
 
+<a id="asstring"></a>
+
+###  asString
+
+▸ **asString**(s: *`string`*): `string`
+
+*Defined in [util.ts:14](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/53d739a/src/util.ts#L14)*
+
+**Parameters:**
+
+| Name | Type |
+| ------ | ------ |
+| s | `string` |
+
+**Returns:** `string`
+
+___
 <a id="evaluate"></a>
 
 ###  evaluate
 
 ▸ **evaluate**<`T`>(s: *`string`*, defaultValue?: *`undefined`*): `T` \| `undefined`
 
-*Defined in [util.ts:2](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c64fda4/src/util.ts#L2)*
+*Defined in [util.ts:2](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/53d739a/src/util.ts#L2)*
 
 **Type parameters:**
 
@@ -60,7 +78,7 @@ ___
 
 ▸ **unquote**(s: *`string`*): `string`
 
-*Defined in [util.ts:10](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c64fda4/src/util.ts#L10)*
+*Defined in [util.ts:10](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/53d739a/src/util.ts#L10)*
 
 **Parameters:**
 

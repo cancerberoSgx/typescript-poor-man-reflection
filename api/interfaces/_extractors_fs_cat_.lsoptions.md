@@ -1,44 +1,27 @@
-[typescript-poor-man-reflection](../README.md) > ["extractors/nodeType"](../modules/_extractors_nodetype_.md) > [NodeTypeOptions](../interfaces/_extractors_nodetype_.nodetypeoptions.md)
+[typescript-poor-man-reflection](../README.md) > ["extractors/fs/cat"](../modules/_extractors_fs_cat_.md) > [LsOptions](../interfaces/_extractors_fs_cat_.lsoptions.md)
 
-# Interface: NodeTypeOptions
+# Interface: LsOptions
 
 ## Hierarchy
 
  [ExtractorOptions](_types_.extractoroptions.md)
 
-**↳ NodeTypeOptions**
+**↳ LsOptions**
 
 ## Index
 
 ### Properties
 
-* [inferenceMode](_extractors_nodetype_.nodetypeoptions.md#inferencemode)
-* [outputMode](_extractors_nodetype_.nodetypeoptions.md#outputmode)
-* [outputVariableName](_extractors_nodetype_.nodetypeoptions.md#outputvariablename)
-* [removeMe](_extractors_nodetype_.nodetypeoptions.md#removeme)
-* [target](_extractors_nodetype_.nodetypeoptions.md#target)
+* [outputMode](_extractors_fs_cat_.lsoptions.md#outputmode)
+* [outputVariableName](_extractors_fs_cat_.lsoptions.md#outputvariablename)
+* [path](_extractors_fs_cat_.lsoptions.md#path)
+* [removeMe](_extractors_fs_cat_.lsoptions.md#removeme)
+* [target](_extractors_fs_cat_.lsoptions.md#target)
 
 ---
 
 ## Properties
 
-<a id="inferencemode"></a>
-
-### `<Optional>` inferenceMode
-
-**● inferenceMode**: *[InferenceNode](../modules/_extractors_nodetype_.md#inferencenode)*
-
-*Defined in [extractors/nodeType.ts:37](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/53d739a/src/extractors/nodeType.ts#L37)*
-
-How the type should be inferred from given node.
-
-If `apparent` (default) then it TypeChecker's `getApparentType()` method will be used
-
-If `contextual` it will use TypeChecker's `getContextualType()` method
-
-If `none` it will just print the text of node's direct type
-
-___
 <a id="outputmode"></a>
 
 ### `<Optional>` outputMode
@@ -65,6 +48,17 @@ ___
 *Defined in [types.ts:158](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/53d739a/src/types.ts#L158)*
 
 Name of the variable to assign the value in case outputMode is `assignToVariable`
+
+___
+<a id="path"></a>
+
+###  path
+
+**● path**: *`string`*
+
+*Defined in [extractors/fs/cat.ts:29](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/53d739a/src/extractors/fs/cat.ts#L29)*
+
+Path to read. Could be a glob.
 
 ___
 <a id="removeme"></a>

@@ -1,10 +1,16 @@
-import { Stats } from 'fs';
-import { quote } from 'misc-utils-of-mine-generic';
-import { ls } from 'shelljs';
-import Project, { CallExpression, Node } from 'ts-simple-ast';
-import { ExtractorGetter, ExtractorOptions, ExtractorResult, FileVariableAccessor, ReplaceProjectFunctionCallOptions } from '../../types';
-import { unquote } from '../../util';
-import { AbstractExtractor } from '../abstractExtractor';
+import { Stats } from 'fs'
+import { quote } from 'misc-utils-of-mine-generic'
+import { ls } from 'shelljs'
+import Project, { CallExpression, Node } from 'ts-simple-ast'
+import {
+  ExtractorGetter,
+  ExtractorOptions,
+  ExtractorResult,
+  FileVariableAccessor,
+  ReplaceProjectFunctionCallOptions
+} from '../../types'
+import { unquote } from '../../util'
+import { AbstractExtractor } from '../abstractExtractor'
 
 /**
  * Usage: 
@@ -18,9 +24,9 @@ export const Ls = function<T = any>(config: LsOptions, t?: any): (string | Stats
 }
 
 export interface LsOptions extends ExtractorOptions {
-  /** 
-   * Path to list. 
-   * Could be a glob 
+  /**
+   * Path to list.
+   * Could be a glob
    */
   path: string
   /**
@@ -60,7 +66,7 @@ export class LsClass extends AbstractExtractor {
       return super.parseOptionValue(name, value)
     }
   }
-  
+
   getConfig() {
     return {
       freeArgumentNumber: 1,

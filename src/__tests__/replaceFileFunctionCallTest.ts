@@ -44,7 +44,7 @@ const c = TypeText<{a:Type<number>}>('{a:"a"}')
       replaceFileFunctionCall(project.getSourceFile('test.ts')!, { extractorDataMode: 'asArgument' })
 
       const t2 = project.getSourceFile('test.ts')!.getText()
-      
+
       expect(t2).toContain(
         `
 import TypeText from 'typescript-poor-man-reflection'

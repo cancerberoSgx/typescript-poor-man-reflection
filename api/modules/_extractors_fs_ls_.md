@@ -26,7 +26,7 @@
 
 ▸ **Ls**<`T`>(config: *[LsOptions](../interfaces/_extractors_fs_ls_.lsoptions.md)*, t?: *`any`*): (`string` \| `Stats`)[]
 
-*Defined in [extractors/fs/ls.ts:22](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c64fda4/src/extractors/fs/ls.ts#L22)*
+*Defined in [extractors/fs/ls.ts:22](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/53d739a/src/extractors/fs/ls.ts#L22)*
 
 Usage:
 

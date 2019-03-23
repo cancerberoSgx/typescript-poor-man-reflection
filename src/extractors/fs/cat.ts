@@ -1,8 +1,14 @@
-import { cat } from 'shelljs';
-import Project, { CallExpression, Node } from 'ts-simple-ast';
-import { ExtractorGetter, ExtractorOptions, ExtractorResult, FileVariableAccessor, ReplaceProjectFunctionCallOptions } from '../../types';
-import { unquote, asString } from '../../util';
-import { AbstractExtractor } from '../abstractExtractor';
+import { cat } from 'shelljs'
+import Project, { CallExpression, Node } from 'ts-simple-ast'
+import {
+  ExtractorGetter,
+  ExtractorOptions,
+  ExtractorResult,
+  FileVariableAccessor,
+  ReplaceProjectFunctionCallOptions
+} from '../../types'
+import { unquote, asString } from '../../util'
+import { AbstractExtractor } from '../abstractExtractor'
 
 /**
  * Returns given file contents as string. Important: you won't be able to call cat() on a loop since this runs

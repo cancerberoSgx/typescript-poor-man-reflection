@@ -1,12 +1,12 @@
-[typescript-poor-man-reflection](../README.md) > ["extractors/nodeType"](../modules/_extractors_nodetype_.md) > [NodeTypeClass](../classes/_extractors_nodetype_.nodetypeclass.md)
+[typescript-poor-man-reflection](../README.md) > ["extractors/fs/readFiles"](../modules/_extractors_fs_readfiles_.md) > [ReadFilesClass](../classes/_extractors_fs_readfiles_.readfilesclass.md)
 
-# Class: NodeTypeClass
+# Class: ReadFilesClass
 
 ## Hierarchy
 
  [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md)
 
-**↳ NodeTypeClass**
+**↳ ReadFilesClass**
 
 ## Implements
 
@@ -16,17 +16,16 @@
 
 ### Properties
 
-* [defaultExtractorOptions](_extractors_nodetype_.nodetypeclass.md#defaultextractoroptions)
+* [defaultExtractorOptions](_extractors_fs_readfiles_.readfilesclass.md#defaultextractoroptions)
 
 ### Methods
 
-* [buildExtractorResult](_extractors_nodetype_.nodetypeclass.md#buildextractorresult)
-* [buildType](_extractors_nodetype_.nodetypeclass.md#buildtype)
-* [extract](_extractors_nodetype_.nodetypeclass.md#extract)
-* [getConfig](_extractors_nodetype_.nodetypeclass.md#getconfig)
-* [getOptionsFromFistArg](_extractors_nodetype_.nodetypeclass.md#getoptionsfromfistarg)
-* [getTarget](_extractors_nodetype_.nodetypeclass.md#gettarget)
-* [parseOptionValue](_extractors_nodetype_.nodetypeclass.md#parseoptionvalue)
+* [buildExtractorResult](_extractors_fs_readfiles_.readfilesclass.md#buildextractorresult)
+* [extract](_extractors_fs_readfiles_.readfilesclass.md#extract)
+* [getConfig](_extractors_fs_readfiles_.readfilesclass.md#getconfig)
+* [getOptionsFromFistArg](_extractors_fs_readfiles_.readfilesclass.md#getoptionsfromfistarg)
+* [getTarget](_extractors_fs_readfiles_.readfilesclass.md#gettarget)
+* [parseOptionValue](_extractors_fs_readfiles_.readfilesclass.md#parseoptionvalue)
 
 ---
 
@@ -70,25 +69,6 @@ ___
 **Returns:** [ExtractorResult](../interfaces/_types_.extractorresult.md)
 
 ___
-<a id="buildtype"></a>
-
-### `<Protected>` buildType
-
-▸ **buildType**(n: *`Node`*, config: *[NodeTypeOptions](../interfaces/_extractors_nodetype_.nodetypeoptions.md)*, options: *`Required`<[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)>*): `any`
-
-*Defined in [extractors/nodeType.ts:60](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/53d739a/src/extractors/nodeType.ts#L60)*
-
-**Parameters:**
-
-| Name | Type |
-| ------ | ------ |
-| n | `Node` |
-| config | [NodeTypeOptions](../interfaces/_extractors_nodetype_.nodetypeoptions.md) |
-| options | `Required`<[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)> |
-
-**Returns:** `any`
-
-___
 <a id="extract"></a>
 
 ###  extract
@@ -99,7 +79,7 @@ ___
 
 *Overrides [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[extract](_extractors_abstractextractor_.abstractextractor.md#extract)*
 
-*Defined in [extractors/nodeType.ts:46](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/53d739a/src/extractors/nodeType.ts#L46)*
+*Defined in [extractors/fs/readFiles.ts:32](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/53d739a/src/extractors/fs/readFiles.ts#L32)*
 
 **Parameters:**
 
@@ -125,7 +105,7 @@ ___
 
 *Overrides [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[getConfig](_extractors_abstractextractor_.abstractextractor.md#getconfig)*
 
-*Defined in [extractors/nodeType.ts:83](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/53d739a/src/extractors/nodeType.ts#L83)*
+*Defined in [extractors/fs/readFiles.ts:57](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/53d739a/src/extractors/fs/readFiles.ts#L57)*
 
 **Returns:** `object`
 
@@ -186,7 +166,7 @@ ___
 
 *Overrides [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[parseOptionValue](_extractors_abstractextractor_.abstractextractor.md#parseoptionvalue)*
 
-*Defined in [extractors/nodeType.ts:76](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/53d739a/src/extractors/nodeType.ts#L76)*
+*Defined in [extractors/fs/readFiles.ts:50](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/53d739a/src/extractors/fs/readFiles.ts#L50)*
 
 **Parameters:**
 

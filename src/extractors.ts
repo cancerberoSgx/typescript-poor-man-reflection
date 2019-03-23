@@ -6,8 +6,8 @@ import { TypeText } from './extractors/basic/typeText'
 import { Extractor, ExtractorClass, ExtractorFn } from './types'
 import { NodeTypeClass } from './extractors/nodeType'
 import { LsClass } from './extractors/fs/ls'
-import { CatClass } from './extractors/fs/cat';
-import { ReadFilesClass } from './extractors/fs/readFiles';
+import { CatClass } from './extractors/fs/cat'
+import { ReadFilesClass } from './extractors/fs/readFiles'
 
 export const defaultExtractors: { [k: string]: Extractor } = {
   TypeText: new TypeText(),
@@ -25,8 +25,7 @@ export const defaultExtractors: { [k: string]: Extractor } = {
   Ls: new LsClass(),
 
   Cat: new CatClass(),
-  ReadFiles: new ReadFilesClass(),
-
+  ReadFiles: new ReadFilesClass()
 }
 
 export function isExtractorFn(e: Extractor): e is ExtractorFn {

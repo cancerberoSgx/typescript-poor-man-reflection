@@ -11,6 +11,6 @@ export function unquote(s: string) {
   return s.substring(1, s.length - 1)
 }
 
-export function asString(s: string){
+export function asString(s: string) {
   return `\`${s.replace(/`/g, '\\`')}\``
 }

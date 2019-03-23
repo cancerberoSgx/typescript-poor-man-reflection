@@ -162,9 +162,9 @@ Trying to develop a preprocessing tool to mutate TypeScript and replace certain 
 ## TODO / ISSUES
 
  * Tool configuration - api so I can ThisBlockText<>({withoutParens: true})
- * test if --clean only cleans --filePattern or all 
- * test with all the extractors together
- * extractor that perform type inference
+ * test if --clean only cleans --filePattern or all - -DONE it cleans only --filePattern
+ * test with all the extractors together DONE
+ * extractor that perform type inference DONE
 
 ## IDEAS
 
@@ -186,7 +186,9 @@ function f(){}
 Move(f, '../util')
  ```
 
-###  data serialization
+###  data serialization 
+
+(DONE - see Ls, Cat, ReadFiles)
 
 ```// assets.ts
 type files = Tuple<Ls('-l', '../assets/**/*.json')> // type ['f1.json', ...]
