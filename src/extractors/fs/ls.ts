@@ -18,7 +18,10 @@ export const Ls = function<T = any>(config: LsOptions, t?: any): (string | Stats
 }
 
 export interface LsOptions extends ExtractorOptions {
-  /** path to list - could be a glob */
+  /** 
+   * Path to list. 
+   * Could be a glob 
+   */
   path: string
   /**
    * -R: recursive
@@ -57,6 +60,7 @@ export class LsClass extends AbstractExtractor {
       return super.parseOptionValue(name, value)
     }
   }
+  
   getConfig() {
     return {
       freeArgumentNumber: 1,

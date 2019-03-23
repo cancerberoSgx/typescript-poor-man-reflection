@@ -50,6 +50,14 @@ describe('cli', () => {
   it('src/__tests__/cli/lsSample.ts', () => {
     cliTest('src/__tests__/cli/lsSample.ts', 'undefined undefined', [`package.json`, `index.ts`])
   })
+  
+  it('src/__tests__/cli/catSample.ts', () => {
+    cliTest('src/__tests__/cli/catSample.ts', 'undefined', [`"name": "typescript-poor-man-reflection"`])
+  })
+
+  it('src/__tests__/cli/readFilesSample.ts', () => {
+    cliTest('src/__tests__/cli/readFilesSample.ts', 'undefined', [`{ name: './src/__tests__/cli/astSample.ts'`, `content: "import { PrintAst } from '../.`])
+  })
 })
 
 function cliTest(program: string, cleanOutput: string, instrumentedOutput: string[]) {

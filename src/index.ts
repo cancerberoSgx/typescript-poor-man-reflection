@@ -15,6 +15,7 @@ export { PrintAst } from './extractors/ast'
 export { NodeType } from './extractors/nodeType'
 export { Ls } from './extractors/fs/ls'
 export { Cat } from './extractors/fs/cat'
+export { ReadFiles } from './extractors/fs/readFiles'
 
 export { replaceFileFunctionCall } from './replaceFileFunctionCall'
 export { replaceProjectFunctionCall } from './replaceProjectFunctionCall'

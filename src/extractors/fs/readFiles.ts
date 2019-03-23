@@ -1,29 +1,28 @@
-import { cat } from 'shelljs';
+import { Stats } from 'fs';
+import { quote, asArray } from 'misc-utils-of-mine-generic';
+import { ls, cat } from 'shelljs';
 import Project, { CallExpression, Node } from 'ts-simple-ast';
 import { ExtractorGetter, ExtractorOptions, ExtractorResult, FileVariableAccessor, ReplaceProjectFunctionCallOptions } from '../../types';
 import { unquote, asString } from '../../util';
 import { AbstractExtractor } from '../abstractExtractor';
 
 /**
- * Returns given file contents as string. Important: you won't be able to call cat() on a loop since this runs
- * at compile time. If you need to read multiple files, use `ReadFiles()` instead.
- *
  * Usage: 
- *
- * ```ts
- * const content = Cat({path: './package.json'})
+ * 
+```ts
+Ls({path: './src'})
 ```
  */
-export const Cat = function<T = any>(config: LsOptions, t?: any): string {
+export const ReadFiles = function<T = any>(config: ReadFilesOptions, t?: any): (string | Stats)[] {
   return t!
 }
 
-export interface LsOptions extends ExtractorOptions {
-  /** Path to read. Could be a glob.  */
-  path: string
+export interface ReadFilesOptions extends ExtractorOptions {
+  /** path of files to - could be a glob */
+  path: string 
 }
 
-export class CatClass extends AbstractExtractor {
+export class ReadFilesClass extends AbstractExtractor {
   extract(
     n: CallExpression,
     index: number,
@@ -32,10 +31,12 @@ export class CatClass extends AbstractExtractor {
     variableAccessor: FileVariableAccessor,
     project?: Project
   ): ExtractorResult {
-    const config = this.getOptionsFromFistArg<LsOptions>(n)
-    let output = `''`
+    const config = this.getOptionsFromFistArg<ReadFilesOptions>(n)
+    let output = `[]`
     if (config && config.path) {
-      output = asString(cat(config.path).toString())
+      const files = ls('-A', config.path).map(name=>({name, content: cat(name).toString()}))
+
+      output = `[${files.map(f=>JSON.stringify(f)).join(', ')}]`
     }
     return this.buildExtractorResult(n, output, getter, index, options, config)
   }

@@ -7,6 +7,7 @@ import { Extractor, ExtractorClass, ExtractorFn } from './types'
 import { NodeTypeClass } from './extractors/nodeType'
 import { LsClass } from './extractors/fs/ls'
 import { CatClass } from './extractors/fs/cat';
+import { ReadFilesClass } from './extractors/fs/readFiles';
 
 export const defaultExtractors: { [k: string]: Extractor } = {
   TypeText: new TypeText(),
@@ -22,7 +23,10 @@ export const defaultExtractors: { [k: string]: Extractor } = {
   PrintAst: new Ast(),
 
   Ls: new LsClass(),
+
   Cat: new CatClass(),
+  ReadFiles: new ReadFilesClass(),
+
 }
 
 export function isExtractorFn(e: Extractor): e is ExtractorFn {
