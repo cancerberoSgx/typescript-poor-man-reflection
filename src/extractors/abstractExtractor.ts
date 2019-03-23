@@ -13,10 +13,10 @@ import { Map, unquote } from '../util'
 
 export abstract class AbstractExtractor implements ExtractorClass {
   protected defaultExtractorOptions: ExtractorOptions = {}
-
+  protected freeArgumentNumber = 0
   getConfig() {
     return {
-      freeArgumentNumber: 0,
+      freeArgumentNumber: this.freeArgumentNumber,
       unusedArgumentDefaultValue: '{}'
     }
   }
@@ -56,7 +56,13 @@ export abstract class AbstractExtractor implements ExtractorClass {
    * this method to parse their own options
    */
   protected parseOptionValue(name: string, value: Node | undefined): any {
-    return value && ['outputMode', 'outputVariableName'].includes(name) ? unquote(value.getText()) : value
+    if (value && ['outputMode', 'outputVariableName'].includes(name)) {
+      return unquote(value.getText())
+    } else if (value && ['removeMe'].includes(name)) {
+      return value.getText() === 'true' ? true : false
+    } else {
+      return value
+    }
   }
 
   protected buildExtractorResult(
@@ -115,5 +121,24 @@ export abstract class AbstractExtractor implements ExtractorClass {
     return target
   }
 
-  afterWriteExtractorData(c: CallExpression, index: number, options: Required<ReplaceProjectFunctionCallOptions>) {}
+  afterWriteExtractorData(c: CallExpression, index: number, options: Required<ReplaceProjectFunctionCallOptions>) {
+      // console.log('remnovemmm', c.getArguments().length);
+    // const config = this.getOptionsFromFistArg(c) || {}
+    // if (config.removeMe) { 
+      
+    //   const parent = c.getParent()
+    //   if (TypeGuards.isStatement(parent)) {
+    //     parent.remove()
+    //   }
+    // }
+  }
+  // beforeExtract(c: CallExpression, index: number, options: Required<ReplaceProjectFunctionCallOptions>) {
+  //   const config = this.getOptionsFromFistArg(c) || {}
+  //   if (config.removeMe) {
+  //     const parent = c.getParent()
+  //     if (TypeGuards.isStatement(parent)) {
+  //       parent.remove()
+  //     }
+  //   }
+  // }
 }

@@ -1,4 +1,4 @@
-import Project, { CallExpression } from 'ts-simple-ast'
+import Project, { CallExpression } from 'ts-simple-ast';
 
 export interface Replacement {
   file: string
@@ -157,9 +157,13 @@ export interface ExtractorOptions {
   outputVariableName?: string
 
   /**
-   * TODO
-   * If true, this extractor function call expression will be removed. Important: this won't be undoable
-   * or restored with `--clean`
+   * If true, this extractor function call expression will be removed as long as it's on an ExpressionStatement. Example: 
+```ts
+MyExtractor({removeMe: true}) // Will be removed
+const a = MyExtractor({removeMe: true}) // Won't be removed
+foo(MyExtractor({removeMe: true}))// Won't be removed
+```
+   * Important: removed extractor call expressions are not restored when using --clean. 
    */
   removeMe?: boolean
 

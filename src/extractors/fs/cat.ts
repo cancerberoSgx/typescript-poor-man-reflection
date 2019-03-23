@@ -1,23 +1,15 @@
-import { cat } from 'shelljs'
-import { CallExpression, Node } from 'ts-simple-ast'
-import {
-  ExtractorGetter,
-  ExtractorOptions,
-  ExtractorResult,
-  FileVariableAccessor,
-  ReplaceProjectFunctionCallOptions
-} from '../../types'
-import { asString, unquote } from '../../util'
-import { AbstractExtractor } from '../abstractExtractor'
+import { cat } from 'shelljs';
+import { CallExpression, Node } from 'ts-simple-ast';
+import { ExtractorGetter, ExtractorOptions, ExtractorResult, FileVariableAccessor, ReplaceProjectFunctionCallOptions } from '../../types';
+import { asString, unquote } from '../../util';
+import { AbstractExtractor } from '../abstractExtractor';
 
 /**
  * Returns given file contents as string. Important: you won't be able to call cat() on a loop since this runs
- * at compile time. If you need to read multiple files, use `ReadFiles()` instead.
+ * at compile time. If you need to read multiple files, use `ReadFiles()` instead. Usage: 
  *
- * Usage: 
- *
- * ```ts
- * const content = Cat({path: './package.json'})
+```ts
+const content = Cat({path: './package.json'})
 ```
  */
 export const Cat = function<T = any>(config: LsOptions, t?: any): string {
@@ -25,7 +17,9 @@ export const Cat = function<T = any>(config: LsOptions, t?: any): string {
 }
 
 export interface LsOptions extends ExtractorOptions {
-  /** Path to read. Could be a glob.  */
+  /**
+   * Path to read. Could be a glob.
+   */
   path: string
 }
 
@@ -52,10 +46,5 @@ export class CatClass extends AbstractExtractor {
       return super.parseOptionValue(name, value)
     }
   }
-  getConfig() {
-    return {
-      freeArgumentNumber: 1,
-      unusedArgumentDefaultValue: '{}'
-    }
-  }
+  protected freeArgumentNumber = 1
 }

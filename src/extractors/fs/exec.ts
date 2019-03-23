@@ -1,15 +1,9 @@
-import { quote } from 'misc-utils-of-mine-generic'
-import { exec } from 'shelljs'
-import { CallExpression, Node } from 'ts-simple-ast'
-import {
-  ExtractorGetter,
-  ExtractorOptions,
-  ExtractorResult,
-  FileVariableAccessor,
-  ReplaceProjectFunctionCallOptions
-} from '../../types'
-import { unquote } from '../../util'
-import { AbstractExtractor } from '../abstractExtractor'
+import { quote } from 'misc-utils-of-mine-generic';
+import { exec } from 'shelljs';
+import { CallExpression, Node } from 'ts-simple-ast';
+import { ExtractorGetter, ExtractorOptions, ExtractorResult, FileVariableAccessor, ReplaceProjectFunctionCallOptions } from '../../types';
+import { unquote } from '../../util';
+import { AbstractExtractor } from '../abstractExtractor';
 
 /**
  * Executes given command synchronously. 
@@ -24,13 +18,13 @@ if(result.code===0){
 export const coverageReport = JSON.parse(result.stdout)
 ```
  */
-export const Exec = function<T = any>(config: ExecOptions, t?: any): ExecResult|undefined {
+export const Exec = function<T = any>(config: ExecOptions, t?: any): ExecResult | undefined {
   return t!
 }
 
 interface ExecResult {
   code: number
-  stdout:string
+  stdout: string
   stderr: string
 }
 export interface ExecOptions extends ExtractorOptions {
@@ -55,9 +49,11 @@ export class ExecClass extends AbstractExtractor {
     const config = this.getOptionsFromFistArg<ExecOptions>(n)
     let output = `undefined`
     if (config && config.command) {
-      config.silent = config.silent||false
+      config.silent = config.silent || false
       const p = exec(config.command)
-      output = JSON.stringify(`{code: ${p.code}, stdout: ${quote(p.stdout.toString())}, stderr: ${quote(p.stderr.toString())}}`)
+      output = JSON.stringify(
+        `{code: ${p.code}, stdout: ${quote(p.stdout.toString())}, stderr: ${quote(p.stderr.toString())}}`
+      )
     }
     return this.buildExtractorResult(n, output, getter, index, options, config)
   }
@@ -65,19 +61,11 @@ export class ExecClass extends AbstractExtractor {
   protected parseOptionValue(name: string, value: Node | undefined): any {
     if (value && ['command'].includes(name)) {
       return unquote(value.getText())
-    }
-    else if(value && ['silent'].includes(name)) {
+    } else if (value && ['silent'].includes(name)) {
       return value.getText() === 'true' ? true : false
-    }
-     else {
+    } else {
       return super.parseOptionValue(name, value)
     }
   }
-
-  getConfig() {
-    return {
-      freeArgumentNumber: 1,
-      unusedArgumentDefaultValue: '{}'
-    }
-  }
+  protected freeArgumentNumber = 1
 }

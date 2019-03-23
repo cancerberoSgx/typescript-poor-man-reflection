@@ -1,4 +1,4 @@
-import { NodeType } from '../../extractors/source/nodeType'
+import { NodeType } from '../../extractors/source/nodeType';
 
 interface I {
   m(): void
@@ -6,15 +6,15 @@ interface I {
 var d: I | null
 class C implements I {
   m() {
-    console.log(NodeType({ target: this }))
-    console.log(NodeType({ target: this, inferenceMode: 'none' }))
-    console.log(NodeType({ target: d }))
+    console.log(NodeType({ target: this },  ))
+    console.log(NodeType({ target: this, inferenceMode: 'none' },  ))
+    console.log(NodeType({ target: d },  ))
     var self = this
     return function f() {
-      console.log(NodeType({ target: self }))
+      console.log(NodeType({ target: self },  ))
       const t = Math.random() > 0.5 ? false : 'foo'
-      console.log(NodeType({ target: t }))
-      console.log(NodeType<typeof t>({}))
+      console.log(NodeType({ target: t },  ))
+      console.log(NodeType<typeof t>({},  ))
     }
   }
 }

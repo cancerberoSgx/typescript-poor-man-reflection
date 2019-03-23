@@ -1,6 +1,6 @@
-import { test } from 'shelljs'
-import { defaultOptions, replaceProjectFunctionCall } from './replaceProjectFunctionCall'
-import { Replacement, ReplaceProjectFunctionCallOptions } from './types'
+import { test } from 'shelljs';
+import { defaultOptions, replaceProjectFunctionCall } from './replaceProjectFunctionCall';
+import { Replacement, ReplaceProjectFunctionCallOptions } from './types';
 
 export function main(options: ReplaceProjectFunctionCallOptions) {
   let replacements: (Replacement | undefined)[] = []

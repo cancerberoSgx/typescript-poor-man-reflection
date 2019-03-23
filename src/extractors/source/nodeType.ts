@@ -47,7 +47,6 @@ export class NodeTypeClass extends AbstractExtractor {
     index: number,
     getter: ExtractorGetter,
     options: Required<ReplaceProjectFunctionCallOptions>,
-    variableAccessor: FileVariableAccessor
   ): ExtractorResult {
     const config = this.getOptionsFromFistArg<NodeTypeOptions>(n) || {}
     let target: Node | undefined = this.getTarget(n, config)
@@ -78,10 +77,5 @@ export class NodeTypeClass extends AbstractExtractor {
       return super.parseOptionValue(name, value)
     }
   }
-  getConfig() {
-    return {
-      freeArgumentNumber: 1,
-      unusedArgumentDefaultValue: '{}'
-    }
-  }
+  protected freeArgumentNumber = 1
 }

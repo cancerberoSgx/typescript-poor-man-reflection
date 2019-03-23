@@ -22,7 +22,7 @@
 
 ▸ **NodeText**<`T`>(t?: *`undefined` \| `string`*): `string`
 
-*Defined in [extractors/basic/nodeText.ts:14](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f57c9f6/src/extractors/basic/nodeText.ts#L14)*
+*Defined in [extractors/basic/nodeText.ts:14](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/e3a07d8/src/extractors/basic/nodeText.ts#L14)*
 
 Returns the text of given node. It could be a valued node (in which case the node reference is passed as normal argument) or a type node (in which case needs to be passes as type argument). Example:
 

@@ -62,7 +62,6 @@ export class ExtractInterfaceClass extends AbstractExtractor {
     index: number,
     getter: ExtractorGetter,
     options: Required<ReplaceProjectFunctionCallOptions>,
-    variableAccessor: FileVariableAccessor
   ): ExtractorResult {
     const config = this.getOptionsFromFistArg<ExtractorOptions>(n) || {}
     let target: Node | undefined = this.getTarget(n, config)
@@ -90,20 +89,14 @@ export class ExtractInterfaceClass extends AbstractExtractor {
   protected parseOptionValue(name: string, value: Node | undefined): any {
     if (value && ['destFile', 'name'].includes(name)) {
       return unquote(value.getText())
-    }
-    else if(value && ['removeDocs'].includes(name)) {
+    } else if (value && ['removeDocs'].includes(name)) {
       return value.getText() === 'true' ? true : false
-    }
-     else {
+    } else {
       return super.parseOptionValue(name, value)
     }
   }
-  getConfig() {
-    return {
-      freeArgumentNumber: 1,
-      unusedArgumentDefaultValue: '{}'
-    }
-  }
+
+  protected freeArgumentNumber = 1
 }
 
 export function extractInterface(

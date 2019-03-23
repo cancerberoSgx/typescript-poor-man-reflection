@@ -16,21 +16,21 @@ import { AbstractExtractor } from '../abstractExtractor'
  * argument. If no target node is provided then it will print the AST of this `PrintAst` call expression node.
  * Example: 
  *
- * ```ts
- * interface I {
- * m(): void
- * }
- * class C implements I {
- * m() {
- *  return function f() {
- *    // prints the AST of interface I
- *    console.log(PrintAst<I>())
- *    // prints the AST of class C
- *    console.log(PrintAst({ target: C }))
- *  }
- * }
- * }
- * new C().m()()
+```ts
+interface I {
+  m(): void
+}
+class C implements I {
+  m() {
+    return function f() {
+      // prints the AST of interface I
+      console.log(PrintAst<I>())
+      // prints the AST of class C
+      console.log(PrintAst({ target: C }))
+    }
+  }
+}
+new C().m()()
 ```
  */
 export const PrintAst = function<T = any>(config: AstOptions, t?: any) {
@@ -54,7 +54,6 @@ export class Ast extends AbstractExtractor implements ExtractorClass {
     index: number,
     getter: ExtractorGetter,
     options: Required<ReplaceProjectFunctionCallOptions>,
-    variableAccessor: FileVariableAccessor
   ): ExtractorResult {
     const config = this.getOptionsFromFistArg<AstOptions>(n) || {}
     let target: Node | undefined = this.getTarget(n, config)
@@ -141,12 +140,7 @@ export class Ast extends AbstractExtractor implements ExtractorClass {
     }
   }
 
-  getConfig() {
-    return {
-      freeArgumentNumber: 1,
-      unusedArgumentDefaultValue: '{}'
-    }
-  }
+  protected freeArgumentNumber = 1
 }
 
 interface AstNode {

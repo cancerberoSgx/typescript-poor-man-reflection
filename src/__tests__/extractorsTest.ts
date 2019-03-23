@@ -1,10 +1,12 @@
 import { removeWhites } from 'misc-utils-of-mine-generic'
 import { CallExpression, Project, SyntaxKind, TypeGuards } from 'ts-simple-ast'
+import { AbstractExtractor } from '../extractors/abstractExtractor'
 import { replaceFileFunctionCall } from '../replaceFileFunctionCall'
 import { defaultOptions } from '../replaceProjectFunctionCall'
+import { ExtractorFn } from '../types'
 
 describe('extractors', () => {
-  describe('custom extractors', () => {
+  describe('customExtractors', () => {
     it('should build my custom function name and extract', () => {
       const project = new Project()
       project.createSourceFile(
@@ -103,6 +105,52 @@ const body = AllDeclarationsInThisFile<any>()
 
       expect(project.getSourceFile('test.ts')!.getText()).toContain(
         `const body = AllDeclarationsInThisFile<any>(\"interface I{\\n    i:number\\n  }\\nclass C implements I {\\n      i:number=0\\n      m(){\\n        var foo=1\\n        while(true){\\n          var t0 = Date.now()\\n        }\\n      }\\n    }\\nconst var55 = 's'\"`
+      )
+    })
+
+    it('should build custom extractor inheriting from AbstractExtractor class', () => {
+      const project = new Project()
+      project.createSourceFile(
+        'test.ts',
+        `
+function previous(){}
+Destroyer({target: next})
+function next(){}
+function f(){}
+Destroyer({target: b, removeMe: true})
+var a = 1, b = 2, c = 'foo'
+    `
+      )
+
+      class DestroyerClass extends AbstractExtractor {
+        extract(...[c, i, g, options, v]: Parameters<ExtractorFn>) {
+          const config = this.getOptionsFromFistArg(c) || {}
+          const target = this.getTarget(c, config)
+          if (target && (TypeGuards.isFunctionDeclaration(target) || TypeGuards.isVariableDeclaration(target))) {
+            target.remove()
+          }
+          return this.buildExtractorResult(c, 'undefined', g, i, options, config)
+        }
+        protected freeArgumentNumber = 1
+      }
+      replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
+        ...defaultOptions,
+        ...{ extractorDataMode: 'asArgument' },
+        extracts: {
+          Destroyer: new DestroyerClass()
+        }
+      })
+      expect(removeWhites(project.getSourceFile('test.ts')!.getText())).toContain(
+        removeWhites(
+          `
+function previous(){}
+Destroyer({target: next}, undefined)
+
+function f(){}
+
+var a = 1, c = 'foo'
+`
+        )
       )
     })
   })
@@ -366,8 +414,6 @@ interface IA extends I<number> {
     })
   })
 
-
-
   describe('Exec', () => {
     it('should execute commands and return status code and stdout', () => {
       const project = new Project()
@@ -382,17 +428,17 @@ const {code, stdout, stderr} = Exec({command: 'ls wrong*'})
         extractorDataMode: 'asArgument',
         project
       })
-      
+
       const t = removeWhites(project.getSourceFile('test.ts')!.getText()).trim()
-      expect(t).toBe(removeWhites(
-        `
+      expect(t).toBe(
+        removeWhites(
+          `
 const {code, stdout, stderr} = Exec({command: 'npm -v'}, "{code: 0, stdout: \\"6.7.0\\n\\", stderr: \\"\\"}")
 const {code, stdout, stderr} = Exec({command: 'ls wrong*'}, "{code: 2, stdout: \\"\\", stderr: \\"ls: cannot access 'wrong*': No such file or directory\\n\\"}")`
-      ))
+        )
+      )
     })
 
     xit('should infer types on given files only', () => {})
   })
-
-
 })

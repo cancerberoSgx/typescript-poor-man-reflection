@@ -1,5 +1,5 @@
-import { Project } from 'ts-simple-ast'
-import { replaceFileFunctionCall } from '../replaceFileFunctionCall'
+import { Project } from 'ts-simple-ast';
+import { replaceFileFunctionCall } from '../replaceFileFunctionCall';
 
 describe('replaceFunctionCall', () => {
   it('dummy', () => {

@@ -14,7 +14,6 @@ export function replaceFileFunctionCall(
   sourceFile: SourceFile,
   options_: Partial<ReplaceProjectFunctionCallOptions> = defaultOptions
 ): (Replacement | undefined)[] {
-  // const options: Required<ReplaceProjectFunctionCallOptions> = { ...defaultOptions, ...options_ }
   const options = getFullOptions(options_)
 
   const {
@@ -32,6 +31,17 @@ export function replaceFileFunctionCall(
   let extractorData: string[] = []
   const fileId = getFileId(sourceFile, { extractorDataFolderFileName: extractorDataFolderFileName })
   const fullOptions = getFullOptions({ ...options })
+
+  // callExpressions.forEach((c, index) => {
+  //   const functionName = c.getFirstChildByKind(SyntaxKind.Identifier)!.getText()
+  //   const extract = extracts[functionName]
+  //   if (isExtractorClass(extract) && extract.afterWriteExtractorData) {
+  //     extract.afterWriteExtractorData(c, index, fullOptions)
+  //   }
+  // })
+  // sourceFile = (options.project && options.project.getSourceFile(sourceFile.getFilePath())) || sourceFile
+  // callExpressions = extractCallExpressions(sourceFile, moduleSpecifier, Object.keys(extracts))
+
   callExpressions.forEach((c, index) => {
     const functionName = c.getFirstChildByKind(SyntaxKind.Identifier)!.getText()
     const extract = extracts[functionName]
@@ -56,14 +66,12 @@ export function replaceFileFunctionCall(
       ExtractorGetter,
       Required<ReplaceProjectFunctionCallOptions>,
       FileVariableAccessor
-      // Project
     ] = [
       c,
       index,
       extractorGetterBuilder(fullOptions, index, sourceFile, c),
       { ...fullOptions, ...options },
       fileVariableAccessor
-      // options.project
     ]
 
     // Heads up: argIndex is the argument index we can use for data. Previous arguments are owned by the extractor for its own options/whatever.
@@ -116,7 +124,7 @@ export function replaceFileFunctionCall(
     extractorData,
     fileVariables
   )
-
+  
   sourceFile = (options.project && options.project.getSourceFile(sourceFile.getFilePath())) || sourceFile
   callExpressions = extractCallExpressions(sourceFile, moduleSpecifier, Object.keys(extracts))
   callExpressions.forEach((c, index) => {

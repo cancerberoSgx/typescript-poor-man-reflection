@@ -23,11 +23,11 @@ export abstract class AbstractRefactorExtractor extends AbstractExtractor {
     index: number,
     getter: ExtractorGetter,
     options: Required<ReplaceProjectFunctionCallOptions>,
-    variableAccessor: FileVariableAccessor
   ): ExtractorResult {
     const config = this.getOptionsFromFistArg<AbstractRefactorExtractorOptions>(n) || {}
     return this.buildExtractorResult(n, `undefined`, getter, index, options, config)
   }
+
   // we need to execute after the job is done (afterWriteExtractorData not on extract) since we will make the nodes invalid
   afterWriteExtractorData(n: CallExpression, index: number, options: Required<ReplaceProjectFunctionCallOptions>) {
     const config = this.getOptionsFromFistArg<AbstractRefactorExtractorOptions>(n) || {}
@@ -39,10 +39,12 @@ export abstract class AbstractRefactorExtractor extends AbstractExtractor {
         files = [options.project.getSourceFile(n.getSourceFile().getFilePath())!]
       }
       files.forEach(f => {
-        this.preformRefactor(options.project, options.project.getSourceFile(f.getFilePath())!)
+        this.performRefactor(options.project, options.project.getSourceFile(f.getFilePath())!)
       })
     }
+    super.afterWriteExtractorData(n, index, options)
   }
+
   protected parseOptionValue(name: string, value: Node | undefined): any {
     if (value && ['path'].includes(name)) {
       return unquote(value.getText())
@@ -50,11 +52,7 @@ export abstract class AbstractRefactorExtractor extends AbstractExtractor {
       return super.parseOptionValue(name, value)
     }
   }
-  getConfig() {
-    return {
-      freeArgumentNumber: 1,
-      unusedArgumentDefaultValue: '{}'
-    }
-  }
-  protected abstract preformRefactor(project: Project, f: SourceFile): void
+
+  protected freeArgumentNumber = 1
+  protected abstract performRefactor(project: Project, f: SourceFile): void
 }

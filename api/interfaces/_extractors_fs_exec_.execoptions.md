@@ -1,27 +1,39 @@
-[typescript-poor-man-reflection](../README.md) > ["extractors/fs/cat"](../modules/_extractors_fs_cat_.md) > [LsOptions](../interfaces/_extractors_fs_cat_.lsoptions.md)
+[typescript-poor-man-reflection](../README.md) > ["extractors/fs/exec"](../modules/_extractors_fs_exec_.md) > [ExecOptions](../interfaces/_extractors_fs_exec_.execoptions.md)
 
-# Interface: LsOptions
+# Interface: ExecOptions
 
 ## Hierarchy
 
  [ExtractorOptions](_types_.extractoroptions.md)
 
-**↳ LsOptions**
+**↳ ExecOptions**
 
 ## Index
 
 ### Properties
 
-* [outputMode](_extractors_fs_cat_.lsoptions.md#outputmode)
-* [outputVariableName](_extractors_fs_cat_.lsoptions.md#outputvariablename)
-* [path](_extractors_fs_cat_.lsoptions.md#path)
-* [removeMe](_extractors_fs_cat_.lsoptions.md#removeme)
-* [target](_extractors_fs_cat_.lsoptions.md#target)
+* [command](_extractors_fs_exec_.execoptions.md#command)
+* [outputMode](_extractors_fs_exec_.execoptions.md#outputmode)
+* [outputVariableName](_extractors_fs_exec_.execoptions.md#outputvariablename)
+* [removeMe](_extractors_fs_exec_.execoptions.md#removeme)
+* [silent](_extractors_fs_exec_.execoptions.md#silent)
+* [target](_extractors_fs_exec_.execoptions.md#target)
 
 ---
 
 ## Properties
 
+<a id="command"></a>
+
+###  command
+
+**● command**: *`string`*
+
+*Defined in [extractors/fs/exec.ts:34](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/e3a07d8/src/extractors/fs/exec.ts#L34)*
+
+Command to execute
+
+___
 <a id="outputmode"></a>
 
 ### `<Optional>` outputMode
@@ -50,17 +62,6 @@ ___
 Name of the variable to assign the value in case outputMode is `assignToVariable`
 
 ___
-<a id="path"></a>
-
-###  path
-
-**● path**: *`string`*
-
-*Defined in [extractors/fs/cat.ts:23](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/e3a07d8/src/extractors/fs/cat.ts#L23)*
-
-Path to read. Could be a glob.
-
-___
 <a id="removeme"></a>
 
 ### `<Optional>` removeMe
@@ -80,6 +81,17 @@ foo(MyExtractor({removeMe: true}))// Won't be removed
 ```
 
 Important: removed extractor call expressions are not restored when using --clean.
+
+___
+<a id="silent"></a>
+
+### `<Optional>` silent
+
+**● silent**: *`undefined` \| `false` \| `true`*
+
+*Defined in [extractors/fs/exec.ts:38](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/e3a07d8/src/extractors/fs/exec.ts#L38)*
+
+If true it process stdio won't be dumped in the terminal
 
 ___
 <a id="target"></a>

@@ -26,7 +26,7 @@
 
 ▸ **OrganizeImports**<`T`>(config: *[OrganizeImportsOptions](../interfaces/_extractors_source_organizeimports_.organizeimportsoptions.md)*, t?: *`any`*): `number`
 
-*Defined in [extractors/source/organizeImports.ts:12](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f57c9f6/src/extractors/source/organizeImports.ts#L12)*
+*Defined in [extractors/source/organizeImports.ts:12](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/e3a07d8/src/extractors/source/organizeImports.ts#L12)*
 
 Will call organize imports on given files. If no file is provided then it will call for the current file. Returns `undefined`.
 

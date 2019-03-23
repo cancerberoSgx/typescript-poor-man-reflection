@@ -197,6 +197,7 @@ See (TODO.md)\[TODO.md\]
 * ["extractors/basic/thisBlockText"](modules/_extractors_basic_thisblocktext_.md)
 * ["extractors/basic/typeText"](modules/_extractors_basic_typetext_.md)
 * ["extractors/fs/cat"](modules/_extractors_fs_cat_.md)
+* ["extractors/fs/exec"](modules/_extractors_fs_exec_.md)
 * ["extractors/fs/ls"](modules/_extractors_fs_ls_.md)
 * ["extractors/fs/readFiles"](modules/_extractors_fs_readfiles_.md)
 * ["extractors/source/abstractRefactorExtractor"](modules/_extractors_source_abstractrefactorextractor_.md)

@@ -26,11 +26,9 @@
 
 ▸ **Cat**<`T`>(config: *[LsOptions](../interfaces/_extractors_fs_cat_.lsoptions.md)*, t?: *`any`*): `string`
 
-*Defined in [extractors/fs/cat.ts:23](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f57c9f6/src/extractors/fs/cat.ts#L23)*
+*Defined in [extractors/fs/cat.ts:15](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/e3a07d8/src/extractors/fs/cat.ts#L15)*
 
-Returns given file contents as string. Important: you won't be able to call cat() on a loop since this runs at compile time. If you need to read multiple files, use `ReadFiles()` instead.
-
-Usage:
+Returns given file contents as string. Important: you won't be able to call cat() on a loop since this runs at compile time. If you need to read multiple files, use `ReadFiles()` instead. Usage:
 
 ```ts
 const content = Cat({path: './package.json'})

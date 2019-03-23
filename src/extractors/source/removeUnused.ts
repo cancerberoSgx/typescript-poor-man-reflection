@@ -1,6 +1,6 @@
-import Project, { SourceFile } from 'ts-simple-ast'
-import { removeAllUnused } from 'ts-simple-ast-extra'
-import { AbstractRefactorExtractor, AbstractRefactorExtractorOptions } from './abstractRefactorExtractor'
+import Project, { SourceFile } from 'ts-simple-ast';
+import { removeAllUnused } from 'ts-simple-ast-extra';
+import { AbstractRefactorExtractor, AbstractRefactorExtractorOptions } from './abstractRefactorExtractor';
 
 /**
  * Will remove all unused variables, import names, etc, on given files. 
@@ -20,7 +20,7 @@ export interface RemoveUnusedOptions extends AbstractRefactorExtractorOptions {
 }
 
 export class RemoveUnusedClass extends AbstractRefactorExtractor {
-  protected preformRefactor(project: Project, f: SourceFile) {
+  protected performRefactor(project: Project, f: SourceFile) {
     removeAllUnused(project, project.getSourceFile(f.getFilePath())!)
   }
 }

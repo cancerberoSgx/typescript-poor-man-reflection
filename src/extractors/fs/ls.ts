@@ -1,16 +1,10 @@
-import { Stats } from 'fs'
-import { quote } from 'misc-utils-of-mine-generic'
-import { ls } from 'shelljs'
-import { CallExpression, Node } from 'ts-simple-ast'
-import {
-  ExtractorGetter,
-  ExtractorOptions,
-  ExtractorResult,
-  FileVariableAccessor,
-  ReplaceProjectFunctionCallOptions
-} from '../../types'
-import { unquote } from '../../util'
-import { AbstractExtractor } from '../abstractExtractor'
+import { Stats } from 'fs';
+import { quote } from 'misc-utils-of-mine-generic';
+import { ls } from 'shelljs';
+import { CallExpression, Node } from 'ts-simple-ast';
+import { ExtractorGetter, ExtractorOptions, ExtractorResult, FileVariableAccessor, ReplaceProjectFunctionCallOptions } from '../../types';
+import { unquote } from '../../util';
+import { AbstractExtractor } from '../abstractExtractor';
 
 /**
  * Usage: 
@@ -65,11 +59,5 @@ export class LsClass extends AbstractExtractor {
       return super.parseOptionValue(name, value)
     }
   }
-
-  getConfig() {
-    return {
-      freeArgumentNumber: 1,
-      unusedArgumentDefaultValue: '{}'
-    }
-  }
+  protected freeArgumentNumber = 1
 }

@@ -1,15 +1,6 @@
-import { quote } from 'misc-utils-of-mine-generic'
-import { notUndefined } from 'misc-utils-of-mine-typescript'
-import {
-  ArrayLiteralExpression,
-  CallExpression,
-  Identifier,
-  Node,
-  ObjectLiteralExpression,
-  SourceFile,
-  SyntaxKind,
-  TypeGuards
-} from 'ts-simple-ast'
+import { quote } from 'misc-utils-of-mine-generic';
+import { notUndefined } from 'misc-utils-of-mine-typescript';
+import { ArrayLiteralExpression, CallExpression, Identifier, Node, ObjectLiteralExpression, SourceFile, SyntaxKind, TypeGuards } from 'ts-simple-ast';
 
 /**
  * extract those CallExpressions from given sourceFile which declared in a module specifier with

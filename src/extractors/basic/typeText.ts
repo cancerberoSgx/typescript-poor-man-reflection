@@ -16,7 +16,6 @@ export class TypeTextClass extends AbstractExtractor {
     index: number,
     getter: ExtractorGetter,
     options: Required<ReplaceProjectFunctionCallOptions>,
-    variableAccessor: FileVariableAccessor
   ) {
     return options.extractorDataMode === 'asArgument'
       ? {

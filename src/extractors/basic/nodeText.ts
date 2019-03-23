@@ -20,7 +20,6 @@ export class NodeTextClass extends AbstractExtractor {
     index: number,
     getter: ExtractorGetter,
     options: Required<ReplaceProjectFunctionCallOptions>,
-    variableAccessor: FileVariableAccessor
   ) {
     var c = getFirstTypeArgumentDefinitionBlock(n)
 

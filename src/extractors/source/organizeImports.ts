@@ -1,5 +1,5 @@
-import Project, { SourceFile } from 'ts-simple-ast'
-import { AbstractRefactorExtractor, AbstractRefactorExtractorOptions } from './abstractRefactorExtractor'
+import Project, { SourceFile } from 'ts-simple-ast';
+import { AbstractRefactorExtractor, AbstractRefactorExtractorOptions } from './abstractRefactorExtractor';
 
 /**
  * Will call organize imports on given files. 
@@ -18,7 +18,7 @@ export interface OrganizeImportsOptions extends AbstractRefactorExtractorOptions
 }
 
 export class OrganizeImportsClass extends AbstractRefactorExtractor {
-  protected preformRefactor(project: Project, f: SourceFile) {
+  protected performRefactor(project: Project, f: SourceFile) {
     project.getSourceFile(f.getFilePath())!.organizeImports()
   }
 }

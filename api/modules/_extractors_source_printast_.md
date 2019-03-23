@@ -27,7 +27,7 @@
 
 ▸ **PrintAst**<`T`>(config: *[AstOptions](../interfaces/_extractors_source_printast_.astoptions.md)*, t?: *`any`*): `any`
 
-*Defined in [extractors/source/printAst.ts:36](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f57c9f6/src/extractors/source/printAst.ts#L36)*
+*Defined in [extractors/source/printAst.ts:36](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/e3a07d8/src/extractors/source/printAst.ts#L36)*
 
 will print AST tree as string of given node which can be specified in config.target or as first type argument. If no target node is provided then it will print the AST of this `PrintAst` call expression node. Example:
 
@@ -37,12 +37,12 @@ m(): void
 }
 class C implements I {
 m() {
- return function f() {
-   // prints the AST of interface I
-   console.log(PrintAst<I>())
-   // prints the AST of class C
-   console.log(PrintAst({ target: C }))
- }
+return function f() {
+// prints the AST of interface I
+console.log(PrintAst<I>())
+// prints the AST of class C
+console.log(PrintAst({ target: C }))
+}
 }
 }
 new C().m()()

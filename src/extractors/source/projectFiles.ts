@@ -28,7 +28,6 @@ export class ProjectFilesClass extends AbstractExtractor {
     index: number,
     getter: ExtractorGetter,
     options: Required<ReplaceProjectFunctionCallOptions>,
-    variableAccessor: FileVariableAccessor
   ): ExtractorResult {
     const config = this.getOptionsFromFistArg<ProjectFilesOptions>(n)
     let output = `[]`

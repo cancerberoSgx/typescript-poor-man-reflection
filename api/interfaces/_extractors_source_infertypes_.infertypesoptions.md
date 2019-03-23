@@ -36,7 +36,7 @@ InferTypes({path: 'src/** /*.ts*'})
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputMode](_types_.extractoroptions.md#outputmode)*
 
-*Defined in [types.ts:153](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f57c9f6/src/types.ts#L153)*
+*Defined in [types.ts:153](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/e3a07d8/src/types.ts#L153)*
 
 Default is 'asReturnValue' in which case the output will be returned by the extractor function call.
 
@@ -51,7 +51,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputVariableName](_types_.extractoroptions.md#outputvariablename)*
 
-*Defined in [types.ts:157](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f57c9f6/src/types.ts#L157)*
+*Defined in [types.ts:157](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/e3a07d8/src/types.ts#L157)*
 
 Name of the variable to assign the value in case outputMode is `assignToVariable`
 
@@ -64,7 +64,7 @@ ___
 
 *Inherited from [AbstractRefactorExtractorOptions](_extractors_source_abstractrefactorextractor_.abstractrefactorextractoroptions.md).[path](_extractors_source_abstractrefactorextractor_.abstractrefactorextractoroptions.md#path)*
 
-*Defined in [extractors/source/abstractRefactorExtractor.ts:17](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f57c9f6/src/extractors/source/abstractRefactorExtractor.ts#L17)*
+*Defined in [extractors/source/abstractRefactorExtractor.ts:17](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/e3a07d8/src/extractors/source/abstractRefactorExtractor.ts#L17)*
 
 Files on which to perform the action. If undefined, it will be applied on current file.
 
@@ -77,9 +77,17 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[removeMe](_types_.extractoroptions.md#removeme)*
 
-*Defined in [types.ts:164](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f57c9f6/src/types.ts#L164)*
+*Defined in [types.ts:168](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/e3a07d8/src/types.ts#L168)*
 
-TODO If true, this extractor function call expression will be removed. Important: this won't be undoable or restored with `--clean`
+If true, this extractor function call expression will be removed as long as it's on an ExpressionStatement. Example:
+
+```ts
+MyExtractor({removeMe: true}) // Will be removed
+const a = MyExtractor({removeMe: true}) // Won't be removed
+foo(MyExtractor({removeMe: true}))// Won't be removed
+```
+
+Important: removed extractor call expressions are not restored when using --clean.
 
 ___
 <a id="target"></a>
@@ -90,7 +98,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[target](_types_.extractoroptions.md#target)*
 
-*Defined in [types.ts:169](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f57c9f6/src/types.ts#L169)*
+*Defined in [types.ts:173](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/e3a07d8/src/types.ts#L173)*
 
 Can be used to reference a node in this file.
 
