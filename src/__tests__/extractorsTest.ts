@@ -138,7 +138,8 @@ var a = 1, b = 2, c = 'foo'
         ...{ extractorDataMode: 'asArgument' },
         extracts: {
           Destroyer: new DestroyerClass()
-        }, project
+        },
+        project
       })
       expect(removeWhites(project.getSourceFile('test.ts')!.getText())).toContain(
         removeWhites(
@@ -248,7 +249,6 @@ function f(){
     })
   })
 
-
   describe('OrganizeImports', () => {
     it('should organize imports of current file if none given', () => {
       const project = new Project()
@@ -296,13 +296,14 @@ function f(){
         extractorDataMode: 'asArgument',
         project
       })
-      expect(removeWhites(project.getSourceFile('test1.ts')!.getText()).trim()).toBe(removeWhites(`
+      expect(removeWhites(project.getSourceFile('test1.ts')!.getText()).trim()).toBe(
+        removeWhites(`
         import { bar } from './bar';
         export function f (){ return Math.random() * bar }
-        `))
+        `)
+      )
     })
   })
-
 
   describe('RemoveUnused', () => {
     it('should remove unused symbols of current file if none given', () => {

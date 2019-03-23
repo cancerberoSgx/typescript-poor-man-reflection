@@ -19,7 +19,7 @@ export class BodyTextClass extends AbstractExtractor {
     n: CallExpression,
     index: number,
     getter: ExtractorGetter,
-    options: Required<ReplaceProjectFunctionCallOptions>,
+    options: Required<ReplaceProjectFunctionCallOptions>
   ) {
     const f = getFirstTypeArgumentDefinitionBlock(n)!
     if (!f) {

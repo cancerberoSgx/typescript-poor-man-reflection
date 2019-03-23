@@ -46,7 +46,7 @@ export class Ast extends AbstractExtractor implements ExtractorClass {
     n: CallExpression,
     index: number,
     getter: ExtractorGetter,
-    options: Required<ReplaceProjectFunctionCallOptions>,
+    options: Required<ReplaceProjectFunctionCallOptions>
   ): ExtractorResult {
     const config = this.getOptionsFromFistArg<AstOptions>(n) || {}
     let target: Node | undefined = this.getTarget(n, config)

@@ -13,7 +13,6 @@ export interface AbstractRefactorExtractorOptions extends ExtractorOptions {
 }
 
 export abstract class AbstractRefactorExtractor extends AbstractExtractor {
-
   protected freeArgumentNumber = 1
   protected abstract performRefactor(project: Project, f: SourceFile): void
 
@@ -21,20 +20,20 @@ export abstract class AbstractRefactorExtractor extends AbstractExtractor {
     n: CallExpression,
     index: number,
     getter: ExtractorGetter,
-    options: Required<ReplaceProjectFunctionCallOptions>,
+    options: Required<ReplaceProjectFunctionCallOptions>
   ): ExtractorResult {
     const config = this.getOptionsFromFistArg<AbstractRefactorExtractorOptions>(n) || {}
     return this.buildExtractorResult(n, `undefined`, getter, index, options, config)
   }
 
-  afterExtract(filePath: string, extractorName: string, options: Required<ReplaceProjectFunctionCallOptions>){
+  afterExtract(filePath: string, extractorName: string, options: Required<ReplaceProjectFunctionCallOptions>) {
     // HEADS UP: since these operations might be destructive (forgotten Nodes) we need to re-create the sourceFile and the CallExpressions here and in any subclass implementation
-     const sourceFile = options.project && options.project.getSourceFile(filePath)
-     if(sourceFile){
-       const callExpressions = extractCallExpressions(sourceFile, options.moduleSpecifier, [extractorName])
-       callExpressions.forEach(n => {
-         const config = this.getOptionsFromFistArg<AbstractRefactorExtractorOptions>(n) || {}
-         if (options.project) {
+    const sourceFile = options.project && options.project.getSourceFile(filePath)
+    if (sourceFile) {
+      const callExpressions = extractCallExpressions(sourceFile, options.moduleSpecifier, [extractorName])
+      callExpressions.forEach(n => {
+        const config = this.getOptionsFromFistArg<AbstractRefactorExtractorOptions>(n) || {}
+        if (options.project) {
           let files: SourceFile[] = []
           if (config.path) {
             files = options.project.getSourceFiles().filter(f => Minimatch(f.getFilePath(), config.path!))

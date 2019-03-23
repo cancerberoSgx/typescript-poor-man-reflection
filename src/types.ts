@@ -119,11 +119,14 @@ interface ExtractorConfig {
 export interface ExtractorClass {
   getConfig?(): ExtractorConfig
   /**
-   * Implements the extraction or AST transformation. For each extractor function call expression found in a file, its method [[extract]] is called respecting the order in the code. 
-   * 
-   * If a transformation occurs here it must be safe (https://dsherret.github.io/ts-morph/manipulation/#strongwarningstrong) - don't use `insertText`, `replaceText`, or `removeText` or `organizeImports `or any operation that will leave nodes forgotten. 
-   * 
-   * If you need to do so, please use [[beforeExtract]] or [[afterExtract]] 
+   * Implements the extraction or AST transformation. For each extractor function call expression found in a
+   * file, its method [[extract]] is called respecting the order in the code.
+   *
+   * If a transformation occurs here it must be safe
+   * (https://dsherret.github.io/ts-morph/manipulation/#strongwarningstrong) - don't use `insertText`,
+   * `replaceText`, or `removeText` or `organizeImports `or any operation that will leave nodes forgotten.
+   *
+   * If you need to do so, please use [[beforeExtract]] or [[afterExtract]]
    */
   extract(
     n: CallExpression,
@@ -133,13 +136,19 @@ export interface ExtractorClass {
     variableAccessor: FileVariableAccessor
   ): ExtractorResult
   /**
-   * Called before [[extract]] method is called for any extractors in this sourceFile. It's safe here to transform the AST leaving nodes forgotten (https://dsherret.github.io/ts-morph/manipulation/#strongwarningstrong - can use `insertText`, `replaceText`, or `removeText` or `organizeImports`) 
+   * Called before [[extract]] method is called for any extractors in this sourceFile. It's safe here to
+   * transform the AST leaving nodes forgotten
+   * (https://dsherret.github.io/ts-morph/manipulation/#strongwarningstrong - can use `insertText`,
+   * `replaceText`, or `removeText` or `organizeImports`)
    */
-  beforeExtract?(filePath: string, extractorName: string, options: Required<ReplaceProjectFunctionCallOptions>):void
-    /**
-   * Called after [[extract]] method is called for all extractors in this sourceFile. It's safe here to transform the AST leaving nodes forgotten (https://dsherret.github.io/ts-morph/manipulation/#strongwarningstrong - can use `insertText`, `replaceText`, or `removeText` or `organizeImports`) 
+  beforeExtract?(filePath: string, extractorName: string, options: Required<ReplaceProjectFunctionCallOptions>): void
+  /**
+   * Called after [[extract]] method is called for all extractors in this sourceFile. It's safe here to
+   * transform the AST leaving nodes forgotten
+   * (https://dsherret.github.io/ts-morph/manipulation/#strongwarningstrong - can use `insertText`,
+   * `replaceText`, or `removeText` or `organizeImports`)
    */
-  afterExtract?(filePath: string, extractorName: string, options: Required<ReplaceProjectFunctionCallOptions>) :void
+  afterExtract?(filePath: string, extractorName: string, options: Required<ReplaceProjectFunctionCallOptions>): void
 }
 
 export interface ExtractOptions {
@@ -171,11 +180,12 @@ export interface ExtractorOptions {
   outputVariableName?: string
 
   /**
-   * If true, this extractor function call expression will be removed as long as it's on an ExpressionStatement. Example: 
-```ts
-MyExtractor({removeMe: true}) // Will be removed
-const a = MyExtractor({removeMe: true}) // Won't be removed
-foo(MyExtractor({removeMe: true}))// Won't be removed
+   * If true, this extractor function call expression will be removed as long as it's on an
+   * ExpressionStatement. Example: 
+   * ```ts
+   * MyExtractor({removeMe: true}) // Will be removed
+   * const a = MyExtractor({removeMe: true}) // Won't be removed
+   * foo(MyExtractor({removeMe: true}))// Won't be removed
 ```
    * Important: removed extractor call expressions are not restored when using --clean. 
    */

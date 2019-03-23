@@ -13,7 +13,7 @@ export class ThisBlockTextClass extends AbstractExtractor {
     n: CallExpression,
     index: number,
     getter: ExtractorGetter,
-    options: Required<ReplaceProjectFunctionCallOptions>,
+    options: Required<ReplaceProjectFunctionCallOptions>
   ) {
     const block = n.getFirstAncestorByKind(SyntaxKind.Block)
     let result: string = ''

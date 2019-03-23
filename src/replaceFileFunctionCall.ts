@@ -65,12 +65,12 @@ export function replaceFileFunctionCall(
       Required<ReplaceProjectFunctionCallOptions>,
       FileVariableAccessor
     ] = [
-        c,
-        index,
-        extractorGetterBuilder(fullOptions, index, sourceFile, c),
-        { ...fullOptions, ...options },
-        fileVariableAccessor
-      ]
+      c,
+      index,
+      extractorGetterBuilder(fullOptions, index, sourceFile, c),
+      { ...fullOptions, ...options },
+      fileVariableAccessor
+    ]
 
     // Heads up: argIndex is the argument index we can use for data. Previous arguments are owned by the extractor for its own options/whatever.
 
@@ -93,8 +93,8 @@ export function replaceFileFunctionCall(
       const extractResult = clean
         ? ''
         : isExtractorFn(extract)
-          ? extract(...extractArgs)
-          : extract.extract(...extractArgs)
+        ? extract(...extractArgs)
+        : extract.extract(...extractArgs)
       extractorData.push(typeof extractResult !== 'string' ? extractResult.prependToFile || '""' : '""')
       const argumentText = typeof extractResult === 'string' ? extractResult : extractResult.argument
       const comma = c.getArguments()[argIndex].getNextSiblingIfKind(SyntaxKind.CommaToken)

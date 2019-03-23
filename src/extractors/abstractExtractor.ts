@@ -117,33 +117,33 @@ export abstract class AbstractExtractor implements ExtractorClass {
   afterExtract(filePath: string, extractorName: string, options: Required<ReplaceProjectFunctionCallOptions>) {
     // HEADS UP: since these operations might be destructive (forgotten Nodes) we need to re-create the sourceFile and the CallExpressions here and in any subclass implementation
     const sourceFile = options.project && options.project.getSourceFile(filePath)
-    if(sourceFile){
+    if (sourceFile) {
       const callExpressions = extractCallExpressions(sourceFile, options.moduleSpecifier, [extractorName])
       callExpressions.forEach(c => {
         const config = this.getOptionsFromFistArg(c) || {}
-        if (config.removeMe) { 
+        if (config.removeMe) {
           const parent = c.getParent()
           if (TypeGuards.isStatement(parent)) {
             parent.remove()
           }
         }
-     })
-   } 
+      })
+    }
   }
   beforeExtract(filePath: string, extractorName: string, options: Required<ReplaceProjectFunctionCallOptions>) {
-  //   // HEADS UP: since these operations might be destructive (forgotten Nodes) we need to re-create the sourceFile and the CallExpressions here and in any subclass implementation
-  //   const sourceFile = options.project && options.project.getSourceFile(filePath)
-  //   if(sourceFile){
-  //     const callExpressions = extractCallExpressions(sourceFile, options.moduleSpecifier, [extractorName])
-  //     callExpressions.forEach(c => {
-  //       const config = this.getOptionsFromFistArg(c) || {}
-  //       if (config.removeMe) { 
-  //         const parent = c.getParent()
-  //         if (TypeGuards.isStatement(parent)) {
-  //           parent.remove()
-  //         }
-  //       }
-  //    })
-  //  } 
+    //   // HEADS UP: since these operations might be destructive (forgotten Nodes) we need to re-create the sourceFile and the CallExpressions here and in any subclass implementation
+    //   const sourceFile = options.project && options.project.getSourceFile(filePath)
+    //   if(sourceFile){
+    //     const callExpressions = extractCallExpressions(sourceFile, options.moduleSpecifier, [extractorName])
+    //     callExpressions.forEach(c => {
+    //       const config = this.getOptionsFromFistArg(c) || {}
+    //       if (config.removeMe) {
+    //         const parent = c.getParent()
+    //         if (TypeGuards.isStatement(parent)) {
+    //           parent.remove()
+    //         }
+    //       }
+    //    })
+    //  }
   }
 }

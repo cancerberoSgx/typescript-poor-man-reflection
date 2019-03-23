@@ -44,7 +44,7 @@ export class ExtractInterfaceClass extends AbstractExtractor {
     n: CallExpression,
     index: number,
     getter: ExtractorGetter,
-    options: Required<ReplaceProjectFunctionCallOptions>,
+    options: Required<ReplaceProjectFunctionCallOptions>
   ): ExtractorResult {
     const config = this.getOptionsFromFistArg<ExtractorOptions>(n) || {}
     let target: Node | undefined = this.getTarget(n, config)
