@@ -2,11 +2,11 @@
 ## TODO / ISSUES
 
  * FileDeclaration<Type>(orNode) to get the file path where a node was declared
- * Exec({program: string}) - to exec a program and return its return code, stdout, stderr. Example ( minify before embed): `const {stdout, code} = Exec('npx terser files/**/*.js -o tmp/js'); export files = code===0 ? ReadFiles({path: './tmp/js/**/*.js'}) : []`
 
 
 ### Done
 
+ * Exec({program: string}) - to exec a program and return its return code, stdout, stderr. Example ( minify before embed): `const {stdout, code} = Exec('npx terser files/**/*.js -o tmp/js'); export files = code===0 ? ReadFiles({path: './tmp/js/**/*.js'}) : []`
  * Tool configuration - api so I can ThisBlockText<>({withoutParens: true})
  * test if --clean only cleans --filePattern or all - -DONE it cleans only --filePattern
  * test with all the extractors together DONE
@@ -14,7 +14,17 @@
 
 ## IDEAS
 
+### @override
 
+```
+function Overrides<T extends true=true>(){}
+class C implements I{
+  m1(){
+    Overrides()
+  }
+}
+```
+which will be transformed to `Overrides<false>()` in case there are no super classes or interfaces defining m1()
 
 ### References<Type>({}, orNode)
 

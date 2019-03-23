@@ -10,6 +10,7 @@ import { ExtractInterfaceClass } from './extractors/source/extractInterface';
 import { InferTypesClass } from './extractors/source/inferTypes';
 import { NodeTypeClass } from './extractors/source/nodeType';
 import { OrganizeImportsClass } from './extractors/source/organizeImports';
+import { OverridesClass } from './extractors/source/overrides';
 import { Ast } from './extractors/source/printAst';
 import { ProjectFilesClass } from './extractors/source/projectFiles';
 import { RemoveUnusedClass } from './extractors/source/removeUnused';
@@ -32,7 +33,8 @@ export const defaultExtractors: { [k: string]: Extractor } = {
   OrganizeImports: new OrganizeImportsClass(),
   RemoveUnused: new RemoveUnusedClass(),
   InferTypes: new InferTypesClass(),
-  ExtractInterface: new ExtractInterfaceClass()
+  ExtractInterface: new ExtractInterfaceClass(),
+  Overrides: new OverridesClass()
 }
 
 export function isExtractorFn(e: Extractor): e is ExtractorFn {

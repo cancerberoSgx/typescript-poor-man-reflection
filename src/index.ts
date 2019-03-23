@@ -10,6 +10,7 @@ export { ExtractInterface } from './extractors/source/extractInterface';
 export { InferTypes } from './extractors/source/inferTypes';
 export { NodeType } from './extractors/source/nodeType';
 export { OrganizeImports } from './extractors/source/organizeImports';
+export { Overrides } from './extractors/source/overrides';
 export { PrintAst } from './extractors/source/printAst';
 export { ProjectFiles } from './extractors/source/projectFiles';
 export { RemoveUnused } from './extractors/source/removeUnused';
@@ -17,3 +18,4 @@ export { main } from './main';
 export { replaceFileFunctionCall } from './replaceFileFunctionCall';
 export { replaceProjectFunctionCall } from './replaceProjectFunctionCall';
 export * from './types';
+
