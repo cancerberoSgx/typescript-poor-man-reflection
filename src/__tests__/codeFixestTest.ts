@@ -1,7 +1,6 @@
 import Project from 'ts-simple-ast'
-import { applyAllSuggestedCodeFixes } from '../extractors/source/changes'
-import { Extractor, ExtractorClass } from '../types'
 import { removeWhites } from 'misc-utils-of-mine-generic'
+import { applyAllSuggestedCodeFixes } from 'ts-simple-ast-extra'
 
 describe('codeFixes', () => {
   it('should remove all unused things', () => {

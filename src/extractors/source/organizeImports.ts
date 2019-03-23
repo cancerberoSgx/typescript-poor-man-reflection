@@ -1,17 +1,4 @@
-import Project, { CallExpression, Node, SourceFile } from 'ts-simple-ast'
-import {
-  ExtractorGetter,
-  ExtractorOptions,
-  ExtractorResult,
-  FileVariableAccessor,
-  ReplaceProjectFunctionCallOptions
-} from '../../types'
-import { AbstractExtractor } from '../abstractExtractor'
-import { unique } from 'misc-utils-of-mine-generic'
-import { dirname, resolve } from 'path'
-import { unquote } from '../../util'
-import { ls } from 'shelljs'
-import Minimatch from 'minimatch'
+import Project, { SourceFile } from 'ts-simple-ast'
 import { AbstractRefactorExtractor, AbstractRefactorExtractorOptions } from './abstractRefactorExtractor'
 
 /**

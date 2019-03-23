@@ -1,13 +1,7 @@
-import Project, { CallExpression, Node } from 'ts-simple-ast'
-import {
-  ExtractorGetter,
-  ExtractorOptions,
-  ExtractorResult,
-  FileVariableAccessor,
-  ReplaceProjectFunctionCallOptions
-} from '../../types'
-import { AbstractExtractor } from '../abstractExtractor'
-import { unique } from 'misc-utils-of-mine-generic'
+import { unique } from 'misc-utils-of-mine-generic';
+import { CallExpression } from 'ts-simple-ast';
+import { ExtractorGetter, ExtractorOptions, ExtractorResult, FileVariableAccessor, ReplaceProjectFunctionCallOptions } from '../../types';
+import { AbstractExtractor } from '../abstractExtractor';
 
 /**
  * Return the list of this project file names. Usage: 

@@ -25,6 +25,7 @@
     "misc-utils-of-mine-typescript": "0.0.12",
     "shelljs": "^0.8.3",
     "ts-simple-ast": "^21.0.4",
+    "ts-simple-ast-extra": "0.0.13",
     "yargs-parser": "^13.0.0"
   },
   "devDependencies": {

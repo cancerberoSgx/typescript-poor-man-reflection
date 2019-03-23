@@ -8,7 +8,7 @@ import minimatch from 'minimatch'
 import { defaultExtractors } from './extractors'
 
 /**
- * Knows if a file should be included in the process or not. TODO: memoize 
+ * Knows if a file should be included in the process or not. TODO: memoize
  */
 export function includeFile(f: SourceFile, config: { extractorDataFolderFileName?: string; filePattern?: string }) {
   if (f.isFromExternalLibrary() || f.isDeclarationFile()) {
