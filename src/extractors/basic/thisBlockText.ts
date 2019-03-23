@@ -1,6 +1,6 @@
-import { CallExpression, SyntaxKind } from 'ts-simple-ast'
-import { ExtractorGetter, FileVariableAccessor, ReplaceProjectFunctionCallOptions } from '../../types'
-import { AbstractExtractor } from '../abstractExtractor'
+import { CallExpression, SyntaxKind } from 'ts-simple-ast';
+import { ExtractorGetter, ReplaceProjectFunctionCallOptions } from '../../types';
+import { AbstractExtractor } from '../abstractExtractor';
 /**
  * Returns current parent Block text (without the braces)
  */

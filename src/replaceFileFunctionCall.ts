@@ -1,10 +1,10 @@
-import { quote } from 'misc-utils-of-mine-generic'
-import { CallExpression, SourceFile, SyntaxKind } from 'ts-simple-ast'
-import { extractCallExpressions } from './astUtil'
-import { extractorGetterBuilder, getFileId, writeExtractorData } from './extractorData'
-import { defaultExtractors, isExtractorClass, isExtractorFn } from './extractors'
-import { defaultOptions, getFullOptions } from './replaceProjectFunctionCall'
-import { ExtractorGetter, FileVariableAccessor, Replacement, ReplaceProjectFunctionCallOptions } from './types'
+import { quote } from 'misc-utils-of-mine-generic';
+import { CallExpression, SourceFile, SyntaxKind } from 'ts-simple-ast';
+import { extractCallExpressions } from './astUtil';
+import { extractorGetterBuilder, getFileId, writeExtractorData } from './extractorData';
+import { defaultExtractors, isExtractorClass, isExtractorFn } from './extractors';
+import { defaultOptions, getFullOptions } from './replaceProjectFunctionCall';
+import { ExtractorGetter, FileVariableAccessor, Replacement, ReplaceProjectFunctionCallOptions } from './types';
 
 /**
  * JavaScript API to replace arguments of all function expression calls in given (ts-simple-ast SourceFile)
@@ -28,6 +28,7 @@ export function replaceFileFunctionCall(
   const fileVariables: { [name: string]: string } = {}
   const replaced: Replacement[] = []
   let callExpressions = extractCallExpressions(sourceFile, moduleSpecifier, Object.keys(extracts))
+  const callExpressionNames = callExpressions.map(c=>c.getFirstChildByKind(SyntaxKind.Identifier)!.getText())
   let extractorData: string[] = []
   const fileId = getFileId(sourceFile, { extractorDataFolderFileName: extractorDataFolderFileName })
   const fullOptions = getFullOptions({ ...options })
@@ -125,15 +126,30 @@ export function replaceFileFunctionCall(
     fileVariables
   )
   
-  sourceFile = (options.project && options.project.getSourceFile(sourceFile.getFilePath())) || sourceFile
-  callExpressions = extractCallExpressions(sourceFile, moduleSpecifier, Object.keys(extracts))
-  callExpressions.forEach((c, index) => {
-    const functionName = c.getFirstChildByKind(SyntaxKind.Identifier)!.getText()
-    const extract = extracts[functionName]
-    if (isExtractorClass(extract) && extract.afterWriteExtractorData) {
-      extract.afterWriteExtractorData(c, index, fullOptions)
+  // sourceFile = (options.project && options.project.getSourceFile(sourceFile.getFilePath())) || sourceFile
+  // callExpressions = extractCallExpressions(sourceFile, moduleSpecifier, Object.keys(extracts))
+  // callExpressions.forEach((c, index) => {
+    // const functionName = c.getFirstChildByKind(SyntaxKind.Identifier)!.getText()
+    callExpressionNames.forEach(extractName=>{
+    const extract = extracts[extractName]
+    // console.log('AFTERERE', );
+    
+    if (isExtractorClass(extract)) {
+      extract.afterWriteExtractorData(sourceFile.getFilePath(),extractName, fullOptions)
     }
   })
 
+  // })
+  // Object.keys(extracts).forEach(extractName=>{
+  //   sourceFile = (options.project && options.project.getSourceFile(sourceFile.getFilePath())) || sourceFile
+  //   callExpressions = extractCallExpressions(sourceFile, moduleSpecifier, [extractName])
+  //   const extract = extracts[extractName]
+  //   // const functionName = c.getFirstChildByKind(SyntaxKind.Identifier)!.getText()
+  //   if (isExtractorClass(extract) && extract.afterWriteExtractorData) {
+  //         callExpressions.forEach((c, index) => {
+  //       extract.afterWriteExtractorData!(c, index, fullOptions)
+  //     })
+  //   }
+  // })
   return replaced
 }

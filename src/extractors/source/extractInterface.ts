@@ -1,25 +1,8 @@
-import Project, {
-  CallExpression,
-  ClassDeclaration,
-  ConstructorDeclarationStructure,
-  InterfaceDeclarationStructure,
-  MethodSignatureStructure,
-  Node,
-  PropertySignatureStructure,
-  SourceFile,
-  SyntaxKind,
-  TypeGuards
-} from 'ts-simple-ast'
-import { getImplementsAll } from 'ts-simple-ast-extra'
-import {
-  ExtractorGetter,
-  ExtractorOptions,
-  ExtractorResult,
-  FileVariableAccessor,
-  ReplaceProjectFunctionCallOptions
-} from '../../types'
-import { unquote } from '../../util'
-import { AbstractExtractor } from '../abstractExtractor'
+import Project, { CallExpression, ClassDeclaration, ConstructorDeclarationStructure, InterfaceDeclarationStructure, MethodSignatureStructure, Node, PropertySignatureStructure, SourceFile, SyntaxKind, TypeGuards } from 'ts-simple-ast';
+import { getImplementsAll } from 'ts-simple-ast-extra';
+import { ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunctionCallOptions } from '../../types';
+import { unquote } from '../../util';
+import { AbstractExtractor } from '../abstractExtractor';
 
 /**
  * Will create a new interface declaration with given name, that given class will implement. The new interface will have all class' public methods and properties.

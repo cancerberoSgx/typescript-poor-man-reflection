@@ -1,15 +1,8 @@
-import { unique } from 'misc-utils-of-mine-generic'
-import { CallExpression, Node, SyntaxKind, TypeGuards } from 'ts-simple-ast'
-import { getDefinitionsOf } from '../astUtil'
-import {
-  ExtractorClass,
-  ExtractorGetter,
-  ExtractorOptions,
-  ExtractorResult,
-  FileVariableAccessor,
-  ReplaceProjectFunctionCallOptions
-} from '../types'
-import { Map, unquote } from '../util'
+import { unique } from 'misc-utils-of-mine-generic';
+import { CallExpression, Node, SyntaxKind, TypeGuards } from 'ts-simple-ast';
+import { extractCallExpressions, getDefinitionsOf } from '../astUtil';
+import { ExtractorClass, ExtractorGetter, ExtractorOptions, ExtractorResult, FileVariableAccessor, ReplaceProjectFunctionCallOptions } from '../types';
+import { Map, unquote } from '../util';
 
 export abstract class AbstractExtractor implements ExtractorClass {
   protected defaultExtractorOptions: ExtractorOptions = {}
@@ -121,16 +114,21 @@ export abstract class AbstractExtractor implements ExtractorClass {
     return target
   }
 
-  afterWriteExtractorData(c: CallExpression, index: number, options: Required<ReplaceProjectFunctionCallOptions>) {
-      // console.log('remnovemmm', c.getArguments().length);
-    // const config = this.getOptionsFromFistArg(c) || {}
-    // if (config.removeMe) { 
-      
-    //   const parent = c.getParent()
-    //   if (TypeGuards.isStatement(parent)) {
-    //     parent.remove()
-    //   }
-    // }
+  afterWriteExtractorData(filePath: string, extractorName: string, options: Required<ReplaceProjectFunctionCallOptions>) {
+    // HEADS UP: since these operations might be destructive (forgotten Nodes) we need to re-create the sourceFile and the CallExpressions here and in any subclass implementation
+    const sourceFile = options.project && options.project.getSourceFile(filePath)
+    if(sourceFile){
+      const callExpressions = extractCallExpressions(sourceFile, options.moduleSpecifier, [extractorName])
+      callExpressions.forEach(c => {
+        const config = this.getOptionsFromFistArg(c) || {}
+        if (config.removeMe) { 
+          const parent = c.getParent()
+          if (TypeGuards.isStatement(parent)) {
+            parent.remove()
+          }
+        }
+     })
+   } 
   }
   // beforeExtract(c: CallExpression, index: number, options: Required<ReplaceProjectFunctionCallOptions>) {
   //   const config = this.getOptionsFromFistArg(c) || {}

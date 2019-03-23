@@ -1,9 +1,9 @@
-import { removeWhites } from 'misc-utils-of-mine-generic'
-import { CallExpression, Project, SyntaxKind, TypeGuards } from 'ts-simple-ast'
-import { AbstractExtractor } from '../extractors/abstractExtractor'
-import { replaceFileFunctionCall } from '../replaceFileFunctionCall'
-import { defaultOptions } from '../replaceProjectFunctionCall'
-import { ExtractorFn } from '../types'
+import { removeWhites } from 'misc-utils-of-mine-generic';
+import { CallExpression, Project, SyntaxKind, TypeGuards } from 'ts-simple-ast';
+import { AbstractExtractor } from '../extractors/abstractExtractor';
+import { replaceFileFunctionCall } from '../replaceFileFunctionCall';
+import { defaultOptions } from '../replaceProjectFunctionCall';
+import { ExtractorFn } from '../types';
 
 describe('extractors', () => {
   describe('customExtractors', () => {
@@ -138,7 +138,7 @@ var a = 1, b = 2, c = 'foo'
         ...{ extractorDataMode: 'asArgument' },
         extracts: {
           Destroyer: new DestroyerClass()
-        }
+        }, project
       })
       expect(removeWhites(project.getSourceFile('test.ts')!.getText())).toContain(
         removeWhites(
@@ -248,6 +248,7 @@ function f(){
     })
   })
 
+
   describe('OrganizeImports', () => {
     it('should organize imports of current file if none given', () => {
       const project = new Project()
@@ -281,7 +282,27 @@ function f(){
         `import {foo} from './foo3'; export Math.random()`
       )
     })
+
+    it('should be able to self destroy', () => {
+      const project = new Project()
+      project.createSourceFile(
+        'test1.ts',
+        `import {foo} from './foo1'
+        import {bar} from './bar'
+        OrganizeImports({path: '**/test*.ts', removeMe: true})
+        export function f (){ return Math.random() * bar }`
+      )
+      replaceFileFunctionCall(project.getSourceFile('test1.ts')!, {
+        extractorDataMode: 'asArgument',
+        project
+      })
+      expect(removeWhites(project.getSourceFile('test1.ts')!.getText()).trim()).toBe(removeWhites(`
+        import { bar } from './bar';
+        export function f (){ return Math.random() * bar }
+        `))
+    })
   })
+
 
   describe('RemoveUnused', () => {
     it('should remove unused symbols of current file if none given', () => {

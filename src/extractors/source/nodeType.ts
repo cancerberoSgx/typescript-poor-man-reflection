@@ -1,14 +1,8 @@
-import { quote } from 'misc-utils-of-mine-generic'
-import { CallExpression, Node, TypeGuards } from 'ts-simple-ast'
-import {
-  ExtractorGetter,
-  ExtractorOptions,
-  ExtractorResult,
-  FileVariableAccessor,
-  ReplaceProjectFunctionCallOptions
-} from '../../types'
-import { unquote } from '../../util'
-import { AbstractExtractor } from '../abstractExtractor'
+import { quote } from 'misc-utils-of-mine-generic';
+import { CallExpression, Node, TypeGuards } from 'ts-simple-ast';
+import { ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunctionCallOptions } from '../../types';
+import { unquote } from '../../util';
+import { AbstractExtractor } from '../abstractExtractor';
 
 /**
  * Usage: 

@@ -1,14 +1,9 @@
-import Minimatch from 'minimatch'
-import Project, { CallExpression, Node, SourceFile } from 'ts-simple-ast'
-import {
-  ExtractorGetter,
-  ExtractorOptions,
-  ExtractorResult,
-  FileVariableAccessor,
-  ReplaceProjectFunctionCallOptions
-} from '../../types'
-import { unquote } from '../../util'
-import { AbstractExtractor } from '../abstractExtractor'
+import Minimatch from 'minimatch';
+import Project, { CallExpression, Node, SourceFile } from 'ts-simple-ast';
+import { extractCallExpressions } from '../../astUtil';
+import { ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunctionCallOptions } from '../../types';
+import { unquote } from '../../util';
+import { AbstractExtractor } from '../abstractExtractor';
 
 export interface AbstractRefactorExtractorOptions extends ExtractorOptions {
   /**
@@ -18,6 +13,10 @@ export interface AbstractRefactorExtractorOptions extends ExtractorOptions {
 }
 
 export abstract class AbstractRefactorExtractor extends AbstractExtractor {
+
+  protected freeArgumentNumber = 1
+  protected abstract performRefactor(project: Project, f: SourceFile): void
+
   extract(
     n: CallExpression,
     index: number,
@@ -28,21 +27,27 @@ export abstract class AbstractRefactorExtractor extends AbstractExtractor {
     return this.buildExtractorResult(n, `undefined`, getter, index, options, config)
   }
 
-  // we need to execute after the job is done (afterWriteExtractorData not on extract) since we will make the nodes invalid
-  afterWriteExtractorData(n: CallExpression, index: number, options: Required<ReplaceProjectFunctionCallOptions>) {
-    const config = this.getOptionsFromFistArg<AbstractRefactorExtractorOptions>(n) || {}
-    if (options.project) {
-      let files: SourceFile[] = []
-      if (config.path) {
-        files = options.project.getSourceFiles().filter(f => Minimatch(f.getFilePath(), config.path!))
-      } else {
-        files = [options.project.getSourceFile(n.getSourceFile().getFilePath())!]
-      }
-      files.forEach(f => {
-        this.performRefactor(options.project, options.project.getSourceFile(f.getFilePath())!)
+  afterWriteExtractorData(filePath: string, extractorName: string, options: Required<ReplaceProjectFunctionCallOptions>){
+    // HEADS UP: since these operations might be destructive (forgotten Nodes) we need to re-create the sourceFile and the CallExpressions here and in any subclass implementation
+     const sourceFile = options.project && options.project.getSourceFile(filePath)
+     if(sourceFile){
+       const callExpressions = extractCallExpressions(sourceFile, options.moduleSpecifier, [extractorName])
+       callExpressions.forEach(n => {
+         const config = this.getOptionsFromFistArg<AbstractRefactorExtractorOptions>(n) || {}
+         if (options.project) {
+          let files: SourceFile[] = []
+          if (config.path) {
+            files = options.project.getSourceFiles().filter(f => Minimatch(f.getFilePath(), config.path!))
+          } else {
+            files = [options.project.getSourceFile(n.getSourceFile().getFilePath())!]
+          }
+          files.forEach(f => {
+            this.performRefactor(options.project, options.project.getSourceFile(f.getFilePath())!)
+          })
+        }
       })
     }
-    super.afterWriteExtractorData(n, index, options)
+    super.afterWriteExtractorData(filePath, extractorName, options)
   }
 
   protected parseOptionValue(name: string, value: Node | undefined): any {
@@ -52,7 +57,4 @@ export abstract class AbstractRefactorExtractor extends AbstractExtractor {
       return super.parseOptionValue(name, value)
     }
   }
-
-  protected freeArgumentNumber = 1
-  protected abstract performRefactor(project: Project, f: SourceFile): void
 }

@@ -125,7 +125,8 @@ export interface ExtractorClass {
     options: Required<ReplaceProjectFunctionCallOptions>,
     variableAccessor: FileVariableAccessor
   ): ExtractorResult
-  afterWriteExtractorData?(c: CallExpression, index: number, options: Required<ReplaceProjectFunctionCallOptions>): void
+  // afterWriteExtractorData?(c: CallExpression, index: number, options: Required<ReplaceProjectFunctionCallOptions>): void
+  afterWriteExtractorData(filePath: string, extractorName: string, options: Required<ReplaceProjectFunctionCallOptions>) :void
 }
 
 export interface ExtractOptions {

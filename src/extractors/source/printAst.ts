@@ -1,15 +1,8 @@
-import { indent, quote, shorter } from 'misc-utils-of-mine-generic'
-import { CallExpression, Node } from 'ts-simple-ast'
-import { getNodeName } from '../../astUtil'
-import {
-  ExtractorClass,
-  ExtractorGetter,
-  ExtractorOptions,
-  ExtractorResult,
-  FileVariableAccessor,
-  ReplaceProjectFunctionCallOptions
-} from '../../types'
-import { AbstractExtractor } from '../abstractExtractor'
+import { indent, quote, shorter } from 'misc-utils-of-mine-generic';
+import { CallExpression, Node } from 'ts-simple-ast';
+import { getNodeName } from '../../astUtil';
+import { ExtractorClass, ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunctionCallOptions } from '../../types';
+import { AbstractExtractor } from '../abstractExtractor';
 
 /**
  * will print AST tree as string of given node which can be specified in config.target or as first type
