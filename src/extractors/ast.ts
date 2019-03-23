@@ -38,8 +38,6 @@ export const PrintAst = function<T = any>(config: AstOptions, t?: any) {
 }
 
 export interface AstOptions extends ExtractorOptions {
-  /** in case the target is not a type, it can be passed here. */
-  target?: any
   dontPrintKindName?: boolean
   dontPrintIdentifier?: boolean
   dontPrintText?: boolean
@@ -66,23 +64,8 @@ export class Ast extends AbstractExtractor implements ExtractorClass {
     project?: Project
   ): ExtractorResult {
     const config = this.getOptionsFromFistArg<AstOptions>(n) || {}
-    let target: Node | undefined
-    if (config && config.target) {
-      if (TypeGuards.isIdentifier(config.target)) {
-        const d = getDefinitionsOf(config.target)
-        target = d.length ? d[0] : undefined
-      }
-    }
-    if (!target && n.getTypeArguments().length) {
-      const id = n.getTypeArguments()[0].getFirstChildByKind(SyntaxKind.Identifier)
-      if (id) {
-        const d = getDefinitionsOf(id)
-        target = d.length ? d[0] : undefined
-      }
-    }
-    // if(config.asJson){let output = this.buildAst(target || n, config) as AstNode
-
-    // }else {
+    let target: Node | undefined = this.getTarget(n, config)
+    // let output = target ? this.buildAst(target || n, config) as any : 'You must provide a target using the the target property or the first type argument'
     let output = this.buildAst(target || n, config) as any
     return this.buildExtractorResult(
       n,
@@ -92,7 +75,6 @@ export class Ast extends AbstractExtractor implements ExtractorClass {
       options,
       config
     )
-    // }
   }
 
   protected parseOptionValue(name: string, value: Node | undefined): any {
@@ -107,16 +89,10 @@ export class Ast extends AbstractExtractor implements ExtractorClass {
     const a = n.getAncestors()
     if (config.asJson) {
       const ancestors = this.printAncestors(a, 0, config) as AstNode
-      // console.log(ancestors);
-
-      let an: AstNode = ancestors //, leaf: AstNode = ancestors
-      while (an && an.children[0] && (an = an.children[0])) {
-        // leaf = an
-      }
+      let an: AstNode = ancestors
+      while (an && an.children[0] && (an = an.children[0])) {}
       const descendants = this.printDescendants(n, a.length, config) as AstNode
       an.children.push(descendants)
-      // console.log(an.kind);
-
       return ancestors
     } else {
       const descendants = this.printDescendants(n, a.length, config) as string
@@ -159,7 +135,6 @@ export class Ast extends AbstractExtractor implements ExtractorClass {
       a.forEach((n, i, arr) => {
         an = this.printNode(n, i, config) as AstNode
         if (previousNode) {
-          // previousNode.children.push(an)
           an.children.push(previousNode)
         } else {
           first = an

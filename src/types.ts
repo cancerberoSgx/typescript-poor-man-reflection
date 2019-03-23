@@ -156,12 +156,18 @@ export interface ExtractorOptions {
    * Name of the variable to assign the value in case outputMode is `assignToVariable`
    */
   outputVariableName?: string
+
   /**
-   * TODO If true, this extractor function call expression will be removed. Important: this won't be undoable
+   * TODO
+   * If true, this extractor function call expression will be removed. Important: this won't be undoable
    * or restored with `--clean`
    */
   removeMe?: boolean
-  // mode?: ExtractorDataMode targetMode?: 'self' | 'definition' | 'allReferences'
+
+  /**
+   * Can be used to reference a node in this file.
+   */
+  target?: any
 }
 
 export type ExtractorOutputMode = 'assignToVariable' | 'asReturnValue'

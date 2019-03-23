@@ -1,5 +1,5 @@
 import { unique, quote } from 'misc-utils-of-mine-generic'
-import Project, { CallExpression, TypeGuards, Node } from 'ts-simple-ast'
+import Project, { CallExpression, TypeGuards, Node, SyntaxKind } from 'ts-simple-ast'
 import {
   ExtractorClass,
   ExtractorGetter,
@@ -9,6 +9,7 @@ import {
   ReplaceProjectFunctionCallOptions
 } from '../types'
 import { Map, unquote } from '../util'
+import { getDefinitionsOf } from '../astUtil'
 
 export abstract class AbstractExtractor implements ExtractorClass {
   protected defaultExtractorOptions: ExtractorOptions = {
@@ -89,5 +90,25 @@ export abstract class AbstractExtractor implements ExtractorClass {
         prependToFile: output
       }
     }
+  }
+
+  protected getTarget(n: CallExpression, config: ExtractorOptions) {
+    let target: Node | undefined
+    if (config && config.target) {
+      if (TypeGuards.isIdentifier(config.target)) {
+        const d = getDefinitionsOf(config.target)
+        target = d.length ? d[0] : undefined
+      } else {
+        target = config.target
+      }
+    }
+    if (!target && n.getTypeArguments().length) {
+      const id = n.getTypeArguments()[0].getFirstChildByKind(SyntaxKind.Identifier)
+      if (id) {
+        const d = getDefinitionsOf(id)
+        target = d.length ? d[0] : undefined
+      }
+    }
+    return target
   }
 }

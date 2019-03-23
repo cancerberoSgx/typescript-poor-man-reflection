@@ -36,6 +36,12 @@ describe('cli', () => {
       '{"name":"","kind":"SourceFile","text":"","children":[{"name":"","kind":"VariableStatement","text":"","children":[{"name":"","kind":"VariableDeclarationList","text":"","children":[{"name":"eee","kind":"VariableDeclaration","text":"","children":[{"name":"","kind":"Identifier","text":"","children":[]},{"name":"","kind":"CallExpression","text":"","children":[{"name":"","kind":"CallExpression","text":"","children":[{"name":"m","kind":"PropertyAccessExpression","text":"","children":[{"name":"C","kind":"NewExpression","text":"","children":[{"name":"","kind":"Identifier","text":"","children":[]}]},{"name":"","kind":"Identifier","text":"","children":[]}]}]}]}]}]}]}]}'
     ])
   })
+
+  it('src/__tests__/cli/nodeTypeSample.ts', () => {
+    cliTest('src/__tests__/cli/nodeTypeSample.ts', 'undefined undefined undefined undefined undefined undefined', [
+      `C this I | null C false | "foo" false | "foo"`
+    ])
+  })
 })
 
 function cliTest(program: string, cleanOutput: string, instrumentedOutput: string[]) {

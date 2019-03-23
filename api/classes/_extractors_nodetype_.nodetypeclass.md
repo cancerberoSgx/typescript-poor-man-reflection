@@ -1,36 +1,32 @@
-[typescript-poor-man-reflection](../README.md) > ["extractors/ast"](../modules/_extractors_ast_.md) > [Ast](../classes/_extractors_ast_.ast.md)
+[typescript-poor-man-reflection](../README.md) > ["extractors/nodeType"](../modules/_extractors_nodetype_.md) > [NodeTypeClass](../classes/_extractors_nodetype_.nodetypeclass.md)
 
-# Class: Ast
+# Class: NodeTypeClass
 
 ## Hierarchy
 
  [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md)
 
-**↳ Ast**
+**↳ NodeTypeClass**
 
 ## Implements
 
-* [ExtractorClass](../interfaces/_types_.extractorclass.md)
 * [ExtractorClass](../interfaces/_types_.extractorclass.md)
 
 ## Index
 
 ### Properties
 
-* [defaultExtractorOptions](_extractors_ast_.ast.md#defaultextractoroptions)
+* [defaultExtractorOptions](_extractors_nodetype_.nodetypeclass.md#defaultextractoroptions)
 
 ### Methods
 
-* [buildAst](_extractors_ast_.ast.md#buildast)
-* [buildExtractorResult](_extractors_ast_.ast.md#buildextractorresult)
-* [extract](_extractors_ast_.ast.md#extract)
-* [getConfig](_extractors_ast_.ast.md#getconfig)
-* [getOptionsFromFistArg](_extractors_ast_.ast.md#getoptionsfromfistarg)
-* [getTarget](_extractors_ast_.ast.md#gettarget)
-* [parseOptionValue](_extractors_ast_.ast.md#parseoptionvalue)
-* [printAncestors](_extractors_ast_.ast.md#printancestors)
-* [printDescendants](_extractors_ast_.ast.md#printdescendants)
-* [printNode](_extractors_ast_.ast.md#printnode)
+* [buildExtractorResult](_extractors_nodetype_.nodetypeclass.md#buildextractorresult)
+* [buildType](_extractors_nodetype_.nodetypeclass.md#buildtype)
+* [extract](_extractors_nodetype_.nodetypeclass.md#extract)
+* [getConfig](_extractors_nodetype_.nodetypeclass.md#getconfig)
+* [getOptionsFromFistArg](_extractors_nodetype_.nodetypeclass.md#getoptionsfromfistarg)
+* [getTarget](_extractors_nodetype_.nodetypeclass.md#gettarget)
+* [parseOptionValue](_extractors_nodetype_.nodetypeclass.md#parseoptionvalue)
 
 ---
 
@@ -50,24 +46,6 @@ ___
 
 ## Methods
 
-<a id="buildast"></a>
-
-### `<Protected>` buildAst
-
-▸ **buildAst**(n: *`Node`*, config?: *[AstOptions](../interfaces/_extractors_ast_.astoptions.md)*): `string` \| [AstNode](../interfaces/_extractors_ast_.astnode.md)
-
-*Defined in [extractors/ast.ts:88](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/56d0d74/src/extractors/ast.ts#L88)*
-
-**Parameters:**
-
-| Name | Type | Default value |
-| ------ | ------ | ------ |
-| n | `Node` | - |
-| `Default value` config | [AstOptions](../interfaces/_extractors_ast_.astoptions.md) |  {} |
-
-**Returns:** `string` \| [AstNode](../interfaces/_extractors_ast_.astnode.md)
-
-___
 <a id="buildextractorresult"></a>
 
 ### `<Protected>` buildExtractorResult
@@ -92,6 +70,24 @@ ___
 **Returns:** [ExtractorResult](../interfaces/_types_.extractorresult.md)
 
 ___
+<a id="buildtype"></a>
+
+### `<Protected>` buildType
+
+▸ **buildType**(n: *`Node`*, config: *[NodeTypeOptions](../interfaces/_extractors_nodetype_.nodetypeoptions.md)*): `any`
+
+*Defined in [extractors/nodeType.ts:52](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/56d0d74/src/extractors/nodeType.ts#L52)*
+
+**Parameters:**
+
+| Name | Type |
+| ------ | ------ |
+| n | `Node` |
+| config | [NodeTypeOptions](../interfaces/_extractors_nodetype_.nodetypeoptions.md) |
+
+**Returns:** `any`
+
+___
 <a id="extract"></a>
 
 ###  extract
@@ -102,7 +98,7 @@ ___
 
 *Overrides [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[extract](_extractors_abstractextractor_.abstractextractor.md#extract)*
 
-*Defined in [extractors/ast.ts:58](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/56d0d74/src/extractors/ast.ts#L58)*
+*Defined in [extractors/nodeType.ts:39](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/56d0d74/src/extractors/nodeType.ts#L39)*
 
 **Parameters:**
 
@@ -126,7 +122,7 @@ ___
 
 *Implementation of [ExtractorClass](../interfaces/_types_.extractorclass.md).[getConfig](../interfaces/_types_.extractorclass.md#getconfig)*
 
-*Defined in [extractors/ast.ts:52](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/56d0d74/src/extractors/ast.ts#L52)*
+*Defined in [extractors/nodeType.ts:64](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/56d0d74/src/extractors/nodeType.ts#L64)*
 
 **Returns:** `object`
 
@@ -187,7 +183,7 @@ ___
 
 *Overrides [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[parseOptionValue](_extractors_abstractextractor_.abstractextractor.md#parseoptionvalue)*
 
-*Defined in [extractors/ast.ts:80](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/56d0d74/src/extractors/ast.ts#L80)*
+*Defined in [extractors/nodeType.ts:71](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/56d0d74/src/extractors/nodeType.ts#L71)*
 
 **Parameters:**
 
@@ -197,63 +193,6 @@ ___
 | value | `Node` \| `undefined` |
 
 **Returns:** `any`
-
-___
-<a id="printancestors"></a>
-
-### `<Protected>` printAncestors
-
-▸ **printAncestors**(a: *`Node`[]*, level?: *`number`*, config?: *[AstOptions](../interfaces/_extractors_ast_.astoptions.md)*): [AstNode](../interfaces/_extractors_ast_.astnode.md) \| (`string` \| `object`)[]
-
-*Defined in [extractors/ast.ts:132](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/56d0d74/src/extractors/ast.ts#L132)*
-
-**Parameters:**
-
-| Name | Type | Default value |
-| ------ | ------ | ------ |
-| a | `Node`[] | - |
-| `Default value` level | `number` | 0 |
-| `Default value` config | [AstOptions](../interfaces/_extractors_ast_.astoptions.md) |  {} |
-
-**Returns:** [AstNode](../interfaces/_extractors_ast_.astnode.md) \| (`string` \| `object`)[]
-
-___
-<a id="printdescendants"></a>
-
-### `<Protected>` printDescendants
-
-▸ **printDescendants**(n: *`Node`*, level: *`number`*, config?: *[AstOptions](../interfaces/_extractors_ast_.astoptions.md)*): `string` \| [AstNode](../interfaces/_extractors_ast_.astnode.md)
-
-*Defined in [extractors/ast.ts:104](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/56d0d74/src/extractors/ast.ts#L104)*
-
-**Parameters:**
-
-| Name | Type | Default value |
-| ------ | ------ | ------ |
-| n | `Node` | - |
-| level | `number` | - |
-| `Default value` config | [AstOptions](../interfaces/_extractors_ast_.astoptions.md) |  {} |
-
-**Returns:** `string` \| [AstNode](../interfaces/_extractors_ast_.astnode.md)
-
-___
-<a id="printnode"></a>
-
-### `<Protected>` printNode
-
-▸ **printNode**(n: *`Node`*, level: *`number`*, config?: *[AstOptions](../interfaces/_extractors_ast_.astoptions.md)*): `string` \| `object`
-
-*Defined in [extractors/ast.ts:116](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/56d0d74/src/extractors/ast.ts#L116)*
-
-**Parameters:**
-
-| Name | Type | Default value |
-| ------ | ------ | ------ |
-| n | `Node` | - |
-| level | `number` | - |
-| `Default value` config | [AstOptions](../interfaces/_extractors_ast_.astoptions.md) |  {} |
-
-**Returns:** `string` \| `object`
 
 ___
 

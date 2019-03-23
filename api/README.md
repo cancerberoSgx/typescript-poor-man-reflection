@@ -229,6 +229,7 @@ class Impl1 implements SomeInterface {...} RegisterImplementation(some, Impl1) .
 * ["extractors/basic/nodeText"](modules/_extractors_basic_nodetext_.md)
 * ["extractors/basic/thisBlockText"](modules/_extractors_basic_thisblocktext_.md)
 * ["extractors/basic/typeText"](modules/_extractors_basic_typetext_.md)
+* ["extractors/nodeType"](modules/_extractors_nodetype_.md)
 * ["main"](modules/_main_.md)
 * ["replaceFileFunctionCall"](modules/_replacefilefunctioncall_.md)
 * ["replaceProjectFunctionCall"](modules/_replaceprojectfunctioncall_.md)
