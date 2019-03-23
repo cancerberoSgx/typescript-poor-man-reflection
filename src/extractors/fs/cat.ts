@@ -1,6 +1,5 @@
-import { Stats } from 'fs';
 import { quote } from 'misc-utils-of-mine-generic';
-import { ls } from 'shelljs';
+import { cat } from 'shelljs';
 import Project, { CallExpression, Node } from 'ts-simple-ast';
 import { ExtractorGetter, ExtractorOptions, ExtractorResult, FileVariableAccessor, ReplaceProjectFunctionCallOptions } from '../../types';
 import { unquote } from '../../util';
@@ -10,27 +9,19 @@ import { AbstractExtractor } from '../abstractExtractor';
  * Usage: 
  * 
 ```ts
-Ls({path: './src'})
+const content = Cat({path: './package.json'})
 ```
  */
-export const Ls = function<T = any>(config: LsOptions, t?: any): (string | Stats)[] {
+export const Cat = function<T = any>(config: LsOptions, t?: any): string {
   return t!
 }
 
 export interface LsOptions extends ExtractorOptions {
-  /** path to list - could be a glob */
+  /** path to read */
   path: string
-  /**
-   * -R: recursive
-   * -A: all files (include files beginning with ., except for . and ..)
-   * -L: follow symlinks
-   * -d: list directories themselves, not their contents
-   * -l: list objects representing each file, each with fields containing ls -l output fields
-   */
-  options?: '-R' | '-A' | '-L' | '-d' | '-l'
 }
 
-export class LsClass extends AbstractExtractor {
+export class CatClass extends AbstractExtractor {
   extract(
     n: CallExpression,
     index: number,
@@ -40,12 +31,9 @@ export class LsClass extends AbstractExtractor {
     project?: Project
   ): ExtractorResult {
     const config = this.getOptionsFromFistArg<LsOptions>(n)
-    let output = `[]`
+    let output = `''`
     if (config && config.path) {
-      output = `[${(config.options
-        ? ls(config.options, config.path)
-        : ls(config.path).map(f => quote(f.toString()))
-      ).join(',')}]`
+      output = quote(cat(config.path).toString())
     }
     return this.buildExtractorResult(n, output, getter, index, options, config)
   }

@@ -30,7 +30,7 @@
 
 **Ƭ InferenceNode**: *"apparent" \| "none" \| "contextual"*
 
-*Defined in [extractors/nodeType.ts:40](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/e049fbf/src/extractors/nodeType.ts#L40)*
+*Defined in [extractors/nodeType.ts:40](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c64fda4/src/extractors/nodeType.ts#L40)*
 
 ___
 
@@ -42,7 +42,7 @@ ___
 
 ▸ **NodeType**<`T`>(config: *[NodeTypeOptions](../interfaces/_extractors_nodetype_.nodetypeoptions.md)*, t?: *`any`*): `any`
 
-*Defined in [extractors/nodeType.ts:23](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/e049fbf/src/extractors/nodeType.ts#L23)*
+*Defined in [extractors/nodeType.ts:23](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/c64fda4/src/extractors/nodeType.ts#L23)*
 
 Usage:
 

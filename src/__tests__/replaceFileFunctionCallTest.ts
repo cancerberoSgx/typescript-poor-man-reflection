@@ -44,15 +44,7 @@ const c = TypeText<{a:Type<number>}>('{a:"a"}')
       replaceFileFunctionCall(project.getSourceFile('test.ts')!, { extractorDataMode: 'asArgument' })
 
       const t2 = project.getSourceFile('test.ts')!.getText()
-
-      //       expect(t2).toContain(
-      //         `
-      // import TypeText from 'typescript-poor-man-reflection'
-      // type Type<T> = {a: string, b: T}[]
-      // const n = TypeText<Type<Date>>('Type<Date>', 'Type<Date>')
-      // const b = TypeText<Type<{a:'a'}>>('{a:\\'a\\'}', 'Type<{a:\\'a\\'}>')
-      // const c = TypeText<{a:Type<number>}>('{a:"a"}', '{a:Type<number>}')
-      // `.trim()
+      
       expect(t2).toContain(
         `
 import TypeText from 'typescript-poor-man-reflection'
