@@ -31,12 +31,12 @@ export function replaceFileFunctionCall(
   const callExpressionNames = callExpressions.map(c => c.getFirstChildByKind(SyntaxKind.Identifier)!.getText())
   let extractorData: string[] = []
   const fileId = getFileId(sourceFile, { extractorDataFolderFileName: extractorDataFolderFileName })
-  const fullOptions = getFullOptions({ ...options })
+  // const fullOptions = getFullOptions({ ...options })
 
   callExpressionNames.forEach(extractName => {
     const extract = extracts[extractName]
     if (isExtractorClass(extract) && extract.beforeExtract) {
-      extract.beforeExtract(sourceFile.getFilePath(), extractName, fullOptions)
+      extract.beforeExtract(sourceFile.getFilePath(), extractName, options)
     }
   })
 
@@ -64,13 +64,7 @@ export function replaceFileFunctionCall(
       ExtractorGetter,
       Required<ReplaceProjectFunctionCallOptions>,
       FileVariableAccessor
-    ] = [
-      c,
-      index,
-      extractorGetterBuilder(fullOptions, index, sourceFile, c),
-      { ...fullOptions, ...options },
-      fileVariableAccessor
-    ]
+    ] = [c, index, extractorGetterBuilder(options, index, sourceFile, c), options, fileVariableAccessor]
 
     // Heads up: argIndex is the argument index we can use for data. Previous arguments are owned by the extractor for its own options/whatever.
 
@@ -126,7 +120,7 @@ export function replaceFileFunctionCall(
   callExpressionNames.forEach(extractName => {
     const extract = extracts[extractName]
     if (isExtractorClass(extract) && extract.afterExtract) {
-      extract.afterExtract(sourceFile.getFilePath(), extractName, fullOptions)
+      extract.afterExtract(sourceFile.getFilePath(), extractName, options)
     }
   })
 

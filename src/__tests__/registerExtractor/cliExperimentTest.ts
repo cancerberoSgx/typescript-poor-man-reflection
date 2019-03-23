@@ -1,4 +1,4 @@
-import { exec } from 'shelljs'
+import { exec, config } from 'shelljs'
 
 describe('registerExtractor', () => {
   const customExtractor =
@@ -12,6 +12,7 @@ describe('registerExtractor', () => {
   })
 
   it('Should be able to register a .ts file exporting an extractor', () => {
+    config.silent = true
     const program = `src/__tests__/registerExtractor/cliExperimentTestSample1.ts`
     let r = exec(
       `npx ts-node src/cli.ts --moduleSpecifier "./exportedExtractor1" --extractorDataMode folderFile --filePattern "**/${program}"  --register "${customExtractor}" --clean`

@@ -18,6 +18,8 @@
     "docs": "npx typedoc src/types.ts src/main.ts src/replaceFileFunctionCall.ts src/replaceProjectFunctionCall.ts --theme markdown --out api --ignoreCompilerErrors",
     "test-watch": "npm run test-run -- --watch",
     "all": "npm run clean && npm run prettier && npm run build && npm run test && npm run docs ",
+    "all-all": "npm run clean && npm run prettier && npm run build && npm run test-run-all && npm run docs ",
+
     "prepare": "npm run build"
   },
   "dependencies": {

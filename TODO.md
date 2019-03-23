@@ -38,7 +38,8 @@ IoC would base on this.
 would be awesome to do, from the same code:
 
 ```ts
-Register({
+Register(extractor(){
+  return {
   name: 'NewExtractor', 
   extractor: class NewExtractor extends AbstractExtractor {
     protected freeArgumentNumber = 1
@@ -50,6 +51,7 @@ Register({
   fn<T = any>(config: NewExtractorOptions, r?: T): T {
     return r!
   }
+}
 })
 // and from here I can use it: 
 NewExtractor()
