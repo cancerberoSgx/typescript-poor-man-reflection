@@ -1,6 +1,11 @@
+[![Build Status](https://travis-ci.org/cancerberoSgx/typescript-poor-man-reflection.png?branch=master)](https://travis-ci.org/cancerberoSgx/typescript-poor-man-reflection)
+[![Dependencies](https://david-dm.org/cancerberosgx/typescript-poor-man-reflection.svg)](https://david-dm.org/cancerberosgx/typescript-poor-man-reflection)
+
+
+
 # typescript-poor-man-reflection 
 
-An unconventional way of getting TypeScript code information (like types), as text, at runtime
+An unconventional way of getting TypeScript code information (like types), as text.
 
 # Why ?
 
@@ -17,6 +22,24 @@ The tool **will modify** TypeScript source files calling the library's functions
 **Cost**: You need to pre-process your TS files *before* compiling them with tsc in order for this to work and they will be modified. 
 
 ## Snippets
+
+### Overrides
+
+Want to make sure your classes methods and properties are actually overriding a super class/interface member ?
+
+```ts
+import { Overrides } from 'typescript-poor-man-reflection'
+import { AbstractAnimal, Alive } from 'a-library'
+export class ConcreteAnimal extends AbstractAnimal implements Alive {
+  energy: number = Overrides(1)
+  eat(food: Alive) {
+    Override()
+    this.energy++
+  }
+}
+```
+
+If property `energy` or method `eat` are not overriding a super class property or method respectively, then the extractor will generate a call with a Type Error so you are aware if they are actually overriding something, at compile time. 
 
 ### ReadFiles
 

@@ -1,8 +1,10 @@
 
+[![Build Status](https://travis-ci.org/cancerberoSgx/typescript-poor-man-reflection.png?branch=master)](https://travis-ci.org/cancerberoSgx/typescript-poor-man-reflection) [![Dependencies](https://david-dm.org/cancerberosgx/typescript-poor-man-reflection.svg)](https://david-dm.org/cancerberosgx/typescript-poor-man-reflection)
+
 typescript-poor-man-reflection
 ==============================
 
-An unconventional way of getting TypeScript code information (like types), as text, at runtime
+An unconventional way of getting TypeScript code information (like types), as text.
 
 Why ?
 =====
@@ -205,6 +207,7 @@ See (TODO.md)\[TODO.md\]
 * ["extractors/source/inferTypes"](modules/_extractors_source_infertypes_.md)
 * ["extractors/source/nodeType"](modules/_extractors_source_nodetype_.md)
 * ["extractors/source/organizeImports"](modules/_extractors_source_organizeimports_.md)
+* ["extractors/source/overrides"](modules/_extractors_source_overrides_.md)
 * ["extractors/source/printAst"](modules/_extractors_source_printast_.md)
 * ["extractors/source/projectFiles"](modules/_extractors_source_projectfiles_.md)
 * ["extractors/source/removeUnused"](modules/_extractors_source_removeunused_.md)

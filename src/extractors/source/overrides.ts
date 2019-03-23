@@ -31,14 +31,13 @@ class C {
 which will generate a type error in the second argument
 
  */
-export function Overrides <T = any>(t?:T, pass?:true, data?: T): T {
+export function Overrides<T = any>(t?: T, pass?: true, data?: T): T {
   return data!
 }
 
 export interface OverridesOptions extends ExtractorOptions {}
 
 export class OverridesClass extends AbstractExtractor {
-
   protected freeArgumentNumber = 2
 
   extract(
@@ -47,58 +46,57 @@ export class OverridesClass extends AbstractExtractor {
     getter: ExtractorGetter,
     options: Required<ReplaceProjectFunctionCallOptions>
   ): ExtractorResult {
-
-    const target= n.getFirstAncestor(a=>TypeGuards.isPropertyDeclaration(a)||TypeGuards.isMethodDeclaration(a)) as PropertyDeclaration|MethodDeclaration|undefined 
+    const target = n.getFirstAncestor(a => TypeGuards.isPropertyDeclaration(a) || TypeGuards.isMethodDeclaration(a)) as
+      | PropertyDeclaration
+      | MethodDeclaration
+      | undefined
     const config = this.getOptionsFromFistArg<OverridesOptions>(n)
-    let error=''
-    if(target){
+    let error = ''
+    if (target) {
       const c = target.getFirstAncestorByKind(SyntaxKind.ClassDeclaration)
-      if(!c){
-        error='Cannot find ancestor class declaration'
-      }
-      else {
-        const defs = flat(getExtendsRecursively(c).map(e=>e.getFirstChildByKind(SyntaxKind.Identifier) && getDefinitionsOf(e.getFirstChildByKind(SyntaxKind.Identifier)!)).filter(notFalsy)).filter(TypeGuards.isClassDeclaration)
-        // n.addArgument(JSON.stringify(defs.map(d=>d.getName()).join(', ')))
-        let pass=false
-        if(TypeGuards.isMethodDeclaration(target)){
-          pass = !!defs.find(def=>!!def.getMethods().find(m=>m.getName()===target.getName()))
+      if (!c) {
+        error = 'Cannot find ancestor class declaration'
+      } else {
+        const defs = flat(
+          getExtendsRecursively(c)
+            .map(
+              e =>
+                e.getFirstChildByKind(SyntaxKind.Identifier) &&
+                getDefinitionsOf(e.getFirstChildByKind(SyntaxKind.Identifier)!)
+            )
+            .filter(notFalsy)
+        ).filter(TypeGuards.isClassDeclaration)
+        let pass = false
+        if (TypeGuards.isMethodDeclaration(target)) {
+          pass = !!defs.find(def => !!def.getMethods().find(m => m.getName() === target.getName()))
+        } else {
+          pass = !!defs.find(def => !!def.getProperties().find(m => m.getName() === target.getName()))
         }
-        else {//(TypeGuards.isMethodDeclaration(target)){
-          pass = !!defs.find(def=>!!def.getProperties().find(m=>m.getName()===target.getName()))
-        }
-        // target.getName()
-        if(!pass){
-          if(n.getArguments().length===0){
+        if (!pass) {
+          if (n.getArguments().length === 0) {
             n.addArguments(['undefined', `'Not Overriding anything'`])
-          }
-          else {
+          } else {
             for (let i = 1; i < n.getArguments().length; i++) {
-              n.removeArgument(i)          
+              n.removeArgument(i)
             }
-            n.insertArgument(1,`'Not Overriding anything'`)
+            n.insertArgument(1, `'Not Overriding anything'`)
           }
         }
       }
-    }
-    else {
+    } else {
       error = 'override target not found'
     }
 
-    if(error){
-      if(n.getArguments().length===0){
+    if (error) {
+      if (n.getArguments().length === 0) {
         n.addArguments(['undefined', `'override target not found'`])
-      }
-      else {
+      } else {
         for (let i = 1; i < n.getArguments().length; i++) {
-          n.removeArgument(i)          
+          n.removeArgument(i)
         }
         n.insertArgument(1, `'override target not found'`)
       }
     }
-      
-    
-
-    // getImplementsAll()
     return this.buildExtractorResult(n, 'undefined', getter, index, options, config)
   }
 }

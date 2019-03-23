@@ -3,7 +3,6 @@ import { Project } from 'ts-simple-ast';
 import { replaceFileFunctionCall } from '../replaceFileFunctionCall';
 
 describe('extractors', () => {
-  
   describe('NodeText', () => {
     it('should get referenced node text', () => {
       const project = new Project()
@@ -80,5 +79,4 @@ function f(){
       )
     })
   })
-
 })

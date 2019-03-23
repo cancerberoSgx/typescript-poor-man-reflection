@@ -2,7 +2,7 @@
 ## TODO / ISSUES
 
  * FileDeclaration<Type>(orNode) to get the file path where a node was declared
-
+ * it always adds an argument and I can't prevent it in case I dont need it.
 
 ### Done
 
@@ -11,10 +11,13 @@
  * test if --clean only cleans --filePattern or all - -DONE it cleans only --filePattern
  * test with all the extractors together DONE
  * extractor that perform type inference DONE
+ * Overrides
 
 ## IDEAS
 
 ### @override
+
+DONE
 
 ```
 function Overrides<T extends true=true>(){}

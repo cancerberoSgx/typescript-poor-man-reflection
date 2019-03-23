@@ -100,7 +100,7 @@ export class C {
     expect(t).toBe(`export function f(){} export 5 RemoveUnused({}, undefined) export class C { fo(){} }`)
   })
 
-  xit('should remove unused symbols of given files only', () => { })
+  xit('should remove unused symbols of given files only', () => {})
 })
 
 describe('InferTypes', () => {
@@ -128,7 +128,7 @@ InferTypes()
     )
   })
 
-  xit('should infer types on given files only', () => { })
+  xit('should infer types on given files only', () => {})
 })
 
 describe('ExtractInterface', () => {
@@ -230,8 +230,6 @@ const {code, stdout, stderr} = Exec({command: 'ls wrong*'}, "{code: 2, stdout: \
     )
   })
 })
-
-
 
 describe('Overrides', () => {
   it('should generate type error if not', () => {

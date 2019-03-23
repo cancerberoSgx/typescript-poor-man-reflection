@@ -18,4 +18,3 @@ export { main } from './main';
 export { replaceFileFunctionCall } from './replaceFileFunctionCall';
 export { replaceProjectFunctionCall } from './replaceProjectFunctionCall';
 export * from './types';
-

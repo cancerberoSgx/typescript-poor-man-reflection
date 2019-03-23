@@ -27,7 +27,7 @@
 
 ▸ **ExtractInterface**<`T`>(config: *[ExtractInterfaceOptions](../interfaces/_extractors_source_extractinterface_.extractinterfaceoptions.md)*, t?: *`any`*): `any`
 
-*Defined in [extractors/source/extractInterface.ts:38](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/109bb8c/src/extractors/source/extractInterface.ts#L38)*
+*Defined in [extractors/source/extractInterface.ts:38](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/0b69fa7/src/extractors/source/extractInterface.ts#L38)*
 
 **Type parameters:**
 
@@ -48,7 +48,7 @@ ___
 
 ▸ **extractInterface**(node: *`ClassDeclaration`*, project: *`Project`*, dest?: *`SourceFile`*, interfaceName?: *`string`*, removeDocs?: *`boolean`*): `void`
 
-*Defined in [extractors/source/extractInterface.ts:85](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/109bb8c/src/extractors/source/extractInterface.ts#L85)*
+*Defined in [extractors/source/extractInterface.ts:85](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/0b69fa7/src/extractors/source/extractInterface.ts#L85)*
 
 **Parameters:**
 

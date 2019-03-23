@@ -13,9 +13,8 @@ export interface AbstractRefactorExtractorOptions extends ExtractorOptions {
 }
 
 export abstract class AbstractRefactorExtractor extends AbstractExtractor {
-
   protected freeArgumentNumber = 1
-  
+
   protected abstract performRefactor(project: Project, f: SourceFile): void
 
   extract(
