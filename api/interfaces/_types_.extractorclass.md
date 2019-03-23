@@ -35,7 +35,7 @@
 
 ▸ **afterWriteExtractorData**(c: *`CallExpression`*, index: *`number`*, options: *`Required`<[ReplaceProjectFunctionCallOptions](_types_.replaceprojectfunctioncalloptions.md)>*): `void`
 
-*Defined in [types.ts:129](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/56d0d74/src/types.ts#L129)*
+*Defined in [types.ts:129](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/3569c96/src/types.ts#L129)*
 
 **Parameters:**
 
@@ -54,7 +54,7 @@ ___
 
 ▸ **extract**(n: *`CallExpression`*, index: *`number`*, getter: *[ExtractorGetter](../modules/_types_.md#extractorgetter)*, options: *`Required`<[ReplaceProjectFunctionCallOptions](_types_.replaceprojectfunctioncalloptions.md)>*, variableAccessor: *[FileVariableAccessor](../modules/_types_.md#filevariableaccessor)*, project?: *`Project`*): [ExtractorResult](_types_.extractorresult.md)
 
-*Defined in [types.ts:121](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/56d0d74/src/types.ts#L121)*
+*Defined in [types.ts:121](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/3569c96/src/types.ts#L121)*
 
 **Parameters:**
 
@@ -76,7 +76,7 @@ ___
 
 ▸ **getConfig**(): [ExtractorConfig](_types_.extractorconfig.md)
 
-*Defined in [types.ts:120](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/56d0d74/src/types.ts#L120)*
+*Defined in [types.ts:120](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/3569c96/src/types.ts#L120)*
 
 **Returns:** [ExtractorConfig](_types_.extractorconfig.md)
 
