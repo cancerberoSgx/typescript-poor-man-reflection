@@ -13,10 +13,11 @@ import { unquote, asString } from '../../util'
 import { AbstractExtractor } from '../abstractExtractor'
 
 /**
- * Usage: 
- * 
-```ts
-Ls({path: './src'})
+ * Returns an array that contain given file names and content as string. Useful to embed files in the source
+ * code as string. Usage: 
+ *
+ * ```ts
+ * export files = ReadFiles({path: './src/examples/example*.ts'})
 ```
  */
 export const ReadFiles = function<T = any>(config: ReadFilesOptions, t?: any): (string | Stats)[] {
@@ -24,7 +25,9 @@ export const ReadFiles = function<T = any>(config: ReadFilesOptions, t?: any): (
 }
 
 export interface ReadFilesOptions extends ExtractorOptions {
-  /** path of files to - could be a glob */
+  /**
+   * Path of files to read. Can be a glob.
+   */
   path: string
 }
 

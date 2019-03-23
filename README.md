@@ -23,8 +23,8 @@ The tool **will modify** TypeScript source files calling the library's functions
 Embed files in your source, at compile time: 
 
 ```ts
-// assets.ts - contains example files embedded from fs at compile time:
-// files will contain an array of objects {name: string, content: string}
+// assets.ts - contains example files embedded from FS at compile time
+// files exports an array of objects `{name: string, content: string}`
 import { ReadFiles } from 'typescript-poor-man-reflection'
 export files = ReadFiles({path: './src/examples/example*.ts'})
 ```
@@ -101,10 +101,11 @@ But at a terrible cost, your files have been modified!
  * If `prependVariable`, an array variable will be prepended at the top of the same file and function calls
     will access the array directly.
 
-    If `asStringLiteral` then the whole thing will be passed as a single string in the parameter (this is mostly useful for debugging since it will pollute the code a lot)
+ * If `asArgument` then the whole thing will be passed as a single string in the parameter (this is mostly useful for debugging since it will pollute the code a lot)
   
 
 ## Options
+
 In general all API options are supported in the CLI as long as their types supported (function options are not supported in the CLI). All options are documented in [ReplaceProjectFunctionCallOptions interface](api/interfaces/_types_.replaceprojectfunctioncalloptions.md).
 
 ### CLI API
@@ -168,58 +169,7 @@ test('UnionOf transform a tuple into an union type', () => {
 
 Trying to develop a preprocessing tool to mutate TypeScript and replace certain function call expressions with referenced type text so we have access to this info at runtime. tsd-check is not enough for me since I need to verify types at runtime to reproduce false positives, and isNot helpers. (I cannot reproduce an error at compile time in a test)
 
-## TODO / ISSUES
 
-### fs
+## TODO and ideas
 
-FileName<Type>(orNode) to get the file path where a node was declared
-
-## Done
-
- * Tool configuration - api so I can ThisBlockText<>({withoutParens: true})
- * test if --clean only cleans --filePattern or all - -DONE it cleans only --filePattern
- * test with all the extractors together DONE
- * extractor that perform type inference DONE
-
-## IDEAS
-
-### References<Type>({}, orNode)
-
-
-
-### dataMode configurable from call
-And more general, by convention, let the first arg to be the configuration object
-```
-const a = TypeText<SomeType>({mode: 'asStringLiteral'})
-```
-
-### Idea: refactor tools programmatically API: example: 
-
-```
- import {Fruit} from './other'
- Rename<Fruit>('Vegetable')
- ```
-
- ```
-function f(){}
-Move(f, '../util')
- ```
-
-###  data serialization 
-
-(DONE - see Ls, Cat, ReadFiles)
-
-```// assets.ts
-type files = Tuple<Ls('-l', '../assets/**/*.json')> // type ['f1.json', ...]
-export jsonfiles = Map<files>(fileName=>({fileName, content: readFileSync(f))}) // array with file contents {fileName, content}[]
-```
-
-### IoC
-
-```
-const impl = GetImplementation<SomeInterface>({some: 'options'})
-
-class Impl1 implements SomeInterface {...}
-RegisterImplementation<SomeInterface>(some, Impl1)
-...
-
+See (TODO.md)[TODO.md]

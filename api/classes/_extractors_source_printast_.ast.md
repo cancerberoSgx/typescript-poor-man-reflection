@@ -1,31 +1,36 @@
-[typescript-poor-man-reflection](../README.md) > ["extractors/basic/typeText"](../modules/_extractors_basic_typetext_.md) > [TypeTextClass](../classes/_extractors_basic_typetext_.typetextclass.md)
+[typescript-poor-man-reflection](../README.md) > ["extractors/source/printAst"](../modules/_extractors_source_printast_.md) > [Ast](../classes/_extractors_source_printast_.ast.md)
 
-# Class: TypeTextClass
+# Class: Ast
 
 ## Hierarchy
 
  [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md)
 
-**↳ TypeTextClass**
+**↳ Ast**
 
 ## Implements
 
+* [ExtractorClass](../interfaces/_types_.extractorclass.md)
 * [ExtractorClass](../interfaces/_types_.extractorclass.md)
 
 ## Index
 
 ### Properties
 
-* [defaultExtractorOptions](_extractors_basic_typetext_.typetextclass.md#defaultextractoroptions)
+* [defaultExtractorOptions](_extractors_source_printast_.ast.md#defaultextractoroptions)
 
 ### Methods
 
-* [buildExtractorResult](_extractors_basic_typetext_.typetextclass.md#buildextractorresult)
-* [extract](_extractors_basic_typetext_.typetextclass.md#extract)
-* [getConfig](_extractors_basic_typetext_.typetextclass.md#getconfig)
-* [getOptionsFromFistArg](_extractors_basic_typetext_.typetextclass.md#getoptionsfromfistarg)
-* [getTarget](_extractors_basic_typetext_.typetextclass.md#gettarget)
-* [parseOptionValue](_extractors_basic_typetext_.typetextclass.md#parseoptionvalue)
+* [buildAst](_extractors_source_printast_.ast.md#buildast)
+* [buildExtractorResult](_extractors_source_printast_.ast.md#buildextractorresult)
+* [extract](_extractors_source_printast_.ast.md#extract)
+* [getConfig](_extractors_source_printast_.ast.md#getconfig)
+* [getOptionsFromFistArg](_extractors_source_printast_.ast.md#getoptionsfromfistarg)
+* [getTarget](_extractors_source_printast_.ast.md#gettarget)
+* [parseOptionValue](_extractors_source_printast_.ast.md#parseoptionvalue)
+* [printAncestors](_extractors_source_printast_.ast.md#printancestors)
+* [printDescendants](_extractors_source_printast_.ast.md#printdescendants)
+* [printNode](_extractors_source_printast_.ast.md#printnode)
 
 ---
 
@@ -45,6 +50,24 @@ ___
 
 ## Methods
 
+<a id="buildast"></a>
+
+### `<Protected>` buildAst
+
+▸ **buildAst**(n: *`Node`*, config?: *[AstOptions](../interfaces/_extractors_source_printast_.astoptions.md)*): `string` \| [AstNode](../interfaces/_extractors_source_printast_.astnode.md)
+
+*Defined in extractors/source/printAst.ts:82*
+
+**Parameters:**
+
+| Name | Type | Default value |
+| ------ | ------ | ------ |
+| n | `Node` | - |
+| `Default value` config | [AstOptions](../interfaces/_extractors_source_printast_.astoptions.md) |  {} |
+
+**Returns:** `string` \| [AstNode](../interfaces/_extractors_source_printast_.astnode.md)
+
+___
 <a id="buildextractorresult"></a>
 
 ### `<Protected>` buildExtractorResult
@@ -73,13 +96,13 @@ ___
 
 ###  extract
 
-▸ **extract**(n: *`CallExpression`*, index: *`number`*, getter: *[ExtractorGetter](../modules/_types_.md#extractorgetter)*, options: *`Required`<[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)>*, variableAccessor: *[FileVariableAccessor](../modules/_types_.md#filevariableaccessor)*, project?: *`Project`*): `object` \| `object`
+▸ **extract**(n: *`CallExpression`*, index: *`number`*, getter: *[ExtractorGetter](../modules/_types_.md#extractorgetter)*, options: *`Required`<[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)>*, variableAccessor: *[FileVariableAccessor](../modules/_types_.md#filevariableaccessor)*, project?: *`Project`*): [ExtractorResult](../interfaces/_types_.extractorresult.md)
 
 *Implementation of [ExtractorClass](../interfaces/_types_.extractorclass.md).[extract](../interfaces/_types_.extractorclass.md#extract)*
 
 *Overrides [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[extract](_extractors_abstractextractor_.abstractextractor.md#extract)*
 
-*Defined in [extractors/basic/typeText.ts:14](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/22a01b8/src/extractors/basic/typeText.ts#L14)*
+*Defined in extractors/source/printAst.ts:52*
 
 **Parameters:**
 
@@ -92,7 +115,7 @@ ___
 | variableAccessor | [FileVariableAccessor](../modules/_types_.md#filevariableaccessor) |
 | `Optional` project | `Project` |
 
-**Returns:** `object` \| `object`
+**Returns:** [ExtractorResult](../interfaces/_types_.extractorresult.md)
 
 ___
 <a id="getconfig"></a>
@@ -103,9 +126,9 @@ ___
 
 *Implementation of [ExtractorClass](../interfaces/_types_.extractorclass.md).[getConfig](../interfaces/_types_.extractorclass.md#getconfig)*
 
-*Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[getConfig](_extractors_abstractextractor_.abstractextractor.md#getconfig)*
+*Overrides [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[getConfig](_extractors_abstractextractor_.abstractextractor.md#getconfig)*
 
-*Defined in [extractors/abstractExtractor.ts:16](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/22a01b8/src/extractors/abstractExtractor.ts#L16)*
+*Defined in extractors/source/printAst.ts:145*
 
 **Returns:** `object`
 
@@ -164,11 +187,9 @@ ___
 
 ▸ **parseOptionValue**(name: *`string`*, value: *`Node` \| `undefined`*): `any`
 
-*Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[parseOptionValue](_extractors_abstractextractor_.abstractextractor.md#parseoptionvalue)*
+*Overrides [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[parseOptionValue](_extractors_abstractextractor_.abstractextractor.md#parseoptionvalue)*
 
-*Defined in [extractors/abstractExtractor.ts:58](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/22a01b8/src/extractors/abstractExtractor.ts#L58)*
-
-since options need to be parsed from a literal object Node, subclasses might need to override this method to parse their own options
+*Defined in extractors/source/printAst.ts:74*
 
 **Parameters:**
 
@@ -178,6 +199,63 @@ since options need to be parsed from a literal object Node, subclasses might nee
 | value | `Node` \| `undefined` |
 
 **Returns:** `any`
+
+___
+<a id="printancestors"></a>
+
+### `<Protected>` printAncestors
+
+▸ **printAncestors**(a: *`Node`[]*, level?: *`number`*, config?: *[AstOptions](../interfaces/_extractors_source_printast_.astoptions.md)*): [AstNode](../interfaces/_extractors_source_printast_.astnode.md) \| (`string` \| `object`)[]
+
+*Defined in extractors/source/printAst.ts:126*
+
+**Parameters:**
+
+| Name | Type | Default value |
+| ------ | ------ | ------ |
+| a | `Node`[] | - |
+| `Default value` level | `number` | 0 |
+| `Default value` config | [AstOptions](../interfaces/_extractors_source_printast_.astoptions.md) |  {} |
+
+**Returns:** [AstNode](../interfaces/_extractors_source_printast_.astnode.md) \| (`string` \| `object`)[]
+
+___
+<a id="printdescendants"></a>
+
+### `<Protected>` printDescendants
+
+▸ **printDescendants**(n: *`Node`*, level: *`number`*, config?: *[AstOptions](../interfaces/_extractors_source_printast_.astoptions.md)*): `string` \| [AstNode](../interfaces/_extractors_source_printast_.astnode.md)
+
+*Defined in extractors/source/printAst.ts:98*
+
+**Parameters:**
+
+| Name | Type | Default value |
+| ------ | ------ | ------ |
+| n | `Node` | - |
+| level | `number` | - |
+| `Default value` config | [AstOptions](../interfaces/_extractors_source_printast_.astoptions.md) |  {} |
+
+**Returns:** `string` \| [AstNode](../interfaces/_extractors_source_printast_.astnode.md)
+
+___
+<a id="printnode"></a>
+
+### `<Protected>` printNode
+
+▸ **printNode**(n: *`Node`*, level: *`number`*, config?: *[AstOptions](../interfaces/_extractors_source_printast_.astoptions.md)*): `string` \| `object`
+
+*Defined in extractors/source/printAst.ts:110*
+
+**Parameters:**
+
+| Name | Type | Default value |
+| ------ | ------ | ------ |
+| n | `Node` | - |
+| level | `number` | - |
+| `Default value` config | [AstOptions](../interfaces/_extractors_source_printast_.astoptions.md) |  {} |
+
+**Returns:** `string` \| `object`
 
 ___
 

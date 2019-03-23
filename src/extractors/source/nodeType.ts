@@ -6,10 +6,10 @@ import {
   ReplaceProjectFunctionCallOptions,
   FileVariableAccessor,
   ExtractOptions
-} from '../types'
-import { AbstractExtractor } from './abstractExtractor'
+} from '../../types'
+import { AbstractExtractor } from '../abstractExtractor'
 import { quote } from 'misc-utils-of-mine-generic'
-import { unquote } from '../util'
+import { unquote } from '../../util'
 
 /**
  * Usage: 

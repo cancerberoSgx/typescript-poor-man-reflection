@@ -28,8 +28,8 @@ Snippets
 Embed files in your source, at compile time:
 
 ```ts
-// assets.ts - contains example files embedded from fs at compile time:
-// files will contain an array of objects {name: string, content: string}
+// assets.ts - contains example files embedded from FS at compile time
+// files exports an array of objects `{name: string, content: string}`
 import { ReadFiles } from 'typescript-poor-man-reflection'
 export files = ReadFiles({path: './src/examples/example*.ts'})
 ```
@@ -107,7 +107,7 @@ Data Modes
     
 *   If `prependVariable`, an array variable will be prepended at the top of the same file and function calls will access the array directly.
     
-    If `asStringLiteral` then the whole thing will be passed as a single string in the parameter (this is mostly useful for debugging since it will pollute the code a lot)
+*   If `asArgument` then the whole thing will be passed as a single string in the parameter (this is mostly useful for debugging since it will pollute the code a lot)
     
 
 Options
@@ -179,52 +179,10 @@ test('UnionOf transform a tuple into an union type', () => {
 
 Trying to develop a preprocessing tool to mutate TypeScript and replace certain function call expressions with referenced type text so we have access to this info at runtime. tsd-check is not enough for me since I need to verify types at runtime to reproduce false positives, and isNot helpers. (I cannot reproduce an error at compile time in a test)
 
-TODO / ISSUES
--------------
+TODO and ideas
+--------------
 
-*   Tool configuration - api so I can ThisBlockText<>({withoutParens: true})
-*   test if --clean only cleans --filePattern or all - -DONE it cleans only --filePattern
-*   test with all the extractors together DONE
-*   extractor that perform type inference DONE
-
-IDEAS
------
-
-### dataMode configurable from call
-
-And more general, by convention, let the first arg to be the configuration object
-
-```
-const a = TypeText<SomeType>({mode: 'asStringLiteral'})
-```
-
-### Idea: refactor tools programmatically API: example:
-
-```
- import {Fruit} from './other'
- Rename<Fruit>('Vegetable')
-```
-
-```
-function f(){}
-Move(f, '../util')
-```
-
-### data serialization
-
-(DONE - see Ls, Cat, ReadFiles)
-
-`` ` ``// assets.ts type files = Tuple<Ls('-l', '../assets/_\*/_.json')> // type \['f1.json', ...\] export jsonfiles = Map(fileName=>({fileName, content: readFileSync(f))}) // array with file contents {fileName, content}\[\]
-
-```
-
-### IoC
-
-```
-
-const impl = GetImplementation({some: 'options'})
-
-class Impl1 implements SomeInterface {...} RegisterImplementation(some, Impl1) ...
+See (TODO.md)\[TODO.md\]
 
 ## Index
 
@@ -234,7 +192,6 @@ class Impl1 implements SomeInterface {...} RegisterImplementation(some, Impl1) .
 * ["extractorData"](modules/_extractordata_.md)
 * ["extractors"](modules/_extractors_.md)
 * ["extractors/abstractExtractor"](modules/_extractors_abstractextractor_.md)
-* ["extractors/ast"](modules/_extractors_ast_.md)
 * ["extractors/basic/bodyText"](modules/_extractors_basic_bodytext_.md)
 * ["extractors/basic/nodeText"](modules/_extractors_basic_nodetext_.md)
 * ["extractors/basic/thisBlockText"](modules/_extractors_basic_thisblocktext_.md)
@@ -242,7 +199,9 @@ class Impl1 implements SomeInterface {...} RegisterImplementation(some, Impl1) .
 * ["extractors/fs/cat"](modules/_extractors_fs_cat_.md)
 * ["extractors/fs/ls"](modules/_extractors_fs_ls_.md)
 * ["extractors/fs/readFiles"](modules/_extractors_fs_readfiles_.md)
-* ["extractors/nodeType"](modules/_extractors_nodetype_.md)
+* ["extractors/source/nodeType"](modules/_extractors_source_nodetype_.md)
+* ["extractors/source/printAst"](modules/_extractors_source_printast_.md)
+* ["extractors/source/projectFiles"](modules/_extractors_source_projectfiles_.md)
 * ["main"](modules/_main_.md)
 * ["replaceFileFunctionCall"](modules/_replacefilefunctioncall_.md)
 * ["replaceProjectFunctionCall"](modules/_replaceprojectfunctioncall_.md)

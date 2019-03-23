@@ -183,4 +183,21 @@ function f(){
       )
     })
   })
+
+  describe('ProjectFiles', () => {
+    it('should extract this project source files names', () => {
+      const project = new Project()
+      project.createSourceFile('test.ts', `const projectFiles = ProjectFiles()`)
+      project.createSourceFile('test2.ts', `export 1`)
+      project.createSourceFile('foo/bar/file.ts', `export 2`)
+      replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
+        extractorDataMode: 'asArgument',
+        project,
+        tsConfigFilePath: './tsconfig.json'
+      })
+      expect(removeWhites(project.getSourceFile('test.ts')!.getText())).toContain(
+        `const projectFiles = ProjectFiles(["test.ts","test2.ts","foo/bar/file.ts"])`
+      )
+    })
+  })
 })

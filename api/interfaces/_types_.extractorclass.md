@@ -9,13 +9,14 @@
 ## Implemented by
 
 * [AbstractExtractor](../classes/_extractors_abstractextractor_.abstractextractor.md)
-* [Ast](../classes/_extractors_ast_.ast.md)
-* [Ast](../classes/_extractors_ast_.ast.md)
+* [Ast](../classes/_extractors_source_printast_.ast.md)
+* [Ast](../classes/_extractors_source_printast_.ast.md)
 * [BodyTextClass](../classes/_extractors_basic_bodytext_.bodytextclass.md)
 * [CatClass](../classes/_extractors_fs_cat_.catclass.md)
 * [LsClass](../classes/_extractors_fs_ls_.lsclass.md)
 * [NodeTextClass](../classes/_extractors_basic_nodetext_.nodetextclass.md)
-* [NodeTypeClass](../classes/_extractors_nodetype_.nodetypeclass.md)
+* [NodeTypeClass](../classes/_extractors_source_nodetype_.nodetypeclass.md)
+* [ProjectFilesClass](../classes/_extractors_source_projectfiles_.projectfilesclass.md)
 * [ReadFilesClass](../classes/_extractors_fs_readfiles_.readfilesclass.md)
 * [ThisBlockTextClass](../classes/_extractors_basic_thisblocktext_.thisblocktextclass.md)
 * [TypeTextClass](../classes/_extractors_basic_typetext_.typetextclass.md)
@@ -38,7 +39,7 @@
 
 ▸ **afterWriteExtractorData**(c: *`CallExpression`*, index: *`number`*, options: *`Required`<[ReplaceProjectFunctionCallOptions](_types_.replaceprojectfunctioncalloptions.md)>*): `void`
 
-*Defined in [types.ts:129](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/55c8283/src/types.ts#L129)*
+*Defined in [types.ts:129](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/22a01b8/src/types.ts#L129)*
 
 **Parameters:**
 
@@ -57,7 +58,7 @@ ___
 
 ▸ **extract**(n: *`CallExpression`*, index: *`number`*, getter: *[ExtractorGetter](../modules/_types_.md#extractorgetter)*, options: *`Required`<[ReplaceProjectFunctionCallOptions](_types_.replaceprojectfunctioncalloptions.md)>*, variableAccessor: *[FileVariableAccessor](../modules/_types_.md#filevariableaccessor)*, project?: *`Project`*): [ExtractorResult](_types_.extractorresult.md)
 
-*Defined in [types.ts:121](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/55c8283/src/types.ts#L121)*
+*Defined in [types.ts:121](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/22a01b8/src/types.ts#L121)*
 
 **Parameters:**
 
@@ -79,7 +80,7 @@ ___
 
 ▸ **getConfig**(): [ExtractorConfig](_types_.extractorconfig.md)
 
-*Defined in [types.ts:120](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/55c8283/src/types.ts#L120)*
+*Defined in [types.ts:120](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/22a01b8/src/types.ts#L120)*
 
 **Returns:** [ExtractorConfig](_types_.extractorconfig.md)
 

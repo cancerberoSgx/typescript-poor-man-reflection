@@ -12,10 +12,7 @@ import { Map, unquote } from '../util'
 import { getDefinitionsOf } from '../astUtil'
 
 export abstract class AbstractExtractor implements ExtractorClass {
-  protected defaultExtractorOptions: ExtractorOptions = {
-    // outputMode: 'asReturnValue',
-    // targetMode: 'self'
-  }
+  protected defaultExtractorOptions: ExtractorOptions = {}
   getConfig() {
     return {
       freeArgumentNumber: 0,

@@ -1,4 +1,4 @@
-import { NodeType } from '../../extractors/nodeType'
+import { NodeType } from '../../extractors/source/nodeType'
 
 interface I {
   m(): void

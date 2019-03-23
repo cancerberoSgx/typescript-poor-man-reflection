@@ -7,9 +7,9 @@ import {
   ExtractorResult,
   FileVariableAccessor,
   ReplaceProjectFunctionCallOptions
-} from '../types'
-import { AbstractExtractor } from './abstractExtractor'
-import { getDefinitionsOf, getNodeName } from '../astUtil'
+} from '../../types'
+import { AbstractExtractor } from '../abstractExtractor'
+import { getDefinitionsOf, getNodeName } from '../../astUtil'
 
 /**
  * will print AST tree as string of given node which can be specified in config.target or as first type
@@ -141,6 +141,7 @@ export class Ast extends AbstractExtractor implements ExtractorClass {
       return ancestors
     }
   }
+
   getConfig() {
     return {
       freeArgumentNumber: 1,

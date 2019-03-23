@@ -1,21 +1,21 @@
-[typescript-poor-man-reflection](../README.md) > ["extractors/ast"](../modules/_extractors_ast_.md)
+[typescript-poor-man-reflection](../README.md) > ["extractors/source/printAst"](../modules/_extractors_source_printast_.md)
 
-# External module: "extractors/ast"
+# External module: "extractors/source/printAst"
 
 ## Index
 
 ### Classes
 
-* [Ast](../classes/_extractors_ast_.ast.md)
+* [Ast](../classes/_extractors_source_printast_.ast.md)
 
 ### Interfaces
 
-* [AstNode](../interfaces/_extractors_ast_.astnode.md)
-* [AstOptions](../interfaces/_extractors_ast_.astoptions.md)
+* [AstNode](../interfaces/_extractors_source_printast_.astnode.md)
+* [AstOptions](../interfaces/_extractors_source_printast_.astoptions.md)
 
 ### Functions
 
-* [PrintAst](_extractors_ast_.md#printast)
+* [PrintAst](_extractors_source_printast_.md#printast)
 
 ---
 
@@ -25,9 +25,9 @@
 
 ### `<Const>` PrintAst
 
-▸ **PrintAst**<`T`>(config: *[AstOptions](../interfaces/_extractors_ast_.astoptions.md)*, t?: *`any`*): `any`
+▸ **PrintAst**<`T`>(config: *[AstOptions](../interfaces/_extractors_source_printast_.astoptions.md)*, t?: *`any`*): `any`
 
-*Defined in [extractors/ast.ts:36](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/55c8283/src/extractors/ast.ts#L36)*
+*Defined in extractors/source/printAst.ts:36*
 
 will print AST tree as string of given node which can be specified in config.target or as first type argument. If no target node is provided then it will print the AST of this `PrintAst` call expression node. Example:
 
@@ -55,7 +55,7 @@ new C().m()()
 
 | Name | Type |
 | ------ | ------ |
-| config | [AstOptions](../interfaces/_extractors_ast_.astoptions.md) |
+| config | [AstOptions](../interfaces/_extractors_source_printast_.astoptions.md) |
 | `Optional` t | `any` |
 
 **Returns:** `any`

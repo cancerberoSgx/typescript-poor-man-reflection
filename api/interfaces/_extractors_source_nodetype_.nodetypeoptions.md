@@ -1,37 +1,42 @@
-[typescript-poor-man-reflection](../README.md) > ["extractors/fs/ls"](../modules/_extractors_fs_ls_.md) > [LsOptions](../interfaces/_extractors_fs_ls_.lsoptions.md)
+[typescript-poor-man-reflection](../README.md) > ["extractors/source/nodeType"](../modules/_extractors_source_nodetype_.md) > [NodeTypeOptions](../interfaces/_extractors_source_nodetype_.nodetypeoptions.md)
 
-# Interface: LsOptions
+# Interface: NodeTypeOptions
 
 ## Hierarchy
 
  [ExtractorOptions](_types_.extractoroptions.md)
 
-**↳ LsOptions**
+**↳ NodeTypeOptions**
 
 ## Index
 
 ### Properties
 
-* [options](_extractors_fs_ls_.lsoptions.md#options)
-* [outputMode](_extractors_fs_ls_.lsoptions.md#outputmode)
-* [outputVariableName](_extractors_fs_ls_.lsoptions.md#outputvariablename)
-* [path](_extractors_fs_ls_.lsoptions.md#path)
-* [removeMe](_extractors_fs_ls_.lsoptions.md#removeme)
-* [target](_extractors_fs_ls_.lsoptions.md#target)
+* [inferenceMode](_extractors_source_nodetype_.nodetypeoptions.md#inferencemode)
+* [outputMode](_extractors_source_nodetype_.nodetypeoptions.md#outputmode)
+* [outputVariableName](_extractors_source_nodetype_.nodetypeoptions.md#outputvariablename)
+* [removeMe](_extractors_source_nodetype_.nodetypeoptions.md#removeme)
+* [target](_extractors_source_nodetype_.nodetypeoptions.md#target)
 
 ---
 
 ## Properties
 
-<a id="options"></a>
+<a id="inferencemode"></a>
 
-### `<Optional>` options
+### `<Optional>` inferenceMode
 
-**● options**: *"-R" \| "-A" \| "-L" \| "-d" \| "-l"*
+**● inferenceMode**: *[InferenceNode](../modules/_extractors_source_nodetype_.md#inferencenode)*
 
-*Defined in [extractors/fs/ls.ts:39](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/22a01b8/src/extractors/fs/ls.ts#L39)*
+*Defined in extractors/source/nodeType.ts:37*
 
-\-R: recursive -A: all files (include files beginning with ., except for . and ..) -L: follow symlinks -d: list directories themselves, not their contents -l: list objects representing each file, each with fields containing ls -l output fields
+How the type should be inferred from given node.
+
+If `apparent` (default) then it TypeChecker's `getApparentType()` method will be used
+
+If `contextual` it will use TypeChecker's `getContextualType()` method
+
+If `none` it will just print the text of node's direct type
 
 ___
 <a id="outputmode"></a>
@@ -60,17 +65,6 @@ ___
 *Defined in [types.ts:158](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/22a01b8/src/types.ts#L158)*
 
 Name of the variable to assign the value in case outputMode is `assignToVariable`
-
-___
-<a id="path"></a>
-
-###  path
-
-**● path**: *`string`*
-
-*Defined in [extractors/fs/ls.ts:31](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/22a01b8/src/extractors/fs/ls.ts#L31)*
-
-Path to list. Could be a glob
 
 ___
 <a id="removeme"></a>
