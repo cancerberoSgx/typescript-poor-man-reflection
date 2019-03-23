@@ -15,8 +15,7 @@ export class ThisBlockTextClass extends AbstractExtractor {
     index: number,
     getter: ExtractorGetter,
     options: Required<ReplaceProjectFunctionCallOptions>,
-    variableAccessor: FileVariableAccessor,
-    project?: Project
+    variableAccessor: FileVariableAccessor
   ) {
     const block = n.getFirstAncestorByKind(SyntaxKind.Block)
     let result: string = ''

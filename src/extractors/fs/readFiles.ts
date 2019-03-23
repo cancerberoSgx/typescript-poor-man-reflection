@@ -37,8 +37,7 @@ export class ReadFilesClass extends AbstractExtractor {
     index: number,
     getter: ExtractorGetter,
     options: Required<ReplaceProjectFunctionCallOptions>,
-    variableAccessor: FileVariableAccessor,
-    project?: Project
+    variableAccessor: FileVariableAccessor
   ): ExtractorResult {
     const config = this.getOptionsFromFistArg<ReadFilesOptions>(n)
     let output = `[]`

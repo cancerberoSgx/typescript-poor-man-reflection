@@ -1,22 +1,22 @@
-[typescript-poor-man-reflection](../README.md) > ["extractors/fs/cat"](../modules/_extractors_fs_cat_.md) > [LsOptions](../interfaces/_extractors_fs_cat_.lsoptions.md)
+[typescript-poor-man-reflection](../README.md) > ["extractors/source/organizeImports"](../modules/_extractors_source_organizeimports_.md) > [OrganizeImportsOptions](../interfaces/_extractors_source_organizeimports_.organizeimportsoptions.md)
 
-# Interface: LsOptions
+# Interface: OrganizeImportsOptions
 
 ## Hierarchy
 
  [ExtractorOptions](_types_.extractoroptions.md)
 
-**↳ LsOptions**
+**↳ OrganizeImportsOptions**
 
 ## Index
 
 ### Properties
 
-* [outputMode](_extractors_fs_cat_.lsoptions.md#outputmode)
-* [outputVariableName](_extractors_fs_cat_.lsoptions.md#outputvariablename)
-* [path](_extractors_fs_cat_.lsoptions.md#path)
-* [removeMe](_extractors_fs_cat_.lsoptions.md#removeme)
-* [target](_extractors_fs_cat_.lsoptions.md#target)
+* [outputMode](_extractors_source_organizeimports_.organizeimportsoptions.md#outputmode)
+* [outputVariableName](_extractors_source_organizeimports_.organizeimportsoptions.md#outputvariablename)
+* [path](_extractors_source_organizeimports_.organizeimportsoptions.md#path)
+* [removeMe](_extractors_source_organizeimports_.organizeimportsoptions.md#removeme)
+* [target](_extractors_source_organizeimports_.organizeimportsoptions.md#target)
 
 ---
 
@@ -52,13 +52,13 @@ Name of the variable to assign the value in case outputMode is `assignToVariable
 ___
 <a id="path"></a>
 
-###  path
+### `<Optional>` path
 
-**● path**: *`string`*
+**● path**: *`undefined` \| `string`*
 
-*Defined in [extractors/fs/cat.ts:29](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/7a14814/src/extractors/fs/cat.ts#L29)*
+*Defined in [extractors/source/organizeImports.ts:32](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/7a14814/src/extractors/source/organizeImports.ts#L32)*
 
-Path to read. Could be a glob.
+Path to files in which to call organize imports. Can be a glob.
 
 ___
 <a id="removeme"></a>

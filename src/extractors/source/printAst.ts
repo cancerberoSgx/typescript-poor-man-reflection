@@ -54,8 +54,7 @@ export class Ast extends AbstractExtractor implements ExtractorClass {
     index: number,
     getter: ExtractorGetter,
     options: Required<ReplaceProjectFunctionCallOptions>,
-    variableAccessor: FileVariableAccessor,
-    project?: Project
+    variableAccessor: FileVariableAccessor
   ): ExtractorResult {
     const config = this.getOptionsFromFistArg<AstOptions>(n) || {}
     let target: Node | undefined = this.getTarget(n, config)

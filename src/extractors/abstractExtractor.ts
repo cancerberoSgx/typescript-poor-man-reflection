@@ -13,6 +13,7 @@ import { getDefinitionsOf } from '../astUtil'
 
 export abstract class AbstractExtractor implements ExtractorClass {
   protected defaultExtractorOptions: ExtractorOptions = {}
+
   getConfig() {
     return {
       freeArgumentNumber: 0,
@@ -25,8 +26,7 @@ export abstract class AbstractExtractor implements ExtractorClass {
     index: number,
     getter: ExtractorGetter,
     options: Required<ReplaceProjectFunctionCallOptions>,
-    variableAccessor: FileVariableAccessor,
-    project?: Project
+    variableAccessor: FileVariableAccessor
   ): ExtractorResult
 
   /**
@@ -114,4 +114,6 @@ export abstract class AbstractExtractor implements ExtractorClass {
     }
     return target
   }
+
+  afterWriteExtractorData(c: CallExpression, index: number, options: Required<ReplaceProjectFunctionCallOptions>) {}
 }

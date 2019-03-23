@@ -6,6 +6,7 @@ export { ThisBlockText } from './extractors/basic/thisBlockText'
 export { NodeType } from './extractors/source/nodeType'
 export { PrintAst } from './extractors/source/printAst'
 export { ProjectFiles } from './extractors/source/projectFiles'
+export { OrganizeImports } from './extractors/source/organizeImports'
 
 export { Ls } from './extractors/fs/ls'
 export { Cat } from './extractors/fs/cat'

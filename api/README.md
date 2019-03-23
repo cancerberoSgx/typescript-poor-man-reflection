@@ -200,6 +200,7 @@ See (TODO.md)\[TODO.md\]
 * ["extractors/fs/ls"](modules/_extractors_fs_ls_.md)
 * ["extractors/fs/readFiles"](modules/_extractors_fs_readfiles_.md)
 * ["extractors/source/nodeType"](modules/_extractors_source_nodetype_.md)
+* ["extractors/source/organizeImports"](modules/_extractors_source_organizeimports_.md)
 * ["extractors/source/printAst"](modules/_extractors_source_printast_.md)
 * ["extractors/source/projectFiles"](modules/_extractors_source_projectfiles_.md)
 * ["main"](modules/_main_.md)

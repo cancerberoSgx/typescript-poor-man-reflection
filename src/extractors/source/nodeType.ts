@@ -48,8 +48,7 @@ export class NodeTypeClass extends AbstractExtractor {
     index: number,
     getter: ExtractorGetter,
     options: Required<ReplaceProjectFunctionCallOptions>,
-    variableAccessor: FileVariableAccessor,
-    project?: Project
+    variableAccessor: FileVariableAccessor
   ): ExtractorResult {
     const config = this.getOptionsFromFistArg<NodeTypeOptions>(n) || {}
     let target: Node | undefined = this.getTarget(n, config)

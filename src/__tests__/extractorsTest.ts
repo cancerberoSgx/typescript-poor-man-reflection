@@ -192,11 +192,45 @@ function f(){
       project.createSourceFile('foo/bar/file.ts', `export 2`)
       replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
         extractorDataMode: 'asArgument',
-        project,
-        tsConfigFilePath: './tsconfig.json'
+        project
       })
       expect(removeWhites(project.getSourceFile('test.ts')!.getText())).toContain(
         `const projectFiles = ProjectFiles(["test.ts","test2.ts","foo/bar/file.ts"])`
+      )
+    })
+  })
+
+  describe('OrganizeImports', () => {
+    it('should organize imports of current file if none given', () => {
+      const project = new Project()
+      project.createSourceFile('test.ts', `import {foo} from './foo'; const count = OrganizeImports()`)
+      replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
+        extractorDataMode: 'asArgument',
+        project
+      })
+      expect(removeWhites(project.getSourceFile('test.ts')!.getText()).trim()).toBe(
+        `const count = OrganizeImports({}, undefined)`
+      )
+    })
+
+    it('should organize imports of given files only', () => {
+      const project = new Project()
+      project.createSourceFile(
+        'test1.ts',
+        `import {foo} from './foo1'; const count = OrganizeImports({path: '**/test*.ts'}); export Math.random()`
+      )
+      project.createSourceFile('test2.ts', `import {foo} from './foo2'; export Math.random()`)
+      project.createSourceFile('noTest.ts', `import {foo} from './foo3'; export Math.random()`)
+      replaceFileFunctionCall(project.getSourceFile('test1.ts')!, {
+        extractorDataMode: 'asArgument',
+        project
+      })
+      expect(removeWhites(project.getSourceFile('test1.ts')!.getText()).trim()).toBe(
+        `const count = OrganizeImports({path: '**/test*.ts'}, undefined); export Math.random()`
+      )
+      expect(removeWhites(project.getSourceFile('test2.ts')!.getText()).trim()).toBe(`export Math.random()`)
+      expect(removeWhites(project.getSourceFile('noTest.ts')!.getText()).trim()).toBe(
+        `import {foo} from './foo3'; export Math.random()`
       )
     })
   })

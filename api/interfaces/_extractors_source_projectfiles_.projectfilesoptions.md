@@ -29,7 +29,7 @@
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputMode](_types_.extractoroptions.md#outputmode)*
 
-*Defined in [types.ts:154](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/22a01b8/src/types.ts#L154)*
+*Defined in [types.ts:154](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/7a14814/src/types.ts#L154)*
 
 Default is 'asReturnValue' in which case the output will be returned by the extractor function call.
 
@@ -44,7 +44,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputVariableName](_types_.extractoroptions.md#outputvariablename)*
 
-*Defined in [types.ts:158](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/22a01b8/src/types.ts#L158)*
+*Defined in [types.ts:158](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/7a14814/src/types.ts#L158)*
 
 Name of the variable to assign the value in case outputMode is `assignToVariable`
 
@@ -57,7 +57,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[removeMe](_types_.extractoroptions.md#removeme)*
 
-*Defined in [types.ts:165](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/22a01b8/src/types.ts#L165)*
+*Defined in [types.ts:165](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/7a14814/src/types.ts#L165)*
 
 TODO If true, this extractor function call expression will be removed. Important: this won't be undoable or restored with `--clean`
 
@@ -70,7 +70,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[target](_types_.extractoroptions.md#target)*
 
-*Defined in [types.ts:170](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/22a01b8/src/types.ts#L170)*
+*Defined in [types.ts:170](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/7a14814/src/types.ts#L170)*
 
 Can be used to reference a node in this file.
 

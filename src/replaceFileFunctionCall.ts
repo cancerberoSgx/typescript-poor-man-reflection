@@ -35,9 +35,10 @@ export function replaceFileFunctionCall(
 
   const fileVariables: { [name: string]: string } = {}
   const replaced: Replacement[] = []
-  const callExpressions = extractCallExpressions(sourceFile, moduleSpecifier, Object.keys(extracts))
+  let callExpressions = extractCallExpressions(sourceFile, moduleSpecifier, Object.keys(extracts))
   let extractorData: string[] = []
   const fileId = getFileId(sourceFile, { extractorDataFolderFileName: extractorDataFolderFileName })
+  const fullOptions = getFullOptions({ ...options })
   callExpressions.forEach((c, index) => {
     const functionName = c.getFirstChildByKind(SyntaxKind.Identifier)!.getText()
     const extract = extracts[functionName]
@@ -56,22 +57,20 @@ export function replaceFileFunctionCall(
     const extractorConfig = typeof extract.getConfig !== 'undefined' ? extract.getConfig() : {}
     const argIndex = typeof extractorConfig.freeArgumentNumber !== 'undefined' ? extractorConfig.freeArgumentNumber : 0
 
-    const fullOptions = getFullOptions({ ...options })
-
     var extractArgs: [
       CallExpression,
       number,
       ExtractorGetter,
       Required<ReplaceProjectFunctionCallOptions>,
-      FileVariableAccessor,
-      Project
+      FileVariableAccessor
+      // Project
     ] = [
       c,
       index,
       extractorGetterBuilder(fullOptions, index, sourceFile, c),
       { ...fullOptions, ...options },
-      fileVariableAccessor,
-      options.project
+      fileVariableAccessor
+      // options.project
     ]
 
     // Heads up: argIndex is the argument index we can use for data. Previous arguments are owned by the extractor for its own options/whatever.
@@ -125,13 +124,15 @@ export function replaceFileFunctionCall(
     fileVariables
   )
 
-  // callExpressions.forEach((c, index) => {
-  //   const functionName = c.getFirstChildByKind(SyntaxKind.Identifier)!.getText()
-  //   const extract = extracts[functionName]
-  //   if (isExtractorClass(extract) && extract.afterWriteExtractorData) {
-  //     extract.afterWriteExtractorData(c, index, fullOptions)
-  //   }
-  // })
+  sourceFile = (options.project && options.project.getSourceFile(sourceFile.getFilePath())) || sourceFile
+  callExpressions = extractCallExpressions(sourceFile, moduleSpecifier, Object.keys(extracts))
+  callExpressions.forEach((c, index) => {
+    const functionName = c.getFirstChildByKind(SyntaxKind.Identifier)!.getText()
+    const extract = extracts[functionName]
+    if (isExtractorClass(extract) && extract.afterWriteExtractorData) {
+      extract.afterWriteExtractorData(c, index, fullOptions)
+    }
+  })
 
   return replaced
 }

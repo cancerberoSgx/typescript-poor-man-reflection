@@ -123,8 +123,7 @@ export interface ExtractorClass {
     index: number,
     getter: ExtractorGetter,
     options: Required<ReplaceProjectFunctionCallOptions>,
-    variableAccessor: FileVariableAccessor,
-    project?: Project
+    variableAccessor: FileVariableAccessor
   ): ExtractorResult
   afterWriteExtractorData?(c: CallExpression, index: number, options: Required<ReplaceProjectFunctionCallOptions>): void
 }
@@ -179,9 +178,9 @@ export type ExtractorFn = (
   index: number,
   getter: ExtractorGetter,
   options: Required<ReplaceProjectFunctionCallOptions>,
-  variableAccessor: FileVariableAccessor,
-  project?: Project
-) => ExtractorResult | string
+  variableAccessor: FileVariableAccessor
+) => // project?: Project
+ExtractorResult | string
 
 export interface ExtractorResult {
   argument: string

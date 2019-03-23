@@ -8,7 +8,6 @@ import {
 } from '../../types'
 import { AbstractExtractor } from '../abstractExtractor'
 import { unique } from 'misc-utils-of-mine-generic'
-import { dirname } from 'path'
 
 /**
  * Return the list of this project file names. Usage: 
@@ -29,15 +28,14 @@ export class ProjectFilesClass extends AbstractExtractor {
     index: number,
     getter: ExtractorGetter,
     options: Required<ReplaceProjectFunctionCallOptions>,
-    variableAccessor: FileVariableAccessor,
-    project?: Project
+    variableAccessor: FileVariableAccessor
   ): ExtractorResult {
     const config = this.getOptionsFromFistArg<ProjectFilesOptions>(n)
     let output = `[]`
-    if (project) {
-      const base = project.createSourceFile(unique('base') + '.ts')
+    if (options.project) {
+      const base = options.project.createSourceFile(unique('base') + '.ts')
       output = JSON.stringify(
-        project
+        options.project
           .getSourceFiles()
           .filter(f => f !== base)
           .map(f => {

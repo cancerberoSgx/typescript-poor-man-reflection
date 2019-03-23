@@ -9,6 +9,7 @@ import { ReadFilesClass } from './extractors/fs/readFiles'
 import { NodeTypeClass } from './extractors/source/nodeType'
 import { Extractor, ExtractorClass, ExtractorFn } from './types'
 import { ProjectFilesClass } from './extractors/source/projectFiles'
+import { OrganizeImports, OrganizeImportsClass } from './extractors/source/organizeImports'
 
 export const defaultExtractors: { [k: string]: Extractor } = {
   TypeText: new TypeTextClass(),
@@ -22,7 +23,8 @@ export const defaultExtractors: { [k: string]: Extractor } = {
 
   ProjectFiles: new ProjectFilesClass(),
   PrintAst: new Ast(),
-  NodeType: new NodeTypeClass()
+  NodeType: new NodeTypeClass(),
+  OrganizeImports: new OrganizeImportsClass()
 }
 
 export function isExtractorFn(e: Extractor): e is ExtractorFn {
