@@ -30,7 +30,7 @@
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputMode](_types_.extractoroptions.md#outputmode)*
 
-*Defined in [types.ts:176](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2245c2e/src/types.ts#L176)*
+*Defined in [types.ts:190](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/667880b/src/types.ts#L190)*
 
 Default is 'asReturnValue' in which case the output will be returned by the extractor function call.
 
@@ -45,7 +45,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputVariableName](_types_.extractoroptions.md#outputvariablename)*
 
-*Defined in [types.ts:180](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2245c2e/src/types.ts#L180)*
+*Defined in [types.ts:194](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/667880b/src/types.ts#L194)*
 
 Name of the variable to assign the value in case outputMode is `assignToVariable`
 
@@ -56,7 +56,7 @@ ___
 
 **● path**: *`string`*
 
-*Defined in [extractors/fs/readFiles.ts:30](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2245c2e/src/extractors/fs/readFiles.ts#L30)*
+*Defined in [extractors/fs/readFiles.ts:30](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/667880b/src/extractors/fs/readFiles.ts#L30)*
 
 Path of files to read. Can be a glob.
 
@@ -69,7 +69,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[removeMe](_types_.extractoroptions.md#removeme)*
 
-*Defined in [types.ts:192](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2245c2e/src/types.ts#L192)*
+*Defined in [types.ts:206](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/667880b/src/types.ts#L206)*
 
 If true, this extractor function call expression will be removed as long as it's on an ExpressionStatement. Example:
 
@@ -90,7 +90,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[target](_types_.extractoroptions.md#target)*
 
-*Defined in [types.ts:197](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2245c2e/src/types.ts#L197)*
+*Defined in [types.ts:211](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/667880b/src/types.ts#L211)*
 
 Can be used to reference a node in this file.
 

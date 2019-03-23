@@ -15,7 +15,7 @@ export function unquote(s: string) {
 export function asString(s: string) {
   return `\`${s.replace(/`/g, '\\`')}\``
 }
-export  function withoutExtension(f:string){
+export function withoutExtension(f: string) {
   return f.substring(0, f.lastIndexOf('.'))
 }
-export type Fn = (...args: any[])=> any
+export type Fn = (...args: any[]) => any

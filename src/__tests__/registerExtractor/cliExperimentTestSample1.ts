@@ -1,14 +1,10 @@
-import { NewExtractor } from './exportedExtractor1';
-import { TypeText } from '../..';
-const f = NewExtractor({name: 'seba'},  )
-console.log(f);
+import { NewExtractor } from './exportedExtractor1'
+import { TypeText } from '../..'
+const f = NewExtractor({ name: 'seba' }, )
+console.log(f)
 
 const type = TypeText<typeof f>()
-console.log(type);
-
-
-
-
+console.log(type)
 
 // import { ExtractOptions } from '../../types';
 
@@ -22,9 +18,7 @@ console.log(type);
 // }
 // // function If(config: {})
 
-
 // // import {ExtractorOptions} from '/home/sg/git/typescript-poor-man-reflection/src/types'
-
 
 // console.log('hello')
 // interface I {
@@ -46,6 +40,3 @@ console.log(type);
 // Var({ name: 'I', target: Impl1 })
 // const C2 = Var({ name: 'I' })
 // console.log('bye', Var({ name: 'I' }))
-
-
-

@@ -6,6 +6,7 @@
 
 ### Interfaces
 
+* [ExportedExtractor](../interfaces/_types_.exportedextractor.md)
 * [ExtractOptions](../interfaces/_types_.extractoptions.md)
 * [ExtractorClass](../interfaces/_types_.extractorclass.md)
 * [ExtractorConfig](../interfaces/_types_.extractorconfig.md)
@@ -34,7 +35,7 @@
 
 **Ƭ Extractor**: *`object` & `function` \| [ExtractorClass](../interfaces/_types_.extractorclass.md)*
 
-*Defined in [types.ts:202](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2245c2e/src/types.ts#L202)*
+*Defined in [types.ts:216](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/667880b/src/types.ts#L216)*
 
 ___
 <a id="extractordatamode"></a>
@@ -43,7 +44,7 @@ ___
 
 **Ƭ ExtractorDataMode**: *"prependVariable" \| "folderFile" \| "asArgument"*
 
-*Defined in [types.ts:220](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2245c2e/src/types.ts#L220)*
+*Defined in [types.ts:234](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/667880b/src/types.ts#L234)*
 
 ___
 <a id="extractorfn"></a>
@@ -52,7 +53,7 @@ ___
 
 **Ƭ ExtractorFn**: *`function`*
 
-*Defined in [types.ts:204](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2245c2e/src/types.ts#L204)*
+*Defined in [types.ts:218](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/667880b/src/types.ts#L218)*
 
 #### Type declaration
 ▸(n: *`CallExpression`*, index: *`number`*, getter: *[ExtractorGetter](_types_.md#extractorgetter)*, options: *`Required`<[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)>*, variableAccessor: *[FileVariableAccessor](_types_.md#filevariableaccessor)*): [ExtractorResult](../interfaces/_types_.extractorresult.md) \| `string`
@@ -76,7 +77,7 @@ ___
 
 **Ƭ ExtractorGetter**: *`function`*
 
-*Defined in [types.ts:218](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2245c2e/src/types.ts#L218)*
+*Defined in [types.ts:232](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/667880b/src/types.ts#L232)*
 
 #### Type declaration
 ▸(index: *`number`*): `string`
@@ -96,7 +97,7 @@ ___
 
 **Ƭ ExtractorOutputMode**: *"assignToVariable" \| "asReturnValue"*
 
-*Defined in [types.ts:200](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2245c2e/src/types.ts#L200)*
+*Defined in [types.ts:214](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/667880b/src/types.ts#L214)*
 
 ___
 <a id="filevariableaccessor"></a>
@@ -105,7 +106,7 @@ ___
 
 **Ƭ FileVariableAccessor**: *`function`*
 
-*Defined in [types.ts:227](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2245c2e/src/types.ts#L227)*
+*Defined in [types.ts:241](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/667880b/src/types.ts#L241)*
 
 setter / getter for variables that are common between same function calls of same file or even different function files (to save data file space). The getter actually returns (at compile time) an expression that when evaluated will return the variable value (at runtime)
 

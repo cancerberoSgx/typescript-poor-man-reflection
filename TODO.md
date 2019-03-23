@@ -18,7 +18,7 @@
  * removeUnused
  * extractInterface
  * ls, cat, readFiles 
- * --register extractor
+ * --register extractor (CLI)
 
 
 
@@ -33,24 +33,27 @@ get global variables values at runtime
 IoC would base on this.
 
 
-### install / develop extractors directly from code
+### Register extractors directly from code
 
 would be awesome to do, from the same code:
 
 ```ts
-Install({name: 'NewExtractor', (AbstractExtractor: typeof AbstractExtractor)=>{
-  return class NewExtractor extends AbstractExtractor {
+Register({
+  name: 'NewExtractor', 
+  extractor: class NewExtractor extends AbstractExtractor {
     protected freeArgumentNumber = 1
     extract(...[c, i, g, options, v]: Parameters<ExtractorFn>) {
       const config = this.getOptionsFromFistArg(c) || {}
       return this.buildExtractorResult(c, '"hello"', g, i, options, config)
     }
+  }, 
+  fn<T = any>(config: NewExtractorOptions, r?: T): T {
+    return r!
   }
-}})
+})
 // and from here I can use it: 
 NewExtractor()
 ```
-
 I think we can use beforeExtract()
 
 

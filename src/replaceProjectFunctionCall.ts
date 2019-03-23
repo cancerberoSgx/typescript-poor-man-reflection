@@ -65,7 +65,6 @@ export function replaceProjectFunctionCall(
   })
 
   const options = getFullOptions(options_)
-  
 
   project
     .getSourceFiles()

@@ -26,7 +26,7 @@
 
 ▸ **Cat**<`T`>(config: *[LsOptions](../interfaces/_extractors_fs_cat_.lsoptions.md)*, t?: *`any`*): `string`
 
-*Defined in [extractors/fs/cat.ts:15](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2245c2e/src/extractors/fs/cat.ts#L15)*
+*Defined in [extractors/fs/cat.ts:15](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/667880b/src/extractors/fs/cat.ts#L15)*
 
 Returns given file contents as string. Important: you won't be able to call cat() on a loop since this runs at compile time. If you need to read multiple files, use `ReadFiles()` instead. Usage:
 

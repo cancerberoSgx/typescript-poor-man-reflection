@@ -1,5 +1,5 @@
 import Project, { CallExpression } from 'ts-simple-ast'
-import { Fn } from './util';
+import { Fn } from './util'
 
 export interface Replacement {
   file: string
@@ -50,7 +50,7 @@ export interface ReplaceProjectFunctionCallOptions extends ReplaceFileFunctionCa
    */
   filePattern?: string
 
-  /** 
+  /**
    * Internal
    * @internal
    */
@@ -61,7 +61,7 @@ export interface ReplaceProjectFunctionCallOptions extends ReplaceFileFunctionCa
    */
   register?: string
 }
-export interface ExportedExtractor{
+export interface ExportedExtractor {
   name: string
   extractor: Extractor
   fn: Fn

@@ -45,6 +45,6 @@ export function isExtractorClass(e: Extractor): e is ExtractorClass {
   return typeof e.extract !== 'undefined'
 }
 
-export function isExportedExtractor(a:any):a is ExportedExtractor {
+export function isExportedExtractor(a: any): a is ExportedExtractor {
   return typeof a.name === 'string' && typeof a.extractor === 'object' && typeof a.fn === 'function'
 }

@@ -22,7 +22,7 @@
 
 ▸ **BodyText**<`T`>(t?: *`undefined` \| `string`*): `string`
 
-*Defined in [extractors/basic/bodyText.ts:13](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2245c2e/src/extractors/basic/bodyText.ts#L13)*
+*Defined in [extractors/basic/bodyText.ts:13](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/667880b/src/extractors/basic/bodyText.ts#L13)*
 
 Returns the text of given node's body. Example:
 
