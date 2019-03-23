@@ -291,4 +291,80 @@ InferTypes()
 
     xit('should infer types on given files only', () => {})
   })
+
+
+
+  describe('ExtractInterface', () => {
+    it('should infer member types and copy docs and only process public members', () => {
+      const project = new Project()
+      project.createSourceFile(
+        'test.ts',
+        `
+ExtractInterface<A>()
+interface I<T=any>{
+  p:T
+}
+/** comment1 */
+class A implements I<number> {
+  /** comment2 */
+  p=9
+  protected h=0
+  m(i:number){
+  }
+  n(){
+    return new Date()
+  }
+  private g(){return 1}
+}
+      `
+      )
+      replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
+        extractorDataMode: 'asArgument',
+        project
+      })
+      // console.log(project.getSourceFile('test.ts')!.getText());
+
+      const t = removeWhites(project.getSourceFile('test.ts')!.getText()).trim()
+      expect(t).toBe(removeWhites(
+        `
+ExtractInterface<A>({}, undefined)
+interface I<T=any>{
+  p:T
+}
+/** comment1 */
+class A implements IA {
+  /** comment2 */
+  p=9
+  protected h=0
+  m(i:number){
+  }
+  n(){          
+    return new Date()
+  }        
+  private g(){return 1}
+}
+
+/**
+ * comment1
+ */
+interface IA extends I<number> {
+  /**
+   * comment2
+   */
+  p: number;
+  /**
+   * TODO: Document
+   */
+  m(i: number): void;
+  /**
+   * TODO: Document
+   */
+  n(): Date;
+}
+        `
+      ))
+    })
+
+  })
+  
 })

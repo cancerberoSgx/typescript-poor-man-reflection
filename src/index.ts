@@ -13,6 +13,7 @@ export { ProjectFiles } from './extractors/source/projectFiles'
 export { OrganizeImports } from './extractors/source/organizeImports'
 export { RemoveUnused } from './extractors/source/removeUnused'
 export { InferTypes } from './extractors/source/inferTypes'
+export { ExtractInterface } from './extractors/source/extractInterface'
 
 export { replaceFileFunctionCall } from './replaceFileFunctionCall'
 export { replaceProjectFunctionCall } from './replaceProjectFunctionCall'
