@@ -1,5 +1,6 @@
-import { unique, quote } from 'misc-utils-of-mine-generic'
-import Project, { CallExpression, TypeGuards, Node, SyntaxKind } from 'ts-simple-ast'
+import { unique } from 'misc-utils-of-mine-generic'
+import { CallExpression, Node, SyntaxKind, TypeGuards } from 'ts-simple-ast'
+import { getDefinitionsOf } from '../astUtil'
 import {
   ExtractorClass,
   ExtractorGetter,
@@ -9,7 +10,6 @@ import {
   ReplaceProjectFunctionCallOptions
 } from '../types'
 import { Map, unquote } from '../util'
-import { getDefinitionsOf } from '../astUtil'
 
 export abstract class AbstractExtractor implements ExtractorClass {
   protected defaultExtractorOptions: ExtractorOptions = {}

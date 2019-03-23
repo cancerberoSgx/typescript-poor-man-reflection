@@ -1,7 +1,6 @@
-import Project, { CallExpression, TypeGuards, SyntaxKind } from 'ts-simple-ast'
+import { CallExpression, SyntaxKind } from 'ts-simple-ast'
+import { ExtractorGetter, FileVariableAccessor, ReplaceProjectFunctionCallOptions } from '../../types'
 import { AbstractExtractor } from '../abstractExtractor'
-import { ExtractorGetter, ReplaceProjectFunctionCallOptions, FileVariableAccessor } from '../../types'
-import { getFirstTypeArgumentDefinitionBlock } from '../../astUtil'
 /**
  * Returns current parent Block text (without the braces)
  */

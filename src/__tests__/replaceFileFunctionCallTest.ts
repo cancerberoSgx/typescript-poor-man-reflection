@@ -1,4 +1,4 @@
-import { Project, CallExpression } from 'ts-simple-ast'
+import { Project } from 'ts-simple-ast'
 import { replaceFileFunctionCall } from '../replaceFileFunctionCall'
 
 describe('replaceFunctionCall', () => {

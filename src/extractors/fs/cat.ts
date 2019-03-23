@@ -1,5 +1,5 @@
 import { cat } from 'shelljs'
-import Project, { CallExpression, Node } from 'ts-simple-ast'
+import { CallExpression, Node } from 'ts-simple-ast'
 import {
   ExtractorGetter,
   ExtractorOptions,
@@ -7,7 +7,7 @@ import {
   FileVariableAccessor,
   ReplaceProjectFunctionCallOptions
 } from '../../types'
-import { unquote, asString } from '../../util'
+import { asString, unquote } from '../../util'
 import { AbstractExtractor } from '../abstractExtractor'
 
 /**

@@ -1,7 +1,7 @@
-import Project, { CallExpression, TypeGuards } from 'ts-simple-ast'
-import { AbstractExtractor } from '../abstractExtractor'
-import { ExtractorGetter, ReplaceProjectFunctionCallOptions, FileVariableAccessor } from '../../types'
+import { CallExpression, TypeGuards } from 'ts-simple-ast'
 import { getFirstTypeArgumentDefinitionBlock } from '../../astUtil'
+import { ExtractorGetter, FileVariableAccessor, ReplaceProjectFunctionCallOptions } from '../../types'
+import { AbstractExtractor } from '../abstractExtractor'
 
 /** 
  * Returns the text of given node's body. Example: 

@@ -1,5 +1,5 @@
-import { BodyText } from '../..'
 import { removeWhites } from 'misc-utils-of-mine-generic'
+import { BodyText } from '../..'
 
 function escape(a: string, q: string) {
   C.counter++

@@ -1,5 +1,5 @@
-import { exec, cat } from 'shelljs'
 import { removeWhites } from 'misc-utils-of-mine-generic'
+import { cat, exec } from 'shelljs'
 
 describe('cli', () => {
   afterAll(() => {

@@ -1,7 +1,7 @@
 import { Stats } from 'fs'
 import { quote } from 'misc-utils-of-mine-generic'
 import { ls } from 'shelljs'
-import Project, { CallExpression, Node } from 'ts-simple-ast'
+import { CallExpression, Node } from 'ts-simple-ast'
 import {
   ExtractorGetter,
   ExtractorOptions,

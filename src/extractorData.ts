@@ -1,12 +1,12 @@
-import { SyntaxKind, SourceFile, CallExpression } from 'ts-simple-ast'
-import { ReplaceFileFunctionCallOptions, ExtractorGetter, ReplaceProjectFunctionCallOptions } from './types'
+import { CallExpression, SourceFile, SyntaxKind } from 'ts-simple-ast'
 import {
   array2DInsert,
   objectLiteralInsert,
   removeDataFolderFileNameImportDeclaration,
   removePrependVariableDeclaration
 } from './astUtil'
-import { includeFile, defaultOptions, getFullOptions } from './replaceProjectFunctionCall'
+import { defaultOptions, getFullOptions, includeFile } from './replaceProjectFunctionCall'
+import { ExtractorGetter, ReplaceFileFunctionCallOptions, ReplaceProjectFunctionCallOptions } from './types'
 
 /**
  * Responsible of reading the extractor data. It provides a getter function that returns a JS expression that

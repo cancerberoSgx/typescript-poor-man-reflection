@@ -1,5 +1,5 @@
-import { BodyText, ThisBlockText } from '../..'
 import { removeWhites } from 'misc-utils-of-mine-generic'
+import { ThisBlockText } from '../..'
 
 function escape(a: string, q: string) {
   C.counter++

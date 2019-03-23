@@ -1,7 +1,6 @@
 import { Stats } from 'fs'
-import { quote, asArray } from 'misc-utils-of-mine-generic'
-import { ls, cat } from 'shelljs'
-import Project, { CallExpression, Node } from 'ts-simple-ast'
+import { cat, ls } from 'shelljs'
+import { CallExpression, Node } from 'ts-simple-ast'
 import {
   ExtractorGetter,
   ExtractorOptions,
@@ -9,7 +8,7 @@ import {
   FileVariableAccessor,
   ReplaceProjectFunctionCallOptions
 } from '../../types'
-import { unquote, asString } from '../../util'
+import { unquote } from '../../util'
 import { AbstractExtractor } from '../abstractExtractor'
 
 /**

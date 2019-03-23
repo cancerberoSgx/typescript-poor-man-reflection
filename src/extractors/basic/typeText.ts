@@ -1,7 +1,7 @@
-import Project, { CallExpression } from 'ts-simple-ast'
-import { AbstractExtractor } from '../abstractExtractor'
-import { ExtractorGetter, ReplaceProjectFunctionCallOptions, FileVariableAccessor } from '../../types'
 import { quote } from 'misc-utils-of-mine-generic'
+import { CallExpression } from 'ts-simple-ast'
+import { ExtractorGetter, FileVariableAccessor, ReplaceProjectFunctionCallOptions } from '../../types'
+import { AbstractExtractor } from '../abstractExtractor'
 
 /**
  * Returns the text of given type. Example: `const text = TypeText<string|boolean>()`

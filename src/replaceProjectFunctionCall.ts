@@ -1,11 +1,11 @@
-import Project, { SourceFile } from 'ts-simple-ast'
-import { replaceFileFunctionCall } from './replaceFileFunctionCall'
-import { ReplaceProjectFunctionCallOptions, Replacement } from './types'
-import { mkdir, cp } from 'shelljs'
-import { dirname, join } from 'path'
 import { writeFileSync } from 'fs'
 import minimatch from 'minimatch'
+import { dirname, join } from 'path'
+import { cp, mkdir } from 'shelljs'
+import Project, { SourceFile } from 'ts-simple-ast'
 import { defaultExtractors } from './extractors'
+import { replaceFileFunctionCall } from './replaceFileFunctionCall'
+import { Replacement, ReplaceProjectFunctionCallOptions } from './types'
 
 /**
  * Knows if a file should be included in the process or not. TODO: memoize

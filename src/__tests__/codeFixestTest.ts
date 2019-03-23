@@ -1,5 +1,5 @@
-import Project from 'ts-simple-ast'
 import { removeWhites } from 'misc-utils-of-mine-generic'
+import Project from 'ts-simple-ast'
 import { applyAllSuggestedCodeFixes } from 'ts-simple-ast-extra'
 
 describe('codeFixes', () => {

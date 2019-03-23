@@ -1,4 +1,4 @@
-import Project, { CallExpression } from 'ts-simple-ast'
+import { CallExpression } from 'ts-simple-ast'
 import { getFirstTypeArgumentDefinitionBlock } from '../../astUtil'
 import { ExtractorGetter, FileVariableAccessor, ReplaceProjectFunctionCallOptions } from '../../types'
 import { AbstractExtractor } from '../abstractExtractor'
