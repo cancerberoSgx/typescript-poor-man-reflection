@@ -1,12 +1,12 @@
-[typescript-poor-man-reflection](../README.md) > ["extractors/source/organizeImports"](../modules/_extractors_source_organizeimports_.md) > [OrganizeImportsClass](../classes/_extractors_source_organizeimports_.organizeimportsclass.md)
+[typescript-poor-man-reflection](../README.md) > ["extractors/source/removeUnused"](../modules/_extractors_source_removeunused_.md) > [RemoveUnusedClass](../classes/_extractors_source_removeunused_.removeunusedclass.md)
 
-# Class: OrganizeImportsClass
+# Class: RemoveUnusedClass
 
 ## Hierarchy
 
  [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md)
 
-**↳ OrganizeImportsClass**
+**↳ RemoveUnusedClass**
 
 ## Implements
 
@@ -16,17 +16,17 @@
 
 ### Properties
 
-* [defaultExtractorOptions](_extractors_source_organizeimports_.organizeimportsclass.md#defaultextractoroptions)
+* [defaultExtractorOptions](_extractors_source_removeunused_.removeunusedclass.md#defaultextractoroptions)
 
 ### Methods
 
-* [afterWriteExtractorData](_extractors_source_organizeimports_.organizeimportsclass.md#afterwriteextractordata)
-* [buildExtractorResult](_extractors_source_organizeimports_.organizeimportsclass.md#buildextractorresult)
-* [extract](_extractors_source_organizeimports_.organizeimportsclass.md#extract)
-* [getConfig](_extractors_source_organizeimports_.organizeimportsclass.md#getconfig)
-* [getOptionsFromFistArg](_extractors_source_organizeimports_.organizeimportsclass.md#getoptionsfromfistarg)
-* [getTarget](_extractors_source_organizeimports_.organizeimportsclass.md#gettarget)
-* [parseOptionValue](_extractors_source_organizeimports_.organizeimportsclass.md#parseoptionvalue)
+* [afterWriteExtractorData](_extractors_source_removeunused_.removeunusedclass.md#afterwriteextractordata)
+* [buildExtractorResult](_extractors_source_removeunused_.removeunusedclass.md#buildextractorresult)
+* [extract](_extractors_source_removeunused_.removeunusedclass.md#extract)
+* [getConfig](_extractors_source_removeunused_.removeunusedclass.md#getconfig)
+* [getOptionsFromFistArg](_extractors_source_removeunused_.removeunusedclass.md#getoptionsfromfistarg)
+* [getTarget](_extractors_source_removeunused_.removeunusedclass.md#gettarget)
+* [parseOptionValue](_extractors_source_removeunused_.removeunusedclass.md#parseoptionvalue)
 
 ---
 
@@ -56,7 +56,7 @@ ___
 
 *Overrides [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[afterWriteExtractorData](_extractors_abstractextractor_.abstractextractor.md#afterwriteextractordata)*
 
-*Defined in [extractors/source/organizeImports.ts:49](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b99ab34/src/extractors/source/organizeImports.ts#L49)*
+*Defined in [extractors/source/removeUnused.ts:49](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b99ab34/src/extractors/source/removeUnused.ts#L49)*
 
 **Parameters:**
 
@@ -103,7 +103,7 @@ ___
 
 *Overrides [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[extract](_extractors_abstractextractor_.abstractextractor.md#extract)*
 
-*Defined in [extractors/source/organizeImports.ts:37](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b99ab34/src/extractors/source/organizeImports.ts#L37)*
+*Defined in [extractors/source/removeUnused.ts:38](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b99ab34/src/extractors/source/removeUnused.ts#L38)*
 
 **Parameters:**
 
@@ -126,9 +126,9 @@ ___
 
 *Implementation of [ExtractorClass](../interfaces/_types_.extractorclass.md).[getConfig](../interfaces/_types_.extractorclass.md#getconfig)*
 
-*Overrides [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[getConfig](_extractors_abstractextractor_.abstractextractor.md#getconfig)*
+*Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[getConfig](_extractors_abstractextractor_.abstractextractor.md#getconfig)*
 
-*Defined in [extractors/source/organizeImports.ts:72](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b99ab34/src/extractors/source/organizeImports.ts#L72)*
+*Defined in [extractors/abstractExtractor.ts:17](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b99ab34/src/extractors/abstractExtractor.ts#L17)*
 
 **Returns:** `object`
 
@@ -187,9 +187,11 @@ ___
 
 ▸ **parseOptionValue**(name: *`string`*, value: *`Node` \| `undefined`*): `any`
 
-*Overrides [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[parseOptionValue](_extractors_abstractextractor_.abstractextractor.md#parseoptionvalue)*
+*Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[parseOptionValue](_extractors_abstractextractor_.abstractextractor.md#parseoptionvalue)*
 
-*Defined in [extractors/source/organizeImports.ts:64](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b99ab34/src/extractors/source/organizeImports.ts#L64)*
+*Defined in [extractors/abstractExtractor.ts:58](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b99ab34/src/extractors/abstractExtractor.ts#L58)*
+
+since options need to be parsed from a literal object Node, subclasses might need to override this method to parse their own options
 
 **Parameters:**
 

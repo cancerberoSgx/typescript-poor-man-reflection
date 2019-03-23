@@ -1,68 +1,27 @@
-[typescript-poor-man-reflection](../README.md) > ["extractors/source/printAst"](../modules/_extractors_source_printast_.md) > [AstOptions](../interfaces/_extractors_source_printast_.astoptions.md)
+[typescript-poor-man-reflection](../README.md) > ["extractors/source/removeUnused"](../modules/_extractors_source_removeunused_.md) > [RemoveUnusedOptions](../interfaces/_extractors_source_removeunused_.removeunusedoptions.md)
 
-# Interface: AstOptions
+# Interface: RemoveUnusedOptions
 
 ## Hierarchy
 
  [ExtractorOptions](_types_.extractoroptions.md)
 
-**↳ AstOptions**
+**↳ RemoveUnusedOptions**
 
 ## Index
 
 ### Properties
 
-* [asJson](_extractors_source_printast_.astoptions.md#asjson)
-* [dontPrintIdentifier](_extractors_source_printast_.astoptions.md#dontprintidentifier)
-* [dontPrintKindName](_extractors_source_printast_.astoptions.md#dontprintkindname)
-* [dontPrintText](_extractors_source_printast_.astoptions.md#dontprinttext)
-* [outputMode](_extractors_source_printast_.astoptions.md#outputmode)
-* [outputVariableName](_extractors_source_printast_.astoptions.md#outputvariablename)
-* [removeMe](_extractors_source_printast_.astoptions.md#removeme)
-* [target](_extractors_source_printast_.astoptions.md#target)
+* [outputMode](_extractors_source_removeunused_.removeunusedoptions.md#outputmode)
+* [outputVariableName](_extractors_source_removeunused_.removeunusedoptions.md#outputvariablename)
+* [path](_extractors_source_removeunused_.removeunusedoptions.md#path)
+* [removeMe](_extractors_source_removeunused_.removeunusedoptions.md#removeme)
+* [target](_extractors_source_removeunused_.removeunusedoptions.md#target)
 
 ---
 
 ## Properties
 
-<a id="asjson"></a>
-
-### `<Optional>` asJson
-
-**● asJson**: *`undefined` \| `false` \| `true`*
-
-*Defined in [extractors/source/printAst.ts:48](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b99ab34/src/extractors/source/printAst.ts#L48)*
-
-If true it will return the AST as JSON object. If false if will return a string with indentation representing the AST
-
-___
-<a id="dontprintidentifier"></a>
-
-### `<Optional>` dontPrintIdentifier
-
-**● dontPrintIdentifier**: *`undefined` \| `false` \| `true`*
-
-*Defined in [extractors/source/printAst.ts:42](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b99ab34/src/extractors/source/printAst.ts#L42)*
-
-___
-<a id="dontprintkindname"></a>
-
-### `<Optional>` dontPrintKindName
-
-**● dontPrintKindName**: *`undefined` \| `false` \| `true`*
-
-*Defined in [extractors/source/printAst.ts:41](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b99ab34/src/extractors/source/printAst.ts#L41)*
-
-___
-<a id="dontprinttext"></a>
-
-### `<Optional>` dontPrintText
-
-**● dontPrintText**: *`undefined` \| `false` \| `true`*
-
-*Defined in [extractors/source/printAst.ts:43](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b99ab34/src/extractors/source/printAst.ts#L43)*
-
-___
 <a id="outputmode"></a>
 
 ### `<Optional>` outputMode
@@ -89,6 +48,17 @@ ___
 *Defined in [types.ts:157](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b99ab34/src/types.ts#L157)*
 
 Name of the variable to assign the value in case outputMode is `assignToVariable`
+
+___
+<a id="path"></a>
+
+### `<Optional>` path
+
+**● path**: *`undefined` \| `string`*
+
+*Defined in [extractors/source/removeUnused.ts:34](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b99ab34/src/extractors/source/removeUnused.ts#L34)*
+
+Files on which to perform the action. If undefined, it will be applied on current file.
 
 ___
 <a id="removeme"></a>

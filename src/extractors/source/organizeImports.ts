@@ -18,7 +18,7 @@ import Minimatch from 'minimatch'
  * If no file is provided then it will call for the current file. 
  * Returns : nothing.
 ```ts
-const processedCount = OrganizeImports({path: 'src/** /*.ts*'})
+OrganizeImports({path: 'src/** /*.ts*'})
 ```
  */
 export const OrganizeImports = function<T = any>(config: OrganizeImportsOptions, t?: any): number {

@@ -6,7 +6,6 @@ describe('replaceFunctionCall', () => {
     expect(1).toBe(1)
   })
 
-
   describe('add argument', () => {
     it('should  replace given function name and module specifier with first type attr text', () => {
       const project = new Project()

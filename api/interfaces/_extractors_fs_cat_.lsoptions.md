@@ -30,7 +30,7 @@
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputMode](_types_.extractoroptions.md#outputmode)*
 
-*Defined in [types.ts:154](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/7a14814/src/types.ts#L154)*
+*Defined in [types.ts:153](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b99ab34/src/types.ts#L153)*
 
 Default is 'asReturnValue' in which case the output will be returned by the extractor function call.
 
@@ -45,7 +45,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputVariableName](_types_.extractoroptions.md#outputvariablename)*
 
-*Defined in [types.ts:158](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/7a14814/src/types.ts#L158)*
+*Defined in [types.ts:157](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b99ab34/src/types.ts#L157)*
 
 Name of the variable to assign the value in case outputMode is `assignToVariable`
 
@@ -56,7 +56,7 @@ ___
 
 **● path**: *`string`*
 
-*Defined in [extractors/fs/cat.ts:29](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/7a14814/src/extractors/fs/cat.ts#L29)*
+*Defined in [extractors/fs/cat.ts:29](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b99ab34/src/extractors/fs/cat.ts#L29)*
 
 Path to read. Could be a glob.
 
@@ -69,7 +69,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[removeMe](_types_.extractoroptions.md#removeme)*
 
-*Defined in [types.ts:165](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/7a14814/src/types.ts#L165)*
+*Defined in [types.ts:164](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b99ab34/src/types.ts#L164)*
 
 TODO If true, this extractor function call expression will be removed. Important: this won't be undoable or restored with `--clean`
 
@@ -82,7 +82,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[target](_types_.extractoroptions.md#target)*
 
-*Defined in [types.ts:170](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/7a14814/src/types.ts#L170)*
+*Defined in [types.ts:169](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b99ab34/src/types.ts#L169)*
 
 Can be used to reference a node in this file.
 
