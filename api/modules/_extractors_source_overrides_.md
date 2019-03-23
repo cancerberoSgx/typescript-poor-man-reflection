@@ -26,9 +26,13 @@
 
 ▸ **Overrides**<`T`>(t?: *[T]()*, pass?: *`undefined` \| `true`*, data?: *[T]()*): `T`
 
-*Defined in [extractors/source/overrides.ts:34](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/0b69fa7/src/extractors/source/overrides.ts#L34)*
+*Defined in [extractors/source/overrides.ts:37](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/97bee93/src/extractors/source/overrides.ts#L37)*
 
-TODO: only works for classes, not for interfaces signatures - there we need a type. Will produce a type error in case the method or property doesn't override a super class or interface member.
+TODO: only works for classes, not for interfaces signatures - there we need a type.
+
+TODO: verify super member signature matches this one.
+
+Will produce a type error in case the method or property doesn't override a super class or interface member.
 
 ```ts
 class C {

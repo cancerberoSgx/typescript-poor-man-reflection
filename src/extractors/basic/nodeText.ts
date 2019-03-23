@@ -1,7 +1,7 @@
-import { CallExpression } from 'ts-simple-ast';
-import { getFirstTypeArgumentDefinitionBlock } from '../../astUtil';
-import { ExtractorGetter, ReplaceProjectFunctionCallOptions } from '../../types';
-import { AbstractExtractor } from '../abstractExtractor';
+import { CallExpression } from 'ts-simple-ast'
+import { getFirstTypeArgumentDefinitionBlock } from '../../astUtil'
+import { ExtractorGetter, ReplaceProjectFunctionCallOptions } from '../../types'
+import { AbstractExtractor } from '../abstractExtractor'
 
 /** 
  * Returns the text of given node. It could be a valued node (in which case the node reference is passed as normal argument) or a type node (in which case needs to be passes as type argument). Example: 

@@ -1,9 +1,9 @@
-import Minimatch from 'minimatch';
-import Project, { CallExpression, Node, SourceFile } from 'ts-simple-ast';
-import { extractCallExpressions } from '../../astUtil';
-import { ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunctionCallOptions } from '../../types';
-import { unquote } from '../../util';
-import { AbstractExtractor } from '../abstractExtractor';
+import Minimatch from 'minimatch'
+import Project, { CallExpression, Node, SourceFile } from 'ts-simple-ast'
+import { extractCallExpressions } from '../../astUtil'
+import { ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunctionCallOptions } from '../../types'
+import { unquote } from '../../util'
+import { AbstractExtractor } from '../abstractExtractor'
 
 export interface AbstractRefactorExtractorOptions extends ExtractorOptions {
   /**

@@ -1,4 +1,4 @@
-import { NodeText } from '../..';
+import { NodeText } from '../..'
 
 function f() {
   type T = any

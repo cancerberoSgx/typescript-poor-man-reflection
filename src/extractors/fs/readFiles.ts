@@ -1,9 +1,15 @@
-import { Stats } from 'fs';
-import { cat, ls } from 'shelljs';
-import { CallExpression, Node } from 'ts-simple-ast';
-import { ExtractorGetter, ExtractorOptions, ExtractorResult, FileVariableAccessor, ReplaceProjectFunctionCallOptions } from '../../types';
-import { unquote } from '../../util';
-import { AbstractExtractor } from '../abstractExtractor';
+import { Stats } from 'fs'
+import { cat, ls } from 'shelljs'
+import { CallExpression, Node } from 'ts-simple-ast'
+import {
+  ExtractorGetter,
+  ExtractorOptions,
+  ExtractorResult,
+  FileVariableAccessor,
+  ReplaceProjectFunctionCallOptions
+} from '../../types'
+import { unquote } from '../../util'
+import { AbstractExtractor } from '../abstractExtractor'
 
 /**
  * Returns an array that contain given file names and content as string. Useful to embed files in the source

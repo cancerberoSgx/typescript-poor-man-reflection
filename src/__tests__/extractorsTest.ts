@@ -1,6 +1,6 @@
-import { removeWhites } from 'misc-utils-of-mine-generic';
-import { Project } from 'ts-simple-ast';
-import { replaceFileFunctionCall } from '../replaceFileFunctionCall';
+import { removeWhites } from 'misc-utils-of-mine-generic'
+import { Project } from 'ts-simple-ast'
+import { replaceFileFunctionCall } from '../replaceFileFunctionCall'
 
 describe('extractors', () => {
   describe('NodeText', () => {

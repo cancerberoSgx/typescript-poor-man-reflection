@@ -1,5 +1,5 @@
-import { removeWhites } from 'misc-utils-of-mine-generic';
-import { cat, exec } from 'shelljs';
+import { removeWhites } from 'misc-utils-of-mine-generic'
+import { cat, config, exec } from 'shelljs'
 
 describe('cli', () => {
   afterAll(() => {
@@ -64,6 +64,8 @@ describe('cli', () => {
 })
 
 function cliTest(program: string, cleanOutput: string, instrumentedOutput: string[]) {
+  config.silent = true
+
   let r: any
 
   r = exec(`npx ts-node src/cli.ts --moduleSpecifier "../.." --clean --filePattern "**/${program}"`)

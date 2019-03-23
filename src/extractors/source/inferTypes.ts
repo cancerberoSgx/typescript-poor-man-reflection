@@ -1,6 +1,6 @@
-import Project, { SourceFile } from 'ts-simple-ast';
-import { inferTypesFromUsage } from 'ts-simple-ast-extra';
-import { AbstractRefactorExtractor, AbstractRefactorExtractorOptions } from './abstractRefactorExtractor';
+import Project, { SourceFile } from 'ts-simple-ast'
+import { inferTypesFromUsage } from 'ts-simple-ast-extra'
+import { AbstractRefactorExtractor, AbstractRefactorExtractorOptions } from './abstractRefactorExtractor'
 
 /**
  * Will add Types to variables, parameters, etc inferring from usage on given files.

@@ -1,22 +1,6 @@
-import { removeWhites } from 'misc-utils-of-mine-generic';
-import { Project } from 'ts-simple-ast';
-import { replaceFileFunctionCall } from '../replaceFileFunctionCall';
-
-describe('ProjectFiles', () => {
-  it('should extract this project source files names', () => {
-    const project = new Project()
-    project.createSourceFile('test.ts', `const projectFiles = ProjectFiles()`)
-    project.createSourceFile('test2.ts', `export 1`)
-    project.createSourceFile('foo/bar/file.ts', `export 2`)
-    replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
-      extractorDataMode: 'asArgument',
-      project
-    })
-    expect(removeWhites(project.getSourceFile('test.ts')!.getText())).toContain(
-      `const projectFiles = ProjectFiles(["test.ts","test2.ts","foo/bar/file.ts"])`
-    )
-  })
-})
+import { removeWhites } from 'misc-utils-of-mine-generic'
+import { Project } from 'ts-simple-ast'
+import { replaceFileFunctionCall } from '../replaceFileFunctionCall'
 
 describe('OrganizeImports', () => {
   it('should organize imports of current file if none given', () => {
@@ -159,8 +143,6 @@ class A implements I<number> {
       extractorDataMode: 'asArgument',
       project
     })
-    // console.log(project.getSourceFile('test.ts')!.getText());
-
     const t = removeWhites(project.getSourceFile('test.ts')!.getText()).trim()
     expect(t).toBe(
       removeWhites(
@@ -200,32 +182,6 @@ interface IA extends I<number> {
   n(): Date;
 }
         `
-      )
-    )
-  })
-})
-
-describe('Exec', () => {
-  it('should execute commands and return status code and stdout', () => {
-    const project = new Project()
-    project.createSourceFile(
-      'test.ts',
-      `
-const {code, stdout, stderr} = Exec({command: 'npm -v'})
-const {code, stdout, stderr} = Exec({command: 'ls wrong*'})
-      `
-    )
-    replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
-      extractorDataMode: 'asArgument',
-      project
-    })
-
-    const t = removeWhites(project.getSourceFile('test.ts')!.getText()).trim()
-    expect(t).toBe(
-      removeWhites(
-        `
-const {code, stdout, stderr} = Exec({command: 'npm -v'}, "{code: 0, stdout: \\"6.7.0\\n\\", stderr: \\"\\"}")
-const {code, stdout, stderr} = Exec({command: 'ls wrong*'}, "{code: 2, stdout: \\"\\", stderr: \\"ls: cannot access 'wrong*': No such file or directory\\n\\"}")`
       )
     )
   })

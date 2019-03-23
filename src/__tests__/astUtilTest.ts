@@ -1,5 +1,5 @@
-import { Project, SyntaxKind } from 'ts-simple-ast';
-import { array2DInsert } from '../astUtil';
+import { Project, SyntaxKind } from 'ts-simple-ast'
+import { array2DInsert } from '../astUtil'
 
 describe('astUtil', () => {
   describe('array2DInsert', () => {

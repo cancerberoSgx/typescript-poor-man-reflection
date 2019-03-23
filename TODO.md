@@ -43,9 +43,9 @@ const a = TypeText<SomeType>({mode: 'asStringLiteral'})
 ### Idea: refactor tools programmatically API: example: 
 
 ```
- import {Fruit} from './other'
- Rename<Fruit>('Vegetable')
- ```
+import {Fruit} from './other'
+Rename<Fruit>('Vegetable')
+```
 
  ```
 function f(){}
@@ -65,8 +65,9 @@ export jsonfiles = Map<files>(fileName=>({fileName, content: readFileSync(f))}) 
 
 ```
 const impl = GetImplementation<SomeInterface>({some: 'options'})
-
 class Impl1 implements SomeInterface {...}
+
+// and at some config.ts file and this happens at compile time:
 RegisterImplementation<SomeInterface>(some, Impl1)
 ...
 

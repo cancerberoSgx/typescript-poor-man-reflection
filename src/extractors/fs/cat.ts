@@ -1,8 +1,8 @@
-import { cat } from 'shelljs';
-import { CallExpression, Node } from 'ts-simple-ast';
-import { ExtractorGetter, ExtractorOptions, ExtractorResult, FileVariableAccessor, ReplaceProjectFunctionCallOptions } from '../../types';
-import { asString, unquote } from '../../util';
-import { AbstractExtractor } from '../abstractExtractor';
+import { cat } from 'shelljs'
+import { CallExpression, Node } from 'ts-simple-ast'
+import { ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunctionCallOptions } from '../../types'
+import { asString, unquote } from '../../util'
+import { AbstractExtractor } from '../abstractExtractor'
 
 /**
  * Returns given file contents as string. Important: you won't be able to call cat() on a loop since this runs
@@ -28,8 +28,7 @@ export class CatClass extends AbstractExtractor {
     n: CallExpression,
     index: number,
     getter: ExtractorGetter,
-    options: Required<ReplaceProjectFunctionCallOptions>,
-    variableAccessor: FileVariableAccessor
+    options: Required<ReplaceProjectFunctionCallOptions>
   ): ExtractorResult {
     const config = this.getOptionsFromFistArg<LsOptions>(n)
     let output = `''`

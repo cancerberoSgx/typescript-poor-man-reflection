@@ -12,6 +12,7 @@ Why ?
 *   [https://github.com/Microsoft/TypeScript/issues/14419](https://github.com/Microsoft/TypeScript/issues/14419)
 *   I need to get a type text at runtime and I cannot hardcode it as string since it will get outdated on code refactors
 *   I don't want to use a tsc wrapper like ttypescript
+*   And then I discovered a lots of other things can be accomplished by running code at compile time...
 
 What ?
 ======
@@ -24,6 +25,24 @@ The tool **will modify** TypeScript source files calling the library's functions
 
 Snippets
 --------
+
+### Overrides
+
+Want to make sure your classes methods and properties are actually overriding a super class/interface member ?
+
+```ts
+import { Overrides } from 'typescript-poor-man-reflection'
+import { AbstractAnimal, Alive } from 'a-library'
+export class ConcreteAnimal extends AbstractAnimal implements Alive {
+  energy: number = Overrides(1)
+  eat(food: Alive) {
+    Override()
+    this.energy++
+  }
+}
+```
+
+If property `energy` or method `eat` are not overriding a super class property or method respectively, then the extractor will generate a call with a Type Error so you are aware if they are actually overriding something, at compile time.
 
 ### ReadFiles
 
@@ -201,6 +220,7 @@ See (TODO.md)\[TODO.md\]
 * ["extractors/fs/cat"](modules/_extractors_fs_cat_.md)
 * ["extractors/fs/exec"](modules/_extractors_fs_exec_.md)
 * ["extractors/fs/ls"](modules/_extractors_fs_ls_.md)
+* ["extractors/fs/projectFiles"](modules/_extractors_fs_projectfiles_.md)
 * ["extractors/fs/readFiles"](modules/_extractors_fs_readfiles_.md)
 * ["extractors/source/abstractRefactorExtractor"](modules/_extractors_source_abstractrefactorextractor_.md)
 * ["extractors/source/extractInterface"](modules/_extractors_source_extractinterface_.md)
@@ -209,7 +229,6 @@ See (TODO.md)\[TODO.md\]
 * ["extractors/source/organizeImports"](modules/_extractors_source_organizeimports_.md)
 * ["extractors/source/overrides"](modules/_extractors_source_overrides_.md)
 * ["extractors/source/printAst"](modules/_extractors_source_printast_.md)
-* ["extractors/source/projectFiles"](modules/_extractors_source_projectfiles_.md)
 * ["extractors/source/removeUnused"](modules/_extractors_source_removeunused_.md)
 * ["main"](modules/_main_.md)
 * ["replaceFileFunctionCall"](modules/_replacefilefunctioncall_.md)

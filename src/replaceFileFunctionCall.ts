@@ -1,10 +1,10 @@
-import { quote } from 'misc-utils-of-mine-generic';
-import { CallExpression, SourceFile, SyntaxKind } from 'ts-simple-ast';
-import { extractCallExpressions } from './astUtil';
-import { extractorGetterBuilder, getFileId, writeExtractorData } from './extractorData';
-import { defaultExtractors, isExtractorClass, isExtractorFn } from './extractors';
-import { defaultOptions, getFullOptions } from './replaceProjectFunctionCall';
-import { ExtractorGetter, FileVariableAccessor, Replacement, ReplaceProjectFunctionCallOptions } from './types';
+import { quote } from 'misc-utils-of-mine-generic'
+import { CallExpression, SourceFile, SyntaxKind } from 'ts-simple-ast'
+import { extractCallExpressions } from './astUtil'
+import { extractorGetterBuilder, getFileId, writeExtractorData } from './extractorData'
+import { defaultExtractors, isExtractorClass, isExtractorFn } from './extractors'
+import { defaultOptions, getFullOptions } from './replaceProjectFunctionCall'
+import { ExtractorGetter, FileVariableAccessor, Replacement, ReplaceProjectFunctionCallOptions } from './types'
 
 /**
  * JavaScript API to replace arguments of all function expression calls in given (ts-simple-ast SourceFile)

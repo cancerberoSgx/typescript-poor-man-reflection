@@ -12,6 +12,7 @@ An unconventional way of getting TypeScript code information (like types), as te
  * https://github.com/Microsoft/TypeScript/issues/14419
  * I need to get a type text at runtime and I cannot hardcode it as string since it will get outdated on code refactors
  * I don't want to use a tsc wrapper like ttypescript
+ * And then I discovered a lots of other things can be accomplished by running code at compile time...
  
 # What ?
 

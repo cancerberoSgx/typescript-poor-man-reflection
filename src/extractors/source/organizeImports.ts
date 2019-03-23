@@ -1,5 +1,5 @@
-import Project, { SourceFile } from 'ts-simple-ast';
-import { AbstractRefactorExtractor, AbstractRefactorExtractorOptions } from './abstractRefactorExtractor';
+import Project, { SourceFile } from 'ts-simple-ast'
+import { AbstractRefactorExtractor, AbstractRefactorExtractorOptions } from './abstractRefactorExtractor'
 
 /**
  * Will call organize imports on given files. 

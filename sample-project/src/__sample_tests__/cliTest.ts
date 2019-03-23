@@ -1,5 +1,4 @@
-import { exec, cat } from 'shelljs';
-import { readFileSync, writeFileSync } from 'fs';
+import { cat, config, exec } from 'shelljs';
 
 let r:any
 
@@ -15,6 +14,8 @@ describe('cli', () => {
 })
 
 function cliTest(program: string, cleanOutput: string, instrumentedOutput: string) {
+  config.silent=true
+  
   r = exec(`npx typescript-poor-man-reflection --clean --filePattern "**/${program}"`);
   expect(r.code).toBe(0);
   r = exec(`npx ts-node ${program}`);

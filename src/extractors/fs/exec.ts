@@ -1,9 +1,9 @@
-import { quote } from 'misc-utils-of-mine-generic';
-import { exec } from 'shelljs';
-import { CallExpression, Node } from 'ts-simple-ast';
-import { ExtractorGetter, ExtractorOptions, ExtractorResult, FileVariableAccessor, ReplaceProjectFunctionCallOptions } from '../../types';
-import { unquote } from '../../util';
-import { AbstractExtractor } from '../abstractExtractor';
+import { quote } from 'misc-utils-of-mine-generic'
+import { exec } from 'shelljs'
+import { CallExpression, Node } from 'ts-simple-ast'
+import { ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunctionCallOptions } from '../../types'
+import { unquote } from '../../util'
+import { AbstractExtractor } from '../abstractExtractor'
 
 /**
  * Executes given command synchronously. 
@@ -43,8 +43,7 @@ export class ExecClass extends AbstractExtractor {
     n: CallExpression,
     index: number,
     getter: ExtractorGetter,
-    options: Required<ReplaceProjectFunctionCallOptions>,
-    variableAccessor: FileVariableAccessor
+    options: Required<ReplaceProjectFunctionCallOptions>
   ): ExtractorResult {
     const config = this.getOptionsFromFistArg<ExecOptions>(n)
     let output = `undefined`

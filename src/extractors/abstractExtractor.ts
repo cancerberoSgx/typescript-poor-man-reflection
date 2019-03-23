@@ -1,8 +1,15 @@
-import { unique } from 'misc-utils-of-mine-generic';
-import { CallExpression, Node, SyntaxKind, TypeGuards } from 'ts-simple-ast';
-import { extractCallExpressions, getDefinitionsOf } from '../astUtil';
-import { ExtractorClass, ExtractorGetter, ExtractorOptions, ExtractorResult, FileVariableAccessor, ReplaceProjectFunctionCallOptions } from '../types';
-import { Map, unquote } from '../util';
+import { unique } from 'misc-utils-of-mine-generic'
+import { CallExpression, Node, SyntaxKind, TypeGuards } from 'ts-simple-ast'
+import { extractCallExpressions, getDefinitionsOf } from '../astUtil'
+import {
+  ExtractorClass,
+  ExtractorGetter,
+  ExtractorOptions,
+  ExtractorResult,
+  FileVariableAccessor,
+  ReplaceProjectFunctionCallOptions
+} from '../types'
+import { Map, unquote } from '../util'
 
 export abstract class AbstractExtractor implements ExtractorClass {
   protected defaultExtractorOptions: ExtractorOptions = {}

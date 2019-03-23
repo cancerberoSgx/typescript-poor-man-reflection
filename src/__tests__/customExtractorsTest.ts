@@ -1,9 +1,9 @@
-import { removeWhites } from 'misc-utils-of-mine-generic';
-import { CallExpression, Project, SyntaxKind, TypeGuards } from 'ts-simple-ast';
-import { AbstractExtractor } from '../extractors/abstractExtractor';
-import { replaceFileFunctionCall } from '../replaceFileFunctionCall';
-import { defaultOptions } from '../replaceProjectFunctionCall';
-import { ExtractorFn } from '../types';
+import { removeWhites } from 'misc-utils-of-mine-generic'
+import { CallExpression, Project, SyntaxKind, TypeGuards } from 'ts-simple-ast'
+import { AbstractExtractor } from '../extractors/abstractExtractor'
+import { replaceFileFunctionCall } from '../replaceFileFunctionCall'
+import { defaultOptions } from '../replaceProjectFunctionCall'
+import { ExtractorFn } from '../types'
 describe('customExtractors', () => {
   it('should build my custom function name and extract', () => {
     const project = new Project()

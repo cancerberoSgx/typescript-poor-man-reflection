@@ -1,6 +1,6 @@
-import Project, { SourceFile } from 'ts-simple-ast';
-import { removeAllUnused } from 'ts-simple-ast-extra';
-import { AbstractRefactorExtractor, AbstractRefactorExtractorOptions } from './abstractRefactorExtractor';
+import Project, { SourceFile } from 'ts-simple-ast'
+import { removeAllUnused } from 'ts-simple-ast-extra'
+import { AbstractRefactorExtractor, AbstractRefactorExtractorOptions } from './abstractRefactorExtractor'
 
 /**
  * Will remove all unused variables, import names, etc, on given files. 

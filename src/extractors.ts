@@ -1,20 +1,20 @@
-import { BodyTextClass } from './extractors/basic/bodyText';
-import { NodeTextClass } from './extractors/basic/nodeText';
-import { ThisBlockTextClass } from './extractors/basic/thisBlockText';
-import { TypeTextClass } from './extractors/basic/typeText';
-import { CatClass } from './extractors/fs/cat';
-import { ExecClass } from './extractors/fs/exec';
-import { LsClass } from './extractors/fs/ls';
-import { ReadFilesClass } from './extractors/fs/readFiles';
-import { ExtractInterfaceClass } from './extractors/source/extractInterface';
-import { InferTypesClass } from './extractors/source/inferTypes';
-import { NodeTypeClass } from './extractors/source/nodeType';
-import { OrganizeImportsClass } from './extractors/source/organizeImports';
-import { OverridesClass } from './extractors/source/overrides';
-import { Ast } from './extractors/source/printAst';
-import { ProjectFilesClass } from './extractors/source/projectFiles';
-import { RemoveUnusedClass } from './extractors/source/removeUnused';
-import { Extractor, ExtractorClass, ExtractorFn } from './types';
+import { BodyTextClass } from './extractors/basic/bodyText'
+import { NodeTextClass } from './extractors/basic/nodeText'
+import { ThisBlockTextClass } from './extractors/basic/thisBlockText'
+import { TypeTextClass } from './extractors/basic/typeText'
+import { CatClass } from './extractors/fs/cat'
+import { ExecClass } from './extractors/fs/exec'
+import { LsClass } from './extractors/fs/ls'
+import { ProjectFilesClass } from './extractors/fs/projectFiles'
+import { ReadFilesClass } from './extractors/fs/readFiles'
+import { ExtractInterfaceClass } from './extractors/source/extractInterface'
+import { InferTypesClass } from './extractors/source/inferTypes'
+import { NodeTypeClass } from './extractors/source/nodeType'
+import { OrganizeImportsClass } from './extractors/source/organizeImports'
+import { OverridesClass } from './extractors/source/overrides'
+import { Ast } from './extractors/source/printAst'
+import { RemoveUnusedClass } from './extractors/source/removeUnused'
+import { Extractor, ExtractorClass, ExtractorFn } from './types'
 
 export const defaultExtractors: { [k: string]: Extractor } = {
   TypeText: new TypeTextClass(),

@@ -1,13 +1,16 @@
-import { flat } from 'misc-utils-of-mine-generic';
-import { notFalsy } from 'misc-utils-of-mine-typescript';
-import { CallExpression, MethodDeclaration, PropertyDeclaration, SyntaxKind, TypeGuards } from 'ts-simple-ast';
-import { getExtendsRecursively } from 'ts-simple-ast-extra';
-import { getDefinitionsOf } from '../../astUtil';
-import { ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunctionCallOptions } from '../../types';
-import { AbstractExtractor } from '../abstractExtractor';
+import { flat } from 'misc-utils-of-mine-generic'
+import { notFalsy } from 'misc-utils-of-mine-typescript'
+import { CallExpression, MethodDeclaration, PropertyDeclaration, SyntaxKind, TypeGuards } from 'ts-simple-ast'
+import { getExtendsRecursively } from 'ts-simple-ast-extra'
+import { getDefinitionsOf } from '../../astUtil'
+import { ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunctionCallOptions } from '../../types'
+import { AbstractExtractor } from '../abstractExtractor'
 
 /**
  * TODO: only works for classes, not for interfaces signatures - there we need a type.
+ * 
+ * TODO: verify super member signature matches this one.
+ * 
  * Will produce a type error in case the method or property doesn't override a super class or interface member. 
  
 ```ts

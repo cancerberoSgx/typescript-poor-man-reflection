@@ -1,6 +1,6 @@
-import { removeWhites } from 'misc-utils-of-mine-generic';
-import Project from 'ts-simple-ast';
-import { applyAllSuggestedCodeFixes } from 'ts-simple-ast-extra';
+import { removeWhites } from 'misc-utils-of-mine-generic'
+import Project from 'ts-simple-ast'
+import { applyAllSuggestedCodeFixes } from 'ts-simple-ast-extra'
 
 describe('codeFixes', () => {
   it('should remove all unused things', () => {
