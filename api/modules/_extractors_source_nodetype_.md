@@ -30,7 +30,7 @@
 
 **Ƭ InferenceNode**: *"apparent" \| "none" \| "contextual"*
 
-*Defined in [extractors/source/nodeType.ts:40](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/3b7b7d6/src/extractors/source/nodeType.ts#L40)*
+*Defined in [extractors/source/nodeType.ts:40](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f57c9f6/src/extractors/source/nodeType.ts#L40)*
 
 ___
 
@@ -42,14 +42,14 @@ ___
 
 ▸ **NodeType**<`T`>(config: *[NodeTypeOptions](../interfaces/_extractors_source_nodetype_.nodetypeoptions.md)*, t?: *`any`*): `any`
 
-*Defined in [extractors/source/nodeType.ts:23](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/3b7b7d6/src/extractors/source/nodeType.ts#L23)*
+*Defined in [extractors/source/nodeType.ts:23](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f57c9f6/src/extractors/source/nodeType.ts#L23)*
 
 Usage:
 
 ```ts
 const aNode = unknownAPI();
 const type1 = NodeType({target: aNode})
-const type2 = NodeType<typeof unknownAPI>({})
+const type2 = NodeType<typeof unknownAPI>({inferenceMode: 'contextual'})
 ```
 
 **Type parameters:**

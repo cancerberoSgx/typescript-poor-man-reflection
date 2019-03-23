@@ -292,8 +292,6 @@ InferTypes()
     xit('should infer types on given files only', () => {})
   })
 
-
-
   describe('ExtractInterface', () => {
     it('should infer member types and copy docs and only process public members', () => {
       const project = new Project()
@@ -325,8 +323,9 @@ class A implements I<number> {
       // console.log(project.getSourceFile('test.ts')!.getText());
 
       const t = removeWhites(project.getSourceFile('test.ts')!.getText()).trim()
-      expect(t).toBe(removeWhites(
-        `
+      expect(t).toBe(
+        removeWhites(
+          `
 ExtractInterface<A>({}, undefined)
 interface I<T=any>{
   p:T
@@ -362,9 +361,8 @@ interface IA extends I<number> {
   n(): Date;
 }
         `
-      ))
+        )
+      )
     })
-
   })
-  
 })

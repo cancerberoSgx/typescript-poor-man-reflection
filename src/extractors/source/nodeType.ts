@@ -17,7 +17,7 @@ import { unquote } from '../../util'
 ```ts
 const aNode = unknownAPI(); 
 const type1 = NodeType({target: aNode})
-const type2 = NodeType<typeof unknownAPI>({})
+const type2 = NodeType<typeof unknownAPI>({inferenceMode: 'contextual'})
 ```
  */
 export const NodeType = function<T = any>(config: NodeTypeOptions, t?: any) {
