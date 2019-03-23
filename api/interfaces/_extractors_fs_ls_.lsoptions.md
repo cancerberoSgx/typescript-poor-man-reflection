@@ -1,37 +1,46 @@
-[typescript-poor-man-reflection](../README.md) > ["types"](../modules/_types_.md) > [ExtractorOptions](../interfaces/_types_.extractoroptions.md)
+[typescript-poor-man-reflection](../README.md) > ["extractors/fs/ls"](../modules/_extractors_fs_ls_.md) > [LsOptions](../interfaces/_extractors_fs_ls_.lsoptions.md)
 
-# Interface: ExtractorOptions
-
-These are options that user can use to configure a Extractor, could be as convention in the first arg, ex: `PrintAst({ target: foo, outputMode: 'assignToVariable', outputVariableName: 'existingVar')`
+# Interface: LsOptions
 
 ## Hierarchy
 
-**ExtractorOptions**
+ [ExtractorOptions](_types_.extractoroptions.md)
 
-↳  [AstOptions](_extractors_ast_.astoptions.md)
-
-↳  [NodeTypeOptions](_extractors_nodetype_.nodetypeoptions.md)
-
-↳  [LsOptions](_extractors_fs_ls_.lsoptions.md)
+**↳ LsOptions**
 
 ## Index
 
 ### Properties
 
-* [outputMode](_types_.extractoroptions.md#outputmode)
-* [outputVariableName](_types_.extractoroptions.md#outputvariablename)
-* [removeMe](_types_.extractoroptions.md#removeme)
-* [target](_types_.extractoroptions.md#target)
+* [options](_extractors_fs_ls_.lsoptions.md#options)
+* [outputMode](_extractors_fs_ls_.lsoptions.md#outputmode)
+* [outputVariableName](_extractors_fs_ls_.lsoptions.md#outputvariablename)
+* [path](_extractors_fs_ls_.lsoptions.md#path)
+* [removeMe](_extractors_fs_ls_.lsoptions.md#removeme)
+* [target](_extractors_fs_ls_.lsoptions.md#target)
 
 ---
 
 ## Properties
 
+<a id="options"></a>
+
+### `<Optional>` options
+
+**● options**: *"-R" \| "-A" \| "-L" \| "-d" \| "-l"*
+
+*Defined in extractors/fs/ls.ts:36*
+
+\-R: recursive -A: all files (include files beginning with ., except for . and ..) -L: follow symlinks -d: list directories themselves, not their contents -l: list objects representing each file, each with fields containing ls -l output fields
+
+___
 <a id="outputmode"></a>
 
 ### `<Optional>` outputMode
 
 **● outputMode**: *[ExtractorOutputMode](../modules/_types_.md#extractoroutputmode)*
+
+*Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputMode](_types_.extractoroptions.md#outputmode)*
 
 *Defined in [types.ts:154](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/e049fbf/src/types.ts#L154)*
 
@@ -46,9 +55,22 @@ ___
 
 **● outputVariableName**: *`undefined` \| `string`*
 
+*Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputVariableName](_types_.extractoroptions.md#outputvariablename)*
+
 *Defined in [types.ts:158](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/e049fbf/src/types.ts#L158)*
 
 Name of the variable to assign the value in case outputMode is `assignToVariable`
+
+___
+<a id="path"></a>
+
+###  path
+
+**● path**: *`string`*
+
+*Defined in extractors/fs/ls.ts:28*
+
+path to list - could be a glob
 
 ___
 <a id="removeme"></a>
@@ -56,6 +78,8 @@ ___
 ### `<Optional>` removeMe
 
 **● removeMe**: *`undefined` \| `false` \| `true`*
+
+*Inherited from [ExtractorOptions](_types_.extractoroptions.md).[removeMe](_types_.extractoroptions.md#removeme)*
 
 *Defined in [types.ts:165](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/e049fbf/src/types.ts#L165)*
 
@@ -67,6 +91,8 @@ ___
 ### `<Optional>` target
 
 **● target**: *`any`*
+
+*Inherited from [ExtractorOptions](_types_.extractoroptions.md).[target](_types_.extractoroptions.md#target)*
 
 *Defined in [types.ts:170](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/e049fbf/src/types.ts#L170)*
 

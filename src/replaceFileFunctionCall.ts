@@ -105,23 +105,16 @@ export function replaceFileFunctionCall(
       }
       c.getArguments()[argIndex].replaceWithText(argumentText)
       replaced.push({ file: sourceFile.getFilePath(), replacement: argumentText, firstTime: false })
-    }
-    // strange situation: our argument bucket and the next one are already filled up.
-    else if (c.getArguments().length > argIndex + 1) {
+    } else if (c.getArguments().length > argIndex + 1) {
+      // strange situation: our argument bucket and the next one are already filled up.
       extractorData.push('""')
       console.error(
         `more than 1 argument found in file ${sourceFile.getFilePath()} function call expression ${c.getText()}`
       )
-    }
-
-    // more strange cases? ignore
-    else {
+    } else {
+      // ignore other cases
       extractorData.push('""')
     }
-
-    // if (isExtractorClass(extract) && extract.afterWriteExtractorData) {
-    //   extract.afterWriteExtractorData(c, index, fullOptions)
-    // }
   })
 
   writeExtractorData(

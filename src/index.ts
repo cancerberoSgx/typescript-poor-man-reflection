@@ -12,6 +12,8 @@ export function ThisBlockText(t?: string) {
 }
 
 export { PrintAst } from './extractors/ast'
+export { NodeType } from './extractors/nodeType'
+export { Ls } from './extractors/fs/ls'
 
 export { replaceFileFunctionCall } from './replaceFileFunctionCall'
 export { replaceProjectFunctionCall } from './replaceProjectFunctionCall'

@@ -5,6 +5,7 @@ import { ThisBlockText } from './extractors/basic/thisBlockText'
 import { TypeText } from './extractors/basic/typeText'
 import { Extractor, ExtractorClass, ExtractorFn } from './types'
 import { NodeTypeClass } from './extractors/nodeType'
+import { LsClass } from './extractors/fs/ls'
 
 export const defaultExtractors: { [k: string]: Extractor } = {
   TypeText: new TypeText(),
@@ -17,7 +18,9 @@ export const defaultExtractors: { [k: string]: Extractor } = {
 
   NodeType: new NodeTypeClass(),
 
-  PrintAst: new Ast()
+  PrintAst: new Ast(),
+
+  Ls: new LsClass()
 }
 
 export function isExtractorFn(e: Extractor): e is ExtractorFn {

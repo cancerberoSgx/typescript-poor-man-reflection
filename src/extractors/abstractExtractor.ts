@@ -16,6 +16,12 @@ export abstract class AbstractExtractor implements ExtractorClass {
     // outputMode: 'asReturnValue',
     // targetMode: 'self'
   }
+  getConfig() {
+    return {
+      freeArgumentNumber: 0,
+      unusedArgumentDefaultValue: '{}'
+    }
+  }
 
   abstract extract(
     n: CallExpression,

@@ -49,12 +49,6 @@ export interface AstOptions extends ExtractorOptions {
 }
 
 export class Ast extends AbstractExtractor implements ExtractorClass {
-  getConfig() {
-    return {
-      freeArgumentNumber: 1
-    }
-  }
-
   extract(
     n: CallExpression,
     index: number,
@@ -145,6 +139,12 @@ export class Ast extends AbstractExtractor implements ExtractorClass {
     } else {
       const ancestors = a.map((a, i, arr) => this.printNode(a, arr.length - i - 1, config)).reverse()
       return ancestors
+    }
+  }
+  getConfig() {
+    return {
+      freeArgumentNumber: 1,
+      unusedArgumentDefaultValue: '{}'
     }
   }
 }

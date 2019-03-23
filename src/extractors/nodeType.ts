@@ -4,7 +4,8 @@ import {
   ExtractorOptions,
   ExtractorGetter,
   ReplaceProjectFunctionCallOptions,
-  FileVariableAccessor
+  FileVariableAccessor,
+  ExtractOptions
 } from '../types'
 import { AbstractExtractor } from './abstractExtractor'
 import { quote } from 'misc-utils-of-mine-generic'
@@ -27,15 +28,16 @@ export interface NodeTypeOptions extends ExtractorOptions {
   /**
    * How the type should be inferred from given node.
    *
-   * If `apparent` (default) then it TypeChecker's getApparentType() method will be used
+   * If `apparent` (default) then it TypeChecker's `getApparentType()` method will be used
+   *
+   * If `contextual` it will use TypeChecker's `getContextualType()` method
    *
    * If `none` it will just print the text of node's direct type
    */
   inferenceMode?: InferenceNode
 }
 
-type InferenceNode = 'apparent' | 'none'
-// | 'contextual'
+type InferenceNode = 'apparent' | 'none' | 'contextual'
 // | 'returnTypeOfSignature'
 // | 'getTypeOfSymbolAtLocation'
 // | 'getTypeAtLocation'
@@ -51,10 +53,11 @@ export class NodeTypeClass extends AbstractExtractor {
   ): ExtractorResult {
     const config = this.getOptionsFromFistArg<NodeTypeOptions>(n) || {}
     let target: Node | undefined = this.getTarget(n, config)
-    let output = this.buildType(target || n, config) as any
+    let output = this.buildType(target || n, config, options) as any
     return this.buildExtractorResult(n, output, getter, index, options, config)
   }
-  protected buildType(n: Node, config: NodeTypeOptions): any {
+
+  protected buildType(n: Node, config: NodeTypeOptions, options: Required<ReplaceProjectFunctionCallOptions>): any {
     if (!config.inferenceMode || config.inferenceMode === 'apparent') {
       return quote(
         n
@@ -64,12 +67,9 @@ export class NodeTypeClass extends AbstractExtractor {
       )
     } else if (config.inferenceMode === 'none') {
       return quote(n.getType().getText())
-    }
-  }
-  getConfig() {
-    return {
-      freeArgumentNumber: 1,
-      unusedArgumentDefaultValue: '{}'
+    } else if (config.inferenceMode === 'contextual' && options.project && TypeGuards.isExpression(n)) {
+      const t = options.project.getTypeChecker().getContextualType(n)
+      return t && quote(t.getText())
     }
   }
 
@@ -78,6 +78,12 @@ export class NodeTypeClass extends AbstractExtractor {
       return unquote(value.getText())
     } else {
       return super.parseOptionValue(name, value)
+    }
+  }
+  getConfig() {
+    return {
+      freeArgumentNumber: 1,
+      unusedArgumentDefaultValue: '{}'
     }
   }
 }

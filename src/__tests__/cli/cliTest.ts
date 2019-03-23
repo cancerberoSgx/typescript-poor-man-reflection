@@ -6,6 +6,10 @@ describe('cli', () => {
     exec('npx ts-node src/cli.ts --moduleSpecifier "../.." --clean')
   })
 
+  it('dummy', () => {
+    expect(1).toBe(1)
+  })
+
   it('src/__tests__/cli/typeTextSample.ts', () => {
     cliTest('src/__tests__/cli/typeTextSample.ts', 'undefined undefined undefined', [
       `UnionOf<[1, Date[]]> UnionOf<[1, boolean | string]> Required<{ a: null | false }>`
@@ -41,6 +45,10 @@ describe('cli', () => {
     cliTest('src/__tests__/cli/nodeTypeSample.ts', 'undefined undefined undefined undefined undefined undefined', [
       `C this I | null C false | "foo" false | "foo"`
     ])
+  })
+
+  it('src/__tests__/cli/lsSample.ts', () => {
+    cliTest('src/__tests__/cli/lsSample.ts', 'undefined undefined', [`package.json`, `index.ts`])
   })
 })
 
