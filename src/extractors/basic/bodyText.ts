@@ -3,7 +3,18 @@ import { AbstractExtractor } from '../abstractExtractor'
 import { ExtractorGetter, ReplaceProjectFunctionCallOptions, FileVariableAccessor } from '../../types'
 import { getFirstTypeArgumentDefinitionBlock } from '../../astUtil'
 
-export class BodyText extends AbstractExtractor {
+/** 
+ * Returns the text of given node's body. Example: 
+```ts 
+const text1 = BodyText<>(aFunction)
+const text2 = BodyText<typeof someFunction>()
+```
+*/
+export function BodyText<T>(t?: string): string {
+  return t!
+}
+
+export class BodyTextClass extends AbstractExtractor {
   extract(
     n: CallExpression,
     index: number,

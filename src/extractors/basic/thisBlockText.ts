@@ -2,8 +2,14 @@ import Project, { CallExpression, TypeGuards, SyntaxKind } from 'ts-simple-ast'
 import { AbstractExtractor } from '../abstractExtractor'
 import { ExtractorGetter, ReplaceProjectFunctionCallOptions, FileVariableAccessor } from '../../types'
 import { getFirstTypeArgumentDefinitionBlock } from '../../astUtil'
+/**
+ * Returns current parent Block text (without the braces)
+ */
+export function ThisBlockText(t?: string) {
+  return t!
+}
 
-export class ThisBlockText extends AbstractExtractor {
+export class ThisBlockTextClass extends AbstractExtractor {
   extract(
     n: CallExpression,
     index: number,

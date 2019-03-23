@@ -3,7 +3,14 @@ import { AbstractExtractor } from '../abstractExtractor'
 import { ExtractorGetter, ReplaceProjectFunctionCallOptions, FileVariableAccessor } from '../../types'
 import { quote } from 'misc-utils-of-mine-generic'
 
-export class TypeText extends AbstractExtractor {
+/**
+ * Returns the text of given type. Example: `const text = TypeText<string|boolean>()`
+ */
+export function TypeText<T>(t?: string): string {
+  return t!
+}
+
+export class TypeTextClass extends AbstractExtractor {
   extract(
     n: CallExpression,
     index: number,

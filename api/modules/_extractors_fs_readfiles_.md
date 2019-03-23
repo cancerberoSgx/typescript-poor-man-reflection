@@ -26,7 +26,7 @@
 
 ▸ **ReadFiles**<`T`>(config: *[ReadFilesOptions](../interfaces/_extractors_fs_readfiles_.readfilesoptions.md)*, t?: *`any`*): (`string` \| `Stats`)[]
 
-*Defined in [extractors/fs/readFiles.ts:22](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/53d739a/src/extractors/fs/readFiles.ts#L22)*
+*Defined in [extractors/fs/readFiles.ts:22](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/55c8283/src/extractors/fs/readFiles.ts#L22)*
 
 Usage:
 

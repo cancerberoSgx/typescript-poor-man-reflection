@@ -14,19 +14,29 @@ Why ?
 What ?
 ======
 
-A preprocessor tool to modify input TypeScript files embedding requested types or nodes text in the code. Right now it supports three extraction kinds:
-
-*   `TypeText` will extract a Type's text. Example: `const text = TypeText<UnionOf<[1, Date[]]>>()` will be transformed to `const text = TypeText<UnionOf<[1, Date[]]>>('UnionOf<[1, Date[]]>')`
-*   `NodeText` will extract a Node's text. Example. `var o = {foo: [1]}; const text = NodeText<typeof o>()` will be transformed to `var o = {foo: [1]}; const text = NodeText<typeof o>('{foo: [1]}')`
-*   `BodyText` will extract a Node's body text. Example: `function f() { return 1 } const text = BodyText<typeof f>()` will be transformed to `function f() { return 1 } const text = BodyText<typeof f>('return 1')`
-*   `ThisBlockText` will extract current block text without the braces.
+A preprocessor tool to modify input TypeScript files embedding requested types or nodes text in the code. Supports several extractor implementations. See [Default Extractors](api/modules/_extractors_.md#defaultextractors).
 
 The tool **will modify** TypeScript source files calling the library's functions, embedding referenced node's text in the source file. It should be called before `tsc` or before npm test, and it can be called with the option `--clean` to clean-up source files (for example before commit or after `npm test`).
 
-Snippet
--------
+**Cost**: You need to pre-process your TS files _before_ compiling them with tsc in order for this to work and they will be modified.
 
-(taken from tsd-check-runtime - its sibling project - using jest matchers)
+Snippets
+--------
+
+### ReadFiles
+
+Embed files in your source, at compile time:
+
+```ts
+// assets.ts - contains example files embedded from fs at compile time:
+// files will contain an array of objects {name: string, content: string}
+import { ReadFiles } from 'typescript-poor-man-reflection'
+export files = ReadFiles({path: './src/examples/example*.ts'})
+```
+
+### TypeText
+
+Be able to get types text so we don't hardcode them as strings. Taken from tsd-check-runtime - its sibling project - using jest matchers.
 
 ```ts
 import { Type } from 'tsd-check-runtime';
@@ -55,8 +65,6 @@ describe('toMatchType', () => {
 ```
 
 As you can see I'm referencing types as text, declared in any scope. A call like `Type<typeof var2>()`, in this case, will return the string `"Type<UnionOf<[1, false]>>()"`. That's tsd-check-runtime project's implementation specialized for testing, builded un top of this framework which is easy to extend.
-
-**Cost**: You need to pre-process your TS files _before_ compiling them with tsc in order for this to work and they will be modified.
 
 Usage
 -----

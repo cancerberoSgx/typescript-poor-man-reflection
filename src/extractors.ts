@@ -1,22 +1,22 @@
 import { Ast } from './extractors/ast'
-import { BodyText } from './extractors/basic/bodyText'
-import { NodeText } from './extractors/basic/nodeText'
-import { ThisBlockText } from './extractors/basic/thisBlockText'
-import { TypeText } from './extractors/basic/typeText'
-import { Extractor, ExtractorClass, ExtractorFn } from './types'
-import { NodeTypeClass } from './extractors/nodeType'
-import { LsClass } from './extractors/fs/ls'
+import { BodyTextClass } from './extractors/basic/bodyText'
+import { NodeTextClass } from './extractors/basic/nodeText'
+import { ThisBlockTextClass } from './extractors/basic/thisBlockText'
+import { TypeTextClass } from './extractors/basic/typeText'
 import { CatClass } from './extractors/fs/cat'
+import { LsClass } from './extractors/fs/ls'
 import { ReadFilesClass } from './extractors/fs/readFiles'
+import { NodeTypeClass } from './extractors/nodeType'
+import { Extractor, ExtractorClass, ExtractorFn } from './types'
 
 export const defaultExtractors: { [k: string]: Extractor } = {
-  TypeText: new TypeText(),
+  TypeText: new TypeTextClass(),
 
-  NodeText: new NodeText(),
+  NodeText: new NodeTextClass(),
 
-  BodyText: new BodyText(),
+  BodyText: new BodyTextClass(),
 
-  ThisBlockText: new ThisBlockText(),
+  ThisBlockText: new ThisBlockTextClass(),
 
   NodeType: new NodeTypeClass(),
 
@@ -25,6 +25,7 @@ export const defaultExtractors: { [k: string]: Extractor } = {
   Ls: new LsClass(),
 
   Cat: new CatClass(),
+
   ReadFiles: new ReadFilesClass()
 }
 

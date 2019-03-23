@@ -1,18 +1,10 @@
-export function TypeText<T>(t?: string): string {
-  return t!
-}
-export function NodeText<T>(t?: string): string {
-  return t!
-}
-export function BodyText<T>(t?: string): string {
-  return t!
-}
-export function ThisBlockText(t?: string) {
-  return t!
-}
+export { BodyText } from './extractors/basic/bodyText'
+export { NodeText } from './extractors/basic/nodeText'
+export { TypeText } from './extractors/basic/typeText'
+export { ThisBlockText } from './extractors/basic/thisBlockText'
 
-export { PrintAst } from './extractors/ast'
 export { NodeType } from './extractors/nodeType'
+export { PrintAst } from './extractors/ast'
 export { Ls } from './extractors/fs/ls'
 export { Cat } from './extractors/fs/cat'
 export { ReadFiles } from './extractors/fs/readFiles'
