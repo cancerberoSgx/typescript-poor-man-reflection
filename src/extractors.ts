@@ -14,7 +14,7 @@ import { OrganizeImportsClass } from './extractors/source/organizeImports'
 import { OverridesClass } from './extractors/source/overrides'
 import { Ast } from './extractors/source/printAst'
 import { RemoveUnusedClass } from './extractors/source/removeUnused'
-import { Extractor, ExtractorClass, ExtractorFn } from './types'
+import { Extractor, ExtractorClass, ExtractorFn, ExportedExtractor } from './types'
 
 export const defaultExtractors: { [k: string]: Extractor } = {
   TypeText: new TypeTextClass(),
@@ -43,4 +43,8 @@ export function isExtractorFn(e: Extractor): e is ExtractorFn {
 
 export function isExtractorClass(e: Extractor): e is ExtractorClass {
   return typeof e.extract !== 'undefined'
+}
+
+export function isExportedExtractor(a:any):a is ExportedExtractor {
+  return typeof a.name === 'string' && typeof a.extractor === 'object' && typeof a.fn === 'function'
 }

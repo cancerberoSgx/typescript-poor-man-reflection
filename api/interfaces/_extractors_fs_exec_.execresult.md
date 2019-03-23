@@ -24,7 +24,7 @@
 
 **● code**: *`number`*
 
-*Defined in [extractors/fs/exec.ts:26](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/97bee93/src/extractors/fs/exec.ts#L26)*
+*Defined in [extractors/fs/exec.ts:26](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2245c2e/src/extractors/fs/exec.ts#L26)*
 
 ___
 <a id="stderr"></a>
@@ -33,7 +33,7 @@ ___
 
 **● stderr**: *`string`*
 
-*Defined in [extractors/fs/exec.ts:28](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/97bee93/src/extractors/fs/exec.ts#L28)*
+*Defined in [extractors/fs/exec.ts:28](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2245c2e/src/extractors/fs/exec.ts#L28)*
 
 ___
 <a id="stdout"></a>
@@ -42,7 +42,7 @@ ___
 
 **● stdout**: *`string`*
 
-*Defined in [extractors/fs/exec.ts:27](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/97bee93/src/extractors/fs/exec.ts#L27)*
+*Defined in [extractors/fs/exec.ts:27](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2245c2e/src/extractors/fs/exec.ts#L27)*
 
 ___
 

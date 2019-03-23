@@ -1,4 +1,5 @@
 import Project, { CallExpression } from 'ts-simple-ast'
+import { Fn } from './util';
 
 export interface Replacement {
   file: string
@@ -49,9 +50,22 @@ export interface ReplaceProjectFunctionCallOptions extends ReplaceFileFunctionCa
    */
   filePattern?: string
 
+  /** 
+   * Internal
+   * @internal
+   */
   project?: Project
-}
 
+  /**
+   * CLI. Comma separated paths or globs to packages or .ts files (default) exporting [[ExportedExtractor]] objects will be loaded and available to user code along with the built-in extractors. User code is responsible of importing the function signature and respecting [[moduleSpecifier]]
+   */
+  register?: string
+}
+export interface ExportedExtractor{
+  name: string
+  extractor: Extractor
+  fn: Fn
+}
 /**
  * Options accepted by the low level call `replaceFunctionCall`. They describe the requirements of the
  * function call expressions in order to be changed. typescript-poor-man-reflection will iterate every file in

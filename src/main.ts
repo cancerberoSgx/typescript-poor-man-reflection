@@ -1,6 +1,11 @@
-import { test } from 'shelljs'
+import { test, ls } from 'shelljs'
 import { defaultOptions, replaceProjectFunctionCall } from './replaceProjectFunctionCall'
 import { Replacement, ReplaceProjectFunctionCallOptions } from './types'
+import { flat } from 'misc-utils-of-mine-generic';
+import { dirname } from 'path';
+import { withoutExtension } from './util';
+import { notFalsy } from 'misc-utils-of-mine-typescript';
+import { isExportedExtractor } from './extractors';
 
 export function main(options: ReplaceProjectFunctionCallOptions) {
   let replacements: (Replacement | undefined)[] = []
@@ -18,14 +23,35 @@ export function main(options: ReplaceProjectFunctionCallOptions) {
     options = { ...defaultOptions, ...options, tsConfigFilePath }
     options.debug && console.log('All options:\n', options)
 
-    replaceProjectFunctionCall(tsConfigFilePath, options)
-
-    options.debug &&
+    const promises:Promise<any>[]=[Promise.resolve()]
+    if(options.register){
+      flat(options.register!.split(',').map(f=>ls(f))).forEach(f=>{
+        try {
+          if(f.endsWith('.ts')) {
+            promises.push( import(withoutExtension(f)))
+          }
+          else {
+            promises.push(import(f))
+          }
+        } catch (error) {
+          console.warn('ERROR registering extractor --register', f, error);
+        }
+      })
+    }
+    Promise.all(promises).then(loaded=>{
+      loaded.map(m=>m&&m.default).filter(notFalsy).filter(isExportedExtractor).forEach(e=>{
+        options.debug && console.log('Registered external extractor ', e.name);
+        options.extracts = options.extracts || {}
+        options.extracts[e.name] = e.extractor
+      })
+      replaceProjectFunctionCall(tsConfigFilePath, options)
+      options.debug &&
       console.log(
         `Summary: 
 ${JSON.stringify(replacements)}
       `.trim()
       )
+    })
   } catch (error) {
     console.error(`
 An error has occurred: 
@@ -66,6 +92,9 @@ Options:
   --out                         write modified files in that folder instead of writing files in-place
   
   --debug                       print debug information while executing
+
+  --register                    comma separated paths or globs to packages or .ts files exporting (default) ExportedExtractor objects will be loaded and available to user code.
+  
 ${
   config.extraOptionsHelp
     ? Object.keys(config.extraOptionsHelp)

@@ -15,8 +15,8 @@ import { AbstractExtractor } from '../abstractExtractor'
  * Returns an array that contain given file names and content as string. Useful to embed files in the source
  * code as string. Usage: 
  *
- * ```ts
- * export files = ReadFiles({path: './src/examples/example*.ts'})
+```ts
+export files = ReadFiles({path: './src/examples/example*.ts'})
 ```
  */
 export const ReadFiles = function<T = any>(config: ReadFilesOptions, t?: any): (string | Stats)[] {

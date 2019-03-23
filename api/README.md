@@ -55,6 +55,16 @@ import { ReadFiles } from 'typescript-poor-man-reflection'
 export files = ReadFiles({path: './src/examples/example*.ts'})
 ```
 
+### Organize imports - remove unused
+
+Execute TypeScript known refactors in current or all files:
+
+```ts
+import { OrganizeImports, RemoveUnused } from 'typescript-poor-man-reflection'
+OrganizeImports('src/**/*.ts*')
+RemoveUnused('src/**/*.ts*')
+```
+
 ### TypeText
 
 Be able to get types text so we don't hardcode them as strings. Taken from tsd-check-runtime - its sibling project - using jest matchers.

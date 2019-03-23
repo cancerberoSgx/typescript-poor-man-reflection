@@ -28,7 +28,7 @@
 
 **● inferenceMode**: *[InferenceNode](../modules/_extractors_source_nodetype_.md#inferencenode)*
 
-*Defined in [extractors/source/nodeType.ts:30](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/97bee93/src/extractors/source/nodeType.ts#L30)*
+*Defined in [extractors/source/nodeType.ts:30](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2245c2e/src/extractors/source/nodeType.ts#L30)*
 
 How the type should be inferred from given node.
 
@@ -47,7 +47,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputMode](_types_.extractoroptions.md#outputmode)*
 
-*Defined in [types.ts:176](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/97bee93/src/types.ts#L176)*
+*Defined in [types.ts:176](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2245c2e/src/types.ts#L176)*
 
 Default is 'asReturnValue' in which case the output will be returned by the extractor function call.
 
@@ -62,7 +62,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputVariableName](_types_.extractoroptions.md#outputvariablename)*
 
-*Defined in [types.ts:180](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/97bee93/src/types.ts#L180)*
+*Defined in [types.ts:180](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2245c2e/src/types.ts#L180)*
 
 Name of the variable to assign the value in case outputMode is `assignToVariable`
 
@@ -75,7 +75,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[removeMe](_types_.extractoroptions.md#removeme)*
 
-*Defined in [types.ts:192](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/97bee93/src/types.ts#L192)*
+*Defined in [types.ts:192](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2245c2e/src/types.ts#L192)*
 
 If true, this extractor function call expression will be removed as long as it's on an ExpressionStatement. Example:
 
@@ -96,7 +96,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[target](_types_.extractoroptions.md#target)*
 
-*Defined in [types.ts:197](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/97bee93/src/types.ts#L197)*
+*Defined in [types.ts:197](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2245c2e/src/types.ts#L197)*
 
 Can be used to reference a node in this file.
 
