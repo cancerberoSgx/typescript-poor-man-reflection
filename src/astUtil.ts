@@ -60,13 +60,13 @@ function ensureArrayLength(a: ArrayLiteralExpression, index: number, item: strin
 export function objectLiteralInsert(
   init: ObjectLiteralExpression,
   fileId: number,
-  fileVariables: { [n: string]: string }
+  objectLiteral: { [n: string]: any }
 ) {
   //TODO: check if property assignment already exists
   init.addPropertyAssignments(
-    Object.keys(fileVariables).map(name => ({
+    Object.keys(objectLiteral).map(name => ({
       name: quote(name),
-      initializer: fileVariables[name]
+      initializer: objectLiteral[name]
     }))
   )
 }

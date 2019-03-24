@@ -4,7 +4,7 @@ import { extractCallExpressions } from './astUtil'
 import { extractorGetterBuilder, getFileId, writeExtractorData } from './extractorData'
 import { defaultExtractors, isExtractorClass, isExtractorFn } from './extractors'
 import { defaultOptions, getFullOptions } from './replaceProjectFunctionCall'
-import { ExtractorGetter, FileVariableAccessor, Replacement, ReplaceProjectFunctionCallOptions } from './types'
+import { ExtractorGetter, FileVariableAccessor, Replacement, ReplaceProjectFunctionCallOptions, FileVariableDefinition, FileVariableAccessorNamePredicate } from './types'
 
 /**
  * JavaScript API to replace arguments of all function expression calls in given (ts-simple-ast SourceFile)
@@ -25,7 +25,7 @@ export function replaceFileFunctionCall(
     extractorDataFolderFileName = '__poor_man_reflection__'
   } = options
 
-  const fileVariables: { [name: string]: string } = {}
+  const fileVariables: { [name: string]: FileVariableDefinition } = {}
   const replaced: Replacement[] = []
   // let callExpressions = extractCallExpressions(
   //   options.project.getSourceFile(sourceFile.getFilePath())!,
@@ -61,13 +61,24 @@ export function replaceFileFunctionCall(
   callExpressions.forEach((c, index) => {
     const functionName = c.getFirstChildByKind(SyntaxKind.Identifier)!.getText()
     const extract = extracts[functionName]
-    const fileVariableAccessor: FileVariableAccessor = (name: string, value?: string) => {
+
+
+    const fileVariableAccessor: FileVariableAccessor = (_accessorNamePredicate: FileVariableAccessorNamePredicate, index: number, value?: string) => {
+      // const nameString = _accessorNamePredicate.functionPredicate||_accessorNamePredicate.name
+      const name = _accessorNamePredicate.name
+      // if(!nameString){
+      //   throw `Name is mandatory on any way as name or function predicate string`
+      // }
       if (value) {
-        // called at compile time
-        fileVariables[`${fileId}_${name}`] = value
+        // SETTER - called at compile time
+        // if(typeof name!=='string'){
+        //   throw 'when setting variable name must be a string and is not'+name.toString()
+        // }
+        fileVariables[`${fileId}_${name}_${index}`] = `{value: ${value}, name: ${quote(name)}, index: ${index}, extractorName: ${quote(functionName)}}` as any
       } else {
-        // called at run-time
-        return `fileVariables[${quote(`${fileId}_${name}`)}]`
+        // GETTER - called at run-time
+        return `${_accessorNamePredicate.functionPredicate ?  `Object.values(fileVariables).find(${_accessorNamePredicate.functionPredicate})` :  `fileVariables[${quote(`${fileId}_${name}_${index}`)}]`}`
+
       }
     }
     if (!extract) {
@@ -92,8 +103,6 @@ export function replaceFileFunctionCall(
     if (extract && c.getArguments().length < argIndex && !clean) {
       // extractor owned arguments are empty - we need to fill them up in order to add ours.
       for (let i = 0; i < argIndex; i++) {
-      debugger
-
         c.addArgument(extractorConfig.unusedArgumentDefaultValue || 'null as any')
       }
     }
@@ -103,7 +112,6 @@ export function replaceFileFunctionCall(
       const extractResult = isExtractorFn(extract) ? extract(...extractArgs) : extract.extract(...extractArgs)
       extractorData.push(typeof extractResult !== 'string' ? extractResult.prependToFile || '""' : '""')
       const argumentText = typeof extractResult === 'string' ? extractResult : extractResult.argument
-      debugger
       c.addArgument(argumentText)
       replaced.push({ file: sourceFile.getFilePath(), replacement: argumentText, firstTime: true })
     } else if (c.getArguments().length === argIndex + 1) {
@@ -123,8 +131,6 @@ export function replaceFileFunctionCall(
       c.getArguments()[argIndex].replaceWithText(argumentText)
       replaced.push({ file: sourceFile.getFilePath(), replacement: argumentText, firstTime: false })
     } else if (c.getArguments().length > argIndex + 1) {
-      debugger
-
       // strange situation: our argument bucket and the next one are already filled up.
       extractorData.push('""')
       console.error(

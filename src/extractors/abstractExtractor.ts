@@ -11,7 +11,7 @@ import {
 } from '../types'
 import { Map, unquote, isNode } from '../util'
 
-interface NodeWithInfo {
+export interface NodeWithInfo {
   node:Node
   info: string
 }

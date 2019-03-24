@@ -1,7 +1,7 @@
 import { Stats } from 'fs'
 import { CallExpression, Node } from 'ts-morph'
-import { ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunctionCallOptions } from '../../types'
-import { AbstractExtractor, BuildExtractorResultOutput } from '../abstractExtractor'
+import { ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunctionCallOptions, FileVariableAccessor } from '../../types'
+import { AbstractExtractor, BuildExtractorResultOutput, NodeWithInfo } from '../abstractExtractor'
 import { unquote } from '../../util';
 import { quote } from 'misc-utils-of-mine-generic';
 
@@ -15,9 +15,8 @@ Attribute({target: anImpl1, name: 'class', value: 'logger'})
 Attribute({target: aNode, name: 'otherNode', value: aFunctionDeclaration})
 ```
  */
-export const Attribute = function<T = any>(config: AttributeOptions, t?: any): (string | Stats)[] {
-  return t && t.node
-  // return t!
+export function Attribute<T = any>(config: AttributeOptions, t?: any): (string | Stats)[] {
+  return t && t.value
 }
 
 export interface AttributeOptions<T = any, F = any, E = any> extends ExtractorOptions {
@@ -36,18 +35,23 @@ export class AttributeClass extends AbstractExtractor {
     n: CallExpression,
     index: number,
     getter: ExtractorGetter,
-    options: Required<ReplaceProjectFunctionCallOptions>
+    options: Required<ReplaceProjectFunctionCallOptions>,
+    variableAccessor: FileVariableAccessor
+
   ): ExtractorResult {
     const config = this.getOptionsFromFistArg(n) as AttributeOptions||{}
-    let output: BuildExtractorResultOutput | undefined
+    let output: string |NodeWithInfo | undefined
     if(config.value||config.action==='set') {
         output = typeof config.value === 'undefined' ? 'undefined' : 
-        // typeof config.value === 'string' ? 
-        // quote(`{ name: ${quote(config.name)}, value: ${quote(config.value as string)} }`) : 
         {
           info: config.name, 
           node: config.value
-        } as BuildExtractorResultOutput
+        } as NodeWithInfo
+
+        const argument = variableAccessor({name: config.name}, index, typeof output==='string' ? output : quote(output.node. getText()))
+        return {
+          argument: argument||'""', prependToFile: '""'
+        }
     }
     else if(config.action==='remove'){
       throw 'not impl'
@@ -56,12 +60,12 @@ export class AttributeClass extends AbstractExtractor {
       throw 'not impl'
     }
     else {
-      // get
-      output=getter(index)
+      return {
+        argument: variableAccessor({name: config.name, functionPredicate: `v=>v.extractorName==='Attribute'&&v.name===${quote(config.name)}`}, index)||'""',
+        prependToFile: '""'
+      }
     }
-    // console.log(output);
-    
-    return this.buildExtractorResult(n, output!, getter, index, options, config || {})
+    // return this.buildExtractorResult(n, output!, getter, index, options, config || {})
   }
 
   protected parseOptionValue(name: string, value: Node | undefined): any {

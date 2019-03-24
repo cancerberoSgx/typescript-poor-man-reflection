@@ -251,4 +251,13 @@ export type ExtractorDataMode = 'prependVariable' | 'folderFile' | 'asArgument'
  * function files (to save data file space). The getter actually returns (at compile time) an expression that
  * when evaluated will return the variable value (at runtime)
  */
-export type FileVariableAccessor = (name: string, value?: string) => string | undefined
+export type FileVariableAccessor = (name: FileVariableAccessorNamePredicate, index: number, value?: string) => string | undefined
+export interface FileVariableDefinition {
+  name: string, index: number, value: string, extractorName: string
+}
+export interface FileVariableAccessorNamePredicate {
+  name: string
+  /** if we need a predicate function, extractors will need to pass it as string that will be printed at runtime, since at compile time we cannot be dynamic. */
+  functionPredicate?: string
+}
+//  * @param name Heads up. the name can be the name of the variable as string or a function predicate as string. If the value contains `=>` we assume

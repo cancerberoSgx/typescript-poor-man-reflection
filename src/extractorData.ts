@@ -6,7 +6,7 @@ import {
   removePrependVariableDeclaration
 } from './astUtil'
 import { defaultOptions, getFullOptions, includeFile } from './replaceProjectFunctionCall'
-import { ExtractorGetter, ReplaceFileFunctionCallOptions, ReplaceProjectFunctionCallOptions } from './types'
+import { ExtractorGetter, ReplaceFileFunctionCallOptions, ReplaceProjectFunctionCallOptions, FileVariableDefinition } from './types'
 
 /**
  * Responsible of reading the extractor data. It provides a getter function that returns a JS expression that
@@ -40,7 +40,7 @@ export function writeExtractorData(
   options_: ReplaceFileFunctionCallOptions = defaultOptions,
   callExpressions: CallExpression[],
   prependToFile: string[],
-  fileVariables: { [name: string]: string }
+  fileVariables: { [name: string]: FileVariableDefinition }
 ) {
   const options = getFullOptions(options_)
 
@@ -52,10 +52,30 @@ export function writeExtractorData(
   // by 'prependVariable' and the import declaration added by FolderFile
   removeDataFolderFileNameImportDeclaration(sourceFile, options)
   removePrependVariableDeclaration(sourceFile, options)
-
+  const fileId = getFileId(sourceFile, { extractorDataFolderFileName: options.extractorDataFolderFileName! })
   if (!options.extractorDataMode || options.extractorDataMode === 'prependVariable') {
     if (!options.clean && callExpressions.length) {
-      sourceFile.insertStatements(0, `const ${options.extractorDataVariableName} = [${prependToFile.join(', ')}]`)
+      sourceFile.insertStatements(0, `
+const ${options.extractorDataVariableName} = [${prependToFile.join(', ')}]
+const fileVariables: {[name:string]: any} = {}
+`)
+// HEADS UP: in instrumented code we used any to types dont break but we could eat our own shit and print the type!
+      let fileVariablesV = sourceFile.getVariableDeclarationOrThrow('fileVariables')
+      if (!fileVariablesV) {
+        //HEADS UP: for testing purposes, we wrap the js code with a function expression, so if we dont find it, we search in the first descendant block.
+        const block = sourceFile.getFirstDescendantByKind(SyntaxKind.Block)
+        if (block) {
+          fileVariablesV = block.getVariableDeclarationOrThrow('fileVariables')
+        }
+      }
+      if (fileVariablesV) {
+        const fileVariablesInit = fileVariablesV.getInitializerIfKindOrThrow(SyntaxKind.ObjectLiteralExpression)
+        objectLiteralInsert(fileVariablesInit, fileId, fileVariables)
+      }
+      else {
+        console.error(`Cannot find fileVariables declaration in "${sourceFile.getFilePath()}", something is very wrong with this file!`)
+      }
+
     }
   } else if (options.extractorDataMode === 'folderFile') {
     if (!options.clean) {
@@ -63,7 +83,7 @@ export function writeExtractorData(
         sourceFile,
         { ...options, extractorDataFolderFileName: options.extractorDataFolderFileName! },
         prependToFile,
-        fileVariables
+        fileVariables, fileId
       )
     }
     if (!options.clean && callExpressions.length) {
@@ -79,7 +99,8 @@ function ensureDataFile(
   sourceFile: SourceFile,
   options: ReplaceProjectFunctionCallOptions,
   prependToFile: string[],
-  fileVariables: { [name: string]: string }
+  fileVariables: { [name: string]: FileVariableDefinition }, 
+  fileId: number
 ) {
   let dataFile = sourceFile
     .getDirectory()
@@ -107,7 +128,7 @@ export function get(fileId: number, index: number) {
     dataFile.saveSync()
   }
 
-  const fileId = getFileId(sourceFile, { extractorDataFolderFileName: options.extractorDataFolderFileName! })
+
   const v = dataFile.getVariableDeclarationOrThrow('data')
   const init = v.getInitializerIfKindOrThrow(SyntaxKind.ArrayLiteralExpression)
   array2DInsert(init, fileId, -1, prependToFile)
