@@ -227,6 +227,7 @@ See (TODO.md)\[TODO.md\]
 * ["extractors/basic/nodeText"](modules/_extractors_basic_nodetext_.md)
 * ["extractors/basic/thisBlockText"](modules/_extractors_basic_thisblocktext_.md)
 * ["extractors/basic/typeText"](modules/_extractors_basic_typetext_.md)
+* ["extractors/core/if"](modules/_extractors_core_if_.md)
 * ["extractors/core/register"](modules/_extractors_core_register_.md)
 * ["extractors/fs/cat"](modules/_extractors_fs_cat_.md)
 * ["extractors/fs/exec"](modules/_extractors_fs_exec_.md)

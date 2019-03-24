@@ -24,6 +24,16 @@ The tool **will modify** TypeScript source files calling the library's functions
 
 ## Snippets
 
+### Compile-time conditionals
+
+```ts
+const logger = If({
+  condition: () => process.env.NODE_ENV==='production',
+  then: () => new LightLogger(),
+  else: () => new DevLogger()
+})
+```
+
 ### Overrides
 
 Want to make sure your classes methods and properties are actually overriding a super class/interface member ?
@@ -176,7 +186,7 @@ Basically use this only for test projects. Run `npx typescript-poor-man-reflecti
 To rollback the changes execute the following command. It will clean all the added arguments:
 
 ```sh
-npx get-type-string --clean
+npx typescript-poor-man-reflection --clean
 ```
 
 # API

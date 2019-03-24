@@ -1,5 +1,6 @@
 import { Project, SyntaxKind, TypeGuards } from 'ts-simple-ast'
 import { array2DInsert } from '../astUtil'
+import { removeWhites } from 'misc-utils-of-mine-generic';
 
 describe('astUtil', () => {
   describe('array2DInsert', () => {
@@ -39,7 +40,7 @@ describe('astUtil', () => {
       if (TypeGuards.isArrayLiteralExpression(a)) {
         const a2 = a.getElements()[0]
         if (TypeGuards.isObjectLiteralExpression(a2)) {
-          console.log(a2.getProperties().map(p => p.getText()))
+          expect(removeWhites(a2.getProperties().map(p => p.getText()).join(', m'))).toContain(removeWhites(`name: 'foo', mfriends: [{name: 'sd', friends: [], foo: function(a:number){return a+1}}]`))
         }
       }
     })

@@ -1,26 +1,71 @@
-[typescript-poor-man-reflection](../README.md) > ["extractors/fs/projectFiles"](../modules/_extractors_fs_projectfiles_.md) > [ProjectFilesOptions](../interfaces/_extractors_fs_projectfiles_.projectfilesoptions.md)
+[typescript-poor-man-reflection](../README.md) > ["extractors/core/if"](../modules/_extractors_core_if_.md) > [IfOptions](../interfaces/_extractors_core_if_.ifoptions.md)
 
-# Interface: ProjectFilesOptions
+# Interface: IfOptions
 
+## Type parameters
+#### T 
+#### F 
+#### E 
 ## Hierarchy
 
  [ExtractorOptions](_types_.extractoroptions.md)
 
-**↳ ProjectFilesOptions**
+**↳ IfOptions**
 
 ## Index
 
 ### Properties
 
-* [outputMode](_extractors_fs_projectfiles_.projectfilesoptions.md#outputmode)
-* [outputVariableName](_extractors_fs_projectfiles_.projectfilesoptions.md#outputvariablename)
-* [removeMe](_extractors_fs_projectfiles_.projectfilesoptions.md#removeme)
-* [target](_extractors_fs_projectfiles_.projectfilesoptions.md#target)
+* [condition](_extractors_core_if_.ifoptions.md#condition)
+* [else](_extractors_core_if_.ifoptions.md#else)
+* [error](_extractors_core_if_.ifoptions.md#error)
+* [outputMode](_extractors_core_if_.ifoptions.md#outputmode)
+* [outputVariableName](_extractors_core_if_.ifoptions.md#outputvariablename)
+* [removeMe](_extractors_core_if_.ifoptions.md#removeme)
+* [target](_extractors_core_if_.ifoptions.md#target)
+* [then](_extractors_core_if_.ifoptions.md#then)
 
 ---
 
 ## Properties
 
+<a id="condition"></a>
+
+###  condition
+
+**● condition**: *`function`*
+
+*Defined in [extractors/core/if.ts:36](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/9e477be/src/extractors/core/if.ts#L36)*
+
+#### Type declaration
+▸(): `boolean`
+
+**Returns:** `boolean`
+
+___
+<a id="else"></a>
+
+###  else
+
+**● else**: *`function`*
+
+*Defined in [extractors/core/if.ts:38](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/9e477be/src/extractors/core/if.ts#L38)*
+
+#### Type declaration
+▸(): `F`
+
+**Returns:** `F`
+
+___
+<a id="error"></a>
+
+### `<Optional>` error
+
+**● error**: *`undefined` \| `function`*
+
+*Defined in [extractors/core/if.ts:39](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/9e477be/src/extractors/core/if.ts#L39)*
+
+___
 <a id="outputmode"></a>
 
 ### `<Optional>` outputMode
@@ -81,6 +126,20 @@ ___
 *Defined in [types.ts:225](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/9e477be/src/types.ts#L225)*
 
 Can be used to reference a node in this file.
+
+___
+<a id="then"></a>
+
+###  then
+
+**● then**: *`function`*
+
+*Defined in [extractors/core/if.ts:37](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/9e477be/src/extractors/core/if.ts#L37)*
+
+#### Type declaration
+▸(): `T`
+
+**Returns:** `T`
 
 ___
 

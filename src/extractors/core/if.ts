@@ -4,29 +4,26 @@ import { ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunct
 import { AbstractExtractor } from '../abstractExtractor'
 
 /**
- * Returns one of the two values given according to given condition.
- *
-```ts
-// interface Logger { log(s: string):void }
+ * Returns one of the two values given according to given condition. Basic tool for dependency injection.
 
-const logger = If<()=>Logger>({
-  condition: ()=>process.env.NODE_ENV==='production',
-  then: ()=>new LightLogger(),
-  else: ()=>new DevLogger()
+```ts
+const logger = If({
+  condition: () => process.env.NODE_ENV==='production',
+  then: () => new LightLogger(),
+  else: () => new DevLogger()
 })
 ```
 
-which could be transformed in something like:
+Which could be transformed in something like:
 
 ```ts
-const logger = If<()=>Logger>({
-  condition: ()=>process.env.NODE_ENV==='production',
-  then: ()=>new LightLogger(),
-  else: ()=>new DevLogger()
-}, ()=>new DevLogger())
+const logger = If({
+  condition: () => process.env.NODE_ENV==='production',
+  then: () => new LightLogger(),
+  else: () => new DevLogger()
+}, () => new DevLogger())
 ```
 
-Basic tool for dependency injection?
  */
 export const If = function<T = any>(config: IfOptions, t?: any): (string | Stats)[] {
   return t!
@@ -42,12 +39,11 @@ interface IfOptionsAst {
   condition: Node
   then: Node
   else: Node
-  error: Node
-
-  /** TODO: now just supporting compileTime since is the useful thing */
-  evaluationMode?: 'compileTime'|'runTime'
-
-  onError?: 'then'|'else'
+  error?: Node
+  // /** TODO
+  //  * Default value if an error occurs.
+  //  */
+  // onError?: 'then' | 'else'
 }
 
 export class IfClass extends AbstractExtractor {
@@ -60,67 +56,36 @@ export class IfClass extends AbstractExtractor {
   ): ExtractorResult {
     const config = this.getOptionsFromFistArg(n) as IfOptions
     const astConfig = (config as any) as IfOptionsAst
-    let output:string|Node = 'undefined'
-    // let conditionResult = false
-    // let result = undefined
+    let output: string | Node = 'undefined'
     let errorResult = undefined
     if (config) {
-      //TODO: undefined===false ? ignoring errors if no error prop
-      const conditionResult = this.evaluate<boolean>(astConfig.condition, astConfig, {errorResult}) || false
+      const conditionResult = this.evaluate<boolean>(astConfig.condition, astConfig, { errorResult }) || false
       if (conditionResult && !errorResult) {
-        output =  astConfig.then//this.evaluate(astConfig.then, astConfig,  {errorResult}) || undefined
-      }
-      else if (!errorResult && !conditionResult) {
-        output = astConfig.else// this.evaluate(astConfig.then, astConfig,  {errorResult}) || undefined
-      }
-      else {
-        output = errorResult||'undefined'
+        output = astConfig.then
+      } else if (!errorResult && !conditionResult) {
+        output = astConfig.else
+      } else {
+        output = errorResult || 'undefined'
       }
     }
     return this.buildExtractorResult(n, output, getter, index, options, config || {})
   }
 
-  private evaluate<T = any>(n: Node, config: IfOptionsAst, error: {errorResult:any}, ignoreError = false): T | undefined {
+  private evaluate<T = any>(
+    n: Node,
+    config: IfOptionsAst,
+    error: { errorResult: any },
+    ignoreError = false
+  ): T | undefined {
     try {
       const s = `(${n.getText()})()`
-      const r =  eval(s) as T
-      // console.log('eval', r, s, eval(`process.env.COMPILE_TIME`), process.env.COMPILE_TIME, (()=>!!process.env.COMPILE_TIME)());
+      const r = eval(s) as T
       return r
     } catch (error) {
-      if(!ignoreError) {
-        const errorValue = config.error ?  this.evaluate(config.error, config, error, true) : `ERROR: ${error}`
-      error.errorResult= errorValue
-
+      if (!ignoreError) {
+        const errorValue = config.error ? this.evaluate(config.error, config, error, true) : `ERROR: ${error}`
+        error.errorResult = errorValue
       }
     }
   }
 }
-
-/*
-how to save instances & values or types or references at compile timme?
-
-const logger = If<()=>Logger>({
-  condition: ()=>process.env.NODE_ENV==='production',
-  then: ()=>new LightLogger(),
-  else: ()=>new DevLogger()
-}, )
-
-we could transform to:
-
-export const __poor_man_export_index_2 = () => new DevLogger()
-const logger = If<()=>Logger>({
-  condition: ()=>process.env.NODE_ENV==='production',
-  then: ()=>new LightLogger(),
-  else: ()=>new DevLogger()
-}, {__poor_man_export_index: 2, fileId: 4})
-
-so this could be stored, in prependVariable directly:
-
-const __extractor_prepend__ = [[__poor_man_export_index_2]]
-
-and in the fileFolder importing it:
-
-import {__poor_man_export_index_2} from './file1'
-export const data: any[][] = [[__poor_man_export_index_2]]
-
-*/

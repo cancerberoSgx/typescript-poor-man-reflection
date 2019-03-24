@@ -16,7 +16,7 @@ import { Ast } from './extractors/source/printAst'
 import { RemoveUnusedClass } from './extractors/source/removeUnused'
 import { Extractor, ExtractorClass, ExtractorFn, ExportedExtractor } from './types'
 import { RegisterClass } from './extractors/core/register'
-import { IfClass } from './extractors/core/if';
+import { IfClass } from './extractors/core/if'
 
 export const defaultExtractors: { [k: string]: Extractor } = {
   TypeText: new TypeTextClass(),
@@ -37,7 +37,7 @@ export const defaultExtractors: { [k: string]: Extractor } = {
   InferTypes: new InferTypesClass(),
   ExtractInterface: new ExtractInterfaceClass(),
   Overrides: new OverridesClass(),
-  
+
   If: new IfClass(),
   Register: (() => {
     try {

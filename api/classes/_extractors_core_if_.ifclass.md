@@ -1,12 +1,12 @@
-[typescript-poor-man-reflection](../README.md) > ["extractors/basic/nodeText"](../modules/_extractors_basic_nodetext_.md) > [NodeTextClass](../classes/_extractors_basic_nodetext_.nodetextclass.md)
+[typescript-poor-man-reflection](../README.md) > ["extractors/core/if"](../modules/_extractors_core_if_.md) > [IfClass](../classes/_extractors_core_if_.ifclass.md)
 
-# Class: NodeTextClass
+# Class: IfClass
 
 ## Hierarchy
 
  [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md)
 
-**↳ NodeTextClass**
+**↳ IfClass**
 
 ## Implements
 
@@ -16,19 +16,20 @@
 
 ### Properties
 
-* [defaultExtractorOptions](_extractors_basic_nodetext_.nodetextclass.md#defaultextractoroptions)
-* [freeArgumentNumber](_extractors_basic_nodetext_.nodetextclass.md#freeargumentnumber)
+* [defaultExtractorOptions](_extractors_core_if_.ifclass.md#defaultextractoroptions)
+* [freeArgumentNumber](_extractors_core_if_.ifclass.md#freeargumentnumber)
 
 ### Methods
 
-* [afterExtract](_extractors_basic_nodetext_.nodetextclass.md#afterextract)
-* [beforeExtract](_extractors_basic_nodetext_.nodetextclass.md#beforeextract)
-* [buildExtractorResult](_extractors_basic_nodetext_.nodetextclass.md#buildextractorresult)
-* [extract](_extractors_basic_nodetext_.nodetextclass.md#extract)
-* [getConfig](_extractors_basic_nodetext_.nodetextclass.md#getconfig)
-* [getOptionsFromFistArg](_extractors_basic_nodetext_.nodetextclass.md#getoptionsfromfistarg)
-* [getTarget](_extractors_basic_nodetext_.nodetextclass.md#gettarget)
-* [parseOptionValue](_extractors_basic_nodetext_.nodetextclass.md#parseoptionvalue)
+* [afterExtract](_extractors_core_if_.ifclass.md#afterextract)
+* [beforeExtract](_extractors_core_if_.ifclass.md#beforeextract)
+* [buildExtractorResult](_extractors_core_if_.ifclass.md#buildextractorresult)
+* [evaluate](_extractors_core_if_.ifclass.md#evaluate)
+* [extract](_extractors_core_if_.ifclass.md#extract)
+* [getConfig](_extractors_core_if_.ifclass.md#getconfig)
+* [getOptionsFromFistArg](_extractors_core_if_.ifclass.md#getoptionsfromfistarg)
+* [getTarget](_extractors_core_if_.ifclass.md#gettarget)
+* [parseOptionValue](_extractors_core_if_.ifclass.md#parseoptionvalue)
 
 ---
 
@@ -49,11 +50,11 @@ ___
 
 ### `<Protected>` freeArgumentNumber
 
-**● freeArgumentNumber**: *`number`* = 0
+**● freeArgumentNumber**: *`number`* = 1
 
-*Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[freeArgumentNumber](_extractors_abstractextractor_.abstractextractor.md#freeargumentnumber)*
+*Overrides [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[freeArgumentNumber](_extractors_abstractextractor_.abstractextractor.md#freeargumentnumber)*
 
-*Defined in [extractors/abstractExtractor.ts:16](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/9e477be/src/extractors/abstractExtractor.ts#L16)*
+*Defined in [extractors/core/if.ts:54](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/9e477be/src/extractors/core/if.ts#L54)*
 
 ___
 
@@ -129,15 +130,43 @@ ___
 **Returns:** [ExtractorResult](../interfaces/_types_.extractorresult.md)
 
 ___
+<a id="evaluate"></a>
+
+### `<Private>` evaluate
+
+▸ **evaluate**<`T`>(n: *`Node`*, config: *[IfOptionsAst](../interfaces/_extractors_core_if_.ifoptionsast.md)*, error: *`object`*, ignoreError?: *`boolean`*): `T` \| `undefined`
+
+*Defined in [extractors/core/if.ts:78](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/9e477be/src/extractors/core/if.ts#L78)*
+
+**Type parameters:**
+
+#### T 
+**Parameters:**
+
+**n: `Node`**
+
+**config: [IfOptionsAst](../interfaces/_extractors_core_if_.ifoptionsast.md)**
+
+**error: `object`**
+
+| Name | Type |
+| ------ | ------ |
+| errorResult | `any` |
+
+**`Default value` ignoreError: `boolean`**
+
+**Returns:** `T` \| `undefined`
+
+___
 <a id="extract"></a>
 
 ###  extract
 
-▸ **extract**(n: *`CallExpression`*, index: *`number`*, getter: *[ExtractorGetter](../modules/_types_.md#extractorgetter)*, options: *`Required`<[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)>*): `object` \| `object`
+▸ **extract**(n: *`CallExpression`*, index: *`number`*, getter: *[ExtractorGetter](../modules/_types_.md#extractorgetter)*, options: *`Required`<[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)>*): [ExtractorResult](../interfaces/_types_.extractorresult.md)
 
 *Overrides [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[extract](_extractors_abstractextractor_.abstractextractor.md#extract)*
 
-*Defined in [extractors/basic/nodeText.ts:18](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/9e477be/src/extractors/basic/nodeText.ts#L18)*
+*Defined in [extractors/core/if.ts:55](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/9e477be/src/extractors/core/if.ts#L55)*
 
 **Parameters:**
 
@@ -148,7 +177,7 @@ ___
 | getter | [ExtractorGetter](../modules/_types_.md#extractorgetter) |
 | options | `Required`<[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)> |
 
-**Returns:** `object` \| `object`
+**Returns:** [ExtractorResult](../interfaces/_types_.extractorresult.md)
 
 ___
 <a id="getconfig"></a>
