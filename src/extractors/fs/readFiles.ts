@@ -1,13 +1,7 @@
 import { Stats } from 'fs'
 import { cat, ls } from 'shelljs'
 import { CallExpression, Node } from 'ts-simple-ast'
-import {
-  ExtractorGetter,
-  ExtractorOptions,
-  ExtractorResult,
-  FileVariableAccessor,
-  ReplaceProjectFunctionCallOptions
-} from '../../types'
+import { ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunctionCallOptions } from '../../types'
 import { unquote } from '../../util'
 import { AbstractExtractor } from '../abstractExtractor'
 
@@ -35,8 +29,7 @@ export class ReadFilesClass extends AbstractExtractor {
     n: CallExpression,
     index: number,
     getter: ExtractorGetter,
-    options: Required<ReplaceProjectFunctionCallOptions>,
-    variableAccessor: FileVariableAccessor
+    options: Required<ReplaceProjectFunctionCallOptions>
   ): ExtractorResult {
     const config = this.getOptionsFromFistArg<ReadFilesOptions>(n)
     let output = `[]`

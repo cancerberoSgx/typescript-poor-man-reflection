@@ -1,4 +1,4 @@
-[typescript-poor-man-reflection](../README.md) > ["extractors/internal/register"](../modules/_extractors_internal_register_.md) > [RegisterOptions](../interfaces/_extractors_internal_register_.registeroptions.md)
+[typescript-poor-man-reflection](../README.md) > ["extractors/core/register"](../modules/_extractors_core_register_.md) > [RegisterOptions](../interfaces/_extractors_core_register_.registeroptions.md)
 
 # Interface: RegisterOptions
 
@@ -12,13 +12,13 @@
 
 ### Properties
 
-* [extractor](_extractors_internal_register_.registeroptions.md#extractor)
-* [fn](_extractors_internal_register_.registeroptions.md#fn)
-* [name](_extractors_internal_register_.registeroptions.md#name)
-* [outputMode](_extractors_internal_register_.registeroptions.md#outputmode)
-* [outputVariableName](_extractors_internal_register_.registeroptions.md#outputvariablename)
-* [removeMe](_extractors_internal_register_.registeroptions.md#removeme)
-* [target](_extractors_internal_register_.registeroptions.md#target)
+* [extractor](_extractors_core_register_.registeroptions.md#extractor)
+* [fn](_extractors_core_register_.registeroptions.md#fn)
+* [name](_extractors_core_register_.registeroptions.md#name)
+* [outputMode](_extractors_core_register_.registeroptions.md#outputmode)
+* [outputVariableName](_extractors_core_register_.registeroptions.md#outputvariablename)
+* [removeMe](_extractors_core_register_.registeroptions.md#removeme)
+* [target](_extractors_core_register_.registeroptions.md#target)
 
 ---
 
@@ -30,7 +30,7 @@
 
 **● extractor**: *[AbstractExtractor](../classes/_extractors_abstractextractor_.abstractextractor.md)*
 
-*Defined in [extractors/internal/register.ts:54](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/internal/register.ts#L54)*
+*Defined in extractors/core/register.ts:43*
 
 ___
 <a id="fn"></a>
@@ -39,7 +39,7 @@ ___
 
 **● fn**: *[Fn](../modules/_util_.md#fn)*
 
-*Defined in [extractors/internal/register.ts:53](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/internal/register.ts#L53)*
+*Defined in extractors/core/register.ts:42*
 
 ___
 <a id="name"></a>
@@ -48,7 +48,7 @@ ___
 
 **● name**: *`string`*
 
-*Defined in [extractors/internal/register.ts:52](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/internal/register.ts#L52)*
+*Defined in extractors/core/register.ts:41*
 
 ___
 <a id="outputmode"></a>
@@ -59,7 +59,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputMode](_types_.extractoroptions.md#outputmode)*
 
-*Defined in [types.ts:190](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/types.ts#L190)*
+*Defined in [types.ts:190](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/49486d2/src/types.ts#L190)*
 
 Default is 'asReturnValue' in which case the output will be returned by the extractor function call.
 
@@ -74,7 +74,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputVariableName](_types_.extractoroptions.md#outputvariablename)*
 
-*Defined in [types.ts:194](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/types.ts#L194)*
+*Defined in [types.ts:194](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/49486d2/src/types.ts#L194)*
 
 Name of the variable to assign the value in case outputMode is `assignToVariable`
 
@@ -87,7 +87,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[removeMe](_types_.extractoroptions.md#removeme)*
 
-*Defined in [types.ts:206](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/types.ts#L206)*
+*Defined in [types.ts:206](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/49486d2/src/types.ts#L206)*
 
 If true, this extractor function call expression will be removed as long as it's on an ExpressionStatement. Example:
 
@@ -108,7 +108,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[target](_types_.extractoroptions.md#target)*
 
-*Defined in [types.ts:211](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/types.ts#L211)*
+*Defined in [types.ts:211](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/49486d2/src/types.ts#L211)*
 
 Can be used to reference a node in this file.
 

@@ -27,32 +27,36 @@ export function replaceFileFunctionCall(
 
   const fileVariables: { [name: string]: string } = {}
   const replaced: Replacement[] = []
+  // let callExpressions = extractCallExpressions(
+  //   options.project.getSourceFile(sourceFile.getFilePath())!,
+  //   moduleSpecifier,
+  //   Object.keys(extracts)
+  // )
+  // let callExpressionNames = callExpressions.map(c => c.getFirstChildByKind(SyntaxKind.Identifier)!.getText())
+  let extractorData: string[] = []
+  const fileId = getFileId(options.project.getSourceFile(sourceFile.getFilePath())!, {
+    extractorDataFolderFileName
+  })
+
+  // callExpressionNames.forEach(extractName => {
+  // const extract = extracts[extractName]
+  Object.keys(options.extracts).forEach(extractName => {
+    const extract = options.extracts[extractName]
+    if (isExtractorClass(extract) && extract.beforeExtract) {
+      extract.beforeExtract(sourceFile.getFilePath(), extractName, options)
+    }
+  })
+
+  // })
+
+  // at beforeExtract somebody (Register()) could add a new extractor or perhaps the AST was modified so we
+  // query the call expressions again
   let callExpressions = extractCallExpressions(
     options.project.getSourceFile(sourceFile.getFilePath())!,
     moduleSpecifier,
     Object.keys(extracts)
   )
   let callExpressionNames = callExpressions.map(c => c.getFirstChildByKind(SyntaxKind.Identifier)!.getText())
-  let extractorData: string[] = []
-  const fileId = getFileId(options.project.getSourceFile(sourceFile.getFilePath())!, {
-    extractorDataFolderFileName: extractorDataFolderFileName
-  })
-
-  callExpressionNames.forEach(extractName => {
-    const extract = extracts[extractName]
-    if (isExtractorClass(extract) && extract.beforeExtract) {
-      extract.beforeExtract(sourceFile.getFilePath(), extractName, options)
-    }
-  })
-
-  // at beforeExtract somebody (Register()) could add a new extractor or perhaps the AST was modified so we
-  // query the call expressions again
-  callExpressions = extractCallExpressions(
-    options.project.getSourceFile(sourceFile.getFilePath())!,
-    moduleSpecifier,
-    Object.keys(extracts)
-  )
-  callExpressionNames = callExpressions.map(c => c.getFirstChildByKind(SyntaxKind.Identifier)!.getText())
 
   callExpressions.forEach((c, index) => {
     const functionName = c.getFirstChildByKind(SyntaxKind.Identifier)!.getText()
@@ -112,6 +116,8 @@ export function replaceFileFunctionCall(
       if (comma) {
         comma.replaceWithText('')
       }
+      // console.log('addd', argIndex, c.getArguments()[argIndex].getText(), argumentText)
+
       c.getArguments()[argIndex].replaceWithText(argumentText)
       replaced.push({ file: sourceFile.getFilePath(), replacement: argumentText, firstTime: false })
     } else if (c.getArguments().length > argIndex + 1) {

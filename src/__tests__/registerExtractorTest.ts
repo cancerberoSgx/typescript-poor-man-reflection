@@ -50,4 +50,6 @@ console.log(c)
       removeWhites(`const c = NewExtractor({}, "hello")`)
     )
   })
+
+  xit('two Register() calls for two different extractors registration should work. ', () => {})
 })

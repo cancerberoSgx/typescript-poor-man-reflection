@@ -5,7 +5,9 @@
  * FileDeclaration<Type>(orNode) to get the file path where a node was declared
  * it always adds an argument and I can't prevent it in case I dont need it. if I pass undefined should not add anything
  * flag to disable --moduleSpecifier
-
+ * we should support also Types beside functions so we can operate on types. Example, Override() - I cannot put a function call in the middle of an interface declaration (method / property signature ).
+ * a extractor should be able to register when --c
+ * register : mark the new file and on --clean register to remove it and never process it
 ### Done
 
  * Exec({program: string}) - to exec a program and return its return code, stdout, stderr. Example ( minify before embed): `const {stdout, code} = Exec('npx terser files/**/*.js -o tmp/js'); export files = code===0 ? ReadFiles({path: './tmp/js/**/*.js'}) : []`

@@ -67,6 +67,5 @@ export function g<T,G>(a, b){
       7050,
       7051
     ])
-    console.log(project.getSourceFile('test.ts')!.getText())
   })
 })

@@ -1,4 +1,4 @@
-[typescript-poor-man-reflection](../README.md) > ["extractors/internal/register"](../modules/_extractors_internal_register_.md) > [RegisterClass](../classes/_extractors_internal_register_.registerclass.md)
+[typescript-poor-man-reflection](../README.md) > ["extractors/core/register"](../modules/_extractors_core_register_.md) > [RegisterClass](../classes/_extractors_core_register_.registerclass.md)
 
 # Class: RegisterClass
 
@@ -16,19 +16,19 @@
 
 ### Properties
 
-* [defaultExtractorOptions](_extractors_internal_register_.registerclass.md#defaultextractoroptions)
-* [freeArgumentNumber](_extractors_internal_register_.registerclass.md#freeargumentnumber)
+* [defaultExtractorOptions](_extractors_core_register_.registerclass.md#defaultextractoroptions)
+* [freeArgumentNumber](_extractors_core_register_.registerclass.md#freeargumentnumber)
 
 ### Methods
 
-* [afterExtract](_extractors_internal_register_.registerclass.md#afterextract)
-* [beforeExtract](_extractors_internal_register_.registerclass.md#beforeextract)
-* [buildExtractorResult](_extractors_internal_register_.registerclass.md#buildextractorresult)
-* [extract](_extractors_internal_register_.registerclass.md#extract)
-* [getConfig](_extractors_internal_register_.registerclass.md#getconfig)
-* [getOptionsFromFistArg](_extractors_internal_register_.registerclass.md#getoptionsfromfistarg)
-* [getTarget](_extractors_internal_register_.registerclass.md#gettarget)
-* [parseOptionValue](_extractors_internal_register_.registerclass.md#parseoptionvalue)
+* [afterExtract](_extractors_core_register_.registerclass.md#afterextract)
+* [beforeExtract](_extractors_core_register_.registerclass.md#beforeextract)
+* [buildExtractorResult](_extractors_core_register_.registerclass.md#buildextractorresult)
+* [extract](_extractors_core_register_.registerclass.md#extract)
+* [getConfig](_extractors_core_register_.registerclass.md#getconfig)
+* [getOptionsFromFistArg](_extractors_core_register_.registerclass.md#getoptionsfromfistarg)
+* [getTarget](_extractors_core_register_.registerclass.md#gettarget)
+* [parseOptionValue](_extractors_core_register_.registerclass.md#parseoptionvalue)
 
 ---
 
@@ -42,7 +42,7 @@
 
 *Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[defaultExtractorOptions](_extractors_abstractextractor_.abstractextractor.md#defaultextractoroptions)*
 
-*Defined in [extractors/abstractExtractor.ts:15](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/abstractExtractor.ts#L15)*
+*Defined in [extractors/abstractExtractor.ts:15](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/49486d2/src/extractors/abstractExtractor.ts#L15)*
 
 ___
 <a id="freeargumentnumber"></a>
@@ -53,7 +53,7 @@ ___
 
 *Overrides [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[freeArgumentNumber](_extractors_abstractextractor_.abstractextractor.md#freeargumentnumber)*
 
-*Defined in [extractors/internal/register.ts:58](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/internal/register.ts#L58)*
+*Defined in extractors/core/register.ts:47*
 
 ___
 
@@ -69,7 +69,7 @@ ___
 
 *Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[afterExtract](_extractors_abstractextractor_.abstractextractor.md#afterextract)*
 
-*Defined in [extractors/abstractExtractor.ts:124](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/abstractExtractor.ts#L124)*
+*Defined in [extractors/abstractExtractor.ts:124](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/49486d2/src/extractors/abstractExtractor.ts#L124)*
 
 **Parameters:**
 
@@ -92,7 +92,7 @@ ___
 
 *Overrides [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[beforeExtract](_extractors_abstractextractor_.abstractextractor.md#beforeextract)*
 
-*Defined in [extractors/internal/register.ts:76](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/internal/register.ts#L76)*
+*Defined in extractors/core/register.ts:67*
 
 **Parameters:**
 
@@ -113,7 +113,7 @@ ___
 
 *Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[buildExtractorResult](_extractors_abstractextractor_.abstractextractor.md#buildextractorresult)*
 
-*Defined in [extractors/abstractExtractor.ts:68](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/abstractExtractor.ts#L68)*
+*Defined in [extractors/abstractExtractor.ts:68](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/49486d2/src/extractors/abstractExtractor.ts#L68)*
 
 **Parameters:**
 
@@ -137,7 +137,7 @@ ___
 
 *Overrides [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[extract](_extractors_abstractextractor_.abstractextractor.md#extract)*
 
-*Defined in [extractors/internal/register.ts:59](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/internal/register.ts#L59)*
+*Defined in extractors/core/register.ts:57*
 
 **Parameters:**
 
@@ -161,7 +161,7 @@ ___
 
 *Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[getConfig](_extractors_abstractextractor_.abstractextractor.md#getconfig)*
 
-*Defined in [extractors/abstractExtractor.ts:17](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/abstractExtractor.ts#L17)*
+*Defined in [extractors/abstractExtractor.ts:17](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/49486d2/src/extractors/abstractExtractor.ts#L17)*
 
 **Returns:** `object`
 
@@ -174,7 +174,7 @@ ___
 
 *Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[getOptionsFromFistArg](_extractors_abstractextractor_.abstractextractor.md#getoptionsfromfistarg)*
 
-*Defined in [extractors/abstractExtractor.ts:39](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/abstractExtractor.ts#L39)*
+*Defined in [extractors/abstractExtractor.ts:39](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/49486d2/src/extractors/abstractExtractor.ts#L39)*
 
 Get options from first argument or undefined.
 
@@ -202,7 +202,7 @@ ___
 
 *Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[getTarget](_extractors_abstractextractor_.abstractextractor.md#gettarget)*
 
-*Defined in [extractors/abstractExtractor.ts:104](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/abstractExtractor.ts#L104)*
+*Defined in [extractors/abstractExtractor.ts:104](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/49486d2/src/extractors/abstractExtractor.ts#L104)*
 
 **Parameters:**
 
@@ -222,7 +222,7 @@ ___
 
 *Overrides [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[parseOptionValue](_extractors_abstractextractor_.abstractextractor.md#parseoptionvalue)*
 
-*Defined in [extractors/internal/register.ts:68](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/internal/register.ts#L68)*
+*Defined in extractors/core/register.ts:49*
 
 **Parameters:**
 

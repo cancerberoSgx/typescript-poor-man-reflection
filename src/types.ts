@@ -57,7 +57,9 @@ export interface ReplaceProjectFunctionCallOptions extends ReplaceFileFunctionCa
   project?: Project
 
   /**
-   * CLI. Comma separated paths or globs to packages or .ts files (default) exporting [[ExportedExtractor]] objects will be loaded and available to user code along with the built-in extractors. User code is responsible of importing the function signature and respecting [[moduleSpecifier]]
+   * CLI. Comma separated paths or globs to packages or .ts files (default) exporting [[ExportedExtractor]]
+   * objects will be loaded and available to user code along with the built-in extractors. User code is
+   * responsible of importing the function signature and respecting [[moduleSpecifier]]
    */
   register?: string
 }
@@ -122,16 +124,23 @@ export interface ReplaceFileFunctionCallOptions {
 }
 
 interface ExtractorConfig {
-  /** if extractor uses first (0-th) argument for their private API they would return 1 so WE can use 1-th to
+  /** 
+   * If extractor uses first (0-th) argument for their private API they would return 1 so WE can use 1-th to
    * pass data */
   freeArgumentNumber?: number
-  /** related to freeArgumentNumber, if we detect no arguments in extractor reserved args, we will need to
-   * fill them with dummy values, so here we request which type. */
+  /** 
+   * Related to freeArgumentNumber, if we detect no arguments in extractor reserved args, we will need to fill
+   * them with dummy values, so here we request which type. */
   unusedArgumentDefaultValue?: string
 }
 
 export interface ExtractorClass {
+  /**
+   * Extractors can declare here some requirements like which is the argument index they use for
+   * configuration. 
+   */
   getConfig?(): ExtractorConfig
+
   /**
    * Implements the extraction or AST transformation. For each extractor function call expression found in a
    * file, its method [[extract]] is called respecting the order in the code.
@@ -149,20 +158,26 @@ export interface ExtractorClass {
     options: Required<ReplaceProjectFunctionCallOptions>,
     variableAccessor: FileVariableAccessor
   ): ExtractorResult
+
   /**
-   * Called before [[extract]] method is called for any extractors in this sourceFile. It's safe here to
-   * transform the AST leaving nodes forgotten
+   * Called before [[extract]] method **for all files and all extractors** no matter if extractor apply or not
+   * to a certain file. 
+   *
+   * It's safe here to transform the AST leaving nodes forgotten
    * (https://dsherret.github.io/ts-morph/manipulation/#strongwarningstrong - can use `insertText`,
    * `replaceText`, or `removeText` or `organizeImports`)
    */
   beforeExtract?(filePath: string, extractorName: string, options: Required<ReplaceProjectFunctionCallOptions>): void
+
   /**
-   * Called after [[extract]] method is called for all extractors in this sourceFile. It's safe here to
-   * transform the AST leaving nodes forgotten
+   * Called after [[extract]] method is called for all extractors in this sourceFile. 
+   *
+   * It's safe here to transform the AST leaving nodes forgotten
    * (https://dsherret.github.io/ts-morph/manipulation/#strongwarningstrong - can use `insertText`,
    * `replaceText`, or `removeText` or `organizeImports`)
    */
   afterExtract?(filePath: string, extractorName: string, options: Required<ReplaceProjectFunctionCallOptions>): void
+
 }
 
 export interface ExtractOptions {
@@ -221,7 +236,7 @@ export type ExtractorFn = (
   getter: ExtractorGetter,
   options: Required<ReplaceProjectFunctionCallOptions>,
   variableAccessor: FileVariableAccessor
-) => // project?: Project
+) =>  
 ExtractorResult | string
 
 export interface ExtractorResult {
@@ -234,7 +249,7 @@ export type ExtractorGetter = (index: number) => string
 export type ExtractorDataMode = 'prependVariable' | 'folderFile' | 'asArgument'
 
 /**
- * setter / getter for variables that are common between same function calls of same file or even different
+ * Setter / getter for variables that are common between same function calls of same file or even different
  * function files (to save data file space). The getter actually returns (at compile time) an expression that
  * when evaluated will return the variable value (at runtime)
  */
