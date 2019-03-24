@@ -1,0 +1,1 @@
+* how to emit and run a TS file that executes an extractor without spawn : ["emit execute extractor and evaluate here instead of spawning"](src/__tests__/attributeExtractorTest.ts) 

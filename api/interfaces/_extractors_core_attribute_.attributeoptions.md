@@ -1,33 +1,51 @@
-[typescript-poor-man-reflection](../README.md) > ["extractors/source/inferTypes"](../modules/_extractors_source_infertypes_.md) > [InferTypesOptions](../interfaces/_extractors_source_infertypes_.infertypesoptions.md)
+[typescript-poor-man-reflection](../README.md) > ["extractors/core/attribute"](../modules/_extractors_core_attribute_.md) > [AttributeOptions](../interfaces/_extractors_core_attribute_.attributeoptions.md)
 
-# Interface: InferTypesOptions
+# Interface: AttributeOptions
 
-Will add Types to variables, parameters, etc inferring from usage on given files. If no file is provided then it will call for the current file. Returns `undefined`.
-
-```ts
-InferTypes({path: 'src/** /*.ts*'})
-```
-
+## Type parameters
+#### T 
+#### F 
+#### E 
 ## Hierarchy
 
-↳  [AbstractRefactorExtractorOptions](_extractors_source_abstractrefactorextractor_.abstractrefactorextractoroptions.md)
+ [ExtractorOptions](_types_.extractoroptions.md)
 
-**↳ InferTypesOptions**
+**↳ AttributeOptions**
 
 ## Index
 
 ### Properties
 
-* [outputMode](_extractors_source_infertypes_.infertypesoptions.md#outputmode)
-* [outputVariableName](_extractors_source_infertypes_.infertypesoptions.md#outputvariablename)
-* [path](_extractors_source_infertypes_.infertypesoptions.md#path)
-* [removeMe](_extractors_source_infertypes_.infertypesoptions.md#removeme)
-* [target](_extractors_source_infertypes_.infertypesoptions.md#target)
+* [action](_extractors_core_attribute_.attributeoptions.md#action)
+* [name](_extractors_core_attribute_.attributeoptions.md#name)
+* [outputMode](_extractors_core_attribute_.attributeoptions.md#outputmode)
+* [outputVariableName](_extractors_core_attribute_.attributeoptions.md#outputvariablename)
+* [removeMe](_extractors_core_attribute_.attributeoptions.md#removeme)
+* [target](_extractors_core_attribute_.attributeoptions.md#target)
+* [value](_extractors_core_attribute_.attributeoptions.md#value)
 
 ---
 
 ## Properties
 
+<a id="action"></a>
+
+### `<Optional>` action
+
+**● action**: *"set" \| "get" \| "remove" \| "list"*
+
+*Defined in [extractors/core/attribute.ts:43](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2b5b97c/src/extractors/core/attribute.ts#L43)*
+
+___
+<a id="name"></a>
+
+###  name
+
+**● name**: *`string`*
+
+*Defined in [extractors/core/attribute.ts:37](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2b5b97c/src/extractors/core/attribute.ts#L37)*
+
+___
 <a id="outputmode"></a>
 
 ### `<Optional>` outputMode
@@ -54,19 +72,6 @@ ___
 *Defined in [types.ts:208](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2b5b97c/src/types.ts#L208)*
 
 Name of the variable to assign the value in case outputMode is `assignToVariable`
-
-___
-<a id="path"></a>
-
-### `<Optional>` path
-
-**● path**: *`undefined` \| `string`*
-
-*Inherited from [AbstractRefactorExtractorOptions](_extractors_source_abstractrefactorextractor_.abstractrefactorextractoroptions.md).[path](_extractors_source_abstractrefactorextractor_.abstractrefactorextractoroptions.md#path)*
-
-*Defined in [extractors/source/abstractRefactorExtractor.ts:12](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2b5b97c/src/extractors/source/abstractRefactorExtractor.ts#L12)*
-
-Files on which to perform the action. If undefined, it will be applied on current file.
 
 ___
 <a id="removeme"></a>
@@ -101,6 +106,17 @@ ___
 *Defined in [types.ts:225](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2b5b97c/src/types.ts#L225)*
 
 Can be used to reference a node in this file.
+
+___
+<a id="value"></a>
+
+### `<Optional>` value
+
+**● value**: *`string` \| `Node`*
+
+*Defined in [extractors/core/attribute.ts:41](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2b5b97c/src/extractors/core/attribute.ts#L41)*
+
+if undefined means it's setter
 
 ___
 

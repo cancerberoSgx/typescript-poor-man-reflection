@@ -4,7 +4,14 @@ import { extractCallExpressions } from './astUtil'
 import { extractorGetterBuilder, getFileId, writeExtractorData } from './extractorData'
 import { defaultExtractors, isExtractorClass, isExtractorFn } from './extractors'
 import { defaultOptions, getFullOptions } from './replaceProjectFunctionCall'
-import { ExtractorGetter, FileVariableAccessor, Replacement, ReplaceProjectFunctionCallOptions, FileVariableDefinition, FileVariableAccessorNamePredicate } from './types'
+import {
+  ExtractorGetter,
+  FileVariableAccessor,
+  Replacement,
+  ReplaceProjectFunctionCallOptions,
+  FileVariableDefinition,
+  FileVariableAccessorNamePredicate
+} from './types'
 
 /**
  * JavaScript API to replace arguments of all function expression calls in given (ts-simple-ast SourceFile)
@@ -62,23 +69,34 @@ export function replaceFileFunctionCall(
     const functionName = c.getFirstChildByKind(SyntaxKind.Identifier)!.getText()
     const extract = extracts[functionName]
 
-
-    const fileVariableAccessor: FileVariableAccessor = (_accessorNamePredicate: FileVariableAccessorNamePredicate, index: number, value?: string) => {
+    const fileVariableAccessor: FileVariableAccessor = (
+      _accessorNamePredicate: string | FileVariableAccessorNamePredicate,
+      index: number,
+      value?: string
+    ) => {
       // const nameString = _accessorNamePredicate.functionPredicate||_accessorNamePredicate.name
-      const name = _accessorNamePredicate.name
-      // if(!nameString){
-      //   throw `Name is mandatory on any way as name or function predicate string`
-      // }
+      const name = typeof _accessorNamePredicate === 'string' ? _accessorNamePredicate : _accessorNamePredicate.name
+      if (!name) {
+        throw `Name is mandatory on any way as name or function predicate string`
+      }
+      const functionPredicate =
+        typeof _accessorNamePredicate === 'string' ? undefined : _accessorNamePredicate.functionPredicate || undefined
+
       if (value) {
         // SETTER - called at compile time
         // if(typeof name!=='string'){
         //   throw 'when setting variable name must be a string and is not'+name.toString()
         // }
-        fileVariables[`${fileId}_${name}_${index}`] = `{value: ${value}, name: ${quote(name)}, index: ${index}, extractorName: ${quote(functionName)}}` as any
+        fileVariables[`${fileId}_${name}_${index}`] = `{value: ${value}, name: ${quote(
+          name
+        )}, index: ${index}, extractorName: ${quote(functionName)}}` as any
       } else {
         // GETTER - called at run-time
-        return `${_accessorNamePredicate.functionPredicate ?  `Object.values(fileVariables).find(${_accessorNamePredicate.functionPredicate})` :  `fileVariables[${quote(`${fileId}_${name}_${index}`)}]`}`
-
+        return `${
+          functionPredicate
+            ? `Object.values(fileVariables).find(${functionPredicate})`
+            : `fileVariables[${quote(`${fileId}_${name}_${index}`)}]`
+        }`
       }
     }
     if (!extract) {

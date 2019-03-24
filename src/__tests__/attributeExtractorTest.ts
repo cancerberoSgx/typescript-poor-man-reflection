@@ -2,10 +2,10 @@ import { removeWhites } from 'misc-utils-of-mine-generic'
 import Project, { ScriptTarget } from 'ts-morph'
 import { replaceFileFunctionCall } from '../replaceFileFunctionCall'
 import { defaultOptions } from '../replaceProjectFunctionCall'
-import { Attribute } from '../extractors/core/attribute';
-import { evaluate, Fn, evaluateAndError } from '../util';
+import { Attribute } from '../extractors/core/attribute'
+import { evaluate, Fn, evaluateAndError } from '../util'
 
-fdescribe('AttributeExtractor', () => {
+describe('AttributeExtractor', () => {
   it('dummy', () => {
     expect(1).toBe(1)
   })
@@ -25,12 +25,13 @@ Attribute({target: C, name: 'attr1', value: 'hello'})
       project
     })
 
-    expect(removeWhites(project.getSourceFile('test.ts')!.getText())).toContain(removeWhites(`
+    expect(removeWhites(project.getSourceFile('test.ts')!.getText())).toContain(
+      removeWhites(`
 class C{}
 Attribute({target: C, name: 'attr1', value: 'hello'}, {name: "attr1", node: 'hello'})
-    `))
+    `)
+    )
   })
-
 
   it('should get and set strings asPrependVariable', () => {
     const project = new Project()
@@ -46,42 +47,46 @@ Attribute({target: C, name: 'attr1', value: 'hello'}, {name: "attr1", node: 'hel
       ...{ extractorDataMode: 'prependVariable' },
       project
     })
-    expect(removeWhites(project.getSourceFile('test.ts')!.getText())).toContain(removeWhites(`
+    expect(removeWhites(project.getSourceFile('test.ts')!.getText())).toContain(
+      removeWhites(`
 const __extractor_prepend__ = [{name: "attr1", node: 'hello'}]
 class C{}
 Attribute({target: C, name: 'attr1', value: 'hello'}, __extractor_prepend__[0])
-     `))
+     `)
+    )
   })
 
-
-  fit('try to emit and evaluate here instead of spawning', () => {
+  it('emit execute extractor and evaluate here instead of spawning', () => {
     //  const f = project.createSourceFile(
 
     // )
 
-let r : any
-//     let r = evaluateExtractorTestCode(`
-// function test(){
-//   class C{}
-//   return Attribute({target: C, name: 'attr1', value: function(q){return q+2}})
-// }
-// `, 'Attribute', Attribute)
-//     console.log(r.resultBefore, r.resultAfter, r.jsBefore, r.jsAfter);
-//     console.log(r.jsAfter);
+    let r: any
+    //     let r = evaluateExtractorTestCode(`
+    // function test(){
+    //   class C{}
+    //   return Attribute({target: C, name: 'attr1', value: function(q){return q+2}})
+    // }
+    // `, 'Attribute', Attribute)
+    //     console.log(r.resultBefore, r.resultAfter, r.jsBefore, r.jsAfter);
+    //     console.log(r.jsAfter);
 
-    r = evaluateExtractorTestCode(`
+    r = evaluateExtractorTestCode(
+      `
 function test(){
   class C{}
   Attribute({target: C, name: 'attr1', value: function(q){return q+2}})
   const val = Attribute({target: C, name: 'attr1'})
   return val(4)
 }
-`, 'Attribute', Attribute)
+`,
+      'Attribute',
+      Attribute
+    )
     // console.log(r.resultBefore, r.resultAfter, r.jsBefore, r.jsAfter);
-// console.log(r.jsAfter);
+    // console.log(r.jsAfter);
 
-  expect(r.resultAfter).toBe(6)
-
+    expect(r.resultAfter).toBe(6)
 
     // r= evaluateExtractorTestCode(`
     // function test(){
@@ -90,8 +95,6 @@ function test(){
     // }
     // `, 'Attribute', Attribute)
     // console.log(r);
-
-
 
     // console.log('EVAL: ',  eval(js), 'END');
 
@@ -102,11 +105,10 @@ function test(){
     //      `))
   })
 
-  xit('should get and set nodes', () => { })
-  xit('should get and set with type nodes', () => { })
+  xit('should get and set nodes', () => {})
+  xit('should get and set with type nodes', () => {})
 
-  xit('should ?? with other value types (object, function, etc', () => { })
-
+  xit('should ?? with other value types (object, function, etc', () => {})
 })
 function evaluateExtractorTestCode(code: string, extractorName: string, extractorFn: Fn) {
   const project = new Project({ compilerOptions: { target: ScriptTarget.ESNext } })
@@ -117,7 +119,7 @@ ${extractorFn.toString()}
 ${project.emitToMemory().getFiles()[0].text}
 return test()
   })()
-`.trim();
+`.trim()
 
   const resultBefore = evaluateAndError(jsBefore)
   replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
@@ -131,10 +133,14 @@ ${extractorFn.toString()}
 ${project.emitToMemory().getFiles()[0].text}
 return test()
   })()
-`.trim();
+`.trim()
   const resultAfter = evaluateAndError(jsAfter)
 
-  return { resultBefore, resultAfter, jsBefore: jsBefore.replace(/\\n/gm, '\n'), jsAfter: jsAfter.replace(/\\n/gm, '\n'), project }//, file:  project.getSourceFile('test.ts')!}
-
+  return {
+    resultBefore,
+    resultAfter,
+    jsBefore: jsBefore.replace(/\\n/gm, '\n'),
+    jsAfter: jsAfter.replace(/\\n/gm, '\n'),
+    project
+  } //, file:  project.getSourceFile('test.ts')!}
 }
-

@@ -1,4 +1,4 @@
-import { Node } from 'ts-morph';
+import { Node } from 'ts-morph'
 
 // TODO: from misc
 
@@ -17,9 +17,6 @@ export function evaluateAndError<T = any>(s: string): T | undefined {
   }
 }
 
-
-
-
 export type Map<V> = { [key: string]: V }
 export function unquote(s: string) {
   return s.substring(1, s.length - 1)
@@ -33,9 +30,7 @@ export function withoutExtension(f: string) {
 }
 export type Fn = (...args: any[]) => any
 
-
-
 // to ts-simple-ast-extra
-export function isNode(n:any):n is Node {
-  return n && typeof n.getText === 'function' && typeof n.getKindName==='function'
+export function isNode(n: any): n is Node {
+  return n && typeof n.getText === 'function' && typeof n.getKindName === 'function'
 }

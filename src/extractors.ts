@@ -17,7 +17,7 @@ import { RemoveUnusedClass } from './extractors/source/removeUnused'
 import { Extractor, ExtractorClass, ExtractorFn, ExportedExtractor } from './types'
 import { RegisterClass } from './extractors/core/register'
 import { IfClass } from './extractors/core/if'
-import { AttributeClass } from './extractors/core/attribute';
+import { AttributeClass } from './extractors/core/attribute'
 
 export const defaultExtractors: { [k: string]: Extractor } = {
   TypeText: new TypeTextClass(),
