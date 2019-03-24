@@ -116,7 +116,6 @@ export function replaceFileFunctionCall(
       if (comma) {
         comma.replaceWithText('')
       }
-      // console.log('addd', argIndex, c.getArguments()[argIndex].getText(), argumentText)
 
       c.getArguments()[argIndex].replaceWithText(argumentText)
       replaced.push({ file: sourceFile.getFilePath(), replacement: argumentText, firstTime: false })

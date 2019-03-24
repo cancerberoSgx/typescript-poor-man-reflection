@@ -1,4 +1,4 @@
-import { unique } from 'misc-utils-of-mine-generic'
+import { unique, quote } from 'misc-utils-of-mine-generic'
 import { CallExpression, Node, SyntaxKind, TypeGuards } from 'ts-simple-ast'
 import { extractCallExpressions, getDefinitionsOf } from '../astUtil'
 import {
@@ -52,8 +52,8 @@ export abstract class AbstractExtractor implements ExtractorClass {
   }
 
   /**
-   * since options need to be parsed from a literal object Node, subclasses might need to override
-   * this method to parse their own options
+   * since options need to be parsed from a literal object Node, subclasses might need to override this method
+   * to parse their own options
    */
   protected parseOptionValue(name: string, value: Node | undefined): any {
     if (value && ['outputMode', 'outputVariableName'].includes(name)) {
@@ -65,25 +65,32 @@ export abstract class AbstractExtractor implements ExtractorClass {
     }
   }
 
+  /**
+   * @param output if string, then it will be stored and returned in argument as a string literal. If node, it
+   * will be stored as string literal (not escaped) and it will be returned (in argument) as the Node literal
+   * no string. In later case, it needs to be an expression(cannot be a statement) but in general, it will be
+   * since they are using it in an argument value.
+   */
   protected buildExtractorResult(
     n: CallExpression,
-    output: string,
+    output: string | Node,
     getter: ExtractorGetter,
     index: number,
     extractOptions: Required<ReplaceProjectFunctionCallOptions>,
     extractorOptions?: ExtractorOptions
   ): ExtractorResult {
+    const stringOutput = typeof output === 'string' ? output : quote(output.getText())
     if (extractorOptions && extractorOptions.outputMode === 'assignToVariable' && extractorOptions.outputVariableName) {
       const block = n.getFirstAncestor(TypeGuards.isBlock)
       if (block) {
         const varDecl = block.getVariableDeclaration(extractorOptions.outputVariableName)
         if (varDecl) {
-          varDecl.setInitializer(output) // TODO: we could store previous initializer value as a variable so we can clean it
+          varDecl.setInitializer(stringOutput) // TODO: we could store previous initializer value as a variable so we can clean it
         } else {
           const statement = n.getFirstAncestor(a => TypeGuards.isBlock(a.getParent()))
           if (statement) {
             block.insertVariableStatement(statement.getChildIndex() + 1, {
-              declarations: [{ name: unique('ast_output_'), initializer: output }]
+              declarations: [{ name: unique('ast_output_'), initializer: stringOutput }]
             })
           }
         }
@@ -91,12 +98,15 @@ export abstract class AbstractExtractor implements ExtractorClass {
     }
     if (extractOptions.extractorDataMode === 'asArgument') {
       return {
-        argument: output
+        argument: typeof output !== 'string' ? unquote(stringOutput) : stringOutput
       }
     } else {
+      let argument = typeof output !== 'string' ? unquote(getter(index)) : getter(index)
       return {
-        argument: getter(index),
-        prependToFile: output
+        argument,
+        // TODO: we could store the variable in an object with the information about if it was quoted so we
+        // can unquote here... instead of just a string
+        prependToFile: stringOutput
       }
     }
   }
@@ -122,7 +132,8 @@ export abstract class AbstractExtractor implements ExtractorClass {
   }
 
   afterExtract(filePath: string, extractorName: string, options: Required<ReplaceProjectFunctionCallOptions>) {
-    // HEADS UP: since these operations might be destructive (forgotten Nodes) we need to re-create the sourceFile and the CallExpressions here and in any subclass implementation
+    // HEADS UP: since these operations might be destructive (forgotten Nodes) we need to re-create the
+    // sourceFile and the CallExpressions here and in any subclass implementation
     const sourceFile = options.project && options.project.getSourceFile(filePath)
     if (sourceFile) {
       const callExpressions = extractCallExpressions(sourceFile, options.moduleSpecifier, [extractorName])
@@ -137,20 +148,17 @@ export abstract class AbstractExtractor implements ExtractorClass {
       })
     }
   }
+
   beforeExtract(filePath: string, extractorName: string, options: Required<ReplaceProjectFunctionCallOptions>) {
-    //   // HEADS UP: since these operations might be destructive (forgotten Nodes) we need to re-create the sourceFile and the CallExpressions here and in any subclass implementation
-    //   const sourceFile = options.project && options.project.getSourceFile(filePath)
-    //   if(sourceFile){
-    //     const callExpressions = extractCallExpressions(sourceFile, options.moduleSpecifier, [extractorName])
-    //     callExpressions.forEach(c => {
-    //       const config = this.getOptionsFromFistArg(c) || {}
-    //       if (config.removeMe) {
-    //         const parent = c.getParent()
-    //         if (TypeGuards.isStatement(parent)) {
-    //           parent.remove()
+    //   // HEADS UP: since these operations might be destructive (forgotten Nodes) we need to re-create the
+    //   sourceFile and the CallExpressions here and in any subclass implementation const sourceFile =
+    //   options.project && options.project.getSourceFile(filePath) if(sourceFile){const callExpressions =
+    //   extractCallExpressions(sourceFile, options.moduleSpecifier, [extractorName])
+    //   callExpressions.forEach(c => {const config = this.getOptionsFromFistArg(c) || {} if (config.removeMe)
+    //   {const parent = c.getParent() if (TypeGuards.isStatement(parent)) {parent.remove()
     //         }
     //       }
     //    })
-    //  }
+    //   }
   }
 }

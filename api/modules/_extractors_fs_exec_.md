@@ -27,7 +27,7 @@
 
 ▸ **Exec**<`T`>(config: *[ExecOptions](../interfaces/_extractors_fs_exec_.execoptions.md)*, t?: *`any`*): [ExecResult](../interfaces/_extractors_fs_exec_.execresult.md) \| `undefined`
 
-*Defined in [extractors/fs/exec.ts:21](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/49486d2/src/extractors/fs/exec.ts#L21)*
+*Defined in [extractors/fs/exec.ts:21](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1ad456b/src/extractors/fs/exec.ts#L21)*
 
 Executes given command synchronously. Returns process status code, stdout and stderr.
 

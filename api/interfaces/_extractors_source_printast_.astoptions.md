@@ -31,7 +31,7 @@
 
 **● asJson**: *`undefined` \| `false` \| `true`*
 
-*Defined in [extractors/source/printAst.ts:47](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/49486d2/src/extractors/source/printAst.ts#L47)*
+*Defined in [extractors/source/printAst.ts:47](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1ad456b/src/extractors/source/printAst.ts#L47)*
 
 If true it will return the AST as JSON object. If false if will return a string with indentation representing the AST
 
@@ -42,7 +42,7 @@ ___
 
 **● dontPrintIdentifier**: *`undefined` \| `false` \| `true`*
 
-*Defined in [extractors/source/printAst.ts:41](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/49486d2/src/extractors/source/printAst.ts#L41)*
+*Defined in [extractors/source/printAst.ts:41](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1ad456b/src/extractors/source/printAst.ts#L41)*
 
 ___
 <a id="dontprintkindname"></a>
@@ -51,7 +51,7 @@ ___
 
 **● dontPrintKindName**: *`undefined` \| `false` \| `true`*
 
-*Defined in [extractors/source/printAst.ts:40](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/49486d2/src/extractors/source/printAst.ts#L40)*
+*Defined in [extractors/source/printAst.ts:40](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1ad456b/src/extractors/source/printAst.ts#L40)*
 
 ___
 <a id="dontprinttext"></a>
@@ -60,7 +60,7 @@ ___
 
 **● dontPrintText**: *`undefined` \| `false` \| `true`*
 
-*Defined in [extractors/source/printAst.ts:42](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/49486d2/src/extractors/source/printAst.ts#L42)*
+*Defined in [extractors/source/printAst.ts:42](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1ad456b/src/extractors/source/printAst.ts#L42)*
 
 ___
 <a id="outputmode"></a>
@@ -71,7 +71,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputMode](_types_.extractoroptions.md#outputmode)*
 
-*Defined in [types.ts:190](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/49486d2/src/types.ts#L190)*
+*Defined in [types.ts:204](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1ad456b/src/types.ts#L204)*
 
 Default is 'asReturnValue' in which case the output will be returned by the extractor function call.
 
@@ -86,7 +86,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputVariableName](_types_.extractoroptions.md#outputvariablename)*
 
-*Defined in [types.ts:194](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/49486d2/src/types.ts#L194)*
+*Defined in [types.ts:208](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1ad456b/src/types.ts#L208)*
 
 Name of the variable to assign the value in case outputMode is `assignToVariable`
 
@@ -99,7 +99,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[removeMe](_types_.extractoroptions.md#removeme)*
 
-*Defined in [types.ts:206](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/49486d2/src/types.ts#L206)*
+*Defined in [types.ts:220](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1ad456b/src/types.ts#L220)*
 
 If true, this extractor function call expression will be removed as long as it's on an ExpressionStatement. Example:
 
@@ -120,7 +120,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[target](_types_.extractoroptions.md#target)*
 
-*Defined in [types.ts:211](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/49486d2/src/types.ts#L211)*
+*Defined in [types.ts:225](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/1ad456b/src/types.ts#L225)*
 
 Can be used to reference a node in this file.
 

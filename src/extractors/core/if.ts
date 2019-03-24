@@ -54,12 +54,16 @@
 //   ): ExtractorResult {
 //     const config = this.getOptionsFromFistArg(n) as IfOptions
 //     const astConfig = (config as any) as IfOptionsAst
-//     let output = ''
+//     let output = 'undefined'
 //     if (config) {
 //       let conditionResult = false
+//       let thenResult = undefined
+//       let elseResult = undefined
 //       //TODO: undefined===false ? ignoring errors if no error prop
 //       conditionResult = this.evaluate<boolean>(astConfig.condition, astConfig) || false
 //       if (conditionResult) {
+//         thenResult = this.evaluate<boolean>(astConfig.then, astConfig) || false
+
 //       }
 //     }
 //     return this.buildExtractorResult(n, output, getter, index, options, config || {})

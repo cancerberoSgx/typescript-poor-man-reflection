@@ -124,11 +124,11 @@ export interface ReplaceFileFunctionCallOptions {
 }
 
 interface ExtractorConfig {
-  /** 
+  /**
    * If extractor uses first (0-th) argument for their private API they would return 1 so WE can use 1-th to
    * pass data */
   freeArgumentNumber?: number
-  /** 
+  /**
    * Related to freeArgumentNumber, if we detect no arguments in extractor reserved args, we will need to fill
    * them with dummy values, so here we request which type. */
   unusedArgumentDefaultValue?: string
@@ -137,7 +137,7 @@ interface ExtractorConfig {
 export interface ExtractorClass {
   /**
    * Extractors can declare here some requirements like which is the argument index they use for
-   * configuration. 
+   * configuration.
    */
   getConfig?(): ExtractorConfig
 
@@ -161,7 +161,7 @@ export interface ExtractorClass {
 
   /**
    * Called before [[extract]] method **for all files and all extractors** no matter if extractor apply or not
-   * to a certain file. 
+   * to a certain file.
    *
    * It's safe here to transform the AST leaving nodes forgotten
    * (https://dsherret.github.io/ts-morph/manipulation/#strongwarningstrong - can use `insertText`,
@@ -170,14 +170,13 @@ export interface ExtractorClass {
   beforeExtract?(filePath: string, extractorName: string, options: Required<ReplaceProjectFunctionCallOptions>): void
 
   /**
-   * Called after [[extract]] method is called for all extractors in this sourceFile. 
+   * Called after [[extract]] method is called for all extractors in this sourceFile.
    *
    * It's safe here to transform the AST leaving nodes forgotten
    * (https://dsherret.github.io/ts-morph/manipulation/#strongwarningstrong - can use `insertText`,
    * `replaceText`, or `removeText` or `organizeImports`)
    */
   afterExtract?(filePath: string, extractorName: string, options: Required<ReplaceProjectFunctionCallOptions>): void
-
 }
 
 export interface ExtractOptions {
@@ -236,8 +235,7 @@ export type ExtractorFn = (
   getter: ExtractorGetter,
   options: Required<ReplaceProjectFunctionCallOptions>,
   variableAccessor: FileVariableAccessor
-) =>  
-ExtractorResult | string
+) => ExtractorResult | string
 
 export interface ExtractorResult {
   argument: string

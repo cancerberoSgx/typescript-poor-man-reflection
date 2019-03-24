@@ -1,9 +1,11 @@
 import { removeWhites } from 'misc-utils-of-mine-generic'
-import { CallExpression, Project, SyntaxKind, TypeGuards } from 'ts-simple-ast'
+import { CallExpression, Project, SyntaxKind, TypeGuards, Node } from 'ts-simple-ast'
 import { AbstractExtractor } from '../extractors/abstractExtractor'
 import { replaceFileFunctionCall } from '../replaceFileFunctionCall'
 import { defaultOptions } from '../replaceProjectFunctionCall'
 import { ExtractorFn } from '../types'
+import { asString } from '../util'
+
 describe('customExtractors', () => {
   it('should build my custom function name and extract', () => {
     const project = new Project()
@@ -152,6 +154,45 @@ function f(){}
 var a = 1, c = 'foo'
 `
       )
+    )
+  })
+
+  it('should allow to store any kind of value', () => {
+    const project = new Project()
+    project.createSourceFile(
+      'test.ts',
+      `
+        function previous(a:number){return a+1}
+        SaverProbe5({target: previous})`
+    )
+
+    class SaverProbe5Class extends AbstractExtractor {
+      protected freeArgumentNumber = 1
+      extract(...[c, i, g, options, v]: Parameters<ExtractorFn>) {
+        const config = this.getOptionsFromFistArg(c) || {}
+        const target = this.getTarget(c, config)
+        let output: string | Node = `undefined`
+        if (target) {
+          output = target
+        }
+        return this.buildExtractorResult(c, output, g, i, options, config)
+      }
+    }
+
+    replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
+      ...defaultOptions,
+      ...{ extractorDataMode: 'asArgument' },
+      extracts: {
+        SaverProbe5: new SaverProbe5Class()
+      },
+      project
+    })
+
+    expect(removeWhites(project.getSourceFile('test.ts')!.getText())).toContain(
+      removeWhites(`
+        function previous(a:number){return a+1}
+        SaverProbe5({target: previous}, function previous(a:number){return a+1})
+        `)
     )
   })
 })
