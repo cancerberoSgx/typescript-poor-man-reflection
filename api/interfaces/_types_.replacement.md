@@ -24,7 +24,7 @@
 
 **● file**: *`string`*
 
-*Defined in [types.ts:5](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/types.ts#L5)*
+*Defined in [types.ts:5](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/types.ts#L5)*
 
 ___
 <a id="firsttime"></a>
@@ -33,7 +33,7 @@ ___
 
 **● firstTime**: *`boolean`*
 
-*Defined in [types.ts:7](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/types.ts#L7)*
+*Defined in [types.ts:7](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/types.ts#L7)*
 
 ___
 <a id="replacement"></a>
@@ -42,7 +42,7 @@ ___
 
 **● replacement**: *`string`*
 
-*Defined in [types.ts:6](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/types.ts#L6)*
+*Defined in [types.ts:6](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/types.ts#L6)*
 
 ___
 

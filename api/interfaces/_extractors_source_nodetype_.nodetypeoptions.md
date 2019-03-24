@@ -17,6 +17,7 @@
 * [outputVariableName](_extractors_source_nodetype_.nodetypeoptions.md#outputvariablename)
 * [removeMe](_extractors_source_nodetype_.nodetypeoptions.md#removeme)
 * [target](_extractors_source_nodetype_.nodetypeoptions.md#target)
+* [throwOnError](_extractors_source_nodetype_.nodetypeoptions.md#throwonerror)
 
 ---
 
@@ -28,7 +29,7 @@
 
 **● inferenceMode**: *[InferenceNode](../modules/_extractors_source_nodetype_.md#inferencenode)*
 
-*Defined in [extractors/source/nodeType.ts:30](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/extractors/source/nodeType.ts#L30)*
+*Defined in [extractors/source/nodeType.ts:30](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/extractors/source/nodeType.ts#L30)*
 
 How the type should be inferred from given node.
 
@@ -47,7 +48,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputMode](_types_.extractoroptions.md#outputmode)*
 
-*Defined in [types.ts:204](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/types.ts#L204)*
+*Defined in [types.ts:204](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/types.ts#L204)*
 
 Default is 'asReturnValue' in which case the output will be returned by the extractor function call.
 
@@ -62,7 +63,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputVariableName](_types_.extractoroptions.md#outputvariablename)*
 
-*Defined in [types.ts:208](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/types.ts#L208)*
+*Defined in [types.ts:208](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/types.ts#L208)*
 
 Name of the variable to assign the value in case outputMode is `assignToVariable`
 
@@ -75,7 +76,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[removeMe](_types_.extractoroptions.md#removeme)*
 
-*Defined in [types.ts:220](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/types.ts#L220)*
+*Defined in [types.ts:220](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/types.ts#L220)*
 
 If true, this extractor function call expression will be removed as long as it's on an ExpressionStatement. Example:
 
@@ -96,9 +97,20 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[target](_types_.extractoroptions.md#target)*
 
-*Defined in [types.ts:225](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/types.ts#L225)*
+*Defined in [types.ts:225](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/types.ts#L225)*
 
 Can be used to reference a node in this file.
+
+___
+<a id="throwonerror"></a>
+
+### `<Optional>` throwOnError
+
+**● throwOnError**: *`undefined` \| `false` \| `true`*
+
+*Inherited from [ExtractorOptions](_types_.extractoroptions.md).[throwOnError](_types_.extractoroptions.md#throwonerror)*
+
+*Defined in [types.ts:227](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/types.ts#L227)*
 
 ___
 

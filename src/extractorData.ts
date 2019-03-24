@@ -1,10 +1,5 @@
 import { CallExpression, SourceFile, SyntaxKind } from 'ts-morph'
-import {
-  array2DInsert,
-  objectLiteralInsert,
-  removeDataFolderFileNameImportDeclaration,
-  removePrependVariableDeclaration
-} from './astUtil'
+import { removeDataFolderFileNameImportDeclaration, removePrependVariableDeclaration } from './astUtil'
 import { defaultOptions, getFullOptions, includeFile } from './replaceProjectFunctionCall'
 import {
   ExtractorGetter,
@@ -12,6 +7,7 @@ import {
   ReplaceProjectFunctionCallOptions,
   FileVariableDefinition
 } from './types'
+import { objectLiteralInsert, array2DInsert } from 'ts-simple-ast-extra'
 
 /**
  * Responsible of reading the extractor data. It provides a getter function that returns a JS expression that

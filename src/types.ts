@@ -223,6 +223,8 @@ export interface ExtractorOptions {
    * Can be used to reference a node in this file.
    */
   target?: any
+
+  throwOnError?: boolean
 }
 
 export type ExtractorOutputMode = 'assignToVariable' | 'asReturnValue'

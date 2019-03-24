@@ -10,6 +10,7 @@ import {
   SyntaxKind,
   TypeGuards
 } from 'ts-morph'
+import { getDefinitionsOf } from 'ts-simple-ast-extra'
 
 /**
  * extract those CallExpressions from given sourceFile which declared in a module specifier with
@@ -37,38 +38,6 @@ export function extractCallExpressions(
     )
     .map(i => i.getParentIfKind(SyntaxKind.CallExpression))
     .filter(notUndefined)
-}
-
-export function array2DInsert(init: ArrayLiteralExpression, fileId: number, index: number, data: string[]) {
-  ensureArrayLength(init, fileId + 1, `[]`)
-  init.removeElement(fileId)
-  const newEl = init.insertElement(fileId, `[]`) as ArrayLiteralExpression
-  data.forEach(d => {
-    newEl.addElement(d)
-  })
-}
-
-/** makes sure there are items until index-1 (se we can add the index-th) */
-function ensureArrayLength(a: ArrayLiteralExpression, index: number, item: string) {
-  if (index >= a.getElements().length) {
-    for (let i = a.getElements().length; i < index; i++) {
-      a.addElement(item)
-    }
-  }
-}
-
-export function objectLiteralInsert(
-  init: ObjectLiteralExpression,
-  fileId: number,
-  objectLiteral: { [n: string]: any }
-) {
-  //TODO: check if property assignment already exists
-  init.addPropertyAssignments(
-    Object.keys(objectLiteral).map(name => ({
-      name: quote(name),
-      initializer: objectLiteral[name]
-    }))
-  )
 }
 
 export function removePrependVariableDeclaration(
@@ -102,21 +71,4 @@ export function getFirstTypeArgumentDefinitionBlock(n: CallExpression) {
       return r[0]
     }
   }
-}
-
-export function getDefinitionsOf(id: Identifier) {
-  return id
-    .findReferences()
-    .map(r =>
-      r
-        .getDefinition()
-        .getNode()
-        .getParent()
-    )
-    .filter(notUndefined)
-}
-
-export function getNodeName(n: Node) {
-  const id = n.getFirstChildByKind(SyntaxKind.Identifier)
-  return id ? id.getText() : undefined
 }

@@ -1,6 +1,6 @@
 import { unique, quote } from 'misc-utils-of-mine-generic'
 import { CallExpression, Node, SyntaxKind, TypeGuards } from 'ts-morph'
-import { extractCallExpressions, getDefinitionsOf } from '../astUtil'
+import { extractCallExpressions } from '../astUtil'
 import {
   ExtractorClass,
   ExtractorGetter,
@@ -10,6 +10,7 @@ import {
   ReplaceProjectFunctionCallOptions
 } from '../types'
 import { Map, unquote, isNode } from '../util'
+import { getDefinitionsOf } from 'ts-simple-ast-extra'
 
 export interface NodeWithInfo {
   node: Node
@@ -20,6 +21,10 @@ export type BuildExtractorResultOutput = string | NodeWithInfo | Node
 export abstract class AbstractExtractor implements ExtractorClass {
   protected defaultExtractorOptions: ExtractorOptions = {}
   protected freeArgumentNumber = 0
+  protected config: ExtractorOptions = {}
+
+  name?: string
+
   getConfig() {
     return {
       freeArgumentNumber: this.freeArgumentNumber,
@@ -52,6 +57,7 @@ export abstract class AbstractExtractor implements ExtractorClass {
             cc[p.getName()] = this.parseOptionValue(p.getName(), p.getInitializer())
           }
         })
+        this.config = cc
         return cc as any
       }
     }
@@ -85,6 +91,10 @@ export abstract class AbstractExtractor implements ExtractorClass {
     extractOptions: Required<ReplaceProjectFunctionCallOptions>,
     extractorOptions?: ExtractorOptions
   ): ExtractorResult {
+    if (!this.name) {
+      this.getTarget(n, extractorOptions || {})
+    }
+
     const stringOutput =
       typeof output === 'string'
         ? output
@@ -144,6 +154,8 @@ export abstract class AbstractExtractor implements ExtractorClass {
         target = d.length ? d[0] : undefined
       }
     }
+    this.config = this.config || config || {}
+    this.name = this.name || n.getFirstChildByKind(SyntaxKind.Identifier)!.getText()
     return target
   }
 
@@ -166,6 +178,7 @@ export abstract class AbstractExtractor implements ExtractorClass {
   }
 
   beforeExtract(filePath: string, extractorName: string, options: Required<ReplaceProjectFunctionCallOptions>) {
+    this.name = this.name || extractorName
     //   // HEADS UP: since these operations might be destructive (forgotten Nodes) we need to re-create the
     //   sourceFile and the CallExpressions here and in any subclass implementation const sourceFile =
     //   options.project && options.project.getSourceFile(filePath) if(sourceFile){const callExpressions =
@@ -176,5 +189,13 @@ export abstract class AbstractExtractor implements ExtractorClass {
     //       }
     //    })
     //   }
+  }
+
+  protected error(m: string) {
+    if (this.config.throwOnError) {
+      throw new Error(m)
+    } else {
+      console.error(`Extractor ${this.name || 'unnamed'} error: ${m}`)
+    }
   }
 }

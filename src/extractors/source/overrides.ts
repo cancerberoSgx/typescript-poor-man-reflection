@@ -1,8 +1,7 @@
 import { flat } from 'misc-utils-of-mine-generic'
 import { notFalsy } from 'misc-utils-of-mine-typescript'
 import { CallExpression, MethodDeclaration, PropertyDeclaration, SyntaxKind, TypeGuards } from 'ts-morph'
-import { getExtendsRecursively } from 'ts-simple-ast-extra'
-import { getDefinitionsOf } from '../../astUtil'
+import { getExtendsRecursively, getDefinitionsOf } from 'ts-simple-ast-extra'
 import { ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunctionCallOptions } from '../../types'
 import { AbstractExtractor } from '../abstractExtractor'
 

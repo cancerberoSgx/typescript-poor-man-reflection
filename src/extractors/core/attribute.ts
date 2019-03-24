@@ -8,8 +8,10 @@ import {
   FileVariableAccessor
 } from '../../types'
 import { AbstractExtractor, BuildExtractorResultOutput, NodeWithInfo } from '../abstractExtractor'
-import { unquote } from '../../util'
+import { unquote, Map } from '../../util'
 import { quote } from 'misc-utils-of-mine-generic'
+import { buildAstPath } from 'ts-simple-ast-extra'
+import { JSONObject } from 'misc-utils-of-mine-typescript'
 
 /**
  * get/set names to nodes/types. Query nodes, like in CSS
@@ -37,11 +39,19 @@ export function Attribute<T = any>(config: AttributeOptions, t?: any): (string |
 export interface AttributeOptions<T = any, F = any, E = any> extends ExtractorOptions {
   name: string
   /**
-   * if undefined means it's setter
+   * If undefined then action is 'set'
    */
   value?: string | Node
-
+  /**
+   * which action to perform - now only supported set and get
+   */
   action?: 'set' | 'get' | 'remove' | 'list'
+  /**
+   * if [[target]] is not defined or this is true then the target node won't be bound to the attribute, this
+   * means it's a normal variable and you don't require tp pass the target node in order to get its value.
+   * Default: false
+   */
+  dontBindTargetNode?: boolean
 }
 
 export class AttributeClass extends AbstractExtractor {
@@ -57,11 +67,12 @@ export class AttributeClass extends AbstractExtractor {
     let output: string | NodeWithInfo | undefined
     if (config.value || config.action === 'set') {
       // SETTER
+      const targetPath = this.resolveTargetAstPath(n, index, config, options, variableAccessor)
       output =
         typeof config.value === 'undefined'
           ? 'undefined'
           : ({
-              info: config.name,
+              info: JSON.stringify({ name: config.name, ...(targetPath ? { targetPath } : {}) }),
               node: config.value
             } as NodeWithInfo)
       const argument = variableAccessor(
@@ -78,8 +89,8 @@ export class AttributeClass extends AbstractExtractor {
     } else if (config.action === 'list') {
       throw 'not impl'
     } else {
-      // GETTER
-      // HEADS UP: we need tp pass a function predicate as a string in order to find our attribute since it was set by another call. TODO: provide better API in the core
+      // GETTER HEADS UP: we need tp pass a function predicate as a string in order to find our attribute
+      // since it was set by another call. TODO: provide better API in the core
       return {
         argument:
           variableAccessor(
@@ -93,10 +104,30 @@ export class AttributeClass extends AbstractExtractor {
       }
     }
   }
+  /**
+   * @param n returns undefined in case the target is not found or should not be bind
+   */
+  protected resolveTargetAstPath(
+    n: CallExpression,
+    index: number,
+    config: AttributeOptions<any, any, any>,
+    options: Required<ReplaceProjectFunctionCallOptions>,
+    variableAccessor: FileVariableAccessor
+  ) {
+    const target = this.getTarget(n, config)
+    if (!target && (n.getTypeArguments().length || config.target) && !config.dontBindTargetNode) {
+      this.error(`Attribute target was specified and !dontBindTargetNode but the target could not be found. Aborting`)
+    }
+    if (target && !config.dontBindTargetNode) {
+      return buildAstPath(target, { includeNodeKind: true })
+    }
+  }
 
   protected parseOptionValue(name: string, value: Node | undefined): any {
     if (value && ['name', 'action'].includes(name)) {
       return unquote(value.getText())
+    } else if (value && ['dontBindTargetNode'].includes(name)) {
+      return value.getText() === 'true' ? true : false
     } else {
       return value
     }

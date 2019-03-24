@@ -50,7 +50,7 @@
 
 ▸ **afterExtract**(filePath: *`string`*, extractorName: *`string`*, options: *`Required`<[ReplaceProjectFunctionCallOptions](_types_.replaceprojectfunctioncalloptions.md)>*): `void`
 
-*Defined in [types.ts:179](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/types.ts#L179)*
+*Defined in [types.ts:179](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/types.ts#L179)*
 
 Called after [extract](_types_.extractorclass.md#extract) method is called for all extractors in this sourceFile.
 
@@ -73,7 +73,7 @@ ___
 
 ▸ **beforeExtract**(filePath: *`string`*, extractorName: *`string`*, options: *`Required`<[ReplaceProjectFunctionCallOptions](_types_.replaceprojectfunctioncalloptions.md)>*): `void`
 
-*Defined in [types.ts:170](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/types.ts#L170)*
+*Defined in [types.ts:170](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/types.ts#L170)*
 
 Called before [extract](_types_.extractorclass.md#extract) method **for all files and all extractors** no matter if extractor apply or not to a certain file.
 
@@ -96,7 +96,7 @@ ___
 
 ▸ **extract**(n: *`CallExpression`*, index: *`number`*, getter: *[ExtractorGetter](../modules/_types_.md#extractorgetter)*, options: *`Required`<[ReplaceProjectFunctionCallOptions](_types_.replaceprojectfunctioncalloptions.md)>*, variableAccessor: *[FileVariableAccessor](../modules/_types_.md#filevariableaccessor)*): [ExtractorResult](_types_.extractorresult.md)
 
-*Defined in [types.ts:154](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/types.ts#L154)*
+*Defined in [types.ts:154](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/types.ts#L154)*
 
 Implements the extraction or AST transformation. For each extractor function call expression found in a file, its method [extract](_types_.extractorclass.md#extract) is called respecting the order in the code.
 
@@ -123,7 +123,7 @@ ___
 
 ▸ **getConfig**(): [ExtractorConfig](_types_.extractorconfig.md)
 
-*Defined in [types.ts:142](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/types.ts#L142)*
+*Defined in [types.ts:142](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/types.ts#L142)*
 
 Extractors can declare here some requirements like which is the argument index they use for configuration.
 

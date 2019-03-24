@@ -17,11 +17,13 @@
 ### Properties
 
 * [action](_extractors_core_attribute_.attributeoptions.md#action)
+* [dontBindTargetNode](_extractors_core_attribute_.attributeoptions.md#dontbindtargetnode)
 * [name](_extractors_core_attribute_.attributeoptions.md#name)
 * [outputMode](_extractors_core_attribute_.attributeoptions.md#outputmode)
 * [outputVariableName](_extractors_core_attribute_.attributeoptions.md#outputvariablename)
 * [removeMe](_extractors_core_attribute_.attributeoptions.md#removeme)
 * [target](_extractors_core_attribute_.attributeoptions.md#target)
+* [throwOnError](_extractors_core_attribute_.attributeoptions.md#throwonerror)
 * [value](_extractors_core_attribute_.attributeoptions.md#value)
 
 ---
@@ -34,7 +36,20 @@
 
 **● action**: *"set" \| "get" \| "remove" \| "list"*
 
-*Defined in [extractors/core/attribute.ts:44](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/extractors/core/attribute.ts#L44)*
+*Defined in [extractors/core/attribute.ts:48](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/extractors/core/attribute.ts#L48)*
+
+which action to perform - now only supported set and get
+
+___
+<a id="dontbindtargetnode"></a>
+
+### `<Optional>` dontBindTargetNode
+
+**● dontBindTargetNode**: *`undefined` \| `false` \| `true`*
+
+*Defined in [extractors/core/attribute.ts:54](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/extractors/core/attribute.ts#L54)*
+
+if [target](_extractors_core_attribute_.attributeoptions.md#target) is not defined or this is true then the target node won't be bound to the attribute, this means it's a normal variable and you don't require tp pass the target node in order to get its value. Default: false
 
 ___
 <a id="name"></a>
@@ -43,7 +58,7 @@ ___
 
 **● name**: *`string`*
 
-*Defined in [extractors/core/attribute.ts:38](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/extractors/core/attribute.ts#L38)*
+*Defined in [extractors/core/attribute.ts:40](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/extractors/core/attribute.ts#L40)*
 
 ___
 <a id="outputmode"></a>
@@ -54,7 +69,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputMode](_types_.extractoroptions.md#outputmode)*
 
-*Defined in [types.ts:204](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/types.ts#L204)*
+*Defined in [types.ts:204](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/types.ts#L204)*
 
 Default is 'asReturnValue' in which case the output will be returned by the extractor function call.
 
@@ -69,7 +84,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputVariableName](_types_.extractoroptions.md#outputvariablename)*
 
-*Defined in [types.ts:208](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/types.ts#L208)*
+*Defined in [types.ts:208](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/types.ts#L208)*
 
 Name of the variable to assign the value in case outputMode is `assignToVariable`
 
@@ -82,7 +97,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[removeMe](_types_.extractoroptions.md#removeme)*
 
-*Defined in [types.ts:220](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/types.ts#L220)*
+*Defined in [types.ts:220](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/types.ts#L220)*
 
 If true, this extractor function call expression will be removed as long as it's on an ExpressionStatement. Example:
 
@@ -103,9 +118,20 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[target](_types_.extractoroptions.md#target)*
 
-*Defined in [types.ts:225](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/types.ts#L225)*
+*Defined in [types.ts:225](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/types.ts#L225)*
 
 Can be used to reference a node in this file.
+
+___
+<a id="throwonerror"></a>
+
+### `<Optional>` throwOnError
+
+**● throwOnError**: *`undefined` \| `false` \| `true`*
+
+*Inherited from [ExtractorOptions](_types_.extractoroptions.md).[throwOnError](_types_.extractoroptions.md#throwonerror)*
+
+*Defined in [types.ts:227](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/types.ts#L227)*
 
 ___
 <a id="value"></a>
@@ -114,9 +140,9 @@ ___
 
 **● value**: *`string` \| `Node`*
 
-*Defined in [extractors/core/attribute.ts:42](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/extractors/core/attribute.ts#L42)*
+*Defined in [extractors/core/attribute.ts:44](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/extractors/core/attribute.ts#L44)*
 
-if undefined means it's setter
+If undefined then action is 'set'
 
 ___
 

@@ -18,6 +18,7 @@
 * [path](_extractors_fs_ls_.lsoptions.md#path)
 * [removeMe](_extractors_fs_ls_.lsoptions.md#removeme)
 * [target](_extractors_fs_ls_.lsoptions.md#target)
+* [throwOnError](_extractors_fs_ls_.lsoptions.md#throwonerror)
 
 ---
 
@@ -29,7 +30,7 @@
 
 **● options**: *"-R" \| "-A" \| "-L" \| "-d" \| "-l"*
 
-*Defined in [extractors/fs/ls.ts:33](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/extractors/fs/ls.ts#L33)*
+*Defined in [extractors/fs/ls.ts:33](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/extractors/fs/ls.ts#L33)*
 
 \-R: recursive -A: all files (include files beginning with ., except for . and ..) -L: follow symlinks -d: list directories themselves, not their contents -l: list objects representing each file, each with fields containing ls -l output fields
 
@@ -42,7 +43,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputMode](_types_.extractoroptions.md#outputmode)*
 
-*Defined in [types.ts:204](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/types.ts#L204)*
+*Defined in [types.ts:204](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/types.ts#L204)*
 
 Default is 'asReturnValue' in which case the output will be returned by the extractor function call.
 
@@ -57,7 +58,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputVariableName](_types_.extractoroptions.md#outputvariablename)*
 
-*Defined in [types.ts:208](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/types.ts#L208)*
+*Defined in [types.ts:208](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/types.ts#L208)*
 
 Name of the variable to assign the value in case outputMode is `assignToVariable`
 
@@ -68,7 +69,7 @@ ___
 
 **● path**: *`string`*
 
-*Defined in [extractors/fs/ls.ts:25](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/extractors/fs/ls.ts#L25)*
+*Defined in [extractors/fs/ls.ts:25](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/extractors/fs/ls.ts#L25)*
 
 Path to list. Could be a glob
 
@@ -81,7 +82,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[removeMe](_types_.extractoroptions.md#removeme)*
 
-*Defined in [types.ts:220](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/types.ts#L220)*
+*Defined in [types.ts:220](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/types.ts#L220)*
 
 If true, this extractor function call expression will be removed as long as it's on an ExpressionStatement. Example:
 
@@ -102,9 +103,20 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[target](_types_.extractoroptions.md#target)*
 
-*Defined in [types.ts:225](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/types.ts#L225)*
+*Defined in [types.ts:225](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/types.ts#L225)*
 
 Can be used to reference a node in this file.
+
+___
+<a id="throwonerror"></a>
+
+### `<Optional>` throwOnError
+
+**● throwOnError**: *`undefined` \| `false` \| `true`*
+
+*Inherited from [ExtractorOptions](_types_.extractoroptions.md).[throwOnError](_types_.extractoroptions.md#throwonerror)*
+
+*Defined in [types.ts:227](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/types.ts#L227)*
 
 ___
 
