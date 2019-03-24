@@ -20,5 +20,8 @@
  * contribute removeUnused/inferTypes to ts-morph?
  * join all refactors (orgImports, removeUnused,inferTypes) setc that have similar signature in the same extractor?
  * files: delete, copy,move, rename ?
- * variableAccessor: provide more elegant API for getters - so instead of passing a function as string like "functionPredicate: `v=>v.extractorName==='Attribute'&&v.name===${quote(config.name)}`" they pass something like `{name: config.name, extractorName: 'Attribute'}` although values will still need to be stringified.
+ * variableAccessor: 
+  * provide more elegant API for getters - so instead of passing a function as string like "functionPredicate: `v=>v.extractorName==='Attribute'&&v.name===${quote(config.name)}`" they pass something like `{name: config.name, extractorName: 'Attribute'}` although values will still need to be stringified.
+  * more: TODO:cannot we use currentCompileTimeVariables to get the value instead of printing a ugly  function string ?
+  * For attributes bound to nodes&types, the setter call must occur BEFORE the GETTER call (while the source file is being processed.). TODO: can we solve this using afterExtract()?
  

@@ -41,7 +41,9 @@ export function writeExtractorData(
   options_: ReplaceFileFunctionCallOptions = defaultOptions,
   callExpressions: CallExpression[],
   prependToFile: string[],
-  fileVariables: { [name: string]: FileVariableDefinition }
+  // fileVariables: { [name: string]: FileVariableDefinition }
+  fileVariables: {[key: string]:string | undefined} 
+
 ) {
   const options = getFullOptions(options_)
 
@@ -104,7 +106,9 @@ function ensureDataFile(
   sourceFile: SourceFile,
   options: ReplaceProjectFunctionCallOptions,
   prependToFile: string[],
-  fileVariables: { [name: string]: FileVariableDefinition },
+  // fileVariables: { [name: string]: FileVariableDefinition },
+  fileVariables: {[key: string]:string | undefined} ,
+
   fileId: number
 ) {
   let dataFile = sourceFile

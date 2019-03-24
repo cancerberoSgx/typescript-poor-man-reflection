@@ -5,7 +5,8 @@ import {
   ExtractorOptions,
   ExtractorResult,
   ReplaceProjectFunctionCallOptions,
-  FileVariableAccessor
+  FileVariableAccessor,
+  FileVariableDefinition
 } from '../../types'
 import { AbstractExtractor, BuildExtractorResultOutput, NodeWithInfo } from '../abstractExtractor'
 import { unquote, Map } from '../../util'
@@ -14,7 +15,9 @@ import { buildAstPath } from 'ts-simple-ast-extra'
 import { JSONObject } from 'misc-utils-of-mine-typescript'
 
 /**
- * get/set names to nodes/types. Query nodes, like in CSS
+ * Node/Types attributes like DOM's. Attributes can or cannot be associated to a node, and if they are not they just act as normal variables. 
+ * 
+ * For attributes bound to nodes&types, the setter call must occur BEFORE the GETTER call (while the source file is being processed.). TODO: can we solve this using afterExtract()?
  *
  * ```ts
  * // setting a type or node's attribute value
@@ -56,6 +59,7 @@ export interface AttributeOptions<T = any, F = any, E = any> extends ExtractorOp
 
 export class AttributeClass extends AbstractExtractor {
   protected freeArgumentNumber = 1
+  public name = 'Attribute'
   extract(
     n: CallExpression,
     index: number,
@@ -81,14 +85,30 @@ export class AttributeClass extends AbstractExtractor {
     config: AttributeOptions<any, any, any>,
     index: number
   ): ExtractorResult {
+    // first we call the variable getter passing currentCompileTimeVariables to obtain the current file variables (still being processed) to obtain a previous setter call targetAstPath value . This don't have any impact on the variables or runtime code -just information. 
+    // const currentFileVariables : variableAccessor
+      // (FileVariableDefinition&{variableId: string})[] = variableAccessor(config.name, {index}, '""', true) as any
+    // currentFileVariables.find
+    const currentFileVariables = variableAccessor.compileTime()
+
+    //TODO:cannot we use currentCompileTimeVariables to get the value instead of printing a ugly  function string ?
+
+    // HEADS UP: notice that in order to find the associated node a setter call needed to occurs first. perhaps we can solve this limitation handling getters on afterExtract()
+
+    const foundVariable = Object.values(currentFileVariables||{}).find(v=>v.name===config.name&&v.index===index && v.extractorName===this.name)
+    if(foundVariable){
+      foundVariable.value
+    }else {
+     // TODO:handle Attribute getter of a variable that nobody set yet ? 
+    }
     // HEADS UP: we need tp pass a function predicate as a string in order to find our attribute
     // since it was set by another call. TODO: provide better API in the core
     return {
       argument:
-        variableAccessor(
+        variableAccessor.runtime(
           {
             name: config.name,
-            functionPredicate: `v=>v.extractorName==='Attribute'&&v.name===${quote(config.name)}`
+            functionPredicate: `v=>v.extractorName==='${this.name}'&&v.name===${quote(config.name)}`
           },
           index
         ) || '""',
@@ -112,7 +132,7 @@ export class AttributeClass extends AbstractExtractor {
             info: JSON.stringify({ name: config.name, ...(targetPath ? { targetPath } : {}) }),
             node: config.value
           } as NodeWithInfo)
-    const argument = variableAccessor(
+    const argument = variableAccessor.runtime(
       { name: config.name },
       index,
       typeof output === 'string' ? output : output.node.getText()
