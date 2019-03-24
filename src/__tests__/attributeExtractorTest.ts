@@ -73,13 +73,14 @@ let r : any
 function test(){
   class C{}
   Attribute({target: C, name: 'attr1', value: function(q){return q+2}})
-  return Attribute({target: C, name: 'attr1'})
+  const val = Attribute({target: C, name: 'attr1'})
+  return val(4)
 }
 `, 'Attribute', Attribute)
-    console.log(r.resultBefore, r.resultAfter, r.jsBefore, r.jsAfter);
-console.log(r.jsAfter);
+    // console.log(r.resultBefore, r.resultAfter, r.jsBefore, r.jsAfter);
+// console.log(r.jsAfter);
 
-
+  expect(r.resultAfter).toBe(6)
 
 
     // r= evaluateExtractorTestCode(`

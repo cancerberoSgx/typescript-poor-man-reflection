@@ -48,7 +48,7 @@ export class AttributeClass extends AbstractExtractor {
           node: config.value
         } as NodeWithInfo
 
-        const argument = variableAccessor({name: config.name}, index, typeof output==='string' ? output : quote(output.node. getText()))
+        const argument = variableAccessor({name: config.name}, index, typeof output==='string' ? output : output.node. getText())
         return {
           argument: argument||'""', prependToFile: '""'
         }
