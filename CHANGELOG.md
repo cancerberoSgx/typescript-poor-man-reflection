@@ -18,5 +18,6 @@
  * If()
  * ts-simple-ast updated with ts-morph
  * extractInterface and other refactor code will be maintained at ts-simple-ast-extra project
+ * adds support for variableAccessor in prependVariable mode
  * variableAccessor more flexible (and harder) API
  * Attribute() - first implementation using variableAccessor - WIP - still missing node binding

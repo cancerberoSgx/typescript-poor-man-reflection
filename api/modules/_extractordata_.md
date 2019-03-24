@@ -21,7 +21,7 @@
 
 ▸ **ensureDataFile**(sourceFile: *`SourceFile`*, options: *[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)*, prependToFile: *`string`[]*, fileVariables: *`object`*, fileId: *`number`*): `object`
 
-*Defined in [extractorData.ts:107](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2b5b97c/src/extractorData.ts#L107)*
+*Defined in [extractorData.ts:107](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/extractorData.ts#L107)*
 
 **Parameters:**
 
@@ -42,7 +42,7 @@ ___
 
 ▸ **extractorGetterBuilder**(options: *[ReplaceFileFunctionCallOptions](../interfaces/_types_.replacefilefunctioncalloptions.md) & `object`*, index: *`number`*, sourceFile: *`SourceFile`*, c: *`CallExpression`*): [ExtractorGetter](_types_.md#extractorgetter)
 
-*Defined in [extractorData.ts:20](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2b5b97c/src/extractorData.ts#L20)*
+*Defined in [extractorData.ts:20](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/extractorData.ts#L20)*
 
 Responsible of reading the extractor data. It provides a getter function that returns a JS expression that should evaluate in the data value corresponding to given index, sourcefile, extractor.
 
@@ -64,7 +64,7 @@ ___
 
 ▸ **getFileId**(sourceFile: *`SourceFile`*, __namedParameters: *`object`*): `number`
 
-*Defined in [extractorData.ts:154](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2b5b97c/src/extractorData.ts#L154)*
+*Defined in [extractorData.ts:154](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/extractorData.ts#L154)*
 
 TODO: memoize
 
@@ -87,7 +87,7 @@ ___
 
 ▸ **writeExtractorData**(sourceFile: *`SourceFile`*, options_?: *[ReplaceFileFunctionCallOptions](../interfaces/_types_.replacefilefunctioncalloptions.md)*, callExpressions: *`CallExpression`[]*, prependToFile: *`string`[]*, fileVariables: *`object`*): `void`
 
-*Defined in [extractorData.ts:43](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2b5b97c/src/extractorData.ts#L43)*
+*Defined in [extractorData.ts:43](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/extractorData.ts#L43)*
 
 Responsible of writing extractor data according to extractorDataMode. instead of fileName as string, we use the file index in the directory's children sorted alphabetically so the get() expressions are smaller. Instead of `Name<T>(get('myCustomComponentTest.tsx',9))` we just have `Name<T>(get(2,9))`
 

@@ -20,4 +20,5 @@
  * contribute removeUnused/inferTypes to ts-morph?
  * join all refactors (orgImports, removeUnused,inferTypes) setc that have similar signature in the same extractor?
  * files: delete, copy,move, rename ?
+ * variableAccessor: provide more elegant API for getters - so instead of passing a function as string like "functionPredicate: `v=>v.extractorName==='Attribute'&&v.name===${quote(config.name)}`" they pass something like `{name: config.name, extractorName: 'Attribute'}` although values will still need to be stringified.
  

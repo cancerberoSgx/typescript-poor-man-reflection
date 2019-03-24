@@ -23,7 +23,7 @@
 
 **● info**: *`string`*
 
-*Defined in [extractors/abstractExtractor.ts:16](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2b5b97c/src/extractors/abstractExtractor.ts#L16)*
+*Defined in [extractors/abstractExtractor.ts:16](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/extractors/abstractExtractor.ts#L16)*
 
 ___
 <a id="node"></a>
@@ -32,7 +32,7 @@ ___
 
 **● node**: *`Node`*
 
-*Defined in [extractors/abstractExtractor.ts:15](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2b5b97c/src/extractors/abstractExtractor.ts#L15)*
+*Defined in [extractors/abstractExtractor.ts:15](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/extractors/abstractExtractor.ts#L15)*
 
 ___
 

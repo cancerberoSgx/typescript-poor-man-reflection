@@ -277,5 +277,3 @@ export interface FileVariableAccessorNamePredicate {
    * runtime, since at compile time we cannot be dynamic. */
   functionPredicate?: string
 }
-//  * @param name Heads up. the name can be the name of the variable as string or a function predicate as
-//    string. If the value contains `=>` we assume

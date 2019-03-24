@@ -34,27 +34,17 @@ export function replaceFileFunctionCall(
 
   const fileVariables: { [name: string]: FileVariableDefinition } = {}
   const replaced: Replacement[] = []
-  // let callExpressions = extractCallExpressions(
-  //   options.project.getSourceFile(sourceFile.getFilePath())!,
-  //   moduleSpecifier,
-  //   Object.keys(extracts)
-  // )
-  // let callExpressionNames = callExpressions.map(c => c.getFirstChildByKind(SyntaxKind.Identifier)!.getText())
   let extractorData: string[] = []
   const fileId = getFileId(options.project.getSourceFile(sourceFile.getFilePath())!, {
     extractorDataFolderFileName
   })
 
-  // callExpressionNames.forEach(extractName => {
-  // const extract = extracts[extractName]
   Object.keys(options.extracts).forEach(extractName => {
     const extract = options.extracts[extractName]
     if (isExtractorClass(extract) && extract.beforeExtract) {
       extract.beforeExtract(sourceFile.getFilePath(), extractName, options)
     }
   })
-
-  // })
 
   // at beforeExtract somebody (Register()) could add a new extractor or perhaps the AST was modified so we
   // query the call expressions again
@@ -74,7 +64,6 @@ export function replaceFileFunctionCall(
       index: number,
       value?: string
     ) => {
-      // const nameString = _accessorNamePredicate.functionPredicate||_accessorNamePredicate.name
       const name = typeof _accessorNamePredicate === 'string' ? _accessorNamePredicate : _accessorNamePredicate.name
       if (!name) {
         throw `Name is mandatory on any way as name or function predicate string`
@@ -84,9 +73,6 @@ export function replaceFileFunctionCall(
 
       if (value) {
         // SETTER - called at compile time
-        // if(typeof name!=='string'){
-        //   throw 'when setting variable name must be a string and is not'+name.toString()
-        // }
         fileVariables[`${fileId}_${name}_${index}`] = `{value: ${value}, name: ${quote(
           name
         )}, index: ${index}, extractorName: ${quote(functionName)}}` as any
@@ -115,8 +101,6 @@ export function replaceFileFunctionCall(
 
     // Heads up: argIndex is the argument index we can use for data. Previous arguments are owned by the
     // extractor for its own options/whatever.
-
-    // console.log(Object.keys(options.extracts));
 
     if (extract && c.getArguments().length < argIndex && !clean) {
       // extractor owned arguments are empty - we need to fill them up in order to add ours.

@@ -43,7 +43,7 @@
 
 *Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[defaultExtractorOptions](_extractors_abstractextractor_.abstractextractor.md#defaultextractoroptions)*
 
-*Defined in [extractors/abstractExtractor.ts:21](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2b5b97c/src/extractors/abstractExtractor.ts#L21)*
+*Defined in [extractors/abstractExtractor.ts:21](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/extractors/abstractExtractor.ts#L21)*
 
 ___
 <a id="freeargumentnumber"></a>
@@ -54,7 +54,7 @@ ___
 
 *Overrides [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[freeArgumentNumber](_extractors_abstractextractor_.abstractextractor.md#freeargumentnumber)*
 
-*Defined in [extractors/core/if.ts:50](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2b5b97c/src/extractors/core/if.ts#L50)*
+*Defined in [extractors/core/if.ts:50](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/extractors/core/if.ts#L50)*
 
 ___
 
@@ -70,7 +70,7 @@ ___
 
 *Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[afterExtract](_extractors_abstractextractor_.abstractextractor.md#afterextract)*
 
-*Defined in [extractors/abstractExtractor.ts:150](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2b5b97c/src/extractors/abstractExtractor.ts#L150)*
+*Defined in [extractors/abstractExtractor.ts:150](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/extractors/abstractExtractor.ts#L150)*
 
 **Parameters:**
 
@@ -93,7 +93,7 @@ ___
 
 *Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[beforeExtract](_extractors_abstractextractor_.abstractextractor.md#beforeextract)*
 
-*Defined in [extractors/abstractExtractor.ts:168](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2b5b97c/src/extractors/abstractExtractor.ts#L168)*
+*Defined in [extractors/abstractExtractor.ts:168](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/extractors/abstractExtractor.ts#L168)*
 
 **Parameters:**
 
@@ -114,7 +114,7 @@ ___
 
 *Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[buildExtractorResult](_extractors_abstractextractor_.abstractextractor.md#buildextractorresult)*
 
-*Defined in [extractors/abstractExtractor.ts:80](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2b5b97c/src/extractors/abstractExtractor.ts#L80)*
+*Defined in [extractors/abstractExtractor.ts:80](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/extractors/abstractExtractor.ts#L80)*
 
 **Parameters:**
 
@@ -136,7 +136,7 @@ ___
 
 ▸ **evaluate**<`T`>(n: *`Node`*, config: *[IfOptionsAst](../interfaces/_extractors_core_if_.ifoptionsast.md)*, error: *`object`*, ignoreError?: *`boolean`*): `T` \| `undefined`
 
-*Defined in [extractors/core/if.ts:74](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2b5b97c/src/extractors/core/if.ts#L74)*
+*Defined in [extractors/core/if.ts:74](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/extractors/core/if.ts#L74)*
 
 **Type parameters:**
 
@@ -166,7 +166,7 @@ ___
 
 *Overrides [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[extract](_extractors_abstractextractor_.abstractextractor.md#extract)*
 
-*Defined in [extractors/core/if.ts:51](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2b5b97c/src/extractors/core/if.ts#L51)*
+*Defined in [extractors/core/if.ts:51](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/extractors/core/if.ts#L51)*
 
 **Parameters:**
 
@@ -190,7 +190,7 @@ ___
 
 *Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[getConfig](_extractors_abstractextractor_.abstractextractor.md#getconfig)*
 
-*Defined in [extractors/abstractExtractor.ts:23](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2b5b97c/src/extractors/abstractExtractor.ts#L23)*
+*Defined in [extractors/abstractExtractor.ts:23](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/extractors/abstractExtractor.ts#L23)*
 
 **Returns:** `object`
 
@@ -203,7 +203,7 @@ ___
 
 *Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[getOptionsFromFistArg](_extractors_abstractextractor_.abstractextractor.md#getoptionsfromfistarg)*
 
-*Defined in [extractors/abstractExtractor.ts:45](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2b5b97c/src/extractors/abstractExtractor.ts#L45)*
+*Defined in [extractors/abstractExtractor.ts:45](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/extractors/abstractExtractor.ts#L45)*
 
 Get options from first argument or undefined.
 
@@ -231,7 +231,7 @@ ___
 
 *Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[getTarget](_extractors_abstractextractor_.abstractextractor.md#gettarget)*
 
-*Defined in [extractors/abstractExtractor.ts:130](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2b5b97c/src/extractors/abstractExtractor.ts#L130)*
+*Defined in [extractors/abstractExtractor.ts:130](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/extractors/abstractExtractor.ts#L130)*
 
 **Parameters:**
 
@@ -251,7 +251,7 @@ ___
 
 *Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[parseOptionValue](_extractors_abstractextractor_.abstractextractor.md#parseoptionvalue)*
 
-*Defined in [extractors/abstractExtractor.ts:64](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2b5b97c/src/extractors/abstractExtractor.ts#L64)*
+*Defined in [extractors/abstractExtractor.ts:64](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/extractors/abstractExtractor.ts#L64)*
 
 since options need to be parsed from a literal object Node, subclasses might need to override this method to parse their own options
 

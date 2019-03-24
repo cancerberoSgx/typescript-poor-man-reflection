@@ -26,7 +26,7 @@
 
 **Ƭ BuildExtractorResultOutput**: *`string` \| [NodeWithInfo](../interfaces/_extractors_abstractextractor_.nodewithinfo.md) \| `Node`*
 
-*Defined in [extractors/abstractExtractor.ts:18](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2b5b97c/src/extractors/abstractExtractor.ts#L18)*
+*Defined in [extractors/abstractExtractor.ts:18](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/extractors/abstractExtractor.ts#L18)*
 
 ___
 

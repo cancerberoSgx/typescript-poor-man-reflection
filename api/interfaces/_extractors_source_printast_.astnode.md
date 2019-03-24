@@ -25,7 +25,7 @@
 
 **● children**: *[AstNode](_extractors_source_printast_.astnode.md)[]*
 
-*Defined in [extractors/source/printAst.ts:149](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2b5b97c/src/extractors/source/printAst.ts#L149)*
+*Defined in [extractors/source/printAst.ts:149](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/extractors/source/printAst.ts#L149)*
 
 ___
 <a id="kind"></a>
@@ -34,7 +34,7 @@ ___
 
 **● kind**: *`string`*
 
-*Defined in [extractors/source/printAst.ts:147](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2b5b97c/src/extractors/source/printAst.ts#L147)*
+*Defined in [extractors/source/printAst.ts:147](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/extractors/source/printAst.ts#L147)*
 
 ___
 <a id="name"></a>
@@ -43,7 +43,7 @@ ___
 
 **● name**: *`string`*
 
-*Defined in [extractors/source/printAst.ts:146](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2b5b97c/src/extractors/source/printAst.ts#L146)*
+*Defined in [extractors/source/printAst.ts:146](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/extractors/source/printAst.ts#L146)*
 
 ___
 <a id="text"></a>
@@ -52,7 +52,7 @@ ___
 
 **● text**: *`string`*
 
-*Defined in [extractors/source/printAst.ts:148](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2b5b97c/src/extractors/source/printAst.ts#L148)*
+*Defined in [extractors/source/printAst.ts:148](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/73575a8/src/extractors/source/printAst.ts#L148)*
 
 ___
 
