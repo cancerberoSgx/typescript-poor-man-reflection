@@ -22,12 +22,11 @@ Attribute({target: C, name: 'attr1', value: 'hello'})
       ...{ extractorDataMode: 'asArgument' },
       project
     })
-    console.log(project.getSourceFile('test.ts')!.getText());
-    
-    expect(removeWhites(project.getSourceFile('test.ts')!.getText())).toContain(
-      removeWhites(`
-        `)
-    )
+
+    expect(removeWhites(project.getSourceFile('test.ts')!.getText())).toContain(removeWhites(`
+class C{}
+Attribute({target: C, name: 'attr1', value: 'hello'}, {name: "attr1", node: 'hello'})
+    `))
   })
 
 

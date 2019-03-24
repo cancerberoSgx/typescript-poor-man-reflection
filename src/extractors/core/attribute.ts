@@ -16,7 +16,8 @@ Attribute({target: aNode, name: 'otherNode', value: aFunctionDeclaration})
 ```
  */
 export const Attribute = function<T = any>(config: AttributeOptions, t?: any): (string | Stats)[] {
-  return t!
+  return t && t.node
+  // return t!
 }
 
 export interface AttributeOptions<T = any, F = any, E = any> extends ExtractorOptions {

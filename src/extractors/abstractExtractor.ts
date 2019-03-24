@@ -110,11 +110,11 @@ export abstract class AbstractExtractor implements ExtractorClass {
     }
     if (extractOptions.extractorDataMode === 'asArgument') {
       const r = {
-        argument: isNode(output) ? unquote(stringOutput) : typeof output==='string' ? stringOutput : `${stringOutput}.node`
+        argument: isNode(output) ? unquote(stringOutput) :  stringOutput 
       }
       return r
     } else {
-      let argument = isNode(output) ? unquote(getter(index)) : typeof output==='string' ? stringOutput : `${getter(index)}.node`
+      let argument = isNode(output) ? unquote(getter(index)) : typeof output==='string' ? stringOutput : getter(index)
       return {
         argument,
         // TODO: we could store the variable in an object with the information about if it was quoted so we
