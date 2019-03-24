@@ -1,3 +1,5 @@
+import { Node } from 'ts-morph';
+
 // TODO: from misc
 
 export function evaluate<T = any>(s: string, defaultValue = undefined): T | undefined {
@@ -19,3 +21,10 @@ export function withoutExtension(f: string) {
   return f.substring(0, f.lastIndexOf('.'))
 }
 export type Fn = (...args: any[]) => any
+
+
+
+// to ts-simple-ast-extra
+export function isNode(n:any):n is Node {
+  return n && typeof n.getText === 'function' && typeof n.getKindName==='function'
+}

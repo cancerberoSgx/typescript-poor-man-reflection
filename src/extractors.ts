@@ -17,6 +17,7 @@ import { RemoveUnusedClass } from './extractors/source/removeUnused'
 import { Extractor, ExtractorClass, ExtractorFn, ExportedExtractor } from './types'
 import { RegisterClass } from './extractors/core/register'
 import { IfClass } from './extractors/core/if'
+import { AttributeClass } from './extractors/core/attribute';
 
 export const defaultExtractors: { [k: string]: Extractor } = {
   TypeText: new TypeTextClass(),
@@ -39,6 +40,7 @@ export const defaultExtractors: { [k: string]: Extractor } = {
   Overrides: new OverridesClass(),
 
   If: new IfClass(),
+  Attribute: new AttributeClass(),
   Register: (() => {
     try {
       // HEADS UP - Hack - since we are using require() in register.ts seems that some ts-runners (don't know if ts-node or ts-jest gets confused TypeError: register_1.RegisterClass is not a constructor) when exec ts-node src/cli.ts

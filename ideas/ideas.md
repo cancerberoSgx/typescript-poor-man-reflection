@@ -1,16 +1,22 @@
 
 
+
+
 # IDEAS
 
-## decorators
 
-provide decorators to extractors that can be implemented with that?
+# viable - concrete
 
-target decorators with Extractors so they have more features, for example, they can implement static things that cannot now (i think @Ooerrides cannot with just decorators) but what if we apply a extractor?
+ * generate flat .d.ts : scripts/generation/flattenDeclarationFiles.ts
+
+  * generate/maintain barrels : node_modules/barrel-maintainer/readme.md
+
 
 ## naming, vars, ioc, etc:
 
 ### Name() put/ get names to nodes
+
+**better than Name() is Attribute()**
 
 #### to types:
 (so we can reference on IoC)
@@ -41,6 +47,26 @@ class A {
   id: string|undefined
 }
 
+#### Notes
+
+Minimun requirements
+
+* should  visible to all files in the project
+* values should suppoer any type: string|json|Node|undefined
+* could be more general Attribute() instead of Name()
+* should we support AST forgotten or just read-only extractors?
+ * How / where to store the info? in the data? I think isthe only way
+
+#### query
+
+Minimun requirements
+
+ * Query(target: sourceFile, `[]`)
+ * query should support existing information like kind, text
+ * should support multiple attributes in same node: `[kind="Identifier"][text="Foo"]`
+ * ts-query ? https://github.com/phenomnomnominal/tsquery
+ * 
+
 ### Var() get/set global variables compile-run-time
 
 get/set global variables at compile time `Var({name:'foo', value: aFunction})` that can be shared across the whole project.
@@ -62,12 +88,20 @@ class Impl1 implements SomeInterface {...}
 RegisterImplementation<SomeInterface>(some, Impl1)
 ```
 
+## decorators
+
+provide decorators to extractors that can be implemented with that?
+
+target decorators with Extractors so they have more features, for example, they can implement static things that cannot now (i think @Ooerrides cannot with just decorators) but what if we apply a extractor?
 
 
 
 
 
-## crazy ideas
+
+
+
+# crazy ideas
 
 ### share objects between different projects . 
 

@@ -9,7 +9,13 @@ import {
   FileVariableAccessor,
   ReplaceProjectFunctionCallOptions
 } from '../types'
-import { Map, unquote } from '../util'
+import { Map, unquote, isNode } from '../util'
+
+interface NodeWithInfo {
+  node:Node
+  info: string
+}
+export type BuildExtractorResultOutput = string | NodeWithInfo | Node
 
 export abstract class AbstractExtractor implements ExtractorClass {
   protected defaultExtractorOptions: ExtractorOptions = {}
@@ -73,13 +79,19 @@ export abstract class AbstractExtractor implements ExtractorClass {
    */
   protected buildExtractorResult(
     n: CallExpression,
-    output: string | Node,
+    output: BuildExtractorResultOutput ,
     getter: ExtractorGetter,
     index: number,
     extractOptions: Required<ReplaceProjectFunctionCallOptions>,
     extractorOptions?: ExtractorOptions
   ): ExtractorResult {
-    const stringOutput = typeof output === 'string' ? output : quote(output.getText())
+    const stringOutput = typeof output === 'string' ? output : 
+      isNode(output) ? quote(output.getText()) : 
+    // quote(`{ name: ${quote(output.info)}, node: ${quote(output.node.getText())} }`)
+    // quote(`{ name: ${quote(output.info)}, node: ${quote(output.node.getText())} }`)
+// JSON.stringify({name: output.info, node: output.node.getText()})
+`{name: ${quote(output.info)}, node: ${output.node.getText()}}`
+
     if (extractorOptions && extractorOptions.outputMode === 'assignToVariable' && extractorOptions.outputVariableName) {
       const block = n.getFirstAncestor(TypeGuards.isBlock)
       if (block) {
@@ -97,11 +109,12 @@ export abstract class AbstractExtractor implements ExtractorClass {
       }
     }
     if (extractOptions.extractorDataMode === 'asArgument') {
-      return {
-        argument: typeof output !== 'string' ? unquote(stringOutput) : stringOutput
+      const r = {
+        argument: isNode(output) ? unquote(stringOutput) : typeof output==='string' ? stringOutput : `${stringOutput}.node`
       }
+      return r
     } else {
-      let argument = typeof output !== 'string' ? unquote(getter(index)) : getter(index)
+      let argument = isNode(output) ? unquote(getter(index)) : typeof output==='string' ? stringOutput : `${getter(index)}.node`
       return {
         argument,
         // TODO: we could store the variable in an object with the information about if it was quoted so we

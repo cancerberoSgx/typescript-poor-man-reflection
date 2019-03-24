@@ -14,6 +14,7 @@
     "test-run-all": "npx jest --config ./jest.config-spec.js && npm run sample-project",
     "prettier": " npx prettier  --write --arrow-parens avoid --parser typescript --use-tabs false --no-semi true --single-quote true --tab-width 2 --trailing-comma none --end-of-line lf --prose-wrap preserve --print-width 120 --jsx-bracket-same-line true \"src/**/*.ts*\"",
     "test": "npm run test-run",
+    "test-debug": "node --inspect-brk node_modules/.bin/jest --runInBand --no-cache --clearMocks --config ./jest.config-spec.js --testPathIgnorePatterns \"/node_modules/|/src/__tests__/cli/\"",
     "sample-project": "cd sample-project && ([ -d node_modules ] || npm i]) && npm run all",
     "docs": "npx typedoc src/types.ts src/main.ts src/replaceFileFunctionCall.ts src/replaceProjectFunctionCall.ts --theme markdown --out api --ignoreCompilerErrors",
     "test-watch": "npm run test-run -- --watch",
@@ -27,7 +28,7 @@
     "misc-utils-of-mine-typescript": "0.0.12",
     "shelljs": "^0.8.3",
     "ts-morph": "^1.3.1",
-    "ts-simple-ast-extra": "0.0.15",
+    "ts-simple-ast-extra": "0.0.16",
     "yargs-parser": "^13.0.0"
   },
   "devDependencies": {

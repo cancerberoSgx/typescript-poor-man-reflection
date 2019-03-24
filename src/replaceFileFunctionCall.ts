@@ -92,6 +92,8 @@ export function replaceFileFunctionCall(
     if (extract && c.getArguments().length < argIndex && !clean) {
       // extractor owned arguments are empty - we need to fill them up in order to add ours.
       for (let i = 0; i < argIndex; i++) {
+      debugger
+
         c.addArgument(extractorConfig.unusedArgumentDefaultValue || 'null as any')
       }
     }
@@ -101,6 +103,7 @@ export function replaceFileFunctionCall(
       const extractResult = isExtractorFn(extract) ? extract(...extractArgs) : extract.extract(...extractArgs)
       extractorData.push(typeof extractResult !== 'string' ? extractResult.prependToFile || '""' : '""')
       const argumentText = typeof extractResult === 'string' ? extractResult : extractResult.argument
+      debugger
       c.addArgument(argumentText)
       replaced.push({ file: sourceFile.getFilePath(), replacement: argumentText, firstTime: true })
     } else if (c.getArguments().length === argIndex + 1) {
@@ -120,6 +123,8 @@ export function replaceFileFunctionCall(
       c.getArguments()[argIndex].replaceWithText(argumentText)
       replaced.push({ file: sourceFile.getFilePath(), replacement: argumentText, firstTime: false })
     } else if (c.getArguments().length > argIndex + 1) {
+      debugger
+
       // strange situation: our argument bucket and the next one are already filled up.
       extractorData.push('""')
       console.error(
