@@ -1,8 +1,6 @@
 [![Build Status](https://travis-ci.org/cancerberoSgx/typescript-poor-man-reflection.png?branch=master)](https://travis-ci.org/cancerberoSgx/typescript-poor-man-reflection)
 [![Dependencies](https://david-dm.org/cancerberosgx/typescript-poor-man-reflection.svg)](https://david-dm.org/cancerberosgx/typescript-poor-man-reflection)
 
-
-
 # typescript-poor-man-reflection 
 
 An unconventional way of getting TypeScript code information (like types), as text.
@@ -21,6 +19,22 @@ A preprocessor tool to modify input TypeScript files embedding requested types o
 The tool **will modify** TypeScript source files calling the library's functions, embedding referenced node's text in the source file. It should be called before `tsc` or before npm test, and it can be called with the option `--clean` to clean-up source files (for example before commit or after `npm test`).
 
 **Cost**: You need to pre-process your TS files *before* compiling them with tsc in order for this to work and they will be modified. 
+
+You can undo the changes later, perhaps before commit / linting the code. Or perhaps never, if you maintain your instrumented files isolated probably you won't notice any changes and the default transformation is very discrete.  
+
+## Usage
+
+```sh
+npm install -D typescript-poor-man-reflection
+# preprocess before compile
+npx typescript-poor-man-reflection
+npx tsc
+npm test
+# Undo the changes before lint / commit
+npx typescript-poor-man-reflection --clean
+nxp prettier
+```
+
 
 ## Snippets
 
@@ -63,16 +77,26 @@ import { ReadFiles } from 'typescript-poor-man-reflection'
 export files = ReadFiles({path: './src/examples/example*.ts'})
 ```
 
-### Organize imports - remove unused
+### Organize imports - remove unused - infer types, exec
 
 Execute TypeScript known refactors in current or all files:
 
 ```ts
-import { OrganizeImports, RemoveUnused } from 'typescript-poor-man-reflection'
-OrganizeImports('src/**/*.ts*')
-RemoveUnused('src/**/*.ts*')
+import { OrganizeImports, RemoveUnused, Exec } from 'typescript-poor-man-reflection'
+OrganizeImports({path: 'src/**/*.ts*'})
+RemoveUnused({path: 'src/**/*.ts*'})
+if(Exec('npm run prettier').code!==0){
+  process.exit(1)
+}
+// or just in current file:
+InferTypes()
 ```
 
+### Refactor tools
+
+(Expect more!)
+
+TODO: extract interface
 ### TypeText
 
 Be able to get types text so we don't hardcode them as strings. Taken from tsd-check-runtime - its sibling project - using jest matchers.
@@ -127,17 +151,22 @@ Executing the program, gives, as expected:
 $ npx ts-node test.ts 
 undefined undefined
 ```
+
 But now we transpile our code and:
+
 ```sh
 $ npx typescript-poor-man-reflection
 $ npx ts-node test.ts 
 UnionOf<[1, Date[]]> UnionOf<[1, boolean | string]>
 ```
+
 But at a terrible cost, your files have been modified!
 
 ## Data Modes
+
+(Different modalities on how your files are modified)
    
- * `folderFile`, the data is stored in a separate file that exports a function to access to
+ * `folderFile` (Default). The data is stored in a separate file that exports a function to access to
     array. An import declaration will be added to the file and function calls will use the imported function
     to access the array. There will be one of these files per folder with the name given by option
     `extractorDataFolderFileName` that will contain the data of all this folder's immediate children.

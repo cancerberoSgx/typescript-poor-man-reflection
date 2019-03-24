@@ -43,7 +43,7 @@ ExtractInterface<C>({destFile: 'newOrExistingFile.ts'})
 
 **● destFile**: *`undefined` \| `string`*
 
-*Defined in [extractors/source/extractInterface.ts:36](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/9e477be/src/extractors/source/extractInterface.ts#L36)*
+*Defined in [extractors/source/extractInterface.ts:36](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b7b4f65/src/extractors/source/extractInterface.ts#L36)*
 
 If destFile is provided then the interface will be created in that file. If exists it will be created at the bottom. If not provided then the interface will be created when this call expression is.
 
@@ -54,7 +54,7 @@ ___
 
 **● name**: *`undefined` \| `string`*
 
-*Defined in [extractors/source/extractInterface.ts:40](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/9e477be/src/extractors/source/extractInterface.ts#L40)*
+*Defined in [extractors/source/extractInterface.ts:40](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b7b4f65/src/extractors/source/extractInterface.ts#L40)*
 
 Name for the new interface
 
@@ -67,7 +67,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputMode](_types_.extractoroptions.md#outputmode)*
 
-*Defined in [types.ts:204](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/9e477be/src/types.ts#L204)*
+*Defined in [types.ts:204](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b7b4f65/src/types.ts#L204)*
 
 Default is 'asReturnValue' in which case the output will be returned by the extractor function call.
 
@@ -82,7 +82,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputVariableName](_types_.extractoroptions.md#outputvariablename)*
 
-*Defined in [types.ts:208](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/9e477be/src/types.ts#L208)*
+*Defined in [types.ts:208](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b7b4f65/src/types.ts#L208)*
 
 Name of the variable to assign the value in case outputMode is `assignToVariable`
 
@@ -93,7 +93,7 @@ ___
 
 **● removeDocs**: *`undefined` \| `false` \| `true`*
 
-*Defined in [extractors/source/extractInterface.ts:44](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/9e477be/src/extractors/source/extractInterface.ts#L44)*
+*Defined in [extractors/source/extractInterface.ts:44](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b7b4f65/src/extractors/source/extractInterface.ts#L44)*
 
 If true it will remove jsdocs from class since now they will be on the interface
 
@@ -106,7 +106,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[removeMe](_types_.extractoroptions.md#removeme)*
 
-*Defined in [types.ts:220](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/9e477be/src/types.ts#L220)*
+*Defined in [types.ts:220](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b7b4f65/src/types.ts#L220)*
 
 If true, this extractor function call expression will be removed as long as it's on an ExpressionStatement. Example:
 
@@ -127,7 +127,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[target](_types_.extractoroptions.md#target)*
 
-*Defined in [types.ts:225](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/9e477be/src/types.ts#L225)*
+*Defined in [types.ts:225](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b7b4f65/src/types.ts#L225)*
 
 Can be used to reference a node in this file.
 

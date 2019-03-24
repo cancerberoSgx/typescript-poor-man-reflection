@@ -3,15 +3,22 @@
 
  * performance timing tests - I'm adding features blindly and dont know the impact on performance.
  * FileDeclaration<Type>(orNode) to get the file path where a node was declared
+ * diagnostics (different kind) of single file and whole project
  * it always adds an argument and I can't prevent it in case I dont need it. if I pass undefined should not add anything
  * we should support also Types beside functions so we can operate on types. Example, Override() - I cannot put a function call in the middle of an interface declaration (method / property signature ).
-
+ * test --register with node_modules packages
+ * Register()
+   * document limitations. 
+   * put validations / defensive code in the extractor 
+   * review require() and import   try{}catch{} in extractors.ts and error when spawned with ts-node
+ * --clean only cleans --filePattern and --moduleIdentifier given. (tested) - maybe we want to review this and (configurable) make it clean everything?) 
+ * Format(), Format({path})  - preferences ? from .editor , eslint, tslint, prettier ?
 
 ### Done
 
  * Exec({program: string}) - to exec a program and return its return code, stdout, stderr. Example ( minify before embed): `const {stdout, code} = Exec('npx terser files/**/*.js -o tmp/js'); export files = code===0 ? ReadFiles({path: './tmp/js/**/*.js'}) : []`
- * Tool configuration - api so I can ThisBlockText<>({withoutParens: true})
- * test if --clean only cleans --filePattern or all - -DONE it cleans only --filePattern
+ * flexible APIs - implementations can choose which param to use or/if type params for data / options
+ * --clean only cleans --filePattern and --moduleIdentifier given. (tested)
  * test with all the extractors together DONE
  * extractor that perform type inference DONE
  * Overrides
@@ -21,8 +28,9 @@
  * extractInterface
  * ls, cat, readFiles 
  * --register extractor (CLI)
- * register : mark the new file and on --clean register to remove it and never process it
+ * Register() : mark the new file and on --clean register to remove it and never process it
  * flag to disable --moduleSpecifier  --moduleSpecifier _IGNORE_
+ * If()
 
 
 
@@ -106,6 +114,8 @@ see src/__tests__/registerExtractorTest.ts and src/extractors/internal/register.
 
 TODO: document limitations. 
 TODO: put validations / defensive code in the extractor 
+TODO: test 
+TODO: require() and import - review that  - try{}catch{} in extractors.ts
 
 ...would be awesome to do, from the same code:
 
@@ -132,7 +142,6 @@ Register({
 const c = NewExtractor()
 console.log(c)
 ```
-I think we can use beforeExtract()
 
 
 
@@ -141,7 +150,7 @@ I think we can use beforeExtract()
 
 DONE : can register .ts files exporting extractors. 
 
-TODO: test packages (npm install custom-extractor)
+
 
 npx typescript-poor-man-reflection --register ./foo/newExtractor.ts
 

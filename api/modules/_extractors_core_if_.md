@@ -27,31 +27,27 @@
 
 ▸ **If**<`T`>(config: *[IfOptions](../interfaces/_extractors_core_if_.ifoptions.md)*, t?: *`any`*): (`string` \| `Stats`)[]
 
-*Defined in [extractors/core/if.ts:31](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/9e477be/src/extractors/core/if.ts#L31)*
+*Defined in [extractors/core/if.ts:28](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/b7b4f65/src/extractors/core/if.ts#L28)*
 
-Returns one of the two values given according to given condition.
+Returns one of the two values given according to given condition. Basic tool for dependency injection.
 
 ```ts
-// interface Logger { log(s: string):void }
-
-const logger = If<()=>Logger>({
-condition: ()=>process.env.NODE_ENV==='production',
-then: ()=>new LightLogger(),
-else: ()=>new DevLogger()
+const logger = If({
+condition: () => process.env.NODE_ENV==='production',
+then: () => new LightLogger(),
+else: () => new DevLogger()
 })
 ```
 
-which could be transformed in something like:
+Which could be transformed in something like:
 
 ```ts
-const logger = If<()=>Logger>({
-condition: ()=>process.env.NODE_ENV==='production',
-then: ()=>new LightLogger(),
-else: ()=>new DevLogger()
-}, ()=>new DevLogger())
+const logger = If({
+condition: () => process.env.NODE_ENV==='production',
+then: () => new LightLogger(),
+else: () => new DevLogger()
+}, () => new DevLogger())
 ```
-
-Basic tool for dependency injection?
 
 **Type parameters:**
 

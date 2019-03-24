@@ -2,9 +2,14 @@ node_modules
 tmp
 spec
 src
-dist/spec
+dist/src/__tests__
 tsconfig.json
 .vscode
 *.tgz
 api
 sample-project
+TODO.md
+.travis.yml
+*.tgz
+jest.config-spec.js
+tsconfig.json

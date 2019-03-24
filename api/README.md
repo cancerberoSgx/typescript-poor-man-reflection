@@ -23,8 +23,34 @@ The tool **will modify** TypeScript source files calling the library's functions
 
 **Cost**: You need to pre-process your TS files _before_ compiling them with tsc in order for this to work and they will be modified.
 
+You can undo the changes later, perhaps before commit / linting the code. Or perhaps never, if you maintain your instrumented files isolated probably you won't notice any changes and the default transformation is very discrete.
+
+Usage
+-----
+
+```sh
+npm install -D typescript-poor-man-reflection
+# preprocess before compile
+npx typescript-poor-man-reflection
+npx tsc
+npm test
+# Undo the changes before lint / commit
+npx typescript-poor-man-reflection --clean
+nxp prettier
+```
+
 Snippets
 --------
+
+### Compile-time conditionals
+
+```ts
+const logger = If({
+  condition: () => process.env.NODE_ENV==='production',
+  then: () => new LightLogger(),
+  else: () => new DevLogger()
+})
+```
 
 ### Overrides
 
@@ -55,15 +81,26 @@ import { ReadFiles } from 'typescript-poor-man-reflection'
 export files = ReadFiles({path: './src/examples/example*.ts'})
 ```
 
-### Organize imports - remove unused
+### Organize imports - remove unused - infer types, exec
 
 Execute TypeScript known refactors in current or all files:
 
 ```ts
-import { OrganizeImports, RemoveUnused } from 'typescript-poor-man-reflection'
-OrganizeImports('src/**/*.ts*')
-RemoveUnused('src/**/*.ts*')
+import { OrganizeImports, RemoveUnused, Exec } from 'typescript-poor-man-reflection'
+OrganizeImports({path: 'src/**/*.ts*'})
+RemoveUnused({path: 'src/**/*.ts*'})
+if(Exec('npm run prettier').code!==0){
+  process.exit(1)
+}
+// or just in current file:
+InferTypes()
 ```
+
+### Refactor tools
+
+(Expect more!)
+
+TODO: extract interface
 
 ### TypeText
 
@@ -134,7 +171,9 @@ But at a terrible cost, your files have been modified!
 Data Modes
 ----------
 
-*   `folderFile`, the data is stored in a separate file that exports a function to access to array. An import declaration will be added to the file and function calls will use the imported function to access the array. There will be one of these files per folder with the name given by option `extractorDataFolderFileName` that will contain the data of all this folder's immediate children.
+(Different modalities on how your files are modified)
+
+*   `folderFile` (Default). The data is stored in a separate file that exports a function to access to array. An import declaration will be added to the file and function calls will use the imported function to access the array. There will be one of these files per folder with the name given by option `extractorDataFolderFileName` that will contain the data of all this folder's immediate children.
     
 *   If `prependVariable`, an array variable will be prepended at the top of the same file and function calls will access the array directly.
     
@@ -182,7 +221,7 @@ Basically use this only for test projects. Run `npx typescript-poor-man-reflecti
 To rollback the changes execute the following command. It will clean all the added arguments:
 
 ```sh
-npx get-type-string --clean
+npx typescript-poor-man-reflection --clean
 ```
 
 API

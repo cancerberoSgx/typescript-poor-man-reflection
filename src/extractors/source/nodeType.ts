@@ -1,5 +1,5 @@
 import { quote } from 'misc-utils-of-mine-generic'
-import { CallExpression, Node, TypeGuards } from 'ts-simple-ast'
+import { CallExpression, Node, TypeGuards, SyntaxKind } from 'ts-simple-ast'
 import { ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunctionCallOptions } from '../../types'
 import { unquote } from '../../util'
 import { AbstractExtractor } from '../abstractExtractor'
@@ -30,7 +30,7 @@ export interface NodeTypeOptions extends ExtractorOptions {
   inferenceMode?: InferenceNode
 }
 
-type InferenceNode = 'apparent' | 'none' | 'contextual'
+type InferenceNode = 'apparent' | 'none' | 'contextual' | 'qualifiedName'
 // | 'returnTypeOfSignature'
 // | 'getTypeOfSymbolAtLocation'
 // | 'getTypeAtLocation'
@@ -44,6 +44,8 @@ export class NodeTypeClass extends AbstractExtractor {
   ): ExtractorResult {
     const config = this.getOptionsFromFistArg<NodeTypeOptions>(n) || {}
     let target: Node | undefined = this.getTarget(n, config)
+    // console.log(target && target.getText());
+
     let output = this.buildType(target || n, config, options) as any
     return this.buildExtractorResult(n, output, getter, index, options, config)
   }
@@ -61,6 +63,13 @@ export class NodeTypeClass extends AbstractExtractor {
     } else if (config.inferenceMode === 'contextual' && options.project && TypeGuards.isExpression(n)) {
       const t = options.project.getTypeChecker().getContextualType(n)
       return t && quote(t.getText())
+    } else if (config.inferenceMode === 'qualifiedName') {
+      const symbol = options.project.getTypeChecker().getSymbolAtLocation(n)
+      let t: string = 'any'
+      if (symbol) {
+        t = options.project.getTypeChecker().getFullyQualifiedName(symbol)
+      }
+      return quote(t)
     }
   }
 
