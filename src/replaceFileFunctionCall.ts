@@ -1,5 +1,5 @@
 import { quote } from 'misc-utils-of-mine-generic'
-import { CallExpression, SourceFile, SyntaxKind } from 'ts-simple-ast'
+import Project, { CallExpression, SourceFile, SyntaxKind } from 'ts-simple-ast'
 import { extractCallExpressions } from './astUtil'
 import { extractorGetterBuilder, getFileId, writeExtractorData } from './extractorData'
 import { defaultExtractors, isExtractorClass, isExtractorFn } from './extractors'
@@ -12,7 +12,7 @@ import { ExtractorGetter, FileVariableAccessor, Replacement, ReplaceProjectFunct
  */
 export function replaceFileFunctionCall(
   sourceFile: SourceFile,
-  options_: Partial<ReplaceProjectFunctionCallOptions> = defaultOptions
+  options_: Partial<ReplaceProjectFunctionCallOptions> & { project: Project }
 ): (Replacement | undefined)[] {
   const options = getFullOptions(options_)
 
@@ -27,10 +27,16 @@ export function replaceFileFunctionCall(
 
   const fileVariables: { [name: string]: string } = {}
   const replaced: Replacement[] = []
-  let callExpressions = extractCallExpressions(options.project.getSourceFile(sourceFile.getFilePath())!, moduleSpecifier, Object.keys(extracts))
+  let callExpressions = extractCallExpressions(
+    options.project.getSourceFile(sourceFile.getFilePath())!,
+    moduleSpecifier,
+    Object.keys(extracts)
+  )
   let callExpressionNames = callExpressions.map(c => c.getFirstChildByKind(SyntaxKind.Identifier)!.getText())
   let extractorData: string[] = []
-  const fileId = getFileId(options.project.getSourceFile(sourceFile.getFilePath())!, { extractorDataFolderFileName: extractorDataFolderFileName })
+  const fileId = getFileId(options.project.getSourceFile(sourceFile.getFilePath())!, {
+    extractorDataFolderFileName: extractorDataFolderFileName
+  })
 
   callExpressionNames.forEach(extractName => {
     const extract = extracts[extractName]
@@ -41,7 +47,11 @@ export function replaceFileFunctionCall(
 
   // at beforeExtract somebody (Register()) could add a new extractor or perhaps the AST was modified so we
   // query the call expressions again
-  callExpressions = extractCallExpressions(options.project.getSourceFile(sourceFile.getFilePath())!, moduleSpecifier, Object.keys(extracts))
+  callExpressions = extractCallExpressions(
+    options.project.getSourceFile(sourceFile.getFilePath())!,
+    moduleSpecifier,
+    Object.keys(extracts)
+  )
   callExpressionNames = callExpressions.map(c => c.getFirstChildByKind(SyntaxKind.Identifier)!.getText())
 
   callExpressions.forEach((c, index) => {
@@ -74,7 +84,7 @@ export function replaceFileFunctionCall(
     // extractor for its own options/whatever.
 
     // console.log(Object.keys(options.extracts));
-    
+
     if (extract && c.getArguments().length < argIndex && !clean) {
       // extractor owned arguments are empty - we need to fill them up in order to add ours.
       for (let i = 0; i < argIndex; i++) {

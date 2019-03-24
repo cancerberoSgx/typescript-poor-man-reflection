@@ -26,7 +26,7 @@
 
 ▸ **ReadFiles**<`T`>(config: *[ReadFilesOptions](../interfaces/_extractors_fs_readfiles_.readfilesoptions.md)*, t?: *`any`*): (`string` \| `Stats`)[]
 
-*Defined in [extractors/fs/readFiles.ts:22](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/671fe6b/src/extractors/fs/readFiles.ts#L22)*
+*Defined in [extractors/fs/readFiles.ts:22](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/fs/readFiles.ts#L22)*
 
 Returns an array that contain given file names and content as string. Useful to embed files in the source code as string. Usage:
 

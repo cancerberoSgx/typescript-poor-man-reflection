@@ -232,6 +232,7 @@ See (TODO.md)\[TODO.md\]
 * ["extractors/fs/ls"](modules/_extractors_fs_ls_.md)
 * ["extractors/fs/projectFiles"](modules/_extractors_fs_projectfiles_.md)
 * ["extractors/fs/readFiles"](modules/_extractors_fs_readfiles_.md)
+* ["extractors/internal/register"](modules/_extractors_internal_register_.md)
 * ["extractors/source/abstractRefactorExtractor"](modules/_extractors_source_abstractrefactorextractor_.md)
 * ["extractors/source/extractInterface"](modules/_extractors_source_extractinterface_.md)
 * ["extractors/source/inferTypes"](modules/_extractors_source_infertypes_.md)

@@ -15,7 +15,7 @@ type T = any
 }
       `
       )
-      replaceFileFunctionCall(project.getSourceFile('test.ts')!, { extractorDataMode: 'asArgument' })
+      replaceFileFunctionCall(project.getSourceFile('test.ts')!, { project, extractorDataMode: 'asArgument' })
       expect(project.getSourceFile('test.ts')!.getText()).toContain(
         `NodeText<typeof f>(\"function f(){\\ntype T = any\\n}\")`
       )
@@ -34,7 +34,7 @@ type T = any
 }
       `
       )
-      replaceFileFunctionCall(project.getSourceFile('test.ts')!, { extractorDataMode: 'asArgument' })
+      replaceFileFunctionCall(project.getSourceFile('test.ts')!, { project, extractorDataMode: 'asArgument' })
       expect(project.getSourceFile('test.ts')!.getText()).toContain(`BodyText<typeof f>("type T = any")`)
     })
   })
@@ -52,7 +52,7 @@ function f(){
 }
       `.trim()
       )
-      replaceFileFunctionCall(project.getSourceFile('test.ts')!, { extractorDataMode: 'asArgument' })
+      replaceFileFunctionCall(project.getSourceFile('test.ts')!, { project, extractorDataMode: 'asArgument' })
       expect(removeWhites(project.getSourceFile('test.ts')!.getText())).toContain(
         `var thisBlock = ThisBlockText<any>("\\n var b = 1\\n var thisBlock = ThisBlockText<any>()\\n")`
       )
@@ -72,7 +72,7 @@ function f(){
       `.trim()
       )
 
-      replaceFileFunctionCall(project.getSourceFile('test.ts')!, { extractorDataMode: 'asArgument' })
+      replaceFileFunctionCall(project.getSourceFile('test.ts')!, { project, extractorDataMode: 'asArgument' })
       expect(removeWhites(project.getSourceFile('test.ts')!.getText())).toContain(
         `const c = BodyText<typeof f>("const c = BodyText<typeof f>()")`
       )

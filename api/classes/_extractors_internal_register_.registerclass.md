@@ -1,12 +1,12 @@
-[typescript-poor-man-reflection](../README.md) > ["extractors/source/overrides"](../modules/_extractors_source_overrides_.md) > [OverridesClass](../classes/_extractors_source_overrides_.overridesclass.md)
+[typescript-poor-man-reflection](../README.md) > ["extractors/internal/register"](../modules/_extractors_internal_register_.md) > [RegisterClass](../classes/_extractors_internal_register_.registerclass.md)
 
-# Class: OverridesClass
+# Class: RegisterClass
 
 ## Hierarchy
 
  [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md)
 
-**↳ OverridesClass**
+**↳ RegisterClass**
 
 ## Implements
 
@@ -16,19 +16,19 @@
 
 ### Properties
 
-* [defaultExtractorOptions](_extractors_source_overrides_.overridesclass.md#defaultextractoroptions)
-* [freeArgumentNumber](_extractors_source_overrides_.overridesclass.md#freeargumentnumber)
+* [defaultExtractorOptions](_extractors_internal_register_.registerclass.md#defaultextractoroptions)
+* [freeArgumentNumber](_extractors_internal_register_.registerclass.md#freeargumentnumber)
 
 ### Methods
 
-* [afterExtract](_extractors_source_overrides_.overridesclass.md#afterextract)
-* [beforeExtract](_extractors_source_overrides_.overridesclass.md#beforeextract)
-* [buildExtractorResult](_extractors_source_overrides_.overridesclass.md#buildextractorresult)
-* [extract](_extractors_source_overrides_.overridesclass.md#extract)
-* [getConfig](_extractors_source_overrides_.overridesclass.md#getconfig)
-* [getOptionsFromFistArg](_extractors_source_overrides_.overridesclass.md#getoptionsfromfistarg)
-* [getTarget](_extractors_source_overrides_.overridesclass.md#gettarget)
-* [parseOptionValue](_extractors_source_overrides_.overridesclass.md#parseoptionvalue)
+* [afterExtract](_extractors_internal_register_.registerclass.md#afterextract)
+* [beforeExtract](_extractors_internal_register_.registerclass.md#beforeextract)
+* [buildExtractorResult](_extractors_internal_register_.registerclass.md#buildextractorresult)
+* [extract](_extractors_internal_register_.registerclass.md#extract)
+* [getConfig](_extractors_internal_register_.registerclass.md#getconfig)
+* [getOptionsFromFistArg](_extractors_internal_register_.registerclass.md#getoptionsfromfistarg)
+* [getTarget](_extractors_internal_register_.registerclass.md#gettarget)
+* [parseOptionValue](_extractors_internal_register_.registerclass.md#parseoptionvalue)
 
 ---
 
@@ -49,11 +49,11 @@ ___
 
 ### `<Protected>` freeArgumentNumber
 
-**● freeArgumentNumber**: *`number`* = 2
+**● freeArgumentNumber**: *`number`* = 1
 
 *Overrides [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[freeArgumentNumber](_extractors_abstractextractor_.abstractextractor.md#freeargumentnumber)*
 
-*Defined in [extractors/source/overrides.ts:44](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/source/overrides.ts#L44)*
+*Defined in [extractors/internal/register.ts:58](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/internal/register.ts#L58)*
 
 ___
 
@@ -90,9 +90,9 @@ ___
 
 *Implementation of [ExtractorClass](../interfaces/_types_.extractorclass.md).[beforeExtract](../interfaces/_types_.extractorclass.md#beforeextract)*
 
-*Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[beforeExtract](_extractors_abstractextractor_.abstractextractor.md#beforeextract)*
+*Overrides [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[beforeExtract](_extractors_abstractextractor_.abstractextractor.md#beforeextract)*
 
-*Defined in [extractors/abstractExtractor.ts:140](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/abstractExtractor.ts#L140)*
+*Defined in [extractors/internal/register.ts:76](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/internal/register.ts#L76)*
 
 **Parameters:**
 
@@ -137,7 +137,7 @@ ___
 
 *Overrides [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[extract](_extractors_abstractextractor_.abstractextractor.md#extract)*
 
-*Defined in [extractors/source/overrides.ts:46](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/source/overrides.ts#L46)*
+*Defined in [extractors/internal/register.ts:59](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/internal/register.ts#L59)*
 
 **Parameters:**
 
@@ -220,11 +220,9 @@ ___
 
 ▸ **parseOptionValue**(name: *`string`*, value: *`Node` \| `undefined`*): `any`
 
-*Inherited from [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[parseOptionValue](_extractors_abstractextractor_.abstractextractor.md#parseoptionvalue)*
+*Overrides [AbstractExtractor](_extractors_abstractextractor_.abstractextractor.md).[parseOptionValue](_extractors_abstractextractor_.abstractextractor.md#parseoptionvalue)*
 
-*Defined in [extractors/abstractExtractor.ts:58](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/abstractExtractor.ts#L58)*
-
-since options need to be parsed from a literal object Node, subclasses might need to override this method to parse their own options
+*Defined in [extractors/internal/register.ts:68](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/internal/register.ts#L68)*
 
 **Parameters:**
 

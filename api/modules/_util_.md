@@ -26,7 +26,7 @@
 
 **Ƭ Fn**: *`function`*
 
-*Defined in [util.ts:21](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/671fe6b/src/util.ts#L21)*
+*Defined in [util.ts:21](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/util.ts#L21)*
 
 #### Type declaration
 ▸(...args: *`any`[]*): `any`
@@ -46,7 +46,7 @@ ___
 
 **Ƭ Map**: *`object`*
 
-*Defined in [util.ts:10](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/671fe6b/src/util.ts#L10)*
+*Defined in [util.ts:10](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/util.ts#L10)*
 
 #### Type declaration
 
@@ -62,7 +62,7 @@ ___
 
 ▸ **asString**(s: *`string`*): `string`
 
-*Defined in [util.ts:15](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/671fe6b/src/util.ts#L15)*
+*Defined in [util.ts:15](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/util.ts#L15)*
 
 **Parameters:**
 
@@ -79,7 +79,7 @@ ___
 
 ▸ **evaluate**<`T`>(s: *`string`*, defaultValue?: *`undefined`*): `T` \| `undefined`
 
-*Defined in [util.ts:3](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/671fe6b/src/util.ts#L3)*
+*Defined in [util.ts:3](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/util.ts#L3)*
 
 **Type parameters:**
 
@@ -100,7 +100,7 @@ ___
 
 ▸ **unquote**(s: *`string`*): `string`
 
-*Defined in [util.ts:11](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/671fe6b/src/util.ts#L11)*
+*Defined in [util.ts:11](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/util.ts#L11)*
 
 **Parameters:**
 
@@ -117,7 +117,7 @@ ___
 
 ▸ **withoutExtension**(f: *`string`*): `string`
 
-*Defined in [util.ts:18](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/671fe6b/src/util.ts#L18)*
+*Defined in [util.ts:18](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/util.ts#L18)*
 
 **Parameters:**
 

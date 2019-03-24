@@ -24,6 +24,7 @@
 * [OverridesClass](../classes/_extractors_source_overrides_.overridesclass.md)
 * [ProjectFilesClass](../classes/_extractors_fs_projectfiles_.projectfilesclass.md)
 * [ReadFilesClass](../classes/_extractors_fs_readfiles_.readfilesclass.md)
+* [RegisterClass](../classes/_extractors_internal_register_.registerclass.md)
 * [RemoveUnusedClass](../classes/_extractors_source_removeunused_.removeunusedclass.md)
 * [ThisBlockTextClass](../classes/_extractors_basic_thisblocktext_.thisblocktextclass.md)
 * [TypeTextClass](../classes/_extractors_basic_typetext_.typetextclass.md)
@@ -47,7 +48,7 @@
 
 ▸ **afterExtract**(filePath: *`string`*, extractorName: *`string`*, options: *`Required`<[ReplaceProjectFunctionCallOptions](_types_.replaceprojectfunctioncalloptions.md)>*): `void`
 
-*Defined in [types.ts:165](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/671fe6b/src/types.ts#L165)*
+*Defined in [types.ts:165](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/types.ts#L165)*
 
 Called after [extract](_types_.extractorclass.md#extract) method is called for all extractors in this sourceFile. It's safe here to transform the AST leaving nodes forgotten ([https://dsherret.github.io/ts-morph/manipulation/#strongwarningstrong](https://dsherret.github.io/ts-morph/manipulation/#strongwarningstrong) - can use `insertText`, `replaceText`, or `removeText` or `organizeImports`)
 
@@ -68,7 +69,7 @@ ___
 
 ▸ **beforeExtract**(filePath: *`string`*, extractorName: *`string`*, options: *`Required`<[ReplaceProjectFunctionCallOptions](_types_.replaceprojectfunctioncalloptions.md)>*): `void`
 
-*Defined in [types.ts:158](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/671fe6b/src/types.ts#L158)*
+*Defined in [types.ts:158](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/types.ts#L158)*
 
 Called before [extract](_types_.extractorclass.md#extract) method is called for any extractors in this sourceFile. It's safe here to transform the AST leaving nodes forgotten ([https://dsherret.github.io/ts-morph/manipulation/#strongwarningstrong](https://dsherret.github.io/ts-morph/manipulation/#strongwarningstrong) - can use `insertText`, `replaceText`, or `removeText` or `organizeImports`)
 
@@ -89,7 +90,7 @@ ___
 
 ▸ **extract**(n: *`CallExpression`*, index: *`number`*, getter: *[ExtractorGetter](../modules/_types_.md#extractorgetter)*, options: *`Required`<[ReplaceProjectFunctionCallOptions](_types_.replaceprojectfunctioncalloptions.md)>*, variableAccessor: *[FileVariableAccessor](../modules/_types_.md#filevariableaccessor)*): [ExtractorResult](_types_.extractorresult.md)
 
-*Defined in [types.ts:145](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/671fe6b/src/types.ts#L145)*
+*Defined in [types.ts:145](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/types.ts#L145)*
 
 Implements the extraction or AST transformation. For each extractor function call expression found in a file, its method [extract](_types_.extractorclass.md#extract) is called respecting the order in the code.
 
@@ -116,7 +117,7 @@ ___
 
 ▸ **getConfig**(): [ExtractorConfig](_types_.extractorconfig.md)
 
-*Defined in [types.ts:134](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/671fe6b/src/types.ts#L134)*
+*Defined in [types.ts:134](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/types.ts#L134)*
 
 **Returns:** [ExtractorConfig](_types_.extractorconfig.md)
 

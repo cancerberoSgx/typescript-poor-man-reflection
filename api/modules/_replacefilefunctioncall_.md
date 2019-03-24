@@ -16,18 +16,18 @@
 
 ###  replaceFileFunctionCall
 
-▸ **replaceFileFunctionCall**(sourceFile: *`SourceFile`*, options_?: *`Partial`<[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)>*): (`undefined` \| [Replacement](../interfaces/_types_.replacement.md))[]
+▸ **replaceFileFunctionCall**(sourceFile: *`SourceFile`*, options_: *`Partial`<[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)> & `object`*): (`undefined` \| [Replacement](../interfaces/_types_.replacement.md))[]
 
-*Defined in [replaceFileFunctionCall.ts:13](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/671fe6b/src/replaceFileFunctionCall.ts#L13)*
+*Defined in [replaceFileFunctionCall.ts:13](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/replaceFileFunctionCall.ts#L13)*
 
 JavaScript API to replace arguments of all function expression calls in given (ts-simple-ast SourceFile) file that match given options. See `ReplaceFunctionCallsOptions`.
 
 **Parameters:**
 
-| Name | Type | Default value |
-| ------ | ------ | ------ |
-| sourceFile | `SourceFile` | - |
-| `Default value` options_ | `Partial`<[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)> |  defaultOptions |
+| Name | Type |
+| ------ | ------ |
+| sourceFile | `SourceFile` |
+| options_ | `Partial`<[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)> & `object` |
 
 **Returns:** (`undefined` \| [Replacement](../interfaces/_types_.replacement.md))[]
 

@@ -24,7 +24,7 @@
 
 **● extractor**: *[Extractor](../modules/_types_.md#extractor)*
 
-*Defined in [types.ts:66](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/671fe6b/src/types.ts#L66)*
+*Defined in [types.ts:66](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/types.ts#L66)*
 
 ___
 <a id="fn"></a>
@@ -33,7 +33,7 @@ ___
 
 **● fn**: *[Fn](../modules/_util_.md#fn)*
 
-*Defined in [types.ts:67](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/671fe6b/src/types.ts#L67)*
+*Defined in [types.ts:67](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/types.ts#L67)*
 
 ___
 <a id="name"></a>
@@ -42,7 +42,7 @@ ___
 
 **● name**: *`string`*
 
-*Defined in [types.ts:65](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/671fe6b/src/types.ts#L65)*
+*Defined in [types.ts:65](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/types.ts#L65)*
 
 ___
 

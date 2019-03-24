@@ -1,66 +1,54 @@
-[typescript-poor-man-reflection](../README.md) > ["extractors/source/printAst"](../modules/_extractors_source_printast_.md) > [AstOptions](../interfaces/_extractors_source_printast_.astoptions.md)
+[typescript-poor-man-reflection](../README.md) > ["extractors/internal/register"](../modules/_extractors_internal_register_.md) > [RegisterOptions](../interfaces/_extractors_internal_register_.registeroptions.md)
 
-# Interface: AstOptions
+# Interface: RegisterOptions
 
 ## Hierarchy
 
  [ExtractorOptions](_types_.extractoroptions.md)
 
-**↳ AstOptions**
+**↳ RegisterOptions**
 
 ## Index
 
 ### Properties
 
-* [asJson](_extractors_source_printast_.astoptions.md#asjson)
-* [dontPrintIdentifier](_extractors_source_printast_.astoptions.md#dontprintidentifier)
-* [dontPrintKindName](_extractors_source_printast_.astoptions.md#dontprintkindname)
-* [dontPrintText](_extractors_source_printast_.astoptions.md#dontprinttext)
-* [outputMode](_extractors_source_printast_.astoptions.md#outputmode)
-* [outputVariableName](_extractors_source_printast_.astoptions.md#outputvariablename)
-* [removeMe](_extractors_source_printast_.astoptions.md#removeme)
-* [target](_extractors_source_printast_.astoptions.md#target)
+* [extractor](_extractors_internal_register_.registeroptions.md#extractor)
+* [fn](_extractors_internal_register_.registeroptions.md#fn)
+* [name](_extractors_internal_register_.registeroptions.md#name)
+* [outputMode](_extractors_internal_register_.registeroptions.md#outputmode)
+* [outputVariableName](_extractors_internal_register_.registeroptions.md#outputvariablename)
+* [removeMe](_extractors_internal_register_.registeroptions.md#removeme)
+* [target](_extractors_internal_register_.registeroptions.md#target)
 
 ---
 
 ## Properties
 
-<a id="asjson"></a>
+<a id="extractor"></a>
 
-### `<Optional>` asJson
+###  extractor
 
-**● asJson**: *`undefined` \| `false` \| `true`*
+**● extractor**: *[AbstractExtractor](../classes/_extractors_abstractextractor_.abstractextractor.md)*
 
-*Defined in [extractors/source/printAst.ts:47](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/source/printAst.ts#L47)*
-
-If true it will return the AST as JSON object. If false if will return a string with indentation representing the AST
+*Defined in [extractors/internal/register.ts:54](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/internal/register.ts#L54)*
 
 ___
-<a id="dontprintidentifier"></a>
+<a id="fn"></a>
 
-### `<Optional>` dontPrintIdentifier
+###  fn
 
-**● dontPrintIdentifier**: *`undefined` \| `false` \| `true`*
+**● fn**: *[Fn](../modules/_util_.md#fn)*
 
-*Defined in [extractors/source/printAst.ts:41](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/source/printAst.ts#L41)*
-
-___
-<a id="dontprintkindname"></a>
-
-### `<Optional>` dontPrintKindName
-
-**● dontPrintKindName**: *`undefined` \| `false` \| `true`*
-
-*Defined in [extractors/source/printAst.ts:40](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/source/printAst.ts#L40)*
+*Defined in [extractors/internal/register.ts:53](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/internal/register.ts#L53)*
 
 ___
-<a id="dontprinttext"></a>
+<a id="name"></a>
 
-### `<Optional>` dontPrintText
+###  name
 
-**● dontPrintText**: *`undefined` \| `false` \| `true`*
+**● name**: *`string`*
 
-*Defined in [extractors/source/printAst.ts:42](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/source/printAst.ts#L42)*
+*Defined in [extractors/internal/register.ts:52](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/internal/register.ts#L52)*
 
 ___
 <a id="outputmode"></a>

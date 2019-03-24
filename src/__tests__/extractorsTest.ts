@@ -29,51 +29,49 @@ console.log('bye')
         .replace(/\n/g, ' ; ')
     )} `
     config.silent = false
-    console.log(cmd)
-
     exec(cmd)
-
-    // class VarClass extends AbstractExtractor {
-    //   protected freeArgumentNumber = 1
-    //   extract(...[c, i, g, options, v]: Parameters<ExtractorFn>) {
-    //     const config = this.getOptionsFromFistArg(c) || {}
-    //     // const target = this.getTarget(c, config)
-    //     // if(target) {
-    //     //   v()
-    //     // }
-    //     // else {
-
-    //     // }
-    //     return this.buildExtractorResult(c, '""', g, i, options, config)
-    //   }
-    //   protected parseOptionValue(name: string, value: Node | undefined): any {
-    //     if (value && ['name'].includes(name)) {
-    //       return unquote(value.getText())
-    //     } else {
-    //       return super.parseOptionValue(name, value)
-    //     }
-    //   }
-    // }
-    // replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
-    //   ...defaultOptions,
-    //   ...{ extractorDataMode: 'asArgument' },
-    //   extracts: {
-    //     Var: new VarClass()
-    //   },
-    //   project
-    // })
-
-    //     expect(removeWhites(project.getSourceFile('test.ts')!.getText())).toContain(
-    //       removeWhites(
-    //         `
-    // function previous(){}
-    // Destroyer({target: next}, undefined)
-
-    // function f(){}
-
-    // var a = 1, c = 'foo'
-    // `
-    //       )
-    // )
   })
 })
+
+// class VarClass extends AbstractExtractor {
+//   protected freeArgumentNumber = 1
+//   extract(...[c, i, g, options, v]: Parameters<ExtractorFn>) {
+//     const config = this.getOptionsFromFistArg(c) || {}
+//     // const target = this.getTarget(c, config)
+//     // if(target) {
+//     //   v()
+//     // }
+//     // else {
+
+//     // }
+//     return this.buildExtractorResult(c, '""', g, i, options, config)
+//   }
+//   protected parseOptionValue(name: string, value: Node | undefined): any {
+//     if (value && ['name'].includes(name)) {
+//       return unquote(value.getText())
+//     } else {
+//       return super.parseOptionValue(name, value)
+//     }
+//   }
+// }
+// replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
+//   ...defaultOptions,
+//   ...{ extractorDataMode: 'asArgument' },
+//   extracts: {
+//     Var: new VarClass()
+//   },
+//   project
+// })
+
+//     expect(removeWhites(project.getSourceFile('test.ts')!.getText())).toContain(
+//       removeWhites(
+//         `
+// function previous(){}
+// Destroyer({target: next}, undefined)
+
+// function f(){}
+
+// var a = 1, c = 'foo'
+// `
+//       )
+// )

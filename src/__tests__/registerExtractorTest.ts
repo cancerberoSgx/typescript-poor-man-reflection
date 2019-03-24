@@ -1,13 +1,17 @@
-import { removeWhites } from 'misc-utils-of-mine-generic';
-import Project from 'ts-simple-ast';
-import { replaceFileFunctionCall } from '../replaceFileFunctionCall';
-import { defaultOptions } from '../replaceProjectFunctionCall';
+import { removeWhites } from 'misc-utils-of-mine-generic'
+import Project from 'ts-simple-ast'
+import { replaceFileFunctionCall } from '../replaceFileFunctionCall'
+import { defaultOptions } from '../replaceProjectFunctionCall'
 
 describe('Register()', () => {
+  it('dummy', () => {
+    expect(1).toBe(1)
+  })
 
   it('should build custom extractor inheriting from AbstractExtractor class', () => {
     const project = new Project({
-      tsConfigFilePath: './tsconfig.json', addFilesFromTsConfig: true
+      tsConfigFilePath: './tsconfig.json',
+      addFilesFromTsConfig: true
     })
     project.createSourceFile(
       'src/__tests__/registerExtractorTest_test.ts',
@@ -42,7 +46,8 @@ console.log(c)
       project
     })
     // console.log(project.getSourceFile('src/__tests__/registerExtractorTest_test.ts')!.getText());
-    expect(removeWhites(project.getSourceFile('src/__tests__/registerExtractorTest_test.ts')!.getText())).toContain(removeWhites(`const c = NewExtractor({}, "hello")`)
+    expect(removeWhites(project.getSourceFile('src/__tests__/registerExtractorTest_test.ts')!.getText())).toContain(
+      removeWhites(`const c = NewExtractor({}, "hello")`)
     )
   })
 })

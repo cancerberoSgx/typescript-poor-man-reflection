@@ -23,7 +23,8 @@ describe('customExtractors', () => {
       moduleSpecifier: 'my-custom-module',
       extracts: {
         Custom: n => '"custom"'
-      }
+      },
+      project
     })
     const t2 = project.getSourceFile('test.ts')!.getText()
     expect(t2).toContain('var a = Custom<typeof f>("custom")')
@@ -60,6 +61,7 @@ const body = AllDeclarationsInThisFile<any>()
     replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
       ...defaultOptions,
       ...{ extractorDataMode: 'asArgument' },
+      project,
       extracts: {
         /** return all declarations that contribute with names and are inside a describe() it() or test() */
         AllDeclarationsInThisFile: (n: CallExpression) => {

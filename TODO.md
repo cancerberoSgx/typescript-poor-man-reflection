@@ -1,6 +1,7 @@
 
 ## TODO / ISSUES
 
+ * performance timing tests - I'm adding features blindly and dont know the impact on performance.
  * FileDeclaration<Type>(orNode) to get the file path where a node was declared
  * it always adds an argument and I can't prevent it in case I dont need it. if I pass undefined should not add anything
  * flag to disable --moduleSpecifier

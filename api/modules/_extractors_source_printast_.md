@@ -27,7 +27,7 @@
 
 ▸ **PrintAst**<`T`>(config: *[AstOptions](../interfaces/_extractors_source_printast_.astoptions.md)*, t?: *`any`*): `any`
 
-*Defined in [extractors/source/printAst.ts:35](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/671fe6b/src/extractors/source/printAst.ts#L35)*
+*Defined in [extractors/source/printAst.ts:35](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/24513f8/src/extractors/source/printAst.ts#L35)*
 
 will print AST tree as string of given node which can be specified in config.target or as first type argument. If no target node is provided then it will print the AST of this `PrintAst` call expression node. Example:
 
