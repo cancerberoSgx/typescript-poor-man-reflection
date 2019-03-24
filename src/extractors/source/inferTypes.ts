@@ -1,4 +1,4 @@
-import Project, { SourceFile } from 'ts-simple-ast'
+import Project, { SourceFile } from 'ts-morph'
 import { inferTypesFromUsage } from 'ts-simple-ast-extra'
 import { AbstractRefactorExtractor, AbstractRefactorExtractorOptions } from './abstractRefactorExtractor'
 

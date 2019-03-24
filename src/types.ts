@@ -1,4 +1,4 @@
-import Project, { CallExpression } from 'ts-simple-ast'
+import Project, { CallExpression } from 'ts-morph'
 import { Fn } from './util'
 
 export interface Replacement {

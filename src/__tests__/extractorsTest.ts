@@ -1,5 +1,5 @@
 import { config, exec } from 'shelljs'
-import { Project } from 'ts-simple-ast'
+import { Project } from 'ts-morph'
 
 describe('extractorsCore', () => {
   it('should save/load functions and classes', () => {

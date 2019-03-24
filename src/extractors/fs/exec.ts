@@ -1,6 +1,6 @@
 import { quote } from 'misc-utils-of-mine-generic'
 import { exec } from 'shelljs'
-import { CallExpression, Node } from 'ts-simple-ast'
+import { CallExpression, Node } from 'ts-morph'
 import { ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunctionCallOptions } from '../../types'
 import { unquote } from '../../util'
 import { AbstractExtractor } from '../abstractExtractor'

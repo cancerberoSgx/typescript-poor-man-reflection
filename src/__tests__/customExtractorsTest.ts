@@ -1,5 +1,5 @@
 import { removeWhites } from 'misc-utils-of-mine-generic'
-import { CallExpression, Project, SyntaxKind, TypeGuards, Node } from 'ts-simple-ast'
+import { CallExpression, Project, SyntaxKind, TypeGuards, Node } from 'ts-morph'
 import { AbstractExtractor } from '../extractors/abstractExtractor'
 import { replaceFileFunctionCall } from '../replaceFileFunctionCall'
 import { defaultOptions } from '../replaceProjectFunctionCall'

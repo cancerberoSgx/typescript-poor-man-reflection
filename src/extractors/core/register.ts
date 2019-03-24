@@ -1,5 +1,5 @@
 import { unique } from 'misc-utils-of-mine-generic'
-import { CallExpression, Node, SyntaxKind, TypeGuards } from 'ts-simple-ast'
+import { CallExpression, Node, SyntaxKind, TypeGuards } from 'ts-morph'
 import { notUndefined } from 'ts-simple-ast-extra'
 import { extractCallExpressions } from '../../astUtil'
 import { isExportedExtractor } from '../../extractors'

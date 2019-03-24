@@ -1,4 +1,4 @@
-import { CallExpression, SyntaxKind } from 'ts-simple-ast'
+import { CallExpression, SyntaxKind } from 'ts-morph'
 import { ExtractorGetter, ReplaceProjectFunctionCallOptions } from '../../types'
 import { AbstractExtractor } from '../abstractExtractor'
 /**

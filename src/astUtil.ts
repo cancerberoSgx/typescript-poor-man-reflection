@@ -9,7 +9,7 @@ import {
   SourceFile,
   SyntaxKind,
   TypeGuards
-} from 'ts-simple-ast'
+} from 'ts-morph'
 
 /**
  * extract those CallExpressions from given sourceFile which declared in a module specifier with

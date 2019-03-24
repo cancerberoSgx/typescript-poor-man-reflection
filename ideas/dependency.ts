@@ -14,7 +14,7 @@
 // Which could be transformed in something like:
 
 // ```ts
-// const logger = If({
+// const logger = Dependency({
 //   condition: () => process.env.NODE_ENV==='production',
 //   then: () => new LightLogger(),
 //   else: () => new DevLogger()
@@ -22,28 +22,28 @@
 // ```
 
 //  */
-// export const If = function<T = any>(config: IfOptions, t?: any): (string | Stats)[] {
+// export const Dependency = function<T = any>(config: DependencyOptions, t?: any): (string | Stats)[] {
 //   return t!
 // }
 
-// export interface IfOptions<T = any, F = any, E = any> extends ExtractorOptions {
+// export interface DependencyOptions<T = any, F = any, E = any> extends ExtractorOptions {
 //   condition: () => boolean
 //   then: () => T
 //   else: () => F
 //   error?: () => E
 // }
-// interface IfOptionsAst {
+// interface DependencyOptionsAst {
 //   condition: Node
 //   then: Node
 //   else: Node
 //   error?: Node
 //   // /** TODO
-//   //  * Default value if an error occurs.
+//   //  * Default value Dependency an error occurs.
 //   //  */
 //   // onError?: 'then' | 'else'
 // }
 
-// export class IfClass extends AbstractExtractor {
+// export class DependencyClass extends AbstractExtractor {
 //   protected freeArgumentNumber = 1
 //   extract(
 //     n: CallExpression,
@@ -51,15 +51,15 @@
 //     getter: ExtractorGetter,
 //     options: Required<ReplaceProjectFunctionCallOptions>
 //   ): ExtractorResult {
-//     const config = this.getOptionsFromFistArg(n) as IfOptions
-//     const astConfig = (config as any) as IfOptionsAst
+//     const config = this.getOptionsFromFistArg(n) as DependencyOptions
+//     const astConfig = (config as any) as DependencyOptionsAst
 //     let output: string | Node = 'undefined'
 //     let errorResult = undefined
-//     if (config) {
+//     Dependency (config) {
 //       const conditionResult = this.evaluate<boolean>(astConfig.condition, astConfig, { errorResult }) || false
-//       if (conditionResult && !errorResult) {
+//       Dependency (conditionResult && !errorResult) {
 //         output = astConfig.then
-//       } else if (!errorResult && !conditionResult) {
+//       } else Dependency (!errorResult && !conditionResult) {
 //         output = astConfig.else
 //       } else {
 //         output = errorResult || 'undefined'
@@ -70,7 +70,7 @@
 
 //   private evaluate<T = any>(
 //     n: Node,
-//     config: IfOptionsAst,
+//     config: DependencyOptionsAst,
 //     error: { errorResult: any },
 //     ignoreError = false
 //   ): T | undefined {
@@ -79,7 +79,7 @@
 //       const r = eval(s) as T
 //       return r
 //     } catch (error) {
-//       if (!ignoreError) {
+//       Dependency (!ignoreError) {
 //         const errorValue = config.error ? this.evaluate(config.error, config, error, true) : `ERROR: ${error}`
 //         error.errorResult = errorValue
 //       }

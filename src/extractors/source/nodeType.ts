@@ -1,5 +1,5 @@
 import { quote } from 'misc-utils-of-mine-generic'
-import { CallExpression, Node, TypeGuards, SyntaxKind } from 'ts-simple-ast'
+import { CallExpression, Node, TypeGuards, SyntaxKind } from 'ts-morph'
 import { ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunctionCallOptions } from '../../types'
 import { unquote } from '../../util'
 import { AbstractExtractor } from '../abstractExtractor'
@@ -45,7 +45,6 @@ export class NodeTypeClass extends AbstractExtractor {
     const config = this.getOptionsFromFistArg<NodeTypeOptions>(n) || {}
     let target: Node | undefined = this.getTarget(n, config)
     // console.log(target && target.getText());
-
     let output = this.buildType(target || n, config, options) as any
     return this.buildExtractorResult(n, output, getter, index, options, config)
   }

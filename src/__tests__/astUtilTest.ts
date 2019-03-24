@@ -1,4 +1,4 @@
-import { Project, SyntaxKind, TypeGuards } from 'ts-simple-ast'
+import { Project, SyntaxKind, TypeGuards } from 'ts-morph'
 import { array2DInsert } from '../astUtil'
 import { removeWhites } from 'misc-utils-of-mine-generic'
 

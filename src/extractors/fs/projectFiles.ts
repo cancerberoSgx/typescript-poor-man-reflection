@@ -1,5 +1,5 @@
 import { unique } from 'misc-utils-of-mine-generic'
-import { CallExpression } from 'ts-simple-ast'
+import { CallExpression } from 'ts-morph'
 import { ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunctionCallOptions } from '../../types'
 import { AbstractExtractor } from '../abstractExtractor'
 

@@ -1,6 +1,6 @@
 import { AbstractExtractor } from '../../extractors/abstractExtractor'
 import { ExtractorFn, ExtractorOptions, ExportedExtractor } from '../../types'
-import { Node } from 'ts-simple-ast'
+import { Node } from 'ts-morph'
 import { unquote } from '../../util'
 
 class NewExtractorClass extends AbstractExtractor {

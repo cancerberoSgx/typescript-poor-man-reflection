@@ -1,5 +1,5 @@
 import { indent, quote, shorter } from 'misc-utils-of-mine-generic'
-import { CallExpression, Node } from 'ts-simple-ast'
+import { CallExpression, Node } from 'ts-morph'
 import { getNodeName } from '../../astUtil'
 import {
   ExtractorClass,

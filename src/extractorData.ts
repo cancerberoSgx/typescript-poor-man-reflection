@@ -1,4 +1,4 @@
-import { CallExpression, SourceFile, SyntaxKind } from 'ts-simple-ast'
+import { CallExpression, SourceFile, SyntaxKind } from 'ts-morph'
 import {
   array2DInsert,
   objectLiteralInsert,
