@@ -22,7 +22,7 @@
 
 ▸ **ThisBlockText**(t?: *`undefined` \| `string`*): `string`
 
-*Defined in [extractors/basic/thisBlockText.ts:7](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/extractors/basic/thisBlockText.ts#L7)*
+*Defined in [extractors/basic/thisBlockText.ts:7](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/be10635/src/extractors/basic/thisBlockText.ts#L7)*
 
 Returns current parent Block text (without the braces)
 

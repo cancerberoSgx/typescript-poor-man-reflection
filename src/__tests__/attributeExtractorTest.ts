@@ -89,5 +89,4 @@ function test(){
   xit('should ?? with other value types (object, function, etc', () => {})
 
   xit('different nodes with same attribute names dont collapse', () => {})
-
 })

@@ -66,44 +66,63 @@ export class AttributeClass extends AbstractExtractor {
     const config = (this.getOptionsFromFistArg(n) as AttributeOptions) || {}
     let output: string | NodeWithInfo | undefined
     if (config.value || config.action === 'set') {
-      // SETTER
-      const targetPath = this.resolveTargetAstPath(n, index, config, options, variableAccessor)
-      output =
-        typeof config.value === 'undefined'
-          ? 'undefined'
-          : ({
-              info: JSON.stringify({ name: config.name, ...(targetPath ? { targetPath } : {}) }),
-              node: config.value
-            } as NodeWithInfo)
-      const argument = variableAccessor(
-        { name: config.name },
-        index,
-        typeof output === 'string' ? output : output.node.getText()
-      )
-      return {
-        argument: argument || '""',
-        prependToFile: '""'
-      }
+      return this.resolveSetter(n, index, config, options, variableAccessor, output)
     } else if (config.action === 'remove') {
       throw 'not impl'
     } else if (config.action === 'list') {
       throw 'not impl'
     } else {
-      // GETTER HEADS UP: we need tp pass a function predicate as a string in order to find our attribute
-      // since it was set by another call. TODO: provide better API in the core
-      return {
-        argument:
-          variableAccessor(
-            {
-              name: config.name,
-              functionPredicate: `v=>v.extractorName==='Attribute'&&v.name===${quote(config.name)}`
-            },
-            index
-          ) || '""',
-        prependToFile: '""'
-      }
+      return this.resolveGetter(variableAccessor, config, index)
     }
   }
+
+  private resolveGetter(
+    variableAccessor: FileVariableAccessor,
+    config: AttributeOptions<any, any, any>,
+    index: number
+  ): ExtractorResult {
+    // HEADS UP: we need tp pass a function predicate as a string in order to find our attribute
+    // since it was set by another call. TODO: provide better API in the core
+    return {
+      argument:
+        variableAccessor(
+          {
+            name: config.name,
+            functionPredicate: `v=>v.extractorName==='Attribute'&&v.name===${quote(config.name)}`
+          },
+          index
+        ) || '""',
+      prependToFile: '""'
+    }
+  }
+
+  private resolveSetter(
+    n: CallExpression,
+    index: number,
+    config: AttributeOptions<any, any, any>,
+    options: Required<ReplaceProjectFunctionCallOptions>,
+    variableAccessor: FileVariableAccessor,
+    output: string | NodeWithInfo | undefined
+  ) {
+    const targetPath = this.resolveTargetAstPath(n, index, config, options, variableAccessor)
+    output =
+      typeof config.value === 'undefined'
+        ? 'undefined'
+        : ({
+            info: JSON.stringify({ name: config.name, ...(targetPath ? { targetPath } : {}) }),
+            node: config.value
+          } as NodeWithInfo)
+    const argument = variableAccessor(
+      { name: config.name },
+      index,
+      typeof output === 'string' ? output : output.node.getText()
+    )
+    return {
+      argument: argument || '""',
+      prependToFile: '""'
+    }
+  }
+
   /**
    * @param n returns undefined in case the target is not found or should not be bind
    */

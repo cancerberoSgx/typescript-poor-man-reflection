@@ -26,7 +26,7 @@
 
 ▸ **Attribute**<`T`>(config: *[AttributeOptions](../interfaces/_extractors_core_attribute_.attributeoptions.md)*, t?: *`any`*): (`string` \| `Stats`)[]
 
-*Defined in [extractors/core/attribute.ts:35](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/extractors/core/attribute.ts#L35)*
+*Defined in [extractors/core/attribute.ts:35](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/be10635/src/extractors/core/attribute.ts#L35)*
 
 get/set names to nodes/types. Query nodes, like in CSS
 

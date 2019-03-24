@@ -22,7 +22,7 @@
 
 ▸ **TypeText**<`T`>(t?: *`undefined` \| `string`*): `string`
 
-*Defined in [extractors/basic/typeText.ts:9](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f49b48b/src/extractors/basic/typeText.ts#L9)*
+*Defined in [extractors/basic/typeText.ts:9](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/be10635/src/extractors/basic/typeText.ts#L9)*
 
 Returns the text of given type. Example: `const text = TypeText<string\|boolean>()`
 
