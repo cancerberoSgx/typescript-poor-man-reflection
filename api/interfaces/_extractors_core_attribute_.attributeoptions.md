@@ -24,6 +24,7 @@
 * [removeMe](_extractors_core_attribute_.attributeoptions.md#removeme)
 * [target](_extractors_core_attribute_.attributeoptions.md#target)
 * [throwOnError](_extractors_core_attribute_.attributeoptions.md#throwonerror)
+* [validateTargetNodeNotChange](_extractors_core_attribute_.attributeoptions.md#validatetargetnodenotchange)
 * [value](_extractors_core_attribute_.attributeoptions.md#value)
 
 ---
@@ -36,7 +37,7 @@
 
 **● action**: *"set" \| "get" \| "remove" \| "list"*
 
-*Defined in [extractors/core/attribute.ts:48](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/be10635/src/extractors/core/attribute.ts#L48)*
+*Defined in [extractors/core/attribute.ts:49](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2c758c1/src/extractors/core/attribute.ts#L49)*
 
 which action to perform - now only supported set and get
 
@@ -47,7 +48,7 @@ ___
 
 **● dontBindTargetNode**: *`undefined` \| `false` \| `true`*
 
-*Defined in [extractors/core/attribute.ts:54](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/be10635/src/extractors/core/attribute.ts#L54)*
+*Defined in [extractors/core/attribute.ts:55](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2c758c1/src/extractors/core/attribute.ts#L55)*
 
 if [target](_extractors_core_attribute_.attributeoptions.md#target) is not defined or this is true then the target node won't be bound to the attribute, this means it's a normal variable and you don't require tp pass the target node in order to get its value. Default: false
 
@@ -58,7 +59,7 @@ ___
 
 **● name**: *`string`*
 
-*Defined in [extractors/core/attribute.ts:40](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/be10635/src/extractors/core/attribute.ts#L40)*
+*Defined in [extractors/core/attribute.ts:41](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2c758c1/src/extractors/core/attribute.ts#L41)*
 
 ___
 <a id="outputmode"></a>
@@ -69,7 +70,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputMode](_types_.extractoroptions.md#outputmode)*
 
-*Defined in [types.ts:204](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/be10635/src/types.ts#L204)*
+*Defined in [types.ts:204](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2c758c1/src/types.ts#L204)*
 
 Default is 'asReturnValue' in which case the output will be returned by the extractor function call.
 
@@ -84,7 +85,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputVariableName](_types_.extractoroptions.md#outputvariablename)*
 
-*Defined in [types.ts:208](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/be10635/src/types.ts#L208)*
+*Defined in [types.ts:208](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2c758c1/src/types.ts#L208)*
 
 Name of the variable to assign the value in case outputMode is `assignToVariable`
 
@@ -97,7 +98,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[removeMe](_types_.extractoroptions.md#removeme)*
 
-*Defined in [types.ts:220](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/be10635/src/types.ts#L220)*
+*Defined in [types.ts:220](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2c758c1/src/types.ts#L220)*
 
 If true, this extractor function call expression will be removed as long as it's on an ExpressionStatement. Example:
 
@@ -118,7 +119,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[target](_types_.extractoroptions.md#target)*
 
-*Defined in [types.ts:225](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/be10635/src/types.ts#L225)*
+*Defined in [types.ts:225](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2c758c1/src/types.ts#L225)*
 
 Can be used to reference a node in this file.
 
@@ -131,7 +132,20 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[throwOnError](_types_.extractoroptions.md#throwonerror)*
 
-*Defined in [types.ts:227](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/be10635/src/types.ts#L227)*
+*Defined in [types.ts:227](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2c758c1/src/types.ts#L227)*
+
+___
+<a id="validatetargetnodenotchange"></a>
+
+### `<Optional>` validateTargetNodeNotChange
+
+**● validateTargetNodeNotChange**: *`undefined` \| `false` \| `true`*
+
+*Defined in [extractors/core/attribute.ts:62](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2c758c1/src/extractors/core/attribute.ts#L62)*
+
+If true, get getting a Node's attribute value, it will validate that the node structure/ancestors didn't change by other extractors, and in that case it will return undefined.
+
+This ensure attribute definitions that the target node is valid, because if it's radically changed accessing the Node later will give error. Not so useful now,but think on attributes visible between different files or event different projects.
 
 ___
 <a id="value"></a>
@@ -140,7 +154,7 @@ ___
 
 **● value**: *`string` \| `Node`*
 
-*Defined in [extractors/core/attribute.ts:44](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/be10635/src/extractors/core/attribute.ts#L44)*
+*Defined in [extractors/core/attribute.ts:45](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2c758c1/src/extractors/core/attribute.ts#L45)*
 
 If undefined then action is 'set'
 

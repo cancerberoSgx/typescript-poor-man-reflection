@@ -42,8 +42,7 @@ export function writeExtractorData(
   callExpressions: CallExpression[],
   prependToFile: string[],
   // fileVariables: { [name: string]: FileVariableDefinition }
-  fileVariables: {[key: string]:string | undefined} 
-
+  fileVariables: { [key: string]: string | undefined }
 ) {
   const options = getFullOptions(options_)
 
@@ -107,8 +106,7 @@ function ensureDataFile(
   options: ReplaceProjectFunctionCallOptions,
   prependToFile: string[],
   // fileVariables: { [name: string]: FileVariableDefinition },
-  fileVariables: {[key: string]:string | undefined} ,
-
+  fileVariables: { [key: string]: string | undefined },
   fileId: number
 ) {
   let dataFile = sourceFile
@@ -121,7 +119,7 @@ function ensureDataFile(
       `
 // FILE CREATED AUTOMATICALLY AT COMPILE TIME. DO NOT MODIFY !
 
-export const fileVariables: {[name:string]:string} = {}
+export const fileVariables: {[name:string]:any} = {}
 
 /** 
  * 'data[fileId][index]' is the value of the index-nth extractor call in the fieldId-nth source file where
@@ -134,7 +132,9 @@ export function get(fileId: number, index: number) {
 }
       `.trim()
     )
+    if(!options.dontSaveGeneratedSourceFiles){
     dataFile.saveSync()
+    }
   }
 
   const v = dataFile.getVariableDeclarationOrThrow('data')
@@ -145,7 +145,9 @@ export function get(fileId: number, index: number) {
   const fileVariablesInit = fileVariablesV.getInitializerIfKindOrThrow(SyntaxKind.ObjectLiteralExpression)
   objectLiteralInsert(fileVariablesInit, fileId, fileVariables)
 
-  dataFile.saveSync()
+  if(!options.dontSaveGeneratedSourceFiles){
+    dataFile.saveSync()
+    }
 
   return { dataFile, fileId }
 }

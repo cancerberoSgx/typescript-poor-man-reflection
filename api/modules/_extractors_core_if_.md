@@ -27,7 +27,7 @@
 
 ▸ **If**<`T`>(config: *[IfOptions](../interfaces/_extractors_core_if_.ifoptions.md)*, t?: *`any`*): (`string` \| `Stats`)[]
 
-*Defined in [extractors/core/if.ts:28](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/be10635/src/extractors/core/if.ts#L28)*
+*Defined in [extractors/core/if.ts:28](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2c758c1/src/extractors/core/if.ts#L28)*
 
 Returns one of the two values given according to given condition. Basic tool for dependency injection.
 

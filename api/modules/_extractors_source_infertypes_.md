@@ -26,7 +26,7 @@
 
 ▸ **InferTypes**<`T`>(config: *[InferTypesOptions](../interfaces/_extractors_source_infertypes_.infertypesoptions.md)*, t?: *`any`*): `any`
 
-*Defined in [extractors/source/inferTypes.ts:16](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/be10635/src/extractors/source/inferTypes.ts#L16)*
+*Defined in [extractors/source/inferTypes.ts:16](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2c758c1/src/extractors/source/inferTypes.ts#L16)*
 
 **Type parameters:**
 

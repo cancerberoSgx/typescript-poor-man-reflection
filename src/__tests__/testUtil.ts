@@ -1,37 +1,65 @@
 import Project, { ScriptTarget } from 'ts-morph'
 import { replaceFileFunctionCall } from '../replaceFileFunctionCall'
-import { defaultOptions } from '../replaceProjectFunctionCall'
-import { Fn, evaluateAndError } from '../util'
+import { defaultOptions, getFullOptions } from '../replaceProjectFunctionCall'
+import { Fn,  withoutExtension } from '../util'
+import { ReplaceProjectFunctionCallOptions } from '../types';
+import { rm } from 'shelljs';
+import { basename } from 'path';
 
-export function evaluateExtractorTestCode(code: string, extractorName: string, extractorFn: Fn) {
-  const project = new Project({ compilerOptions: { target: ScriptTarget.ESNext } })
-  project.createSourceFile('test.ts', code)
+interface EvaluateExtractorOptions  {code: string, extractorName: string, extractorFn: Fn, 
+options: Partial<ReplaceProjectFunctionCallOptions> 
+}
+export function evaluateExtractorTestCode<T=any>(options:EvaluateExtractorOptions): {
+  resultBefore: any,
+  result: T,
+  jsBefore: string,
+  jsCode: string,
+  project: Project
+} {
+  const fileName ='tmp/tests/test.ts'
+  rm('-rf', 'tmp/tests')
+  const {code, extractorName, extractorFn} = options
+  const project = options.options.project || new Project({ compilerOptions: { target: ScriptTarget.ESNext } })
+  project.createSourceFile(fileName, code)
+
+  
   const jsBefore = `
-(function(){
 ${extractorFn.toString()}
-${project.emitToMemory().getFiles()[0].text}
-return test()
-  })()
+${project.emitToMemory().getFiles().find(f=>withoutExtension(f.filePath).includes(withoutExtension(fileName)))!.text}
+// @ts-ignore
+process.GGG=test()
 `.trim()
   const resultBefore = evaluateAndError(jsBefore)
-  replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
-    ...defaultOptions,
-    ...{ extractorDataMode: 'prependVariable' },
+  replaceFileFunctionCall(project.getSourceFile(fileName)!, {
+    ...getFullOptions({...{extractorDataMode: 'prependVariable', dontSaveGeneratedSourceFiles: true}, ...(options.options||{})
+    }),
     project
   })
-  const jsAfter = `
-(function(){
+
+  const jsCode = `
 ${extractorFn.toString()} 
-${project.emitToMemory().getFiles()[0].text}
-return test()
-  })()
+${project.emitToMemory().getFiles().find(f=>withoutExtension(f.filePath).includes(withoutExtension(fileName)))!.text}
+// @ts-ignore
+process.GGG=test()
 `.trim()
-  const resultAfter = evaluateAndError(jsAfter)
+  const result = evaluateAndError(jsCode)
+  
   return {
     resultBefore,
-    resultAfter,
-    jsBefore: jsBefore.replace(/\\n/gm, '\n'),
-    jsAfter: jsAfter.replace(/\\n/gm, '\n'),
+    result,
+    jsBefore,
+    jsCode,
     project
   }
 }
+export function evaluateAndError<T = any>(s: string): T | undefined {
+  try {
+    eval(`${s}`) as T
+// @ts-ignore
+return process.GGG
+  } catch (error) {
+    // console.error(`Eval error ${error} ${(error.stack||'').split('\n').join('\n')}`);
+    return error
+  }
+}
+

@@ -11,6 +11,7 @@
 ### Interfaces
 
 * [AttributeOptions](../interfaces/_extractors_core_attribute_.attributeoptions.md)
+* [CompileTimeData](../interfaces/_extractors_core_attribute_.compiletimedata.md)
 
 ### Functions
 
@@ -26,9 +27,11 @@
 
 ▸ **Attribute**<`T`>(config: *[AttributeOptions](../interfaces/_extractors_core_attribute_.attributeoptions.md)*, t?: *`any`*): (`string` \| `Stats`)[]
 
-*Defined in [extractors/core/attribute.ts:35](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/be10635/src/extractors/core/attribute.ts#L35)*
+*Defined in [extractors/core/attribute.ts:36](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2c758c1/src/extractors/core/attribute.ts#L36)*
 
-get/set names to nodes/types. Query nodes, like in CSS
+Node/Types attributes like DOM's. Attributes can or cannot be associated to a node, and if they are not they just act as normal variables.
+
+For attributes bound to nodes&types, the setter call must occur BEFORE the GETTER call (while the source file is being processed.). TODO: can we solve this using afterExtract()?
 
 ```ts
 // setting a type or node's attribute value

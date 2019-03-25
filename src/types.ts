@@ -62,6 +62,12 @@ export interface ReplaceProjectFunctionCallOptions extends ReplaceFileFunctionCa
    * responsible of importing the function signature and respecting [[moduleSpecifier]]
    */
   register?: string
+
+  /** 
+   * @internal
+   * won't save generated data source files, like `folderFile`'s to disk. This is helpful for testing.  
+   * */
+  dontSaveGeneratedSourceFiles?: boolean
 }
 export interface ExportedExtractor {
   name: string
@@ -265,24 +271,24 @@ export type ExtractorDataMode = 'prependVariable' | 'folderFile' | 'asArgument'
  */
 export interface FileVariableAccessor {
   /** this one build the expression written on the code. Needs to be stringified.  */
-  runtime(
-    name: string | FileVariableAccessorNamePredicate,
-    index: number,
-    value?: string
-  ) : string | undefined
+  runtime(name: string | FileVariableAccessorNamePredicate, index: number, value?: string): string | undefined
   /**
-   * 
+   *
    * gets/sets current collected file variables of current
- * source file. This is an auxiliary tool so extractors can obtain some context from the current file being
- * processed but it doesn't have any impact on code at runtime. For the later they will need to call ti with
- * currentCompileTimeVariables  turned off.  */
-  compileTime<T>(val?: FileVariableDefinition&{ compileTimeData: T }):FileVariablesCompileTimeDefinition|undefined
-} 
+   * source file. This is an auxiliary tool so extractors can obtain some context from the current file being
+   * processed but it doesn't have any impact on code at runtime. For the later they will need to call ti with
+   * currentCompileTimeVariables  turned off.  */
+  compileTime<T>(
+    val?: FileVariableDefinition & { compileTimeData: T }
+  ): FileVariablesCompileTimeDefinition<T> | undefined
+}
 // export type FileVariableAccessorWithCompileTimeData = FileVariableAccessor&{
-  
+
 // }
 
-export type FileVariablesCompileTimeDefinition<T=any> ={ [id: string]: FileVariableDefinition&{ compileTimeData: T } }
+export type FileVariablesCompileTimeDefinition<T = any> = {
+  [id: string]: FileVariableDefinition & { compileTimeData: T }
+}
 
 export interface FileVariableDefinition {
   name: string
