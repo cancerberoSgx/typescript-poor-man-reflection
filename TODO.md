@@ -1,6 +1,21 @@
 
 ## TODO / ISSUES
 
+ * remove Register() and Attribute() from main - they are definitely not ready
+* inherent issue of prependVariable: if you reference something from the variable(global) that is in an enclosing scope thenyou have type not found error:
+```
+const __extractor_prepend__ = ["", ""]
+const fileVariables: {[name:string]: any} = {
+    "0_a3_0": {value: (i: I)=>CC, name: "a3", index: 0, extractorName: "Attribute"}
+}
+function test(){
+  interface I{  }
+class CC{m(){return 'fooo'}}
+}
+```
+the only solution for this would be moving the nodes and we dont want this.
+
+
  * prependVariable issue : because variable is on top,if referencing a type gives tyoe bit defined because is declared below. Solution: instead avariable make it a function?
  * check if its possible to target generics: `Attribute<I<number>>(value: 123)`
  * all names like _get, fileVariables, etc must be super configurable

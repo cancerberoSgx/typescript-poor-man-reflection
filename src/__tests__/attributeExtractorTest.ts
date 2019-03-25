@@ -149,41 +149,42 @@ function test(){
   //     expect(r.result).toBe(m + n)
   //   })
 
-  xit('bind attributes to nodes', () => {
-    const r = evaluateExtractorTestCode({
-      code: `
-      function test(){
-        interface I{
-          ff():void
-        }
-        class CC{m(){return 'fooo'}}
-        Attribute<I>({ name: 'a3', value: ()=>CC})
-        const val = Attribute<I>({ name: 'a3'}) as any as (()=>typeof CC)
-        const TT = val()
-        return new TT().m()
-      }
-`,
-      extractorName: 'Attribute',
-      extractorFn: Attribute,
-      //  options: { extractorDataMode: 'folderFile' },
-      options: { extractorDataMode: 'prependVariable' }
-    })
+  //   it('bind attributes to nodes', () => {
+  //     const r = evaluateExtractorTestCode({
+  //       code: `
+  //       function test(){
+  //         interface I{
+  //           ff():void
+  //         }
+  //         class CC{m(){return 'fooo'}}
+  //         Attribute<I>({ name: 'a3', value: ()=>CC})
+  //         const val = Attribute<I>({ name: 'a3'}) as any as (()=>typeof CC)
+  //         const TT = val()
+  //         return new TT().m()
+  //       }
+  // `,
+  //       extractorName: 'Attribute',
+  //       extractorFn: Attribute,
+  //       //  options: { extractorDataMode: 'folderFile' },
+  //       // options: { extractorDataMode: 'prependVariable' }
+  //       options: { extractorDataMode: 'asArgument' }
+  //     })
 
-    const f = r.project.getSourceFiles().find(f => f.getFilePath().includes('poor'))!
-    console.log(f.getText())
-    console.log(r.jsCode)
-    console.log(typeof r.result)
+  //     const f = r.project.getSourceFiles().find(f => f.getFilePath().includes('poor'))!
+  //     console.log(f.getText())
+  //     console.log(r.jsCode)
+  //     console.log(typeof r.result)
 
-    expect(r.result).toEqual([4, 4])
-    // expect(r.result[1]).toEqual(4)
+  //     expect(r.result).toEqual([4, 4])
+  //     // expect(r.result[1]).toEqual(4)
 
-    // expect(r.result[1]).toEqual(4)
-  })
+  //     // expect(r.result[1]).toEqual(4)
+  //   })
 
-  xit('should get and set nodes', () => {})
-  xit('should get and set with type nodes', () => {})
+  //   xit('should get and set nodes', () => {})
+  //   xit('should get and set with type nodes', () => {})
 
-  xit('should ?? with other value types (object, function, etc', () => {})
+  //   xit('should ?? with other value types (object, function, etc', () => {})
 
-  xit('different nodes with same attribute names dont collapse', () => {})
+  //   xit('different nodes with same attribute names dont collapse', () => {})
 })

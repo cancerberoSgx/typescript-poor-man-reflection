@@ -23,7 +23,7 @@
 
 **● target**: *`Node`*
 
-*Defined in [extractors/core/attribute.ts:67](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/ddc8b16/src/extractors/core/attribute.ts#L67)*
+*Defined in [extractors/core/attribute.ts:67](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/fcefb7a/src/extractors/core/attribute.ts#L67)*
 
 ___
 <a id="targetpath"></a>
@@ -32,7 +32,7 @@ ___
 
 **● targetPath**: *`AstPath`*
 
-*Defined in [extractors/core/attribute.ts:66](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/ddc8b16/src/extractors/core/attribute.ts#L66)*
+*Defined in [extractors/core/attribute.ts:66](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/fcefb7a/src/extractors/core/attribute.ts#L66)*
 
 ___
 
