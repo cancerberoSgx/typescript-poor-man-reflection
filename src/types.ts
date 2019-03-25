@@ -63,9 +63,9 @@ export interface ReplaceProjectFunctionCallOptions extends ReplaceFileFunctionCa
    */
   register?: string
 
-  /** 
+  /**
    * @internal
-   * won't save generated data source files, like `folderFile`'s to disk. This is helpful for testing.  
+   * won't save generated data source files, like `folderFile`'s to disk. This is helpful for testing.
    * */
   dontSaveGeneratedSourceFiles?: boolean
 }

@@ -10,91 +10,88 @@ describe('AttributeExtractor', () => {
     expect(1).toBe(1)
   })
 
-//   it('should get and set strings asArgument without errors', () => {
-//     const project = new Project()
-//     project.createSourceFile(
-//       'test.ts',
-//       `
-// class C{}
-// Attribute({target: C, name: 'attr1', value: 'hello'})
-// const v = Attribute({target: C, name: 'attr1'})
-//     `
-//     )
-//     replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
-//       ...defaultOptions,
-//       ...{ extractorDataMode: 'asArgument' },
-//       project
-//     })
+  it('should get and set strings asArgument without errors', () => {
+    const project = new Project()
+    project.createSourceFile(
+      'test.ts',
+      `
+class C{}
+Attribute({target: C, name: 'attr1', value: 'hello'})
+const v = Attribute({target: C, name: 'attr1'})
+    `
+    )
+    replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
+      ...defaultOptions,
+      ...{ extractorDataMode: 'asArgument' },
+      project
+    })
 
-//     expect(removeWhites(project.getSourceFile('test.ts')!.getText())).toContain(
-//       removeWhites(`
-// class C{}
-// Attribute({target: C, name: 'attr1', value: 'hello'}, "")
-// const v = Attribute({target: C, name: 'attr1'}, Object.values(fileVariables).find(v=>v.extractorName==='Attribute'&&v.name==="attr1"))
-//     `)
-//     )
-//   })
+    expect(removeWhites(project.getSourceFile('test.ts')!.getText())).toContain(
+      removeWhites(`
+class C{}
+Attribute({target: C, name: 'attr1', value: 'hello'}, "")
+const v = Attribute({target: C, name: 'attr1'}, Object.values(fileVariables).find(v=>v.extractorName==='Attribute'&&v.name==="attr1"))
+    `)
+    )
+  })
 
-//   it('should get and set strings asPrependVariable', () => {
-//     const project = new Project()
-//     project.createSourceFile(
-//       'test.ts',
-//       `
-//  class C{}
-//  Attribute({target: C, name: 'attr1', value: 'hello'})
-//  const v =  Attribute({target: C, name: 'attr1'})
-//      `
-//     )
-//     replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
-//       ...defaultOptions,
-//       ...{ extractorDataMode: 'prependVariable' },
-//       project
-//     })
-//     // console.log(project.getSourceFile('test.ts')!.getText());
-//     expect(removeWhites(project.getSourceFile('test.ts')!.getText())).toContain(
-//       removeWhites(`
-// const __extractor_prepend__ = ["", ""]
-// const fileVariables: {[name:string]: any} = {
-//     "0_attr1_0": {value: 'hello', name: "attr1", index: 0, extractorName: "Attribute"}
-// }
-// class C{}
-// Attribute({target: C, name: 'attr1', value: 'hello'}, "")
-// const v =  Attribute({target: C, name: 'attr1'}, Object.values(fileVariables).find(v=>v.extractorName==='Attribute'&&v.name==="attr1"))
-//      `)
-//     )
-//   })
+  it('should get and set strings asPrependVariable', () => {
+    const project = new Project()
+    project.createSourceFile(
+      'test.ts',
+      `
+ class C{}
+ Attribute({target: C, name: 'attr1', value: 'hello'})
+ const v =  Attribute({target: C, name: 'attr1'})
+     `
+    )
+    replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
+      ...defaultOptions,
+      ...{ extractorDataMode: 'prependVariable' },
+      project
+    })
+    // console.log(project.getSourceFile('test.ts')!.getText());
+    expect(removeWhites(project.getSourceFile('test.ts')!.getText())).toContain(
+      removeWhites(`
+const __extractor_prepend__ = ["", ""]
+const fileVariables: {[name:string]: any} = {
+    "0_attr1_0": {value: 'hello', name: "attr1", index: 0, extractorName: "Attribute"}
+}
+class C{}
+Attribute({target: C, name: 'attr1', value: 'hello'}, "")
+const v =  Attribute({target: C, name: 'attr1'}, Object.values(fileVariables).find(v=>v.extractorName==='Attribute'&&v.name==="attr1"))
+     `)
+    )
+  })
 
-
-//   it('should get and set non strings values asPrependVariable', () => {
-//     const project = new Project()
-//     project.createSourceFile(
-//       'test.ts',
-//       `
-//  class C{}
-//  Attribute({target: C, name: 'attr1', value: 'hello'})
-//  const v =  Attribute({target: C, name: 'attr1'})
-//      `
-//     )
-//     replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
-//       ...defaultOptions,
-//       ...{ extractorDataMode: 'prependVariable' },
-//       project
-//     })
-//     // console.log(project.getSourceFile('test.ts')!.getText());
-//     expect(removeWhites(project.getSourceFile('test.ts')!.getText())).toContain(
-//       removeWhites(`
-// const __extractor_prepend__ = ["", ""]
-// const fileVariables: {[name:string]: any} = {
-//     "0_attr1_0": {value: 'hello', name: "attr1", index: 0, extractorName: "Attribute"}
-// }
-// class C{}
-// Attribute({target: C, name: 'attr1', value: 'hello'}, "")
-// const v =  Attribute({target: C, name: 'attr1'}, Object.values(fileVariables).find(v=>v.extractorName==='Attribute'&&v.name==="attr1"))
-//      `)
-//     )
-//   })
-
-
+  it('should get and set non strings values asPrependVariable', () => {
+    const project = new Project()
+    project.createSourceFile(
+      'test.ts',
+      `
+ class C{}
+ Attribute({target: C, name: 'attr1', value: 'hello'})
+ const v =  Attribute({target: C, name: 'attr1'})
+     `
+    )
+    replaceFileFunctionCall(project.getSourceFile('test.ts')!, {
+      ...defaultOptions,
+      ...{ extractorDataMode: 'prependVariable' },
+      project
+    })
+    // console.log(project.getSourceFile('test.ts')!.getText());
+    expect(removeWhites(project.getSourceFile('test.ts')!.getText())).toContain(
+      removeWhites(`
+const __extractor_prepend__ = ["", ""]
+const fileVariables: {[name:string]: any} = {
+    "0_attr1_0": {value: 'hello', name: "attr1", index: 0, extractorName: "Attribute"}
+}
+class C{}
+Attribute({target: C, name: 'attr1', value: 'hello'}, "")
+const v =  Attribute({target: C, name: 'attr1'}, Object.values(fileVariables).find(v=>v.extractorName==='Attribute'&&v.name==="attr1"))
+     `)
+    )
+  })
 
   it('should get and set non strings values asPrependVariable - same but with evaluateExtractorTestCode', () => {
     const r = evaluateExtractorTestCode({
@@ -108,60 +105,52 @@ function test(){
       extractorName: 'Attribute',
       extractorFn: Attribute,
       //  options: { extractorDataMode: 'folderFile' },
-       options: { extractorDataMode: 'prependVariable' },
-    }    )
+      options: { extractorDataMode: 'prependVariable' }
+    })
 
-    const f = r.project.getSourceFiles().find(f=>f.getFilePath().includes('poor'))!
+    const f = r.project.getSourceFiles().find(f => f.getFilePath().includes('poor'))!
     // console.log(f.getText())
     // console.log(r.jsCode);
-    console.log(typeof r.result, typeof r.result[0]);
-    
+    console.log(typeof r.result, typeof r.result[0])
+
     expect(r.result).toEqual([4, 4])
     expect(r.result[1]).toEqual(4)
 
     expect(r.result[1]).toEqual(4)
-
   })
 
+  //   it('should get and set non strings values folderFile', () => {
+  //     const n = randomIntBetween(10,100), m = randomIntBetween(10,100)
+  //     const r = evaluateExtractorTestCode({
+  //       code: `
+  // function test(){
+  //   class C{}
+  //   Attribute({name: 'attr1', value: function(q){return q+${n}}})
+  //   const val = Attribute({name: 'attr1'})
+  //   const vv= val(${m})
+  //   // console.log('SHSHSHSHSH', typeof vv, vv, 'hhshshshshs')
+  //   return vv
+  // }`,
+  //       extractorName: 'Attribute',
+  //       extractorFn: Attribute,
 
+  //        options: { extractorDataMode: 'folderFile' },
+  //       // options: { extractorDataMode: 'prependVariable' },
 
-  it('should get and set non strings values folderFile', () => {
-    const n = randomIntBetween(10,100), m = randomIntBetween(10,100)
-    const r = evaluateExtractorTestCode({
-      code: `
-function test(){
-  class C{}
-  Attribute({name: 'attr1', value: function(q){return q+${n}}})
-  const val = Attribute({name: 'attr1'})
-  const vv= val(${m})
-  // console.log('SHSHSHSHSH', typeof vv, vv, 'hhshshshshs')
-  return vv
-}`,
-      extractorName: 'Attribute',
-      extractorFn: Attribute,
-      
-      //  options: { extractorDataMode: 'folderFile' },
-      options: { extractorDataMode: 'prependVariable' },
+  //     }    )
 
-    }    )
-    
-    // const f = r.project.getSourceFiles().find(f=>f.getFilePath().includes('poor'))!
-    // console.log(f.geText())
-    // console.log(r.jsCotde);
-    
-    r.project.getSourceFiles().map(f=>f.getText())
-    expect(r.result).toBe(m+n)
-  })
+  //     // const f = r.project.getSourceFiles().find(f=>f.getFilePath().includes('poor'))!
+  //     // console.log(f.geText())
+  //     // console.log(r.jsCotde);
 
+  //     r.project.getSourceFiles().map(f=>f.getText())
+  //     expect(r.result).toBe(m+n)
+  //   })
 
+  xit('should get and set nodes', () => {})
+  xit('should get and set with type nodes', () => {})
 
+  xit('should ?? with other value types (object, function, etc', () => {})
 
-
-
-  xit('should get and set nodes', () => { })
-  xit('should get and set with type nodes', () => { })
-
-  xit('should ?? with other value types (object, function, etc', () => { })
-
-  xit('different nodes with same attribute names dont collapse', () => { })
+  xit('different nodes with same attribute names dont collapse', () => {})
 })

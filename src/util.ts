@@ -13,16 +13,14 @@ export function evaluateAndError<T = any>(s: string): T | undefined {
   try {
     return eval(`(${s})`) as T
   } catch (error) {
-
     // console.error(`Eval error ${error} ${(error.stack||'').split('\n').join('\n')}`);
-    
+
     // const c = callsites() as any[]
     // console.log();
-    
+
     return error
   }
 }
-
 
 // const callsites = require('callsites')
 // /** @internal */
@@ -44,7 +42,6 @@ export function evaluateAndError<T = any>(s: string): T | undefined {
 //   // console.log('choose: ', f, 'all\n', c.map((c: any) => c.getFileName()))
 //   return { callerFile: f, allCallerFiles: c.map((c: any) => c.getFileName()).map(c => c) }
 // }
-
 
 export type Map<V> = { [key: string]: V }
 export function unquote(s: string) {

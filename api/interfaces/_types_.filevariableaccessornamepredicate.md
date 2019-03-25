@@ -27,7 +27,7 @@ In case we need a predicate function, it can passed as a string that will be pri
 
 **● functionPredicate**: *`undefined` \| `string`*
 
-*Defined in [types.ts:306](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2c758c1/src/types.ts#L306)*
+*Defined in [types.ts:312](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/3c8d91b/src/types.ts#L312)*
 
 if we need a predicate function, extractors will need to pass it as string that will be printed at runtime, since at compile time we cannot be dynamic.
 
@@ -38,7 +38,7 @@ ___
 
 **● name**: *`string`*
 
-*Defined in [types.ts:303](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2c758c1/src/types.ts#L303)*
+*Defined in [types.ts:309](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/3c8d91b/src/types.ts#L309)*
 
 ___
 

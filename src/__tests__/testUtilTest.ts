@@ -24,13 +24,8 @@ function test(){
 }`,
       extractorName: 'Attribute',
       extractorFn: Attribute,
-       options: { extractorDataMode: 'prependVariable' },
-    }    )
+      options: { extractorDataMode: 'prependVariable' }
+    })
     expect(r.result).toBe(6)
   })
-
-
-
-
-
 })

@@ -9,7 +9,7 @@
   "scripts": {
     "build": "tsc ",
     "build-watch": "tsc -w",
-    "clean": "rm -rf dist docs api",
+    "clean": "rm -rf dist docs api tmp",
     "test-run": "npx jest --config ./jest.config-spec.js --testPathIgnorePatterns \"/node_modules/|/src/__tests__/cli/\"",
     "test-run-all": "npx jest --config ./jest.config-spec.js && npm run sample-project",
     "prettier": " npx prettier  --write --arrow-parens avoid --parser typescript --use-tabs false --no-semi true --single-quote true --tab-width 2 --trailing-comma none --end-of-line lf --prose-wrap preserve --print-width 120 --jsx-bracket-same-line true \"src/**/*.ts*\"",

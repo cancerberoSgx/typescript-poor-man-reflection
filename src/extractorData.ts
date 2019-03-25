@@ -132,8 +132,8 @@ export function get(fileId: number, index: number) {
 }
       `.trim()
     )
-    if(!options.dontSaveGeneratedSourceFiles){
-    dataFile.saveSync()
+    if (!options.dontSaveGeneratedSourceFiles) {
+      dataFile.saveSync()
     }
   }
 
@@ -145,9 +145,9 @@ export function get(fileId: number, index: number) {
   const fileVariablesInit = fileVariablesV.getInitializerIfKindOrThrow(SyntaxKind.ObjectLiteralExpression)
   objectLiteralInsert(fileVariablesInit, fileId, fileVariables)
 
-  if(!options.dontSaveGeneratedSourceFiles){
+  if (!options.dontSaveGeneratedSourceFiles) {
     dataFile.saveSync()
-    }
+  }
 
   return { dataFile, fileId }
 }

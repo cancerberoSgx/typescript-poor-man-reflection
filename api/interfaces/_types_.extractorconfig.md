@@ -23,7 +23,7 @@
 
 **● freeArgumentNumber**: *`undefined` \| `number`*
 
-*Defined in [types.ts:130](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2c758c1/src/types.ts#L130)*
+*Defined in [types.ts:136](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/3c8d91b/src/types.ts#L136)*
 
 If extractor uses first (0-th) argument for their private API they would return 1 so WE can use 1-th to pass data
 
@@ -34,7 +34,7 @@ ___
 
 **● unusedArgumentDefaultValue**: *`undefined` \| `string`*
 
-*Defined in [types.ts:134](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2c758c1/src/types.ts#L134)*
+*Defined in [types.ts:140](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/3c8d91b/src/types.ts#L140)*
 
 Related to freeArgumentNumber, if we detect no arguments in extractor reserved args, we will need to fill them with dummy values, so here we request which type.
 

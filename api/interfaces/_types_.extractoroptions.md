@@ -54,7 +54,7 @@ These are options that user can use to configure a Extractor, could be as conven
 
 **● outputMode**: *[ExtractorOutputMode](../modules/_types_.md#extractoroutputmode)*
 
-*Defined in [types.ts:204](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2c758c1/src/types.ts#L204)*
+*Defined in [types.ts:210](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/3c8d91b/src/types.ts#L210)*
 
 Default is 'asReturnValue' in which case the output will be returned by the extractor function call.
 
@@ -67,7 +67,7 @@ ___
 
 **● outputVariableName**: *`string` \| "__IGNORE__"*
 
-*Defined in [types.ts:208](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2c758c1/src/types.ts#L208)*
+*Defined in [types.ts:214](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/3c8d91b/src/types.ts#L214)*
 
 Name of the variable to assign the value in case outputMode is `assignToVariable`
 
@@ -78,7 +78,7 @@ ___
 
 **● removeMe**: *`undefined` \| `false` \| `true`*
 
-*Defined in [types.ts:220](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2c758c1/src/types.ts#L220)*
+*Defined in [types.ts:226](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/3c8d91b/src/types.ts#L226)*
 
 If true, this extractor function call expression will be removed as long as it's on an ExpressionStatement. Example:
 
@@ -97,7 +97,7 @@ ___
 
 **● target**: *`any`*
 
-*Defined in [types.ts:225](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2c758c1/src/types.ts#L225)*
+*Defined in [types.ts:231](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/3c8d91b/src/types.ts#L231)*
 
 Can be used to reference a node in this file.
 
@@ -108,7 +108,7 @@ ___
 
 **● throwOnError**: *`undefined` \| `false` \| `true`*
 
-*Defined in [types.ts:227](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/2c758c1/src/types.ts#L227)*
+*Defined in [types.ts:233](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/3c8d91b/src/types.ts#L233)*
 
 ___
 
