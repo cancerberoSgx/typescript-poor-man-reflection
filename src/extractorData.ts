@@ -58,7 +58,9 @@ export function writeExtractorData(
   if (!options.extractorDataMode || options.extractorDataMode === 'prependVariable') {
     if (!options.clean && callExpressions.length) {
       sourceFile.insertStatements(
-        0,
+        // options.prependVariableModePlace === 'top' ? 0 : sourceFile.getStatements().length - 1,
+        options.prependVariableModePlace === 'bottom' ? sourceFile.getStatements().length - 1 : 0,
+
         `
 const ${options.extractorDataVariableName} = [${prependToFile.join(', ')}]
 const fileVariables: {[name:string]: any} = {}
@@ -95,7 +97,7 @@ const fileVariables: {[name:string]: any} = {}
     if (!options.clean && callExpressions.length) {
       sourceFile.addImportDeclaration({
         moduleSpecifier: `./${options.extractorDataFolderFileName}`,
-        namedImports: ['get']
+        namedImports: ['get', 'fileVariables']
       })
     }
   }

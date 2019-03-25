@@ -107,6 +107,10 @@ export interface ReplaceFileFunctionCallOptions {
   extractorDataVariableName?: string
 
   /**
+   * in case mode `prependToFile` is selected where to create the variable declarations, on top of the file or at the bottom=. Default:TODO
+   */
+  prependVariableModePlace?: 'top' | 'bottom'
+  /**
    * Mode in which the extractor data is stored in the source code.
    *
    * If `prependVariable`, an array variable will be prepended at the top of the same file and function calls

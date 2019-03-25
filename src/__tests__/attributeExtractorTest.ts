@@ -119,33 +119,66 @@ function test(){
     expect(r.result[1]).toEqual(4)
   })
 
-  //   it('should get and set non strings values folderFile', () => {
-  //     const n = randomIntBetween(10,100), m = randomIntBetween(10,100)
+  //   xit('should get and set non strings values folderFile', () => {
+  //     const n = randomIntBetween(10, 100),
+  //       m = randomIntBetween(10, 100)
   //     const r = evaluateExtractorTestCode({
   //       code: `
-  // function test(){
-  //   class C{}
-  //   Attribute({name: 'attr1', value: function(q){return q+${n}}})
-  //   const val = Attribute({name: 'attr1'})
-  //   const vv= val(${m})
-  //   // console.log('SHSHSHSHSH', typeof vv, vv, 'hhshshshshs')
-  //   return vv
-  // }`,
+  //   export function test(){
+  //     class C{}
+  //     Attribute({name: 'attr1', value: function(q){return q+${n}}})
+  //     const val = Attribute({name: 'attr1'})
+  //     const vv= val(${m})
+  //     // console.log('SHSHSHSHSH', typeof vv, vv, 'hhshshshshs')
+  //     return vv
+  //   }`,
   //       extractorName: 'Attribute',
   //       extractorFn: Attribute,
 
-  //        options: { extractorDataMode: 'folderFile' },
+  //       options: { extractorDataMode: 'folderFile' }
   //       // options: { extractorDataMode: 'prependVariable' },
-
-  //     }    )
+  //     })
 
   //     // const f = r.project.getSourceFiles().find(f=>f.getFilePath().includes('poor'))!
-  //     // console.log(f.geText())
-  //     // console.log(r.jsCotde);
+  //     // console.log(f.getText())
+  //     // console.log(r.jsCode);
+  //     // console.log(r.jsBefore);
+  //     // console.log(r.resultBefore);
 
-  //     r.project.getSourceFiles().map(f=>f.getText())
-  //     expect(r.result).toBe(m+n)
+  //     // r.project.getSourceFiles().map(f=>f.getText())
+  //     expect(r.result).toBe(m + n)
   //   })
+
+  xit('bind attributes to nodes', () => {
+    const r = evaluateExtractorTestCode({
+      code: `
+      function test(){
+        interface I{
+          ff():void
+        }
+        class CC{m(){return 'fooo'}}
+        Attribute<I>({ name: 'a3', value: ()=>CC})
+        const val = Attribute<I>({ name: 'a3'}) as any as (()=>typeof CC)
+        const TT = val()
+        return new TT().m()
+      }
+`,
+      extractorName: 'Attribute',
+      extractorFn: Attribute,
+      //  options: { extractorDataMode: 'folderFile' },
+      options: { extractorDataMode: 'prependVariable' }
+    })
+
+    const f = r.project.getSourceFiles().find(f => f.getFilePath().includes('poor'))!
+    console.log(f.getText())
+    console.log(r.jsCode)
+    console.log(typeof r.result)
+
+    expect(r.result).toEqual([4, 4])
+    // expect(r.result[1]).toEqual(4)
+
+    // expect(r.result[1]).toEqual(4)
+  })
 
   xit('should get and set nodes', () => {})
   xit('should get and set with type nodes', () => {})

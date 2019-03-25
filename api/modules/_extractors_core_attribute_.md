@@ -25,9 +25,9 @@
 
 ###  Attribute
 
-▸ **Attribute**<`T`>(config: *[AttributeOptions](../interfaces/_extractors_core_attribute_.attributeoptions.md)*, t?: *`any`*): (`string` \| `Stats`)[]
+▸ **Attribute**<`T`>(config: *[AttributeOptions](../interfaces/_extractors_core_attribute_.attributeoptions.md)*, t?: *`any`*): `T`
 
-*Defined in [extractors/core/attribute.ts:36](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/3c8d91b/src/extractors/core/attribute.ts#L36)*
+*Defined in [extractors/core/attribute.ts:36](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/ddc8b16/src/extractors/core/attribute.ts#L36)*
 
 Node/Types attributes like DOM's. Attributes can or cannot be associated to a node, and if they are not they just act as normal variables.
 
@@ -59,7 +59,7 @@ console.log(thisFileVar1(8))
 | config | [AttributeOptions](../interfaces/_extractors_core_attribute_.attributeoptions.md) |
 | `Optional` t | `any` |
 
-**Returns:** (`string` \| `Stats`)[]
+**Returns:** `T`
 
 ___
 

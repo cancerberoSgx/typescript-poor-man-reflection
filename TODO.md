@@ -1,6 +1,9 @@
 
 ## TODO / ISSUES
 
+ * prependVariable issue : because variable is on top,if referencing a type gives tyoe bit defined because is declared below. Solution: instead avariable make it a function?
+ * check if its possible to target generics: `Attribute<I<number>>(value: 123)`
+ * all names like _get, fileVariables, etc must be super configurable
  * performance timing tests - I'm adding features blindly and dont know the impact on performance.
  * FileDeclaration<Type>(orNode) to get the file path where a node was declared
  * diagnostics (different kind) of single file and whole project

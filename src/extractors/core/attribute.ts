@@ -33,7 +33,7 @@ import { AbstractExtractor, NodeWithInfo } from '../abstractExtractor'
  * console.log(thisFileVar1(8))
 ```
  */
-export function Attribute<T = any>(config: AttributeOptions, t?: any): (string | Stats)[] {
+export function Attribute<T = any>(config: AttributeOptions, t?: any): T {
   return t && t.value
 }
 

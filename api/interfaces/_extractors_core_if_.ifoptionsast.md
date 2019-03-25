@@ -25,7 +25,7 @@
 
 **● condition**: *`Node`*
 
-*Defined in [extractors/core/if.ts:39](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/3c8d91b/src/extractors/core/if.ts#L39)*
+*Defined in [extractors/core/if.ts:39](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/ddc8b16/src/extractors/core/if.ts#L39)*
 
 ___
 <a id="else"></a>
@@ -34,7 +34,7 @@ ___
 
 **● else**: *`Node`*
 
-*Defined in [extractors/core/if.ts:41](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/3c8d91b/src/extractors/core/if.ts#L41)*
+*Defined in [extractors/core/if.ts:41](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/ddc8b16/src/extractors/core/if.ts#L41)*
 
 ___
 <a id="error"></a>
@@ -43,7 +43,7 @@ ___
 
 **● error**: *`Node`*
 
-*Defined in [extractors/core/if.ts:42](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/3c8d91b/src/extractors/core/if.ts#L42)*
+*Defined in [extractors/core/if.ts:42](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/ddc8b16/src/extractors/core/if.ts#L42)*
 
 ___
 <a id="then"></a>
@@ -52,7 +52,7 @@ ___
 
 **● then**: *`Node`*
 
-*Defined in [extractors/core/if.ts:40](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/3c8d91b/src/extractors/core/if.ts#L40)*
+*Defined in [extractors/core/if.ts:40](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/ddc8b16/src/extractors/core/if.ts#L40)*
 
 ___
 
