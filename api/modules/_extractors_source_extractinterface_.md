@@ -26,7 +26,7 @@
 
 ▸ **ExtractInterface**<`T`>(config: *[ExtractInterfaceOptions](../interfaces/_extractors_source_extractinterface_.extractinterfaceoptions.md)*, t?: *`any`*): `any`
 
-*Defined in [extractors/source/extractInterface.ts:38](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/fcefb7a/src/extractors/source/extractInterface.ts#L38)*
+*Defined in [extractors/source/extractInterface.ts:38](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/extractors/source/extractInterface.ts#L38)*
 
 **Type parameters:**
 

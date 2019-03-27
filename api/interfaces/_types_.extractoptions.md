@@ -27,7 +27,7 @@
 
 **● getter**: *[ExtractorGetter](../modules/_types_.md#extractorgetter)*
 
-*Defined in [types.ts:195](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/fcefb7a/src/types.ts#L195)*
+*Defined in [types.ts:195](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/types.ts#L195)*
 
 ___
 <a id="index"></a>
@@ -36,7 +36,7 @@ ___
 
 **● index**: *`number`*
 
-*Defined in [types.ts:194](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/fcefb7a/src/types.ts#L194)*
+*Defined in [types.ts:194](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/types.ts#L194)*
 
 ___
 <a id="n"></a>
@@ -45,7 +45,7 @@ ___
 
 **● n**: *`CallExpression`*
 
-*Defined in [types.ts:193](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/fcefb7a/src/types.ts#L193)*
+*Defined in [types.ts:193](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/types.ts#L193)*
 
 ___
 <a id="options"></a>
@@ -54,7 +54,7 @@ ___
 
 **● options**: *`Required`<[ReplaceProjectFunctionCallOptions](_types_.replaceprojectfunctioncalloptions.md)>*
 
-*Defined in [types.ts:196](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/fcefb7a/src/types.ts#L196)*
+*Defined in [types.ts:196](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/types.ts#L196)*
 
 ___
 <a id="project"></a>
@@ -63,7 +63,7 @@ ___
 
 **● project**: *`Project`*
 
-*Defined in [types.ts:198](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/fcefb7a/src/types.ts#L198)*
+*Defined in [types.ts:198](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/types.ts#L198)*
 
 ___
 <a id="variableaccessor"></a>
@@ -72,7 +72,7 @@ ___
 
 **● variableAccessor**: *[FileVariableAccessor](_types_.filevariableaccessor.md)*
 
-*Defined in [types.ts:197](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/fcefb7a/src/types.ts#L197)*
+*Defined in [types.ts:197](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/types.ts#L197)*
 
 ___
 

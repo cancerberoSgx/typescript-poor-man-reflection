@@ -26,7 +26,7 @@
 
 ▸ **Register**<`T`>(config: *[RegisterOptions](../interfaces/_extractors_core_register_.registeroptions.md)*, t?: *[T]()*): `T`
 
-*Defined in [extractors/core/register.ts:36](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/fcefb7a/src/extractors/core/register.ts#L36)*
+*Defined in [extractors/core/register.ts:36](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/extractors/core/register.ts#L36)*
 
 `` ` ``ts import {AbstractExtractor, ExtractorFn, Register } from '..'
 

@@ -36,7 +36,7 @@ TODO: divide in two different functions.
 
 ▸ **compileTime**<`T`>(val?: *[FileVariableDefinition](_types_.filevariabledefinition.md) & `object`*): [FileVariablesCompileTimeDefinition](../modules/_types_.md#filevariablescompiletimedefinition)<`T`> \| `undefined`
 
-*Defined in [types.ts:285](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/fcefb7a/src/types.ts#L285)*
+*Defined in [types.ts:285](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/types.ts#L285)*
 
 gets/sets current collected file variables of current source file. This is an auxiliary tool so extractors can obtain some context from the current file being processed but it doesn't have any impact on code at runtime. For the later they will need to call ti with currentCompileTimeVariables turned off.
 
@@ -58,7 +58,7 @@ ___
 
 ▸ **runtime**(name: *`string` \| [FileVariableAccessorNamePredicate](_types_.filevariableaccessornamepredicate.md)*, index: *`number`*, value?: *`undefined` \| `string`*): `string` \| `undefined`
 
-*Defined in [types.ts:278](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/fcefb7a/src/types.ts#L278)*
+*Defined in [types.ts:278](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/types.ts#L278)*
 
 this one build the expression written on the code. Needs to be stringified.
 

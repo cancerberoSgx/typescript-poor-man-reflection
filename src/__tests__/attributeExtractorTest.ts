@@ -119,35 +119,37 @@ function test(){
     expect(r.result[1]).toEqual(4)
   })
 
-  //   xit('should get and set non strings values folderFile', () => {
-  //     const n = randomIntBetween(10, 100),
-  //       m = randomIntBetween(10, 100)
-  //     const r = evaluateExtractorTestCode({
-  //       code: `
-  //   export function test(){
-  //     class C{}
-  //     Attribute({name: 'attr1', value: function(q){return q+${n}}})
-  //     const val = Attribute({name: 'attr1'})
-  //     const vv= val(${m})
-  //     // console.log('SHSHSHSHSH', typeof vv, vv, 'hhshshshshs')
-  //     return vv
-  //   }`,
-  //       extractorName: 'Attribute',
-  //       extractorFn: Attribute,
+  // it('should get and set non strings values folderFile', () => {
+  //   const n = randomIntBetween(10, 100),
+  //     m = randomIntBetween(10, 100)
+  //   const r = evaluateExtractorTestCode({
+  //     code: `
+  // export function test(){
+  //   class C{}
+  //   Attribute({name: 'attr1', value: function(q){return q+${n}}})
+  //   const val = Attribute({name: 'attr1'})
+  //   const vv= val(${m})
+  //   // console.log('SHSHSHSHSH', typeof vv, vv, 'hhshshshshs')
+  //   return vv
+  // }`,
+  //     extractorName: 'Attribute',
+  //     extractorFn: Attribute,
 
-  //       options: { extractorDataMode: 'folderFile' }
-  //       // options: { extractorDataMode: 'prependVariable' },
-  //     })
-
-  //     // const f = r.project.getSourceFiles().find(f=>f.getFilePath().includes('poor'))!
-  //     // console.log(f.getText())
-  //     // console.log(r.jsCode);
-  //     // console.log(r.jsBefore);
-  //     // console.log(r.resultBefore);
-
-  //     // r.project.getSourceFiles().map(f=>f.getText())
-  //     expect(r.result).toBe(m + n)
+  //     options: { extractorDataMode: 'folderFile' }
+  //     // options: { extractorDataMode: 'prependVariable' },
   //   })
+
+  //   console.log(r);
+
+  //   // const f = r.project.getSourceFiles().find(f=>f.getFilePath().includes('poor'))!
+  //   // console.log(f.getText())
+  //   // console.log(r.jsCode);
+  //   // console.log(r.jsBefore);
+  //   // console.log(r.resultBefore);
+
+  //   // r.project.getSourceFiles().map(f=>f.getText())
+  //   expect(r.result).toBe(m + n)
+  // })
 
   //   it('bind attributes to nodes', () => {
   //     const r = evaluateExtractorTestCode({

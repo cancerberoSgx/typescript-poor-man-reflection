@@ -21,7 +21,7 @@
 
 ▸ **extractCallExpressions**(sourceFile: *`SourceFile`*, moduleSpecifier: *`string` \| "__IGNORE__"*, names: *`string`[]*): `CallExpression`<`CallExpression`>[]
 
-*Defined in [astUtil.ts:19](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/fcefb7a/src/astUtil.ts#L19)*
+*Defined in [astUtil.ts:19](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/astUtil.ts#L19)*
 
 extract those CallExpressions from given sourceFile which declared in a module specifier with given name and which function name is one of given names
 
@@ -42,7 +42,7 @@ ___
 
 ▸ **getFirstTypeArgumentDefinitionBlock**(n: *`CallExpression`*): `undefined` \| `Node`<`Node`>
 
-*Defined in [astUtil.ts:66](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/fcefb7a/src/astUtil.ts#L66)*
+*Defined in [astUtil.ts:66](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/astUtil.ts#L66)*
 
 **Parameters:**
 
@@ -59,7 +59,7 @@ ___
 
 ▸ **removeDataFolderFileNameImportDeclaration**(sourceFile: *`SourceFile`*, options: *`object`*): `void`
 
-*Defined in [astUtil.ts:56](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/fcefb7a/src/astUtil.ts#L56)*
+*Defined in [astUtil.ts:56](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/astUtil.ts#L56)*
 
 **Parameters:**
 
@@ -80,7 +80,7 @@ ___
 
 ▸ **removePrependVariableDeclaration**(sourceFile: *`SourceFile`*, options: *`object`*): `void`
 
-*Defined in [astUtil.ts:43](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/fcefb7a/src/astUtil.ts#L43)*
+*Defined in [astUtil.ts:43](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/astUtil.ts#L43)*
 
 **Parameters:**
 
