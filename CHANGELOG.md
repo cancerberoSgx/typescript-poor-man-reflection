@@ -24,4 +24,6 @@
 
 # 0.0.6
 
- * ? 
+ * Register enabled
+
+# 0.0.7
