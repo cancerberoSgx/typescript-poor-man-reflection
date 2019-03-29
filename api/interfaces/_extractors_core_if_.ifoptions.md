@@ -36,7 +36,7 @@
 
 **● condition**: *`function`*
 
-*Defined in [extractors/core/if.ts:33](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/extractors/core/if.ts#L33)*
+*Defined in [extractors/core/if.ts:33](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/extractors/core/if.ts#L33)*
 
 #### Type declaration
 ▸(): `boolean`
@@ -50,7 +50,7 @@ ___
 
 **● else**: *`function`*
 
-*Defined in [extractors/core/if.ts:35](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/extractors/core/if.ts#L35)*
+*Defined in [extractors/core/if.ts:35](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/extractors/core/if.ts#L35)*
 
 #### Type declaration
 ▸(): `F`
@@ -64,7 +64,7 @@ ___
 
 **● error**: *`undefined` \| `function`*
 
-*Defined in [extractors/core/if.ts:36](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/extractors/core/if.ts#L36)*
+*Defined in [extractors/core/if.ts:36](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/extractors/core/if.ts#L36)*
 
 ___
 <a id="outputmode"></a>
@@ -75,7 +75,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputMode](_types_.extractoroptions.md#outputmode)*
 
-*Defined in [types.ts:214](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/types.ts#L214)*
+*Defined in [types.ts:213](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L213)*
 
 Default is 'asReturnValue' in which case the output will be returned by the extractor function call.
 
@@ -90,7 +90,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[outputVariableName](_types_.extractoroptions.md#outputvariablename)*
 
-*Defined in [types.ts:218](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/types.ts#L218)*
+*Defined in [types.ts:217](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L217)*
 
 Name of the variable to assign the value in case outputMode is `assignToVariable`
 
@@ -103,7 +103,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[removeMe](_types_.extractoroptions.md#removeme)*
 
-*Defined in [types.ts:230](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/types.ts#L230)*
+*Defined in [types.ts:229](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L229)*
 
 If true, this extractor function call expression will be removed as long as it's on an ExpressionStatement. Example:
 
@@ -124,7 +124,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[target](_types_.extractoroptions.md#target)*
 
-*Defined in [types.ts:235](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/types.ts#L235)*
+*Defined in [types.ts:234](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L234)*
 
 Can be used to reference a node in this file.
 
@@ -135,7 +135,7 @@ ___
 
 **● then**: *`function`*
 
-*Defined in [extractors/core/if.ts:34](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/extractors/core/if.ts#L34)*
+*Defined in [extractors/core/if.ts:34](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/extractors/core/if.ts#L34)*
 
 #### Type declaration
 ▸(): `T`
@@ -151,7 +151,7 @@ ___
 
 *Inherited from [ExtractorOptions](_types_.extractoroptions.md).[throwOnError](_types_.extractoroptions.md#throwonerror)*
 
-*Defined in [types.ts:237](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/types.ts#L237)*
+*Defined in [types.ts:236](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L236)*
 
 ___
 

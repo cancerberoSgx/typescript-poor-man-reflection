@@ -1,8 +1,8 @@
 import Minimatch from 'minimatch'
-import Project, { CallExpression, Node, SourceFile } from 'ts-morph'
+import { unquote } from 'misc-utils-of-mine-generic'
+import { CallExpression, Node, Project, SourceFile } from 'ts-morph'
+import { ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunctionCallOptions } from '../..'
 import { extractCallExpressions } from '../../astUtil'
-import { ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunctionCallOptions } from '../../types'
-import { unquote } from '../../util'
 import { AbstractExtractor } from '../abstractExtractor'
 
 export interface AbstractRefactorExtractorOptions extends ExtractorOptions {

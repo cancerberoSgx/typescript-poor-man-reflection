@@ -1,7 +1,7 @@
 import { AbstractExtractor } from '../../extractors/abstractExtractor'
-import { ExtractorFn, ExtractorOptions, ExportedExtractor } from '../../types'
+import { ExtractorFn, ExtractorOptions, ExportedExtractor } from '../..'
+import { unquote } from 'misc-utils-of-mine-generic'
 import { Node } from 'ts-morph'
-import { unquote } from '../../util'
 
 class NewExtractorClass extends AbstractExtractor {
   protected freeArgumentNumber = 1

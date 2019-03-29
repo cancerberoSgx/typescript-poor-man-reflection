@@ -1,8 +1,13 @@
 
 ## TODO / ISSUES
 
+ * default mode should be folderFile not prependVariable
+ * folderFile is creating the data file in all folders not just in those containing calls to extractors!
+ * readFiles path is relative to CWD not to current file dir. 
+ * folderFile - the extractor call has the literal value instead of calling get(0,1) - verified with readFiles() but probably happens with all extractors
+ * since the package must be imported from source files, is not clear if it should be installed as dependency or devDependency
  * remove Register() and Attribute() from main - they are definitely not ready
-* inherent issue of prependVariable: if you reference something from the variable(global) that is in an enclosing scope thenyou have type not found error:
+ * inherent issue of prependVariable: if you reference something from the variable(global) that is in an enclosing scope thenyou have type not found error:
 ```
 const __extractor_prepend__ = ["", ""]
 const fileVariables: {[name:string]: any} = {

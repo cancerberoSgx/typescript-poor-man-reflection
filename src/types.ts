@@ -1,5 +1,4 @@
-import Project, { CallExpression } from 'ts-morph'
-import { Fn } from './util'
+import { Project, CallExpression } from 'ts-morph'
 
 export interface Replacement {
   file: string
@@ -72,7 +71,7 @@ export interface ReplaceProjectFunctionCallOptions extends ReplaceFileFunctionCa
 export interface ExportedExtractor {
   name: string
   extractor: Extractor
-  fn: Fn
+  fn: (...args: any[]) => any
 }
 /**
  * Options accepted by the low level call `replaceFunctionCall`. They describe the requirements of the

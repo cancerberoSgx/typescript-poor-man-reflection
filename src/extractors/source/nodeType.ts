@@ -1,7 +1,6 @@
-import { quote } from 'misc-utils-of-mine-generic'
+import { quote, unquote } from 'misc-utils-of-mine-generic'
 import { CallExpression, Node, TypeGuards, SyntaxKind } from 'ts-morph'
 import { ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunctionCallOptions } from '../../types'
-import { unquote } from '../../util'
 import { AbstractExtractor } from '../abstractExtractor'
 
 /**

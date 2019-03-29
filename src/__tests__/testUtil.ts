@@ -1,11 +1,9 @@
-import Project, { ScriptTarget } from 'ts-morph'
+import { withoutExtension } from 'misc-utils-of-mine-generic'
+import { Project, ScriptTarget } from 'ts-morph'
 import { replaceFileFunctionCall } from '../replaceFileFunctionCall'
-import { defaultOptions, getFullOptions } from '../replaceProjectFunctionCall'
-import { Fn, withoutExtension } from '../util'
-import { ReplaceProjectFunctionCallOptions } from '../types'
-import { rm } from 'shelljs'
-import { basename } from 'path'
-import { unique } from 'misc-utils-of-mine-generic'
+import { getFullOptions } from '../replaceProjectFunctionCall'
+import { ReplaceProjectFunctionCallOptions } from '..'
+import { Fn } from '../util'
 
 interface EvaluateExtractorOptions {
   code: string

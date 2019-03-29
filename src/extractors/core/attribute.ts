@@ -1,5 +1,4 @@
-import { Stats } from 'fs'
-import { quote } from 'misc-utils-of-mine-generic'
+import { quote, unquote } from 'misc-utils-of-mine-generic'
 import { CallExpression, Node } from 'ts-morph'
 import { AstPath, buildAstPath, selectNode } from 'ts-simple-ast-extra'
 import {
@@ -8,8 +7,7 @@ import {
   ExtractorResult,
   FileVariableAccessor,
   ReplaceProjectFunctionCallOptions
-} from '../../types'
-import { unquote } from '../../util'
+} from '../..'
 import { AbstractExtractor, NodeWithInfo } from '../abstractExtractor'
 
 /**
@@ -200,7 +198,7 @@ export class AttributeClass extends AbstractExtractor {
       this.error(`Attribute target was specified and !dontBindTargetNode but the target could not be found. Aborting`)
     }
     if (target && !config.dontBindTargetNode) {
-      return buildAstPath(target, { includeNodeKind: true })
+      return buildAstPath(target, undefined, { includeNodeKind: true })
     }
   }
 

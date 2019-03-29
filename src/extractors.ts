@@ -41,15 +41,15 @@ export const defaultExtractors: { [k: string]: Extractor } = {
 
   If: new IfClass(),
   // Attribute: new AttributeClass(),
-  // Register: (() => {
-  //   try {
-  //     // HEADS UP - Hack - since we are using require() in register.ts seems that some ts-runners (don't know if ts-node or ts-jest gets confused TypeError: register_1.RegisterClass is not a constructor) when exec ts-node src/cli.ts
-  //     return new RegisterClass()
-  //   } catch (error) {
-  //     console.log('extractors new RegisterClass() error ' + error)
-  //     return undefined as any
-  //   }
-  // })()
+  Register: (() => {
+    try {
+      // HEADS UP - Hack - since we are using require() in register.ts seems that some ts-runners (don't know if ts-node or ts-jest gets confused TypeError: register_1.RegisterClass is not a constructor) when exec ts-node src/cli.ts
+      return new RegisterClass()
+    } catch (error) {
+      console.log('extractors new RegisterClass() error ' + error)
+      return undefined as any
+    }
+  })()
 }
 
 export function isExtractorFn(e: Extractor): e is ExtractorFn {

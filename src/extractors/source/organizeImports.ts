@@ -1,4 +1,4 @@
-import Project, { SourceFile } from 'ts-morph'
+import { Project, SourceFile } from 'ts-morph'
 import { AbstractRefactorExtractor, AbstractRefactorExtractorOptions } from './abstractRefactorExtractor'
 
 /**

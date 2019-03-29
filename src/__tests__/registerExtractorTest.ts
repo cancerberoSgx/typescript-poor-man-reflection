@@ -1,5 +1,5 @@
 import { removeWhites } from 'misc-utils-of-mine-generic'
-import Project from 'ts-morph'
+import { Project } from 'ts-morph'
 import { replaceFileFunctionCall } from '../replaceFileFunctionCall'
 import { defaultOptions } from '../replaceProjectFunctionCall'
 

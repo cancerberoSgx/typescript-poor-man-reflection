@@ -24,16 +24,27 @@
 
 **● extractor**: *[Extractor](../modules/_types_.md#extractor)*
 
-*Defined in [types.ts:74](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/types.ts#L74)*
+*Defined in [types.ts:73](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L73)*
 
 ___
 <a id="fn"></a>
 
 ###  fn
 
-**● fn**: *[Fn](../modules/_util_.md#fn)*
+**● fn**: *`function`*
 
-*Defined in [types.ts:75](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/types.ts#L75)*
+*Defined in [types.ts:74](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L74)*
+
+#### Type declaration
+▸(...args: *`any`[]*): `any`
+
+**Parameters:**
+
+| Name | Type |
+| ------ | ------ |
+| `Rest` args | `any`[] |
+
+**Returns:** `any`
 
 ___
 <a id="name"></a>
@@ -42,7 +53,7 @@ ___
 
 **● name**: *`string`*
 
-*Defined in [types.ts:73](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/types.ts#L73)*
+*Defined in [types.ts:72](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L72)*
 
 ___
 

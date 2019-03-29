@@ -6,6 +6,8 @@ typescript-poor-man-reflection
 
 An unconventional way of getting TypeScript code information (like types), as text.
 
+**NOT READY**, not yet...
+
 Why ?
 =====
 
@@ -78,7 +80,7 @@ Embed files in your source, at compile time:
 // assets.ts - contains example files embedded from FS at compile time
 // files exports an array of objects `{name: string, content: string}`
 import { ReadFiles } from 'typescript-poor-man-reflection'
-export files = ReadFiles({path: './src/examples/example*.ts'})
+export const files = ReadFiles({path: '../examples/example*.ts'})
 ```
 
 ### Organize imports - remove unused - infer types, exec
@@ -282,6 +284,7 @@ See (TODO.md)\[TODO.md\]
 * ["extractors/source/overrides"](modules/_extractors_source_overrides_.md)
 * ["extractors/source/printAst"](modules/_extractors_source_printast_.md)
 * ["extractors/source/removeUnused"](modules/_extractors_source_removeunused_.md)
+* ["index"](modules/_index_.md)
 * ["main"](modules/_main_.md)
 * ["replaceFileFunctionCall"](modules/_replacefilefunctioncall_.md)
 * ["replaceProjectFunctionCall"](modules/_replaceprojectfunctioncall_.md)

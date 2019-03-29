@@ -1,7 +1,8 @@
 import { CallExpression, Node, TypeGuards } from 'ts-morph'
 import { extractInterface } from 'ts-simple-ast-extra'
-import { ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunctionCallOptions } from '../../types'
-import { unquote } from '../../util'
+import { ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunctionCallOptions } from '../..'
+import { unquote } from 'misc-utils-of-mine-generic'
+
 import { AbstractExtractor } from '../abstractExtractor'
 
 /**

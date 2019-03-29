@@ -26,7 +26,7 @@
 
 ▸ **ProjectFiles**<`T`>(config: *[ProjectFilesOptions](../interfaces/_extractors_fs_projectfiles_.projectfilesoptions.md)*, t?: *`any`*): `string`[]
 
-*Defined in [extractors/fs/projectFiles.ts:13](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/extractors/fs/projectFiles.ts#L13)*
+*Defined in [extractors/fs/projectFiles.ts:13](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/extractors/fs/projectFiles.ts#L13)*
 
 Return the list of this project file names. Usage:
 

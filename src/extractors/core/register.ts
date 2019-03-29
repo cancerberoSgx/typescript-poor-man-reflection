@@ -1,12 +1,11 @@
-import { unique } from 'misc-utils-of-mine-generic'
+import { unique, unquote, withoutExtension } from 'misc-utils-of-mine-generic'
 import { CallExpression, Node, SyntaxKind, TypeGuards } from 'ts-morph'
-import { notUndefined } from 'ts-simple-ast-extra'
 import { extractCallExpressions } from '../../astUtil'
 import { isExportedExtractor } from '../../extractors'
-import { ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunctionCallOptions } from '../../types'
-import { Fn, unquote, withoutExtension } from '../../util'
+import { ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunctionCallOptions } from '../..'
+import { Fn } from '../../util'
 import { AbstractExtractor } from '../abstractExtractor'
-import { notFalsy } from 'misc-utils-of-mine-typescript'
+import { notFalsy, notUndefined } from 'misc-utils-of-mine-typescript'
 
 /**
 ```ts

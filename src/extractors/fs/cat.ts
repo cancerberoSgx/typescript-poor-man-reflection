@@ -1,8 +1,9 @@
 import { cat } from 'shelljs'
 import { CallExpression, Node } from 'ts-morph'
-import { ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunctionCallOptions } from '../../types'
-import { asString, unquote } from '../../util'
+import { ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunctionCallOptions } from '../..'
+import { unquote, quote } from 'misc-utils-of-mine-generic'
 import { AbstractExtractor } from '../abstractExtractor'
+import { asString } from '../../util'
 
 /**
  * Returns given file contents as string. Important: you won't be able to call cat() on a loop since this runs

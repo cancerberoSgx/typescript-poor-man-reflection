@@ -8,8 +8,6 @@ These are options that user can use to configure a Extractor, could be as conven
 
 **ExtractorOptions**
 
-↳  [LsOptions](_extractors_fs_cat_.lsoptions.md)
-
 ↳  [ExecOptions](_extractors_fs_exec_.execoptions.md)
 
 ↳  [LsOptions](_extractors_fs_ls_.lsoptions.md)
@@ -20,17 +18,19 @@ These are options that user can use to configure a Extractor, could be as conven
 
 ↳  [ExtractInterfaceOptions](_extractors_source_extractinterface_.extractinterfaceoptions.md)
 
+↳  [IfOptions](_extractors_core_if_.ifoptions.md)
+
 ↳  [AbstractRefactorExtractorOptions](_extractors_source_abstractrefactorextractor_.abstractrefactorextractoroptions.md)
 
 ↳  [NodeTypeOptions](_extractors_source_nodetype_.nodetypeoptions.md)
 
 ↳  [OverridesOptions](_extractors_source_overrides_.overridesoptions.md)
 
-↳  [AstOptions](_extractors_source_printast_.astoptions.md)
-
 ↳  [RegisterOptions](_extractors_core_register_.registeroptions.md)
 
-↳  [IfOptions](_extractors_core_if_.ifoptions.md)
+↳  [AstOptions](_extractors_source_printast_.astoptions.md)
+
+↳  [LsOptions](_extractors_fs_cat_.lsoptions.md)
 
 ↳  [AttributeOptions](_extractors_core_attribute_.attributeoptions.md)
 
@@ -54,7 +54,7 @@ These are options that user can use to configure a Extractor, could be as conven
 
 **● outputMode**: *[ExtractorOutputMode](../modules/_types_.md#extractoroutputmode)*
 
-*Defined in [types.ts:214](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/types.ts#L214)*
+*Defined in [types.ts:213](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L213)*
 
 Default is 'asReturnValue' in which case the output will be returned by the extractor function call.
 
@@ -67,7 +67,7 @@ ___
 
 **● outputVariableName**: *`string` \| "__IGNORE__"*
 
-*Defined in [types.ts:218](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/types.ts#L218)*
+*Defined in [types.ts:217](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L217)*
 
 Name of the variable to assign the value in case outputMode is `assignToVariable`
 
@@ -78,7 +78,7 @@ ___
 
 **● removeMe**: *`undefined` \| `false` \| `true`*
 
-*Defined in [types.ts:230](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/types.ts#L230)*
+*Defined in [types.ts:229](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L229)*
 
 If true, this extractor function call expression will be removed as long as it's on an ExpressionStatement. Example:
 
@@ -97,7 +97,7 @@ ___
 
 **● target**: *`any`*
 
-*Defined in [types.ts:235](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/types.ts#L235)*
+*Defined in [types.ts:234](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L234)*
 
 Can be used to reference a node in this file.
 
@@ -108,7 +108,7 @@ ___
 
 **● throwOnError**: *`undefined` \| `false` \| `true`*
 
-*Defined in [types.ts:237](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/types.ts#L237)*
+*Defined in [types.ts:236](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L236)*
 
 ___
 

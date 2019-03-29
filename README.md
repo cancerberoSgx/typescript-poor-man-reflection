@@ -5,6 +5,8 @@
 
 An unconventional way of getting TypeScript code information (like types), as text.
 
+**NOT READY**, not yet...
+
 # Why ?
 
  * https://github.com/Microsoft/TypeScript/issues/14419
@@ -74,7 +76,7 @@ Embed files in your source, at compile time:
 // assets.ts - contains example files embedded from FS at compile time
 // files exports an array of objects `{name: string, content: string}`
 import { ReadFiles } from 'typescript-poor-man-reflection'
-export files = ReadFiles({path: './src/examples/example*.ts'})
+export const files = ReadFiles({path: '../examples/example*.ts'})
 ```
 
 ### Organize imports - remove unused - infer types, exec

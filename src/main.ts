@@ -1,9 +1,7 @@
 import { test, ls } from 'shelljs'
 import { defaultOptions, replaceProjectFunctionCall } from './replaceProjectFunctionCall'
 import { Replacement, ReplaceProjectFunctionCallOptions } from './types'
-import { flat } from 'misc-utils-of-mine-generic'
-import { dirname } from 'path'
-import { withoutExtension } from './util'
+import { flat, withoutExtension } from 'misc-utils-of-mine-generic'
 import { notFalsy } from 'misc-utils-of-mine-typescript'
 import { isExportedExtractor } from './extractors'
 

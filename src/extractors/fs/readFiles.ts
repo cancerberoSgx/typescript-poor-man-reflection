@@ -1,8 +1,8 @@
 import { Stats } from 'fs'
 import { cat, ls } from 'shelljs'
 import { CallExpression, Node } from 'ts-morph'
-import { ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunctionCallOptions } from '../../types'
-import { unquote } from '../../util'
+import { ExtractorGetter, ExtractorOptions, ExtractorResult, ReplaceProjectFunctionCallOptions } from '../..'
+import { unquote } from 'misc-utils-of-mine-generic'
 import { AbstractExtractor } from '../abstractExtractor'
 
 /**

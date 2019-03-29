@@ -27,7 +27,7 @@
 
 ▸ **Attribute**<`T`>(config: *[AttributeOptions](../interfaces/_extractors_core_attribute_.attributeoptions.md)*, t?: *`any`*): `T`
 
-*Defined in [extractors/core/attribute.ts:36](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/34423be/src/extractors/core/attribute.ts#L36)*
+*Defined in [extractors/core/attribute.ts:34](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/extractors/core/attribute.ts#L34)*
 
 Node/Types attributes like DOM's. Attributes can or cannot be associated to a node, and if they are not they just act as normal variables.
 

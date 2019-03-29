@@ -1,4 +1,4 @@
-import { unique, quote } from 'misc-utils-of-mine-generic'
+import { unique, quote, unquote } from 'misc-utils-of-mine-generic'
 import { CallExpression, Node, SyntaxKind, TypeGuards } from 'ts-morph'
 import { extractCallExpressions } from '../astUtil'
 import {
@@ -9,8 +9,8 @@ import {
   FileVariableAccessor,
   ReplaceProjectFunctionCallOptions
 } from '../types'
-import { Map, unquote, isNode } from '../util'
-import { getDefinitionsOf } from 'ts-simple-ast-extra'
+import { getDefinitionsOf, isNode } from 'ts-simple-ast-extra'
+import { Map } from '../util'
 
 export interface NodeWithInfo {
   node: Node

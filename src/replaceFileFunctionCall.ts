@@ -1,5 +1,5 @@
 import { quote } from 'misc-utils-of-mine-generic'
-import Project, { CallExpression, SourceFile, SyntaxKind } from 'ts-morph'
+import { Project, CallExpression, SourceFile, SyntaxKind } from 'ts-morph'
 import { extractCallExpressions } from './astUtil'
 import { extractorGetterBuilder, getFileId, writeExtractorData } from './extractorData'
 import { defaultExtractors, isExtractorClass, isExtractorFn } from './extractors'
