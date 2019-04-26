@@ -19,7 +19,7 @@
 
 ▸ **helpAndExit**(config: *[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)*): `void`
 
-*Defined in [main.ts:70](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/main.ts#L70)*
+*Defined in [main.ts:70](https://github.com/cancerberosgx/typescript-poor-man-reflection/blob/ab533ef/src/main.ts#L70)*
 
 **Parameters:**
 
@@ -36,7 +36,7 @@ ___
 
 ▸ **main**(options: *[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)*): `void`
 
-*Defined in [main.ts:8](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/main.ts#L8)*
+*Defined in [main.ts:8](https://github.com/cancerberosgx/typescript-poor-man-reflection/blob/ab533ef/src/main.ts#L8)*
 
 **Parameters:**
 

@@ -38,7 +38,7 @@
 
 **Ƭ Extractor**: *`object` & `function` \| [ExtractorClass](../interfaces/_types_.extractorclass.md)*
 
-*Defined in [types.ts:241](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L241)*
+*Defined in [types.ts:241](https://github.com/cancerberosgx/typescript-poor-man-reflection/blob/ab533ef/src/types.ts#L241)*
 
 ___
 <a id="extractordatamode"></a>
@@ -47,7 +47,7 @@ ___
 
 **Ƭ ExtractorDataMode**: *"prependVariable" \| "folderFile" \| "asArgument"*
 
-*Defined in [types.ts:258](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L258)*
+*Defined in [types.ts:258](https://github.com/cancerberosgx/typescript-poor-man-reflection/blob/ab533ef/src/types.ts#L258)*
 
 ___
 <a id="extractorfn"></a>
@@ -56,7 +56,7 @@ ___
 
 **Ƭ ExtractorFn**: *`function`*
 
-*Defined in [types.ts:243](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L243)*
+*Defined in [types.ts:243](https://github.com/cancerberosgx/typescript-poor-man-reflection/blob/ab533ef/src/types.ts#L243)*
 
 #### Type declaration
 ▸(n: *`CallExpression`*, index: *`number`*, getter: *[ExtractorGetter](_types_.md#extractorgetter)*, options: *`Required`<[ReplaceProjectFunctionCallOptions](../interfaces/_types_.replaceprojectfunctioncalloptions.md)>*, variableAccessor: *[FileVariableAccessor](../interfaces/_types_.filevariableaccessor.md)*): [ExtractorResult](../interfaces/_types_.extractorresult.md) \| `string`
@@ -80,7 +80,7 @@ ___
 
 **Ƭ ExtractorGetter**: *`function`*
 
-*Defined in [types.ts:256](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L256)*
+*Defined in [types.ts:256](https://github.com/cancerberosgx/typescript-poor-man-reflection/blob/ab533ef/src/types.ts#L256)*
 
 #### Type declaration
 ▸(index: *`number`*): `string`
@@ -100,7 +100,7 @@ ___
 
 **Ƭ ExtractorOutputMode**: *"assignToVariable" \| "asReturnValue"*
 
-*Defined in [types.ts:239](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L239)*
+*Defined in [types.ts:239](https://github.com/cancerberosgx/typescript-poor-man-reflection/blob/ab533ef/src/types.ts#L239)*
 
 ___
 <a id="filevariablescompiletimedefinition"></a>
@@ -109,7 +109,7 @@ ___
 
 **Ƭ FileVariablesCompileTimeDefinition**: *`object`*
 
-*Defined in [types.ts:292](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L292)*
+*Defined in [types.ts:292](https://github.com/cancerberosgx/typescript-poor-man-reflection/blob/ab533ef/src/types.ts#L292)*
 
 #### Type declaration
 

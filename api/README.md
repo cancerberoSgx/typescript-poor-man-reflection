@@ -56,7 +56,7 @@ const logger = If({
 
 ### Overrides
 
-Want to make sure your classes methods and properties are actually overriding a super class/interface member ?
+Want to make sure your classes methods and properties are actually overriding a super class/interface member 
 
 ```ts
 import { Overrides } from 'typescript-poor-man-reflection'

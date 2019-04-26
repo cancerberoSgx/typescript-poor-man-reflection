@@ -18,7 +18,7 @@ describe('CLI --register', () => {
     expect(1).toBe(1)
   })
 
-  it('Should be able to register a .ts file exporting an extractor', () => {
+  xit('Should be able to register a .ts file exporting an extractor', () => {
     let r = exec(
       `${runner} --moduleSpecifier "./exportedExtractor1" --extractorDataMode folderFile --filePattern "**/${program}"  --register "${customExtractor}" --clean`
     )

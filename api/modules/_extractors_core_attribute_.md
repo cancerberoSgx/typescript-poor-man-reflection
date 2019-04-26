@@ -27,11 +27,11 @@
 
 ▸ **Attribute**<`T`>(config: *[AttributeOptions](../interfaces/_extractors_core_attribute_.attributeoptions.md)*, t?: *`any`*): `T`
 
-*Defined in [extractors/core/attribute.ts:34](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/extractors/core/attribute.ts#L34)*
+*Defined in [extractors/core/attribute.ts:34](https://github.com/cancerberosgx/typescript-poor-man-reflection/blob/ab533ef/src/extractors/core/attribute.ts#L34)*
 
 Node/Types attributes like DOM's. Attributes can or cannot be associated to a node, and if they are not they just act as normal variables.
 
-For attributes bound to nodes&types, the setter call must occur BEFORE the GETTER call (while the source file is being processed.). TODO: can we solve this using afterExtract()?
+For attributes bound to nodes&types, the setter call must occur BEFORE the GETTER call (while the source file is being processed.). TODO: can we solve this using afterExtract()
 
 ```ts
 // setting a type or node's attribute value

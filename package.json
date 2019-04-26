@@ -1,6 +1,6 @@
 {
   "name": "typescript-poor-man-reflection",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "An unconventional way of getting TypeScript code information (like types), as text, at runtime",
   "types": "dist/src/index.d.ts",
   "main": "dist/src/index.js",
@@ -24,25 +24,25 @@
   },
   "dependencies": {
     "minimatch": "^3.0.4",
-    "misc-utils-of-mine-generic": "0.0.13",
+    "misc-utils-of-mine-generic": "0.0.15",
     "misc-utils-of-mine-typescript": "0.0.12",
     "shelljs": "^0.8.3",
-    "ts-morph": "^1.3.1",
-    "ts-simple-ast-extra": "0.0.19",
+    "ts-morph": "^2.0.1",
+    "ts-simple-ast-extra": "0.1.5",
     "yargs-parser": "^13.0.0"
   },
   "devDependencies": {
     "@types/jest": "^24.0.11",
     "@types/minimatch": "^3.0.3",
-    "@types/node": "^10.12.18",
-    "@types/shelljs": "^0.8.3",
-    "jest": "^24.5.0",
-    "prettier": "^1.16.4",
-    "ts-jest": "^24.0.0",
-    "ts-node": "^8.0.3",
-    "typedoc": "^0.13.0",
-    "typedoc-plugin-markdown": "^1.1.27",
-    "typescript": "^3.3.3333"
+    "@types/node": "^11.13.7",
+    "@types/shelljs": "^0.8.5",
+    "jest": "^24.7.1",
+    "prettier": "^1.17.0",
+    "ts-jest": "^24.0.2",
+    "ts-node": "^8.1.0",
+    "typedoc": "^0.14.2",
+    "typedoc-plugin-markdown": "^1.2.0",
+    "typescript": "^3.4.5"
   },
   "keywords": [
     "JavaScript",

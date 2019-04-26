@@ -32,7 +32,7 @@ Options accepted by the low level call `replaceFunctionCall`. They describe the 
 
 **● clean**: *`undefined` \| `false` \| `true`*
 
-*Defined in [types.ts:86](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L86)*
+*Defined in [types.ts:86](https://github.com/cancerberosgx/typescript-poor-man-reflection/blob/ab533ef/src/types.ts#L86)*
 
 If true the tool will clean all arguments in matched function call expressions
 
@@ -43,7 +43,7 @@ ___
 
 **● extractorDataFolderFileName**: *`undefined` \| `string`*
 
-*Defined in [types.ts:132](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L132)*
+*Defined in [types.ts:132](https://github.com/cancerberosgx/typescript-poor-man-reflection/blob/ab533ef/src/types.ts#L132)*
 
 The name of the file to store extractor data in case `extractorDataMode` is `'folderFile'`. By default it will be named `__poor_man_reflection__.ts`. See \[\['folderFile'\]\]
 
@@ -54,7 +54,7 @@ ___
 
 **● extractorDataMode**: *[ExtractorDataMode](../modules/_types_.md#extractordatamode)*
 
-*Defined in [types.ts:126](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L126)*
+*Defined in [types.ts:126](https://github.com/cancerberosgx/typescript-poor-man-reflection/blob/ab533ef/src/types.ts#L126)*
 
 Mode in which the extractor data is stored in the source code.
 
@@ -71,7 +71,7 @@ ___
 
 **● extractorDataVariableName**: *`undefined` \| `string`*
 
-*Defined in [types.ts:106](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L106)*
+*Defined in [types.ts:106](https://github.com/cancerberosgx/typescript-poor-man-reflection/blob/ab533ef/src/types.ts#L106)*
 
 In case custom `extracts` return `prependToFile` property, they also can configure the name of the array variable prepended in the file that contains all values. By default it's `__extractor_prepend__`.
 
@@ -82,7 +82,7 @@ ___
 
 **● extracts**: *`undefined` \| `object`*
 
-*Defined in [types.ts:91](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L91)*
+*Defined in [types.ts:91](https://github.com/cancerberosgx/typescript-poor-man-reflection/blob/ab533ef/src/types.ts#L91)*
 
 Custom extracts declaring custom function names
 
@@ -93,7 +93,7 @@ ___
 
 **● moduleSpecifier**: *`undefined` \| `string`*
 
-*Defined in [types.ts:100](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L100)*
+*Defined in [types.ts:100](https://github.com/cancerberosgx/typescript-poor-man-reflection/blob/ab533ef/src/types.ts#L100)*
 
 Custom name of the import module specifier from which the target function in the function call expression needs to be imported in order to perform the arguments modification. Default value: `typescript-poor-man-reflection`.
 
@@ -104,7 +104,7 @@ ___
 
 **● prependVariableModePlace**: *"top" \| "bottom"*
 
-*Defined in [types.ts:111](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L111)*
+*Defined in [types.ts:111](https://github.com/cancerberosgx/typescript-poor-man-reflection/blob/ab533ef/src/types.ts#L111)*
 
 in case mode `prependToFile` is selected where to create the variable declarations, on top of the file or at the bottom=. Default:TODO
 

@@ -26,7 +26,7 @@
 
 ▸ **Overrides**<`T`>(t?: *[T]()*, pass?: *`undefined` \| `true`*, data?: *[T]()*): `T`
 
-*Defined in [extractors/source/overrides.ts:36](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/extractors/source/overrides.ts#L36)*
+*Defined in [extractors/source/overrides.ts:36](https://github.com/cancerberosgx/typescript-poor-man-reflection/blob/ab533ef/src/extractors/source/overrides.ts#L36)*
 
 TODO: only works for classes, not for interfaces signatures - there we need a type.
 

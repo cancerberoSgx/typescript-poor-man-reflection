@@ -27,3 +27,6 @@
  * Register enabled
 
 # 0.0.7
+
+ * updates dependencies
+

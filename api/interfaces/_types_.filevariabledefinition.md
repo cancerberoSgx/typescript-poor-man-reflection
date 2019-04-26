@@ -25,7 +25,7 @@
 
 **● extractorName**: *`string`*
 
-*Defined in [types.ts:300](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L300)*
+*Defined in [types.ts:300](https://github.com/cancerberosgx/typescript-poor-man-reflection/blob/ab533ef/src/types.ts#L300)*
 
 ___
 <a id="index"></a>
@@ -34,7 +34,7 @@ ___
 
 **● index**: *`number`*
 
-*Defined in [types.ts:298](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L298)*
+*Defined in [types.ts:298](https://github.com/cancerberosgx/typescript-poor-man-reflection/blob/ab533ef/src/types.ts#L298)*
 
 ___
 <a id="name"></a>
@@ -43,7 +43,7 @@ ___
 
 **● name**: *`string`*
 
-*Defined in [types.ts:297](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L297)*
+*Defined in [types.ts:297](https://github.com/cancerberosgx/typescript-poor-man-reflection/blob/ab533ef/src/types.ts#L297)*
 
 ___
 <a id="value"></a>
@@ -52,7 +52,7 @@ ___
 
 **● value**: *`string`*
 
-*Defined in [types.ts:299](https://github.com/cancerberoSgx/typescript-poor-man-reflection/blob/f1306fa/src/types.ts#L299)*
+*Defined in [types.ts:299](https://github.com/cancerberosgx/typescript-poor-man-reflection/blob/ab533ef/src/types.ts#L299)*
 
 ___
 
